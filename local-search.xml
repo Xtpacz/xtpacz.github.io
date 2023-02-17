@@ -4,17 +4,25 @@
   
   
   <entry>
-    <title>test</title>
-    <link href="/2023/02/17/test/"/>
-    <url>/2023/02/17/test/</url>
+    <title>【LeetCode】回文子串</title>
+    <link href="/2023/02/17/%E3%80%90LeetCode%E3%80%91%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/"/>
+    <url>/2023/02/17/%E3%80%90LeetCode%E3%80%91%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/</url>
     
-    <content type="html"><![CDATA[<p>与post同名文件夹中的图片</p><img src="/2023/02/17/test/universe.jpg" class="" title="图片引用方法">]]></content>
+    <content type="html"><![CDATA[<p>[回文子串](<a href="https://leetcode.cn/problems/palindromic-substrings/">647. 回文子串 - 力扣（Leetcode）</a>)</p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs applescript">给你一个字符串 s ，请你统计并返回这个字符串中 回文子串 的数目。<br><br>回文字符串 是正着读和倒过来读一样的字符串。<br><br>子字符串 是字符串中的由连续字符组成的一个序列。<br><br>具有不同开始位置或结束位置的子串，即使是由相同的字符组成，也会被视作不同的子串。<br><br> <br><br>示例 <span class="hljs-number">1</span>：<br><br>输入：s = <span class="hljs-string">&quot;abc&quot;</span><br>输出：<span class="hljs-number">3</span><br>解释：三个回文子串: <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span><br>示例 <span class="hljs-number">2</span>：<br><br>输入：s = <span class="hljs-string">&quot;aaa&quot;</span><br>输出：<span class="hljs-number">6</span><br>解释：<span class="hljs-number">6</span>个回文子串: <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;aa&quot;</span>, <span class="hljs-string">&quot;aa&quot;</span>, <span class="hljs-string">&quot;aaa&quot;</span><br> <br><br>提示：<br><br><span class="hljs-number">1</span> &lt;= s.<span class="hljs-built_in">length</span> &lt;= <span class="hljs-number">1000</span><br>s 由小写英文字母组成<br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>遍历每个字符，双指针向两边拓展，注意考虑回文的中心是1个还是2个</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">class</span> <span class="hljs-symbol">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">int</span> countSubstrings(<span class="hljs-built_in">string</span> s) &#123;<br>        <span class="hljs-built_in">int</span> res = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; s.size(); i ++)&#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">1</span>; j ++) &#123;<br>                <span class="hljs-built_in">int</span> l = i;<br>                <span class="hljs-built_in">int</span> r = i + j;<br>                <span class="hljs-keyword">while</span> (l &gt;= <span class="hljs-number">0</span> &amp;&amp; r &lt;= s.size() &amp;&amp; s[l] == s[r]) &#123;<br>                    l --;<br>                    r ++;<br>                    res ++;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
     
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
     
     
     <tags>
       
-      <tag>test-blog-settings</tag>
+      <tag>字符串</tag>
+      
+      <tag>动态规划</tag>
       
     </tags>
     
@@ -23,13 +31,887 @@
   
   
   <entry>
-    <title>Hello World</title>
-    <link href="/2023/02/17/hello-world/"/>
-    <url>/2023/02/17/hello-world/</url>
+    <title>【牛客网】字符串分隔</title>
+    <link href="/2023/02/17/%E3%80%90%E7%89%9B%E5%AE%A2%E7%BD%91%E3%80%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%86%E9%9A%94/"/>
+    <url>/2023/02/17/%E3%80%90%E7%89%9B%E5%AE%A2%E7%BD%91%E3%80%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%86%E9%9A%94/</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs gcode">描述<br>•输入一个字符串，请按长度为<span class="hljs-number">8</span>拆分每个输入字符串并进行输出；<br><br>•长度不是<span class="hljs-number">8</span>整数倍的字符串请在后面补数字<span class="hljs-number">0</span>，空字符串不处理。<br>输入描述：<br>连续输入字符串<span class="hljs-comment">(每个字符串长度小于等于100)</span><br><br>输出描述：<br>依次输出所有分割后的长度为<span class="hljs-number">8</span>的新字符串<br><br>示例<span class="hljs-number">1</span><br>输入：<br>abc<br><br>输出：<br>abc<span class="hljs-number">00000</span><br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>判断输入的字符串的长度是否是8的倍数，若不是，就在最后面添加缺少的0,<br>然后每8个字符输出一次</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string str;<br>    <span class="hljs-keyword">while</span> (cin &gt;&gt; str) &#123;<br>        <span class="hljs-keyword">if</span> (str.<span class="hljs-built_in">size</span>() % <span class="hljs-number">8</span> != <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-type">int</span> zero = <span class="hljs-number">8</span> - str.<span class="hljs-built_in">size</span>() % <span class="hljs-number">8</span>;<br>            str.<span class="hljs-built_in">append</span>(zero, <span class="hljs-string">&#x27;0&#x27;</span>);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; str.<span class="hljs-built_in">size</span>(); i += <span class="hljs-number">8</span>) &#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, str.<span class="hljs-built_in">substr</span>(i, <span class="hljs-number">8</span>).<span class="hljs-built_in">c_str</span>());  <span class="hljs-comment">// 注意使用pringf输出字符串的语法</span><br>        &#125;        <br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>字符串</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【牛客网】明明的随机数</title>
+    <link href="/2023/02/17/%E3%80%90%E7%89%9B%E5%AE%A2%E7%BD%91%E3%80%91%E6%98%8E%E6%98%8E%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0/"/>
+    <url>/2023/02/17/%E3%80%90%E7%89%9B%E5%AE%A2%E7%BD%91%E3%80%91%E6%98%8E%E6%98%8E%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs excel">描述<br>明明生成了<span class="hljs-built_in">N</span>个<span class="hljs-number">1</span>到<span class="hljs-number">500</span>之间的随机整数。请你删去其中重复的数字，即相同的数字只保留一个，把其余相同的数去掉，然后再把这些数从小到大排序，按照排好的顺序输出。<br><br>数据范围： <br> <br><span class="hljs-number">1</span> ≤ <span class="hljs-built_in">n</span> ≤ <span class="hljs-number">1000</span>,输入的数字大小满足<span class="hljs-number">1</span> ≤ val ≤ <span class="hljs-number">500</span> <br><br>输入描述：<br>第一行先输入随机整数的个数 <span class="hljs-built_in">N</span>， 接下来的 <span class="hljs-built_in">N</span> 行每行输入一个整数，代表明明生成的随机数。 具体格式可以参考下面的<span class="hljs-string">&quot;示例&quot;</span>。<br><br>输出描述：<br>输出多行，表示输入数据处理后的结果<br><br>示例<span class="hljs-number">1</span><br>输入：<br><span class="hljs-number">3</span><br><span class="hljs-number">2</span><br><span class="hljs-number">2</span><br><span class="hljs-number">1</span><br><br>输出：<br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><br>说明：<br>输入解释：<br>第一个数字是<span class="hljs-number">3</span>，也即这个小样例的<span class="hljs-built_in">N</span>=<span class="hljs-number">3</span>，说明用计算机生成了<span class="hljs-number">3</span>个<span class="hljs-number">1</span>到<span class="hljs-number">500</span>之间的随机整数，接下来每行一个随机数字，共<span class="hljs-number">3</span>行，也即这<span class="hljs-number">3</span>个随机数字为：<br><span class="hljs-number">2</span><br><span class="hljs-number">2</span><br><span class="hljs-number">1</span><br>所以样例的输出为：<br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>利用set的特性，每得到一个数，就放入set中，最后将set中的数全打印出来</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> n;<br>    cin &gt;&gt; n;<br>    set&lt;<span class="hljs-type">int</span>&gt; s;<br>    set&lt;<span class="hljs-type">int</span>&gt;::const_iterator iter;<br>    <span class="hljs-keyword">while</span> (n-- &gt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-type">int</span> c;<br>        cin &gt;&gt; c;<br>        s.<span class="hljs-built_in">insert</span>(c);<br>    &#125;<br>    <span class="hljs-keyword">for</span>(iter = s.<span class="hljs-built_in">begin</span>(); iter != s.<span class="hljs-built_in">end</span>(); iter++)&#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, *iter);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数组</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【牛客网】计算某字符的出现次数</title>
+    <link href="/2023/02/17/%E3%80%90%E7%89%9B%E5%AE%A2%E7%BD%91%E3%80%91%E8%AE%A1%E7%AE%97%E6%9F%90%E5%AD%97%E7%AC%A6%E7%9A%84%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0/"/>
+    <url>/2023/02/17/%E3%80%90%E7%89%9B%E5%AE%A2%E7%BD%91%E3%80%91%E8%AE%A1%E7%AE%97%E6%9F%90%E5%AD%97%E7%AC%A6%E7%9A%84%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs excel">描述<br>写出一个程序，接受一个由字母、数字和空格组成的字符串，和一个字符，然后输出输入字符串中该字符的出现次数。（不区分大小写字母）<br><br>数据范围： <br><span class="hljs-number">1</span> ≤ <span class="hljs-built_in">n</span> ≤ <span class="hljs-number">1000</span><br> <br>输入描述：<br>第一行输入一个由字母、数字和空格组成的字符串，第二行输入一个字符（保证该字符不为空格）。<br><br>输出描述：<br>输出输入字符串中含有该字符的个数。（不区分大小写字母）<br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>遍历即可，判断字母的话，两字符全转换成大写或者小写判断，其他字符直接比较是否相等</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string str;<br>    <span class="hljs-type">char</span> c;<br>    <span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;<br>    <br>    <span class="hljs-built_in">getline</span>(cin, str);<br>    cin &gt;&gt; c;<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; str.<span class="hljs-built_in">size</span>(); i ++) &#123;<br>        <span class="hljs-keyword">if</span> (str[i] == c || <span class="hljs-built_in">toupper</span>(str[i]) == <span class="hljs-built_in">toupper</span>(c)) count ++;<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, count);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>字符串</tag>
+      
+      <tag>哈希</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【牛客网】字符串的最后一个单词的长度</title>
+    <link href="/2023/02/17/%E3%80%90%E7%89%9B%E5%AE%A2%E7%BD%91%E3%80%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/"/>
+    <url>/2023/02/17/%E3%80%90%E7%89%9B%E5%AE%A2%E7%BD%91%E3%80%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8D%95%E8%AF%8D%E7%9A%84%E9%95%BF%E5%BA%A6/</url>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs">描述<br>计算字符串最后一个单词的长度，单词以空格隔开，字符串长度小于5000。（注：字符串末尾不以空格为结尾）<br>输入描述：<br>输入一行，代表要计算的字符串，非空，长度小于5000。<br><br>输出描述：<br>输出一个整数，表示输入字符串最后一个单词的长度。<br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>先接收这一行的字符串，然后从字符串后面往前遍历，直到找到第一个空格或者i &lt; 0为止</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    string str;<br>    <span class="hljs-built_in">getline</span>(cin, str);<br>    <span class="hljs-type">int</span> len = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = str.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i --) &#123;<br>        <span class="hljs-keyword">if</span>(str[i] == <span class="hljs-string">&#x27; &#x27;</span>) <span class="hljs-keyword">break</span>;<br>        len ++;<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, len);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>字符串</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】括号生成</title>
+    <link href="/2023/02/16/%E3%80%90LeetCode%E3%80%91%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/"/>
+    <url>/2023/02/16/%E3%80%90LeetCode%E3%80%91%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/generate-parentheses">括号生成</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs excel">数字 <span class="hljs-built_in">n</span> 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。<br><br> <br><br>示例 <span class="hljs-number">1</span>：<br><br>输入：<span class="hljs-built_in">n</span> = <span class="hljs-number">3</span><br>输出：[<span class="hljs-string">&quot;((()))&quot;</span>,<span class="hljs-string">&quot;(()())&quot;</span>,<span class="hljs-string">&quot;(())()&quot;</span>,<span class="hljs-string">&quot;()(())&quot;</span>,<span class="hljs-string">&quot;()()()&quot;</span>]<br>示例 <span class="hljs-number">2</span>：<br><br>输入：<span class="hljs-built_in">n</span> = <span class="hljs-number">1</span><br>输出：[<span class="hljs-string">&quot;()&quot;</span>]<br> <br><br>提示：<br><br><span class="hljs-number">1</span> &lt;= <span class="hljs-built_in">n</span> &lt;= <span class="hljs-number">8</span><br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>回溯，</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>&#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;string&gt; res;<br>    <span class="hljs-function">vector&lt;string&gt; <span class="hljs-title">generateParenthesis</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span></span>&#123;<br>        <span class="hljs-built_in">dfs</span>(<span class="hljs-string">&quot;&quot;</span>, n, n);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-type">const</span> string&amp; s, <span class="hljs-type">int</span> l, <span class="hljs-type">int</span> r)</span> </span>&#123;<br>        <span class="hljs-comment">// s中有括号数量多于左括号了，则不符合条件</span><br>        <span class="hljs-keyword">if</span> (l &lt; <span class="hljs-number">0</span> || l &gt; r) <span class="hljs-keyword">return</span>;<br>        <span class="hljs-keyword">if</span> (l == <span class="hljs-number">0</span> &amp;&amp; r == <span class="hljs-number">0</span>) &#123;<br>            res.<span class="hljs-built_in">push_back</span>(s);<br>            <span class="hljs-keyword">return</span> ;<br>        &#125;<br>        <span class="hljs-built_in">dfs</span>(s + <span class="hljs-string">&#x27;(&#x27;</span>, l - <span class="hljs-number">1</span>, r);<br>        <span class="hljs-built_in">dfs</span>(s + <span class="hljs-string">&#x27;)&#x27;</span>,l ,r - <span class="hljs-number">1</span>);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>字符串</tag>
+      
+      <tag>回溯</tag>
+      
+      <tag>动态规划</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】数组能形成多少数对</title>
+    <link href="/2023/02/16/%E3%80%90LeetCode%E3%80%91%E6%95%B0%E7%BB%84%E8%83%BD%E5%BD%A2%E6%88%90%E5%A4%9A%E5%B0%91%E6%95%B0%E5%AF%B9/"/>
+    <url>/2023/02/16/%E3%80%90LeetCode%E3%80%91%E6%95%B0%E7%BB%84%E8%83%BD%E5%BD%A2%E6%88%90%E5%A4%9A%E5%B0%91%E6%95%B0%E5%AF%B9/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/maximum-number-of-pairs-in-array">数组能形成多少数对</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs tap">给你一个下标从<span class="hljs-number"> 0 </span>开始的整数数组 nums 。在一步操作中，你可以执行以下步骤：<br><br>从 nums 选出 两个 相等的 整数<br>从 nums 中移除这两个整数，形成一个 数对<br>请你在 nums 上多次执行此操作直到无法继续执行。<br><br>返回一个下标从<span class="hljs-number"> 0 </span>开始、长度为<span class="hljs-number"> 2 </span>的整数数组 answer 作为答案，其中 answer[0] 是形成的数对数目，answer[1] 是对 nums 尽可能执行上述操作后剩下的整数数目。<br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>由于数据范围在0到100之间，直接统计每个数字的个数</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">numberOfPairs</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt; res;<br>    res.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">0</span>);<br>    res.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">0</span>);<br>    <span class="hljs-built_in">sort</span>(nums.<span class="hljs-built_in">begin</span>(), nums.<span class="hljs-built_in">end</span>());<br>    <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-type">int</span> help[<span class="hljs-number">101</span>] = &#123;&#125;;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) &#123;<br>        help[nums[i]] ++;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">101</span> ; i++) &#123;<br>        <span class="hljs-keyword">if</span>(help[i] % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) &#123;<br>            res[<span class="hljs-number">0</span>] += (help[i] / <span class="hljs-number">2</span>);<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (help[i] &gt; <span class="hljs-number">2</span>) &#123;<br>            res[<span class="hljs-number">0</span>] += ((help[i] - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>);<br>            res[<span class="hljs-number">1</span>] += <span class="hljs-number">1</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            res[<span class="hljs-number">1</span>] += help[i];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数组</tag>
+      
+      <tag>哈希表</tag>
+      
+      <tag>计数</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】电话号码的字母组合</title>
+    <link href="/2023/02/16/%E3%80%90LeetCode%E3%80%91%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/"/>
+    <url>/2023/02/16/%E3%80%90LeetCode%E3%80%91%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/letter-combinations-of-a-phone-number">电话号码的字母组合</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs subunit">给定一个仅包含数字 2<span class="hljs-string">-9</span> 的字符串，返回所有它能表示的字母组合。答案可以按 任意顺序 返回。<br><br>给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。<br></code></pre></td></tr></table></figure><img src="/2023/02/16/%E3%80%90LeetCode%E3%80%91%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/img.png" class=""><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs stylus">示例 <span class="hljs-number">1</span>：<br><br>输入：digits = <span class="hljs-string">&quot;23&quot;</span><br>输出：<span class="hljs-selector-attr">[<span class="hljs-string">&quot;ad&quot;</span>,<span class="hljs-string">&quot;ae&quot;</span>,<span class="hljs-string">&quot;af&quot;</span>,<span class="hljs-string">&quot;bd&quot;</span>,<span class="hljs-string">&quot;be&quot;</span>,<span class="hljs-string">&quot;bf&quot;</span>,<span class="hljs-string">&quot;cd&quot;</span>,<span class="hljs-string">&quot;ce&quot;</span>,<span class="hljs-string">&quot;cf&quot;</span>]</span><br>示例 <span class="hljs-number">2</span>：<br><br>输入：digits = <span class="hljs-string">&quot;&quot;</span><br>输出：<span class="hljs-selector-attr">[]</span><br>示例 <span class="hljs-number">3</span>：<br><br>输入：digits = <span class="hljs-string">&quot;2&quot;</span><br>输出：<span class="hljs-selector-attr">[<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>]</span><br> <br><br>提示：<br><br><span class="hljs-number">0</span> &lt;= digits<span class="hljs-selector-class">.length</span> &lt;= <span class="hljs-number">4</span><br>digits<span class="hljs-selector-attr">[i]</span> 是范围 <span class="hljs-selector-attr">[<span class="hljs-string">&#x27;2&#x27;</span>, <span class="hljs-string">&#x27;9&#x27;</span>]</span> 的一个数字。<br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>深度优先遍历</p><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    string map[<span class="hljs-number">10</span>] = &#123;<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;abc&quot;</span>, <span class="hljs-string">&quot;def&quot;</span>, <span class="hljs-string">&quot;ghi&quot;</span>, <span class="hljs-string">&quot;jkl&quot;</span>, <span class="hljs-string">&quot;mno&quot;</span>, <span class="hljs-string">&quot;pqrs&quot;</span>, <span class="hljs-string">&quot;tuv&quot;</span>, <span class="hljs-string">&quot;wxyz&quot;</span>&#125;;<br>    vector&lt;string&gt; res; <span class="hljs-comment">// 用来保存结果</span><br>    string tmp; <span class="hljs-comment">// 用来保存每个分支</span><br>    <span class="hljs-function">vector&lt;string&gt; <span class="hljs-title">letterCombinations</span><span class="hljs-params">(string digits)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(digits.<span class="hljs-built_in">size</span>() == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> res;<br>        <span class="hljs-built_in">dfs</span>(digits, <span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(string &amp;str, <span class="hljs-type">int</span> i)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (i == str.<span class="hljs-built_in">size</span>())&#123; <span class="hljs-comment">// 遍历到头了，将tmp存入res中，然后返回上一级</span><br>            res.<span class="hljs-built_in">push_back</span>(tmp);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; map[str[i] - <span class="hljs-string">&#x27;0&#x27;</span>].<span class="hljs-built_in">size</span>(); j++) &#123;<br>            tmp += map[str[i] - <span class="hljs-string">&#x27;0&#x27;</span>][j];<br>            <span class="hljs-comment">// 遍历下一个字符</span><br>            <span class="hljs-built_in">dfs</span>(str, i + <span class="hljs-number">1</span>);<br>            tmp.<span class="hljs-built_in">pop_back</span>();<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>哈希表</tag>
+      
+      <tag>字符串</tag>
+      
+      <tag>回溯</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】三数之和</title>
+    <link href="/2023/02/16/%E3%80%90LeetCode%E3%80%91%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
+    <url>/2023/02/16/%E3%80%90LeetCode%E3%80%91%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/3sum">三数之和</a></p><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs inform7">给你一个整数数组 nums ，判断是否存在三元组 <span class="hljs-comment">[nums<span class="hljs-comment">[i]</span>, nums<span class="hljs-comment">[j]</span>, nums<span class="hljs-comment">[k]</span>]</span> 满足 i != j、i != k 且 j != k ，同时还满足 nums<span class="hljs-comment">[i]</span> + nums<span class="hljs-comment">[j]</span> + nums<span class="hljs-comment">[k]</span> == 0 。请<br><br>你返回所有和为 0 且不重复的三元组。<br><br>注意：答案中不可以包含重复的三元组。<br><br> <br><br> <br><br>示例 1：<br><br>输入：nums = <span class="hljs-comment">[-1,0,1,2,-1,-4]</span><br>输出：<span class="hljs-comment">[<span class="hljs-comment">[-1,-1,2]</span>,<span class="hljs-comment">[-1,0,1]</span>]</span><br>解释：<br>nums<span class="hljs-comment">[0]</span> + nums<span class="hljs-comment">[1]</span> + nums<span class="hljs-comment">[2]</span> = (-1) + 0 + 1 = 0 。<br>nums<span class="hljs-comment">[1]</span> + nums<span class="hljs-comment">[2]</span> + nums<span class="hljs-comment">[4]</span> = 0 + 1 + (-1) = 0 。<br>nums<span class="hljs-comment">[0]</span> + nums<span class="hljs-comment">[3]</span> + nums<span class="hljs-comment">[4]</span> = (-1) + 2 + (-1) = 0 。<br>不同的三元组是 <span class="hljs-comment">[-1,0,1]</span> 和 <span class="hljs-comment">[-1,-1,2]</span> 。<br>注意，输出的顺序和三元组的顺序并不重要。<br>示例 2：<br><br>输入：nums = <span class="hljs-comment">[0,1,1]</span><br>输出：<span class="hljs-comment">[]</span><br>解释：唯一可能的三元组和不为 0 。<br>示例 3：<br><br>输入：nums = <span class="hljs-comment">[0,0,0]</span><br>输出：<span class="hljs-comment">[<span class="hljs-comment">[0,0,0]</span>]</span><br>解释：唯一可能的三元组和为 0 。<br> <br><br>提示：<br><br>3 &lt;= nums.length &lt;= 3000<br>-105 &lt;= nums<span class="hljs-comment">[i]</span> &lt;= 105<br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>对数组排序，先用一个下标遍历数组，然后数组的后半部分用双指针，去查找符合条件的，并且要注意边界条件和一些优化方法</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp">vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">threeSum</span>(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums) &#123;<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; res;<br>    <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> res;<br>    <span class="hljs-built_in">sort</span>(nums.<span class="hljs-built_in">begin</span>(), nums.<span class="hljs-built_in">end</span>());<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>        <span class="hljs-keyword">if</span> (nums[i] &gt; <span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 由于nums[i] 是三个数中最小的，如果nums[i]&gt;0，则三个数加起来一定不会等于0，因此要跳出循环</span><br>        <span class="hljs-keyword">while</span> (i &lt; n &amp;&amp; i &gt; <span class="hljs-number">0</span> &amp;&amp; nums[i] == nums[i - <span class="hljs-number">1</span>]) i++; <span class="hljs-comment">// nums[i] 与 nums[i-1]重复，故向后移动，去重</span><br>        <span class="hljs-type">int</span> l = i + <span class="hljs-number">1</span>, r = n - <span class="hljs-number">1</span>; <span class="hljs-comment">// 双指针在数组的后半部分进行查找</span><br>        <span class="hljs-keyword">while</span> (l &lt; r) &#123;<br>            <span class="hljs-type">int</span> sum = nums[i] + nums[l] + nums[r];<br>            <span class="hljs-keyword">if</span> (sum == <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">// 找到了一组符合条件的答案，加入res中</span><br>                vector&lt;<span class="hljs-type">int</span>&gt; tmp&#123;nums[i], nums[l], nums[r]&#125;;<br>                res.<span class="hljs-built_in">push_back</span>(tmp);<br>                <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; nums[l] == nums[l + <span class="hljs-number">1</span>]) l++; <span class="hljs-comment">// 去重</span><br>                <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; nums[r] == nums[r - <span class="hljs-number">1</span>]) r--; <span class="hljs-comment">// 去重</span><br>                l ++;<br>                r --;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(sum &lt; <span class="hljs-number">0</span>) l++; <span class="hljs-comment">// 三数之小于0，说明nums[l]小了，则l向后移动</span><br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(sum &gt; <span class="hljs-number">0</span>) r--; <span class="hljs-comment">// 三数之大于0，说明nums[r]大了，则r向前移动</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure><p>参考了别人的<a href="https://leetcode.cn/problems/3sum/solutions/12307/hua-jie-suan-fa-15-san-shu-zhi-he-by-guanpengchn/">题解</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数组</tag>
+      
+      <tag>排序</tag>
+      
+      <tag>双指针</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】王道模拟卷7</title>
+    <link href="/2022/12/17/%E3%80%90408%E3%80%91%E7%8E%8B%E9%81%93%E6%A8%A1%E6%8B%9F%E5%8D%B77/"/>
+    <url>/2022/12/17/%E3%80%90408%E3%80%91%E7%8E%8B%E9%81%93%E6%A8%A1%E6%8B%9F%E5%8D%B77/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/basilicata/p/16989313.html">【408】模拟7 - Basilicata216 - 博客园 (cnblogs.com)</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】王道模拟卷6</title>
+    <link href="/2022/12/05/%E3%80%90408%E3%80%91%E7%8E%8B%E9%81%93%E6%A8%A1%E6%8B%9F%E5%8D%B76/"/>
+    <url>/2022/12/05/%E3%80%90408%E3%80%91%E7%8E%8B%E9%81%93%E6%A8%A1%E6%8B%9F%E5%8D%B76/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/basilicata/p/16953597.html">【408】模拟6 - Basilicata216 - 博客园 (cnblogs.com)</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】王道模拟卷5</title>
+    <link href="/2022/11/23/%E3%80%90408%E3%80%91%E7%8E%8B%E9%81%93%E6%A8%A1%E6%8B%9F%E5%8D%B75/"/>
+    <url>/2022/11/23/%E3%80%90408%E3%80%91%E7%8E%8B%E9%81%93%E6%A8%A1%E6%8B%9F%E5%8D%B75/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/basilicata/p/16919283.html">【408】模拟5 - Basilicata216 - 博客园 (cnblogs.com)</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】王道模拟卷4</title>
+    <link href="/2022/11/21/%E3%80%90408%E3%80%91%E7%8E%8B%E9%81%93%E6%A8%A1%E6%8B%9F%E5%8D%B74/"/>
+    <url>/2022/11/21/%E3%80%90408%E3%80%91%E7%8E%8B%E9%81%93%E6%A8%A1%E6%8B%9F%E5%8D%B74/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/basilicata/p/16912979.html">【408】模拟4 - Basilicata216 - 博客园 (cnblogs.com)</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【考研】最后一个月</title>
+    <link href="/2022/11/20/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E6%9C%88/"/>
+    <url>/2022/11/20/%E3%80%90%E8%80%83%E7%A0%94%E3%80%91%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E6%9C%88/</url>
+    
+    <content type="html"><![CDATA[<p>11.20</p><h2 id="数学："><a href="#数学：" class="headerlink" title="数学："></a>数学：</h2><p>已经刷了03~21年真题，2套张八、李林6、一套李永乐6<br>准备继续把李永乐6套刷完，<br>刚做了李永乐第一套卷，做的过程中感觉不难，但总不是那么通透，深挖下来发现了很多知识点漏洞。希望接下来五套也能带来这样的效果吧。</p><p>听说前几年的超越选填出的挺好的，之后去做一下。<br>还有李艳芳。。。。</p><p>做卷子时的压力有些大，慌里慌张的经常犯一些算数上面的低级错误。计算能力太差了，之后写模拟不要慌，尽量不跳步骤，演草纸上也写规整一些。<br>进度：虽然进度有些慢，不过争取把每一套卷子都吃透，把该掌握的知识点都掌握到。考研题不会出的太偏，大多所谓的难题都是难在了综合性上，把每个知识点逐一击破就ok。一些题看上去咋咋呼呼，不要急，静下心来想一下这可能是在考察什么知识点，需要利用哪些结论，是不是某几个知识点的综合。<br>最重要的还是心态心态心态！！！</p><hr><h2 id="408："><a href="#408：" class="headerlink" title="408："></a>408：</h2><p>刷完了09~22真题以及三套王道模拟</p><p>真题中的一些小知识点很容易遗忘，要多回去看一看。<br>王道模拟出的大题对计组和os的考察挺深入。</p><p>之后：<br>回归王道书，穿插模拟题查漏，结合着思维导图补缺。对于408这种偏记忆的学科还是要翻来覆去的回顾</p><hr><h2 id="英语："><a href="#英语：" class="headerlink" title="英语："></a>英语：</h2><p>正在三刷英二真题，之前刷的太盲目了，之后真题里面的长难句要多留意一下。其实英二阅读的技巧性也挺强的，不要过度推理，跳出自己的思维框架，一些模糊词是不选的。<br>小作文已经写了几篇了，大作文还没来得及搞。</p><p>之后：<br>争取在11月底前把大作文也好好的看看写几篇<br>每天照常1~2篇阅读，中间穿插着小三门和完型，单词不要落下</p><hr><h2 id="政治："><a href="#政治：" class="headerlink" title="政治："></a>政治：</h2><p>肖八选择只写了4套，均分25，我太难了。。。。</p><p>月底前刷完肖八，每套选择尽量吃透<br>肖八第一套的大题平时可以读一下，为之后肖四节约时间</p><hr><h2 id="睡觉："><a href="#睡觉：" class="headerlink" title="睡觉："></a>睡觉：</h2><p>睡觉前不要再看手机了！看手机的时间都够做几道数学题了</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】王道模拟卷3</title>
+    <link href="/2022/11/19/%E3%80%90408%E3%80%91%E7%8E%8B%E9%81%93%E6%A8%A1%E6%8B%9F%E5%8D%B73/"/>
+    <url>/2022/11/19/%E3%80%90408%E3%80%91%E7%8E%8B%E9%81%93%E6%A8%A1%E6%8B%9F%E5%8D%B73/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/basilicata/p/16906646.html">【408】模拟3 - Basilicata216 - 博客园 (cnblogs.com)</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】王道模拟卷2</title>
+    <link href="/2022/11/18/%E3%80%90408%E3%80%91%E7%8E%8B%E9%81%93%E6%A8%A1%E6%8B%9F%E5%8D%B72/"/>
+    <url>/2022/11/18/%E3%80%90408%E3%80%91%E7%8E%8B%E9%81%93%E6%A8%A1%E6%8B%9F%E5%8D%B72/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/basilicata/p/16901012.html">【408】模拟2 - Basilicata216 - 博客园 (cnblogs.com)</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】王道模拟卷1</title>
+    <link href="/2022/11/15/%E3%80%90408%E3%80%91%E7%8E%8B%E9%81%93%E6%A8%A1%E6%8B%9F%E5%8D%B71/"/>
+    <url>/2022/11/15/%E3%80%90408%E3%80%91%E7%8E%8B%E9%81%93%E6%A8%A1%E6%8B%9F%E5%8D%B71/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/basilicata/p/16893249.html">【408】模拟1 - Basilicata216 - 博客园 (cnblogs.com)</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】2022年真题</title>
+    <link href="/2022/11/12/%E3%80%90408%E3%80%912022%E5%B9%B4%E7%9C%9F%E9%A2%98/"/>
+    <url>/2022/11/12/%E3%80%90408%E3%80%912022%E5%B9%B4%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>t1<br>不会严格证明，不过可以大概的估计一下<br>假设最外层for循环执行t次，则2^t &lt;&#x3D; n<br>那么，sum++的执行次数为 1 + 2 + 4 + 8 + 16 + ··· + 2^t<br>等比数列求和就ok了，总共是[ 2^(t + 1) - 1 ] 次，那么sum总的执行次数介于n和2n之间，时间复杂度也就是O(n)了<br>这种选择题算个大差不差就行</p><p>t5<br>理解概念题（没见过的新概念，一般就理解字面意思就行）<br>Huffman编码，编的码在哪呢？在路径上呀！它编出来的码有长有短（不定长）<br>而这个定长编码，给每个字符编的码一样长，就是说从根到每个字符（叶子结点）的路径长度一样，也就是这些个字符都在同一层。</p><p>t616<br>连通情况下边最少：|E| &#x3D; |V| - 1；（类似于单链表）<br>则|V| &#x3D; |E| + 1。<br>若|V| &gt; |E| + 1，则一定是不连通的（天啊我这几根线勉强连住了，你又来一个结点，连不住啊兄弟）</p><p>t7<br>观察法直接看就ok<br>活动余量 &#x3D; 结束顶点的最晚开始时间 - 开始顶点的最早开始时间 - 活动持续时间<br>AB俩打工人早起开始搬砖，A先干，A干完B干<br>A最早可以6点起来干，干一个小时<br>在不拖延整体进度的情况下，B最晚10点开始干<br>那么AB之间的空闲时间量是多少呢，就是10-6-1 &#x3D; 3</p><p>t10<br>归并排序中的两步操作<br>1、分解<br>2、合并（重点）<br>2路归并举例：</p><blockquote><img src="/2022/11/12/%E3%80%90408%E3%80%912022%E5%B9%B4%E7%9C%9F%E9%A2%98/img1.png" class=""></blockquote><p>t11<br>回顾<a href="https://www.cnblogs.com/basilicata/p/16874859.html">2020真题</a></p><p>t16<br>组相联，通过组号确定一组，然后在组内同时对所有组员进行比较，所以组员个数就是比较器个数<br>比较器比较的内容是什么呢？是地址的tag和组内每一行的tag<br>至于那些标志位，应该是先比较完tag之后再判断有效位吧？不太清楚，也可能没一个固定模式</p><blockquote><p>看这个图里面是先比较了tag，然后再和valid位进行与运算。然后运算结果线，分成两支，一直通向或门；另一支连接4-1多路选择器，把32bit数据传输出去</p><img src="/2022/11/12/%E3%80%90408%E3%80%912022%E5%B9%B4%E7%9C%9F%E9%A2%98/img2.png" class=""></blockquote><p>t17<br>一般情况下DRAM采用地址复用技术，如果采用地址复用技术，那么地址引脚就是log2(8192)&#x3D;13<br>答案对C的解释算出来的是物理地址的位数，而非实际每个DRAM芯片的地址引脚<br>不管哪种情况，C都能排除掉</p><blockquote><p>行缓冲：（拿这道题举例，每个DRAM芯片是8192*8192*8位）<br>比如要读取DRAM一个单元(985,211)的内容，<br>1、内存控制器发送行地址（RAS）985到DRAM芯片。<br>2、DRAM芯片把985行的内容统统放到行缓冲里面<br>3、内存控制器发送列地址（CAS）211到DRAM芯片。<br>4、DRAM芯片选取行缓冲中的211列，通过8根数据线，将这8个bit送至内存控制器<br>5、至于行缓冲里的其他元素，可以丢弃。如果是连续读这一行的话，那就先放那吧，接下来根据列地址继续用（可能要加入一些额外的硬件提前做判断）。</p></blockquote><p>t18</p><img src="/2022/11/12/%E3%80%90408%E3%80%912022%E5%B9%B4%E7%9C%9F%E9%A2%98/img3.png" class=""><p><a href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84">计算机系统结构</a></p><p>t22</p><img src="/2022/11/12/%E3%80%90408%E3%80%912022%E5%B9%B4%E7%9C%9F%E9%A2%98/img4.png" class=""><p>t30<br>区分清驻留集和工作集<br>使用工作集函数来动态描述进程最近有可能频繁访问的页面（进而知道进程所需的物理页框数）<br>动态调整驻留集大小（物理页框数），这样可以使得系统整体更高效，<br>不过任何方法都是有缺陷的，过去不一定代表未来（可以通过一段时间内缺页的次数来动态决定）<br><a href="https://codeantenna.com/a/050f87EEW1">可以看一下</a><br>页缓冲队列：缓存被淘汰的页，暂时不写回磁盘，其队列长度只会影响页面置换速度</p><p>t32</p><img src="/2022/11/12/%E3%80%90408%E3%80%912022%E5%B9%B4%E7%9C%9F%E9%A2%98/img5.png" class=""><p>t33<br>关键是“两个相邻结点”中的“相邻”，所以答案是数据链路，<br>如果表述是“两个结点”，那么网络层也可以</p><p>t37<br>这道题蒙的，印象中只有南和北<br>题目问的是下发，也就是“向下”，联想到了“康熙南巡”、“邓小平南方谈话”、“下江南”、地图“上北下南”&#x3D;。&#x3D;<br>直觉上南方就是下面，北方就是上面，因此选了南。<br>实际上也是这样的</p><blockquote><p>北向接口：SDN对上层开发者提供的编程接口<br>南向接口：SDN向数据平面的SDN交换机下发流表时使用的接口</p></blockquote><hr><p>其他的选择题都没什么可说的了</p><hr><p>t41<br>答案都太巧妙了，想不到。。<br>我直接中序遍历保存到一个数组之后检查顺序&#x3D;。&#x3D;</p><p>t42<br>维护一个大小为10的大根堆<br>向后遍历数组，比较数组元素与堆顶的值，若数组元素的值比堆顶小，则替换并且调整堆<br>遍历到最后，堆中的元素就是整个数组中最小的10个<br>（因为是大根堆，堆顶元素在堆的10个元素里面是最大的，但是在外面99990个元素看来是最小的，那么显然堆中的10个元素就是整体最小的10个了）<br>时间复杂度：</p><blockquote><p>首先要对10个元素建堆，时间复杂度是O(10),<br>然后遍历数组其他元素，<br>较好情况：若所有比较完都不需要交换调整堆的话，时间复杂度就是O(n-10)；总体时间复杂度就是O(n - 10) + O(10) &#x3D; O(n)<br>较差情况：若所有元素都需要与堆顶交换的话(也就需要调整堆),时间复杂度就是O((n - 10) * log10)；总体时间复杂度就是O(10) + O((n - 10) * log10) &#x3D; O(n)<br>因为log2(10) ≈ 3.几，是个比较小的数；总体来说时间复杂度都是O(n)。</p></blockquote><p>空间复杂度：O(1)</p><p>同理，找最大的10个元素就用小根堆</p><p>t43<br>多路选择器和地址译码器是不同的<br>  多路选择器是加电信号，使特定端口输出数据，其他端口不输出。<br>  而地址译码器就是，比如010翻译成2,111翻译为7，只用n根输入线就能产生2^n种输出<br><a href="https://zh.wikipedia.org/wiki/%E8%AF%91%E7%A0%81%E5%99%A8">地址译码器看这里</a><br><a href="https://baike.baidu.com/item/%E5%A4%9A%E8%B7%AF%E9%80%89%E6%8B%A9%E5%99%A8/4882927">多路选择器看这里</a></p><blockquote><p>多路选择器<br>2013年真题出现过</p><img src="/2022/11/12/%E3%80%90408%E3%80%912022%E5%B9%B4%E7%9C%9F%E9%A2%98/img6.png" class=""><p>2015年真题也出现过<br>单独考了，一个2路选择器</p><img src="/2022/11/12/%E3%80%90408%E3%80%912022%E5%B9%B4%E7%9C%9F%E9%A2%98/img7.png" class=""><p>2018年真题出现过</p><img src="/2022/11/12/%E3%80%90408%E3%80%912022%E5%B9%B4%E7%9C%9F%E9%A2%98/img8.png" class=""></blockquote><p>标志寄存器FR（也称作Flag、PSW），里面某些值也是要送到CU的呀</p><blockquote><img src="/2022/11/12/%E3%80%90408%E3%80%912022%E5%B9%B4%E7%9C%9F%E9%A2%98/img9.png" class=""></blockquote><p>t45<br>共享同一个索引结点，本质上就是同一个文件</p><p>t47<br>第二问16年考过一样的<br>第四问17年35题考过<br>802.11中数据帧的地址字段的规则如下图：</p><img src="/2022/11/12/%E3%80%90408%E3%80%912022%E5%B9%B4%E7%9C%9F%E9%A2%98/img10.png" class=""><p>本题中a(H4)要通过AP发数据报给b(H5)<br>那么a先把数据报发给AP<br>此时地址1是MACap、地址2是MACa、地址3是MACb<br>AP收到之后，对数据报进行改装，然后发给b<br>此时地址1是MACb、地址2是MACap、地址3是MACa</p><blockquote><p>可能还有点迷糊，再解释一下吧<br>因为在无线局域网中两个结点通信都是通过AP作为中介，所以他们是三角恋<br>任一时刻，一个数据报在空中飞的过程中，对于这个数据报而言，谁收这个数据报谁就是地址1，谁发谁就是地址2，剩下那个就是地址3了</p></blockquote><p>总感觉这块还会再考。。。</p><img src="/2022/11/12/%E3%80%90408%E3%80%912022%E5%B9%B4%E7%9C%9F%E9%A2%98/img11.png" class="">]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】2021年真题</title>
+    <link href="/2022/11/10/%E3%80%90408%E3%80%912021%E5%B9%B4%E7%9C%9F%E9%A2%98/"/>
+    <url>/2022/11/10/%E3%80%90408%E3%80%912021%E5%B9%B4%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>t4<br>给的序列是二叉树的。。而不是森林的</p><p>t5<br>带权路径长度乘的应该是路径长度才对，而不是树高</p><p>t22<br>额，中断这块还是糊里糊涂的</p><p>t38<br>建立TCP连接(SYN, SYN&#x2F;ACK, ACK)</p><blockquote><img src="/2022/11/10/%E3%80%90408%E3%80%912021%E5%B9%B4%E7%9C%9F%E9%A2%98/img1.png" class=""></blockquote><p>释放TCP连接</p><blockquote><img src="/2022/11/10/%E3%80%90408%E3%80%912021%E5%B9%B4%E7%9C%9F%E9%A2%98/img2.png" class=""></blockquote><hr><p>t45<br>先想能不能，再想为什么</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】2020年真题</title>
+    <link href="/2022/11/09/%E3%80%90408%E3%80%912020%E5%B9%B4%E7%9C%9F%E9%A2%98/"/>
+    <url>/2022/11/09/%E3%80%90408%E3%80%912020%E5%B9%B4%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>t5<br>问的是二叉排序树，没问二叉平衡树&#x3D;.&#x3D;</p><hr><p>t11<br>稳定的排序算法：</p><blockquote><p>直接插入、冒泡、2归并、基数排序</p></blockquote><p>空间复杂度：</p><blockquote><p>快速排序：借助栈，空间复杂度一般是O(logn)，但在最坏情况下会增长到O(n)<br>2路归并：因为需要借助辅助空间，所以其空间复杂度一般是O(n)<br>基数排序：需要借助r个队列，因此其空间复杂度为O(r)</p></blockquote><p>初始时元素：</p><blockquote><p>基本有序：直接插入排序 和 冒泡排序 时间复杂度可以达到O(n)<br>基本有序或者基本逆序：快速排序 时间复杂度就达到了O(n^2)</p></blockquote><p>每趟排序之后可以确定最终位置：</p><blockquote><p>冒泡 和 堆排 每趟可以确定一个最大值或最小值<br>快排 每趟也可以确定最终位置（但不一定是一个，要看枢轴划分到哪了）</p></blockquote><blockquote><p>因为直接插入排序 记录移动次数 一般比 简单选择排序要多，因此当基本本身信息量大，使用简单选择排序<br>元素基本有序：使用 冒泡 或 直接插入————————时间复杂度都是O(n)<br>若n较大，一般使用 快排、堆排、归并————————其中快排堆排不稳定，归并稳定；；堆排的空间复杂度为O(1)<br>n较大，关键字位数可分解，使用基数排序<br>记录本身信息量很大的时候，可采用链表作为存储结构<br>注意，若采用链表作为存储结构，那么一般来说，快排、堆排、希尔排序就用不了了</p></blockquote><hr>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】2019年真题</title>
+    <link href="/2022/11/07/%E3%80%90408%E3%80%912019%E5%B9%B4%E7%9C%9F%E9%A2%98/"/>
+    <url>/2022/11/07/%E3%80%90408%E3%80%912019%E5%B9%B4%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>t11 最佳归并树虚段的个数</p><p>假如这个树是一个最佳归并树（ K路归并 ）。那么假设叶子节点（初始归并段）个数为 N0，则有这个式子成立：(N0 - 1) mod (K - 1) &#x3D; 0<br>现在已知叶子结点是120个，12路归并，问要添加几个虚段（ 也就是还少几个叶结点？）<br>假设少 x 个，则根据上面那个等式，则下面这个等式也要成立：<br>(120 + x - 1) mod (12 - 1) &#x3D; 0<br>解出来 x &#x3D; 1（ x取满足条件的最小正整数，取多了没意义 ）</p><hr><p>t22 DMA流程</p><blockquote><p>DMA传送前 由CPU 执行几条IO指令（用来测试IO设备状态），向DMA控制器的有关寄存器置初值、设置传送方向、启动该设备等</p></blockquote><p>脑袋里不要只死记硬背是CPU呀，<br>操作系统得依靠叫做 <a href="https://baike.baidu.com/item/%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F/103009">设备驱动程序</a> 的东西来和硬件打交道</p><blockquote><p>“驱动程序一般指的是设备驱动程序（Device Driver），是一种可以使计算机和设备进行相互通信的特殊程序。相当于硬件的接口，操作系统只有通过这个接口，才能控制硬件设备的工作，假如某设备的驱动程序未能正确安装，便不能正常工作。因此，驱动程序被比作“ 硬件的灵魂”、“硬件的主宰”、“硬件和系统之间的桥梁”等。</p></blockquote><hr><p>t23<br>用户级线程和内核级线程 连接方式有：1-1, n-1 ,n-n （想到了计网中的流量控制和可靠传输，停等1-1，后退N帧(GBN) 1-N，选择重传(SR) N-N）<br>看着B选了A</p><hr><p>t44<br>簇(块)的大小是由文件系统（软件）来决定de<br>而扇区的大小是由硬件决定的，（物理格式化划分柱面、磁道和扇区~）</p><blockquote><p>1、物理(低级)格式化：划分柱面、磁道和扇区，and对已经损坏了的磁道和扇区做“坏”标记<br>2、分区：对磁盘的整体空间做划分（C盘、D盘。。。），这些分区可以安装不同OS和软件、存储文件。。<br>3、逻辑(高级)格式化：对扇区进行逻辑编号、简历逻辑盘的引导记录、文件分配表、文件目录表和数据区</p></blockquote><p>扇区：实际读写的基本单位<br>簇，操作系统分配存储空间基本单位（比如，若簇大小是1KB，OS存一个1B的文件，那么就要给它分配1KB，虽然有些浪费。。）</p><p>因为不同硬件的内部功能结构都不完全一样，所以硬件厂家都会提供自己的驱动程序，来让大家用的操作系统可以通过这个驱动程序来和他家的硬件打交道。<br>所以将簇号转换成物理地址的过程，由磁盘驱动程序（设备驱动程序）完成。</p><hr><p>t45<br>无条件转移类指令：jmp、call、ret<br>有条件转移类指令：jc、jnc blabla一堆，（因为要判断是否满足某一个条件，需要去作比较，所以就是有条件）<br><a href="https://www.doc88.com/p-4304117886410.html?r=1">8086指令系统</a></p><p>CISC体系下的指令字长不一，如何实现PC自增呢？</p><blockquote><p>当CU从存储器中取出一个字节时，会自动执行PC++</p></blockquote><p>第五问好难啊，直接记住吧<br>两个32位int型数据相乘，<br>高32位全0或全1不溢出，否则溢出</p><hr><p>t47<br>通常路由器连接某个子网的端口，这个端口的IP地址通常就是其子网内主机的默认网关地址！！！</p><p>有个疑问，H3发送广播数据报，<br>除了H4和路由器，难道H3不会接收到吗？网上查了一下没有查到相应的知识。。<br>问题其实就是，交换机收到端口A发送过来的广播数据报，那么交换机会把这个广播数据报发往所有的端口吗（包括A）？<br>不浪费时间了，直接记住吧：自己发的广播数据报自己接收不到！</p><p>学的太浅了，好多东西都是只知道表面的，好想知道更深层的逻辑啊，可惜时间不多了</p><hr><blockquote><blockquote><blockquote><blockquote><img src="/2022/11/07/%E3%80%90408%E3%80%912019%E5%B9%B4%E7%9C%9F%E9%A2%98/img.png" class=""><p>sub bx,ax  前面是目的，后面是源<br>等价于(bx) - (ax) -&gt; bx </p></blockquote></blockquote></blockquote></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】2018年真题</title>
+    <link href="/2022/11/06/%E3%80%90408%E3%80%912018%E5%B9%B4%E7%9C%9F%E9%A2%98/"/>
+    <url>/2022/11/06/%E3%80%90408%E3%80%912018%E5%B9%B4%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>t14<br>单精度浮点数 </p><img src="/2022/11/06/%E3%80%90408%E3%80%912018%E5%B9%B4%E7%9C%9F%E9%A2%98/img.png" class=""><p>这个E就是写在二进制里面的阶码，，分清真值和阶码！！！<br>其中，E的取值范围是 1 ~ 254 ，即2的次方的取值范围是 -126 ~ 127<br>E &#x3D; 255（全1）：无穷大<br>E &#x3D; 0：非规格化数</p><p>t21<br>采用地址&#x2F;数据线复用 有可能 降低数据传输率</p><p>t23<br>并行是可以的，比如进程A使用CPU、此刻进程B在使用IO设备</p><p>t45<br>进程实体的组成：程序段、相关数据段、PCB；；创建进程，就是创建PCB。撤销进程，就是撤销PCB。</p><p>每个进程的  地址空间—页目录—PDBR<br>分配给它的各种资源什么的，<br>都是其独有的</p><p>t46<br>搞迷糊了，<br>首先，文件系统中有许多文件<br>每个文件都有一个inode结点，<br>所有文件的inode结点，集中存放在一起（磁盘的某个位置）<br>在单个inode结点中，存放的是文件的各种信息，其中最重要的（对于考试来说）就是文件的混合索引表<br>然后这个混合索引表里面有直接地址项、间接地址项<br>而这些地址项里面，放的是盘块号（或者簇号）！！！<br>对于间接索引来说，这些间接索引项，存放在磁盘块（或者簇）中呀！<br>因为每个文件就一个索引结点！！！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】2017年真题</title>
+    <link href="/2022/11/04/%E3%80%90408%E3%80%912017%E5%B9%B4%E7%9C%9F%E9%A2%98/"/>
+    <url>/2022/11/04/%E3%80%90408%E3%80%912017%E5%B9%B4%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>t9</p><img src="/2022/11/04/%E3%80%90408%E3%80%912017%E5%B9%B4%E7%9C%9F%E9%A2%98/img1.png" class=""><p>t26<br>绝大多数磁盘都是以 簇 为单位进行空间分配<br>注意不会分配半个簇</p><p>t32<br>DMA过程：<br>1、CPU执行几条IO指令（测试IO设备状态）、置初值、传送方向（标志数据是去IO设备呢还是去主存呢）、启动设备<br>2、IO设备向DMA控制器发送DMA请求<br>3、DMA请求向CPU发送总线请求<br>4、DMA控制器传送数据（可用循环多传送一些~<br>5、这次送完了，DMA控制器发送中断请求<br>6、CPU执行相应中断服务程序（校验送入主存的数据是否正确？测试传送过程是否出错？若出错则转入诊断程序。以及决定是否继续使用DMA传送其他数据块</p><blockquote><p>DMA和中断的一些区别：<br>1、DMA靠硬件传送、中断靠软件传送<br>2、中断其实就是切换程序（普通用户程序（用户态）切换到中断处理程序（内核））（整个传送过程还得靠CPU完成），需要保护和恢复现场；而DMA只需要CPU进行预处理和后处理<br>3、DMA请求的优先级高于中断请求<br>4、由于DMA在数据传送过程不需要CPU干涉，所以它的数据传输率非常高！适合高速外设的成组数据传送<br>5、CPU对中断响应：每条指令执行之后；CPU对DMA的响应：每个机器周期之后（可以在取指周期、间址周期、执行周期之后响应DMA请求），看下图</p><img src="/2022/11/04/%E3%80%90408%E3%80%912017%E5%B9%B4%E7%9C%9F%E9%A2%98/img2.png" class=""><p>只不过DMA传送数据的时候，有三种方式：<br>1.停止CPU访存，直接让CPU滚蛋<br>2.周期挪用，等待CPU存取周期结束之后再去使用总线<br>3.CPU和DMA交替访存（不需要总线使用权的申请、建立和归还）</p></blockquote><hr><p>t47<br>假设序号字段为3bit，<br>GBN协议里面，<br>发送窗口最大为2^3-1 &#x3D; 7，并不是说序号只能是0,1,2,3,4,5,6- &#x3D;&#x3D;&#x3D;别蒙圈了<br>序号本身可以是从0到7，只是一个窗口里面最多只能容纳7个</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】2016年真题</title>
+    <link href="/2022/11/03/%E3%80%90408%E3%80%912016%E5%B9%B4%E7%9C%9F%E9%A2%98/"/>
+    <url>/2022/11/03/%E3%80%90408%E3%80%912016%E5%B9%B4%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>t41<br>窗口要加单位呀！<br>在”传输”中，K是1000，不要引起歧义了</p><p>四次握手中：<br>1、连接释放报文段<br>2、确认报文段<br>3、连接释放报文段<br>4、确认报文段</p><p>三次握手中：<br>1、连接请求报文段<br>2、确认报文段<br>3、确认报文段（可带数据）</p><p>防范SYN洪泛攻击：</p><img src="/2022/11/03/%E3%80%90408%E3%80%912016%E5%B9%B4%E7%9C%9F%E9%A2%98/img1.png" class=""><hr><p>t44</p><img src="/2022/11/03/%E3%80%90408%E3%80%912016%E5%B9%B4%E7%9C%9F%E9%A2%98/img2.png" class=""><img src="/2022/11/03/%E3%80%90408%E3%80%912016%E5%B9%B4%E7%9C%9F%E9%A2%98/img3.png" class=""><hr><p>t47<br>FAT表：<br>1、整个磁盘设置一张<br>2、系统启动的时候读入内存（常驻内存）（根目录也常驻内存）<br>3、簇号、盘块号，指的就是真实磁盘中对应部分的编号；同时也在FAT被利用起来链接文件</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】2015年真题</title>
+    <link href="/2022/11/02/%E3%80%90408%E3%80%912015%E5%B9%B4%E7%9C%9F%E9%A2%98/"/>
+    <url>/2022/11/02/%E3%80%90408%E3%80%912015%E5%B9%B4%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>t26<br>限制用户申请资源的顺序其实是“死锁预防-破坏循环等待条件”的内容<br>具体是：给系统资源编号，每个进程要按照编号递增的顺序申请资源</p><img src="/2022/11/02/%E3%80%90408%E3%80%912015%E5%B9%B4%E7%9C%9F%E9%A2%98/img1.png" class=""><p>死锁预防的其他两个方法</p><blockquote><p>破坏请求和保持条件：</p><blockquote><p>第一种：进程开始运行前，必须一次性申请其在整个运行过程中所需的全部资源！<br>优点：简单、安全<br>缺点：资源被严重浪费，恶化资源利用率；使进程经常发生饥饿。<br>第二种：允许进程只获得运行初期所需的资源后，便开始运行。运行过程中逐步释放用过的资源，再请求新的资源。<br>优点：使进程更快完成任务，提高资源利用率；减少进程发生饥饿的概率</p></blockquote></blockquote><blockquote><p>破坏不可抢占条件！</p></blockquote><hr><p>t34<br>RZ: return zero<br>NRZ: no return zero<br>NRZI: no return zero inverse<br>NRZI和查分曼彻斯特类似，都是看翻转，只不过查分曼只看一半</p><img src="/2022/11/02/%E3%80%90408%E3%80%912015%E5%B9%B4%E7%9C%9F%E9%A2%98/img2.png" class=""><hr><p>t41<br>释放链表结点要记得free！！<br>做完题要检查是不是每个小问都答了。。。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】2014年真题</title>
+    <link href="/2022/11/01/%E3%80%90408%E3%80%912014%E5%B9%B4%E7%9C%9F%E9%A2%98/"/>
+    <url>/2022/11/01/%E3%80%90408%E3%80%912014%E5%B9%B4%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>t45<br>每个cache块由标记项、数据区组成！！</p><p>访问A[0]，查TLB未命中，查页表未命中，因此去磁盘调数据（OS有相应的机制去找到页面与磁盘地址的对应关系）<br>调入主存中（同时更新页表和TLB（一般来说，此时TLB中的页表项只有A[0]所在页面的页框号和一些标志位））<br>再次访问A[0]，查TLB命中<br>由于数组元素在同一页面，因此他们在同一页框中，访问TLB每次访的都是同一个表项<br>所以后续1000次查TLB都会命中<br>总共是1000+1次</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】结构体定义</title>
+    <link href="/2022/11/01/%E3%80%90408%E3%80%91%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89/"/>
+    <url>/2022/11/01/%E3%80%90408%E3%80%91%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>单链表</p></blockquote><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">LNode</span> &#123;<br><span class="hljs-type">int</span> data;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">BiTNode</span> *next;<br>&#125;LNode;<br></code></pre></td></tr></table></figure><hr><blockquote><p>二叉树</p></blockquote><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">BTNode</span> &#123;<br><span class="hljs-type">int</span> data;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">BiTNode</span> *lchild, *rchild;<br>&#125; BTNode;<br></code></pre></td></tr></table></figure><hr><blockquote><p>树的孩子兄弟表示法</p></blockquote><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">TNode</span> &#123;<br><span class="hljs-type">int</span> data;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">TNode</span> *firstchild, *nextbro; <span class="hljs-comment">// firstchild是第一个孩子，nextbro是右兄弟</span><br>&#125;TNode;<br></code></pre></td></tr></table></figure><hr><blockquote><p>并查集</p></blockquote><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs arduino">并查集结构定义：<br><span class="hljs-type">int</span> UFSets[n];<br><br>初始化操作：<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-type">int</span> S[])</span></span>&#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    S[i] = <span class="hljs-number">-1</span>; <span class="hljs-comment">// 每个自成单元素集合</span><br>  &#125;<br>&#125;<br><br>find操作：<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> S[], <span class="hljs-type">int</span> x)</span></span>&#123; <br>  <span class="hljs-keyword">while</span> (S[x] &gt; <span class="hljs-number">0</span>) x = S[x]; <span class="hljs-comment">// 寻找x的根</span><br>  <span class="hljs-keyword">return</span> x;<br>&#125;<br><br>Union操作：<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">union</span><span class="hljs-params">(<span class="hljs-type">int</span> S[], <span class="hljs-type">int</span> root1, <span class="hljs-type">int</span> root2)</span> </span>&#123;<br>  S[root2] = root1; <span class="hljs-comment">// 将根root2连接到另一个根root1下面</span><br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】代码题备忘</title>
+    <link href="/2022/10/31/%E3%80%90408%E3%80%91%E4%BB%A3%E7%A0%81%E9%A2%98%E5%A4%87%E5%BF%98/"/>
+    <url>/2022/10/31/%E3%80%90408%E3%80%91%E4%BB%A3%E7%A0%81%E9%A2%98%E5%A4%87%E5%BF%98/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>不是很重要的时候可以直接用<br>int max &#x3D; Max_int; &#x2F;&#x2F;初始设置为最大整数<br>max(a,b); &#x2F;&#x2F;选大的<br>输入输出函数cin  cout<br>A[i++]：先用i，在自增；A[++i]：先自增，再用i<br>交换函数swap(a,b);</p></blockquote><hr><blockquote><p>快排</p></blockquote><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-built_in">int</span> partition(<span class="hljs-built_in">int</span> nums<span class="hljs-literal">[]</span>, <span class="hljs-built_in">int</span> left, <span class="hljs-built_in">int</span> right) &#123;<br>        随机选择一个数组下标为left ~ right 的元素和nums<span class="hljs-literal">[<span class="hljs-identifier">left</span>]</span>进行交换 <span class="hljs-comment">//快排优化</span><br><span class="hljs-built_in">int</span> pivot = nums<span class="hljs-literal">[<span class="hljs-identifier">left</span>]</span>;<br><span class="hljs-keyword">while</span> (left &lt; right) &#123; <span class="hljs-comment">// 以枢轴为中界，划分左右</span><br><span class="hljs-keyword">while</span> (left &lt; right<span class="hljs-operator"> &amp;&amp; </span>nums<span class="hljs-literal">[<span class="hljs-identifier">right</span>]</span> &gt;= pivot)<br>right --;<br>nums<span class="hljs-literal">[<span class="hljs-identifier">left</span>]</span> = nums<span class="hljs-literal">[<span class="hljs-identifier">right</span>]</span>;<br><span class="hljs-keyword">while</span> (left &lt; right<span class="hljs-operator"> &amp;&amp; </span>nums<span class="hljs-literal">[<span class="hljs-identifier">left</span>]</span> &lt;= pivot)<br>left ++;<br>nums<span class="hljs-literal">[<span class="hljs-identifier">right</span>]</span> = nums<span class="hljs-literal">[<span class="hljs-identifier">left</span>]</span>;<br>&#125;<br>nums<span class="hljs-literal">[<span class="hljs-identifier">left</span>]</span> = pivot;<br>return left;<br>&#125;<br><br>void quick<span class="hljs-constructor">_sort(<span class="hljs-params">int</span> <span class="hljs-params">nums</span>[], <span class="hljs-params">int</span> <span class="hljs-params">left</span>, <span class="hljs-params">int</span> <span class="hljs-params">right</span>)</span> &#123;<br><span class="hljs-keyword">if</span> (left &lt; right) &#123;<br><span class="hljs-built_in">int</span> pivotpos = partition(nums, left, right);<br>quick<span class="hljs-constructor">_sort(<span class="hljs-params">nums</span>, <span class="hljs-params">left</span>, <span class="hljs-params">pivotpos</span> - 1)</span>;  <span class="hljs-comment">//对左边部分递归</span><br>quick<span class="hljs-constructor">_sort(<span class="hljs-params">nums</span>, <span class="hljs-params">pivotpos</span> + 1, <span class="hljs-params">right</span>)</span>;  <br>&#125;<br>&#125;<br><br><br></code></pre></td></tr></table></figure><hr><blockquote><p>折半查找</p></blockquote><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs excel"><span class="hljs-built_in">int</span> binary_search(<span class="hljs-built_in">int</span>[] A, ,<span class="hljs-built_in">int</span> <span class="hljs-built_in">n</span>, <span class="hljs-built_in">int</span> target) &#123; // <span class="hljs-built_in">n</span>为数组元素个数, target是要找的目标元素<br><span class="hljs-built_in">int</span> <span class="hljs-built_in">left</span> = <span class="hljs-number">0</span>, <span class="hljs-built_in">right</span> = <span class="hljs-built_in">n</span> - <span class="hljs-number">1</span>, <span class="hljs-built_in">mid</span>;<br>while (<span class="hljs-built_in">left</span> &lt; <span class="hljs-built_in">right</span>) &#123;<br><span class="hljs-built_in">mid</span> = (<span class="hljs-built_in">left</span> + <span class="hljs-built_in">right</span>) / <span class="hljs-number">2</span>; // 取中间位置<br><span class="hljs-built_in">if</span> (A[<span class="hljs-built_in">mid</span>] == target) &#123;<br>return <span class="hljs-built_in">mid</span>; // 查找成功返回所在位置<br>&#125; else <span class="hljs-built_in">if</span> (A[<span class="hljs-built_in">mid</span>] &gt; target) &#123;<br><span class="hljs-built_in">right</span> = <span class="hljs-built_in">mid</span> - <span class="hljs-number">1</span>; // 在前半部分继续查找<br>&#125; else &#123;<br><span class="hljs-built_in">left</span> = <span class="hljs-built_in">mid</span> + <span class="hljs-number">1</span>; // 在后半部分继续查找<br>&#125;<br>&#125;<br>return -<span class="hljs-number">1</span>; // 查找失败<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】四种定义数组方式</title>
+    <link href="/2022/10/30/%E3%80%90408%E3%80%91%E5%9B%9B%E7%A7%8D%E5%AE%9A%E4%B9%89%E6%95%B0%E7%BB%84%E6%96%B9%E5%BC%8F/"/>
+    <url>/2022/10/30/%E3%80%90408%E3%80%91%E5%9B%9B%E7%A7%8D%E5%AE%9A%E4%B9%89%E6%95%B0%E7%BB%84%E6%96%B9%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> n = <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">// 第一种</span><br><span class="hljs-type">int</span> *p;<br>p = (<span class="hljs-type">int</span> *)<span class="hljs-built_in">malloc</span>(<span class="hljs-built_in">sizeof</span>(<span class="hljs-type">int</span>) * n);<br><span class="hljs-comment">// 第二种</span><br><span class="hljs-type">int</span> A[n];<br><span class="hljs-comment">// 第三种</span><br><span class="hljs-type">int</span> B[n] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br><span class="hljs-comment">// 第四种</span><br><span class="hljs-type">int</span> C[] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】2013年真题</title>
+    <link href="/2022/10/30/%E3%80%90408%E3%80%912013%E5%B9%B4%E7%9C%9F%E9%A2%98/"/>
+    <url>/2022/10/30/%E3%80%90408%E3%80%912013%E5%B9%B4%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>t21<br>旋转延迟时间忘记除以2了</p><p>t30<br><code>内心独白：难道缺页中断处理完了再次访存不会出现越界嘛</code><br>其实这是想太多了又想的不够多。。</p><p>既然都已经到查询页表这一步了，那这次操作必然没有越界呀，<br>判断是否越界是在查询页表之前做的操作<br>具体逻辑是：在查询页表之前比较页号和页表长度M的大小。<br>（页表寄存器里面包括：页表起始地址F和页表长度M）<br>（系统只有一个页表寄存器，每个进程有自己独立的页表，页表起始地址保存在进程PCB内，每当CPU调度这个进程的时候，就会将它对应的页表起始地址放入页表寄存器内）</p><p>t42<br>折半查找要求元素有序。。。。<br>不要只凭着自己的感觉来走，得看机器怎么样识别执行呀！</p><p>t43<br>这题做的我直接裂开<br>对指令执行、访存等相关细节的理解真的是太不到位了</p><img src="/2022/10/30/%E3%80%90408%E3%80%912013%E5%B9%B4%E7%9C%9F%E9%A2%98/img.png" class=""><p>CPU执行时间<br>题目没有说CPU直接读取主存需要的时钟周期数的相关信息<br>ps：<br>cache缺失的时候有两种处理方法：<br>1、写分配：现将需要数据调入这个cache中，然后再在这个cache中对数据进行操作<br>2、非写分配：当前cache没有命中，直接去更低一级的设备中对其进行操作，不调过来。<br>（个人理解）<br>主存相对于cache来说，读写速度比较慢<br>现在计算机结构中往往采用多级cache<br>不管什么cache吧，一般情况下读写速度要比主存更快，<br>因此在主存和cache之间，采用写分配法（把数据调入cache操作，而不是直接操作主存（CPU访问主存相对来说比较慢））<br>而在各级cache之间，采用非写分配法（各级cache之间的速度差异可能比较小？）</p><p>所以以后遇见这种问题的时候，cache缺失的时候就考虑写分配法<br>如果有比较强烈的暗示或者明显的要求的时候，再另说了&#x3D;&#x3D;<br>（高教版习题）计组第三章大题第六题第（5）问。。。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】2012年真题</title>
+    <link href="/2022/10/28/%E3%80%90408%E3%80%912012%E5%B9%B4%E7%9C%9F%E9%A2%98/"/>
+    <url>/2022/10/28/%E3%80%90408%E3%80%912012%E5%B9%B4%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>t7  考察Dijkstra<br>用肉眼看的&#x3D;&#x3D;果然看错了<br>应该在纸上画一画的，1min&lt;-&gt;2分，很值呀</p><p>t16<br>闪存，是MOS的一种，写的时候要先擦再写，所以写的比读的慢，非易失，随机访问</p><img src="/2022/10/28/%E3%80%90408%E3%80%912012%E5%B9%B4%E7%9C%9F%E9%A2%98/img1.png" class=""><p>t17<br>看王道答案说是两次命题老师不一样<br>唐朔飞的组相联方式：组号 &#x3D; 块号 mod 组数</p><p>t19<br>nnd，都没仔细看题目<br>猝发猝发猝发！！！</p><p>t20</p><img src="/2022/10/28/%E3%80%90408%E3%80%912012%E5%B9%B4%E7%9C%9F%E9%A2%98/img2.png" class=""><p>B树的删除：<br>1、自己足够，、直接删除<br>2、自己不够了，兄弟够借，把兄弟某个关键字移动到双亲，把双亲节点某个关键字挪下来<br>3、自己不够了，兄弟不够借，合并</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】2011年真题</title>
+    <link href="/2022/10/26/%E3%80%90408%E3%80%912011%E5%B9%B4%E7%9C%9F%E9%A2%98/"/>
+    <url>/2022/10/26/%E3%80%90408%E3%80%912011%E5%B9%B4%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>43  数据表示&amp;运算<br>加法器直接运算并产生标志<br>后续再通过各种符号位来判断（是否是有符号加减法、是否溢出等）</p><p>44  虚拟<br>做的还是不顺畅<br><a href="https://blog.csdn.net/Liuuuuuyy/article/details/111699118">https://blog.csdn.net/Liuuuuuyy/article/details/111699118</a></p><p>47  计网<br>HTTP非流水线方式：只有收到上一个请求的响应，才能发送下一个请求<br>ps：建立连接之后才可以传送应用层数据！</p><img src="/2022/10/26/%E3%80%90408%E3%80%912011%E5%B9%B4%E7%9C%9F%E9%A2%98/img.png" class="" title="img">]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】2010年真题</title>
+    <link href="/2022/10/23/%E3%80%90408%E3%80%912010%E5%B9%B4%E7%9C%9F%E9%A2%98/"/>
+    <url>/2022/10/23/%E3%80%90408%E3%80%912010%E5%B9%B4%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>43 指令<br>第一问思路不清晰了，<br>把微程序控制器里面的公共取值微程序和中断周期微程序与这些指令搞混了<br>第三问<br>(Rn)+<br>类似于i++，先用再加<br>add(R4),(R5)+<br>先做加法操作，整体加法操作做完之后再将R5内容自增1</p><p>44 存储系统<br>第一问，28-3-6算成18了o(╥﹏╥)o<br>第二问，自己默认数组是32个元素，导致a[1][1]的地址计算错诶。。。。。</p><p>47 计网<br>第二问问的是有效数据传输速率而不是信道利用率！！<br>数据传输速率&#x3D;有效数据量&#x2F;发送周期<br>并且<br>以太网最短帧长是64B，最长帧长是1518B<br>这些帧长计算的时候都包括了MAC帧的首部（目的地址6B、源地址6B、类型2B）和尾部（校验码4B）<br>首部和尾部共18B<br>因此“最短”帧长的时候，有效数据字段为46B<br>“最长”帧长的时候，有效数据字段为1500B<br>ps:以太网MAC帧在发送到物理层前，需要在最前面加前导码（8B），使接收端与发送端时钟同步！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】2009年真题</title>
+    <link href="/2022/10/18/%E3%80%90408%E3%80%912009%E5%B9%B4%E7%9C%9F%E9%A2%98/"/>
+    <url>/2022/10/18/%E3%80%90408%E3%80%912009%E5%B9%B4%E7%9C%9F%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<p>5<br>第六层可能是满的，只不过有些没孩子罢了，文字游戏啊这是。。。。</p><p>6<br>森林和二叉树转换<br>“左孩子右兄弟” 逆推法判断</p><img src="/2022/10/18/%E3%80%90408%E3%80%912009%E5%B9%B4%E7%9C%9F%E9%A2%98/img.png" class="" title="图片"><p>10<br>插入排序<br>选择排序<br>二路归并</p><p>17<br>RICS和CISC比较</p><p>44 CPU：<br>时钟又从C1开始写了，应该会扣分吧&#x3D;&#x3D;</p><p>45 PV操作：<br>1、PV题一般要写CoBegin和CoEnd<br>2、一直执行下去的动作要加上while<br>3、semaphore</p><p>46 OS：<br>1、VA和PA各自的地址结构<br>2、VA到PA的转换过程(具体要看题目要求<br>    TLB–&gt;&gt;页表–&gt;&gt;缺页中断<br>3、驻留集（区分于工作集）：给一个进程分配的物理页框的集合。（固定分配、可变局部、可变全局）<br>固定分配：<br>假设一个进程P的驻留集大小是2，驻留集里的页框号为{101H，202H}，那么进程P只能使用这两个页框，也就是进程P一次最多只能有两个页面在主存中。<br>（假设页面A在101H主存页框中，页面B在202H主存页框中）<br>进程想访问这俩页面没问题，要是想访问其他页面了，就得把A或者B其中一页置换出来，存回磁盘（想到了Cache写策略，不过这里涉及到了磁盘，应该都是写回法了吧）。</p><p>47 计网：<br>1、考虑子网的主机个数的时候要考虑到本网络地址（主机号全0）和广播地址（全1）<br>2、特定主机路由的子网掩码为255.255.255.255，只有到达某网络的时候子网掩码后面某一部分才是0，因为前面全1的部分只去覆盖网络号<br><del>3、IP地址就算用了CIDR（那个“斜线记法”），路由表中的IP地址后面也不要出现类似于“&#x2F;24”的东西</del> 这句话纯扯淡&#x3D;&#x3D; 2014年43题中路由表就加了斜线（其实得看题目要没要求写子网掩码，有了子网掩码斜线就没必要了）<br>4、若网络拓扑图中没有指明到达某一具体网络或者主机，则路由表写默认路由（IP地址0.0.0.0，子网掩码0.0.0.0）<br>5、地址聚合方法：找出各个地址块的共同前缀</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【408】真题分数记录</title>
+    <link href="/2022/10/15/%E3%80%90408%E3%80%91%E7%9C%9F%E9%A2%98%E5%88%86%E6%95%B0%E8%AE%B0%E5%BD%95/"/>
+    <url>/2022/10/15/%E3%80%90408%E3%80%91%E7%9C%9F%E9%A2%98%E5%88%86%E6%95%B0%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<table><thead><tr><th>年份</th><th>分数</th><th>选择题错数(题号)</th><th>做题日期</th><th>时间</th></tr></thead><tbody><tr><td>2009</td><td>129</td><td>4 (5,6,10,17)</td><td>2022.10.18</td><td>2h 14min</td></tr><tr><td>2010</td><td>134</td><td>1 (14)</td><td>2022.10.23</td><td>2h 55min</td></tr><tr><td>2011</td><td>136</td><td>1 (37)</td><td>2022.10.26</td><td>2h 50min</td></tr><tr><td>2012</td><td>136</td><td>4 (7,16,17,19)</td><td>2022.10.28</td><td>2h 42min</td></tr><tr><td>2013</td><td>133</td><td>2 (21,30)</td><td>2022.10.30</td><td>2h 7min</td></tr><tr><td>2014</td><td>129</td><td>1 (4)</td><td>2022.11.1</td><td>2h 20min</td></tr><tr><td>2015</td><td>138</td><td>2 (26,34)</td><td>2022.11.2</td><td>2h 40min</td></tr><tr><td>2016</td><td>139</td><td>1 (24)</td><td>2022.11.3</td><td>2h 48min</td></tr><tr><td>2017</td><td>142</td><td>1 (32)</td><td>2022.11.4</td><td>2h 30min</td></tr><tr><td>2018</td><td>136</td><td>3 (21,23,24)</td><td>2022.11.6</td><td>2h 12min</td></tr><tr><td>2019</td><td>118</td><td>3 (11,22,23)</td><td>2022.11.7</td><td>2h 26min</td></tr><tr><td>2020</td><td>124</td><td>2 (5,39)</td><td>2022.11.9</td><td>1h 57min</td></tr><tr><td>2021</td><td>139</td><td>3 (4,5,38)</td><td>2022.11.10</td><td>2h 16min</td></tr><tr><td>2022</td><td>111</td><td>8 (1,5,10,16,22,23,30,31)</td><td>2022.11.12</td><td>3h</td></tr></tbody></table>]]></content>
+    
+    
+    <categories>
+      
+      <category>考研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>408</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>blog_settings</title>
+    <link href="/2000/02/16/%E3%80%90blog%E3%80%91blog_settings/"/>
+    <url>/2000/02/16/%E3%80%90blog%E3%80%91blog_settings/</url>
+    
+    <content type="html"><![CDATA[<h3 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h3><h4 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h4 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h4 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h4 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p><h3 id="添加图片的方法"><a href="#添加图片的方法" class="headerlink" title="添加图片的方法"></a>添加图片的方法</h3><p>图片要放在与post同名的文件夹下</p><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name">asset_img</span> example.png %&#125;</span><br></code></pre></td></tr></table></figure><h3 id="修改post默认生成的模板"><a href="#修改post默认生成的模板" class="headerlink" title="修改post默认生成的模板"></a>修改post默认生成的模板</h3><p>blog根目录—&gt;scaffolods</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>blog</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>blog</tag>
+      
+    </tags>
     
   </entry>
   
