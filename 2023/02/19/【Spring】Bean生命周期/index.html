@@ -1,0 +1,806 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/my.png">
+  <link rel="icon" href="/img/my.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Xtpacz">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="引言“请你描述下 Spring Bean 的生命周期？”，这是面试官考察 Spring 的常用问题，可见是 Spring 中很重要的知识点。 我之前在准备面试时，去网上搜过答案，大多以下图给出的流程作为答案。   但是当我第一次看到该图时，就产生了很多困扰，“Aware，BeanPostProcessor……这些都是什么啊？而且这么多步骤，太多了，该怎么记啊？”。 其实要记忆该过程，还是需要我们先">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Spring】Bean生命周期">
+<meta property="og:url" content="https://xtpacz.github.io/2023/02/19/%E3%80%90Spring%E3%80%91Bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.html">
+<meta property="og:site_name" content="Xtpacz">
+<meta property="og:description" content="引言“请你描述下 Spring Bean 的生命周期？”，这是面试官考察 Spring 的常用问题，可见是 Spring 中很重要的知识点。 我之前在准备面试时，去网上搜过答案，大多以下图给出的流程作为答案。   但是当我第一次看到该图时，就产生了很多困扰，“Aware，BeanPostProcessor……这些都是什么啊？而且这么多步骤，太多了，该怎么记啊？”。 其实要记忆该过程，还是需要我们先">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xtpacz.github.io/2023/02/19/%E3%80%90Spring%E3%80%91Bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/bean_life.png">
+<meta property="og:image" content="https://xtpacz.github.io/2023/02/19/%E3%80%90Spring%E3%80%91Bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/bean_life_one.png">
+<meta property="article:published_time" content="2023-02-19T06:49:50.000Z">
+<meta property="article:modified_time" content="2023-02-19T07:55:59.785Z">
+<meta property="article:author" content="Xtpacz">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xtpacz.github.io/2023/02/19/%E3%80%90Spring%E3%80%91Bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/bean_life.png">
+  
+  
+  
+  <title>【Spring】Bean生命周期 - Xtpacz</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xtpacz.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"jUSm1XyL9u7QrxAIWT58Sbcf-MdYXbMMI","app_key":"2rcIbf38PCT4TbWqVdK57j3p","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Xptacz</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="【Spring】Bean生命周期"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-02-19 14:49" pubdate>
+          2023年2月19日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          64 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">【Spring】Bean生命周期</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>“请你描述下 <code>Spring Bean</code> 的生命周期？”，这是面试官考察 <code>Spring</code> 的常用问题，可见是 <code>Spring</code> 中很重要的知识点。</p>
+<p>我之前在准备面试时，去网上搜过答案，大多以下图给出的流程作为答案。</p>
+<img src="/2023/02/19/%E3%80%90Spring%E3%80%91Bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/bean_life.png" srcset="/img/loading.gif" lazyload class="">
+
+<p>但是当我第一次看到该图时，就产生了很多困扰，“<code>Aware</code>，<code>BeanPostProcessor</code>……这些都是什么啊？而且这么多步骤，太多了，该怎么记啊？”。</p>
+<p>其实要记忆该过程，还是需要我们先去理解，本文将从以下两方面去帮助理解 Bean 的生命周期：</p>
+<ol>
+<li>生命周期的概要流程：对<code>Bean</code> 的生命周期进行概括，并且结合代码来理解；</li>
+<li>扩展点的作用：详细介绍 <code>Bean</code> 生命周期中所涉及到的扩展点的作用。</li>
+</ol>
+<h2 id="生命周期的概要流程"><a href="#生命周期的概要流程" class="headerlink" title="生命周期的概要流程"></a>生命周期的概要流程</h2><p>Bean 的生命周期概括起来就是 <strong>4 个阶段</strong>：</p>
+<ol>
+<li>实例化（Instantiation）</li>
+<li>属性赋值（Populate）</li>
+<li>初始化（Initialization）</li>
+<li>销毁（Destruction）</li>
+</ol>
+<img src="/2023/02/19/%E3%80%90Spring%E3%80%91Bean%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/bean_life_one.png" srcset="/img/loading.gif" lazyload class="">
+
+<ol>
+<li>实例化：第 1 步，实例化一个 <code>bean</code> 对象；</li>
+<li>属性赋值：第 2 步，为 <code>bean</code> 设置相关属性和依赖；</li>
+<li>初始化：第 3~7 步，步骤较多，其中第 5、6 步为初始化操作，第 3、4 步为在初始化前执行，第 7 步在初始化后执行，该阶段结束，才能被用户使用；</li>
+<li>销毁：第 8~10步，第8步不是真正意义上的销毁（还没使用呢），而是先在使用前注册了销毁的相关调用接口，为了后面第9、10步真正销毁 bean 时再执行相应的方法。</li>
+</ol>
+<p>下面我们结合代码来直观的看下，在 <code>reateBean()</code> 方法中能看到依次执行了这 4 个阶段：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// AbstractAutowireCapableBeanFactory.java</span><br><span class="hljs-keyword">protected</span> Object <span class="hljs-title function_">doCreateBean</span><span class="hljs-params">(<span class="hljs-keyword">final</span> String beanName, <span class="hljs-keyword">final</span> RootBeanDefinition mbd, <span class="hljs-keyword">final</span> <span class="hljs-meta">@Nullable</span> Object[] args)</span><br>    <span class="hljs-keyword">throws</span> BeanCreationException &#123;<br><br>    <span class="hljs-comment">// 1. 实例化</span><br>    <span class="hljs-type">BeanWrapper</span> <span class="hljs-variable">instanceWrapper</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">if</span> (instanceWrapper == <span class="hljs-literal">null</span>) &#123;<br>        instanceWrapper = createBeanInstance(beanName, mbd, args);<br>    &#125;<br>    <br>    <span class="hljs-type">Object</span> <span class="hljs-variable">exposedObject</span> <span class="hljs-operator">=</span> bean;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">// 2. 属性赋值</span><br>        populateBean(beanName, mbd, instanceWrapper);<br>        <span class="hljs-comment">// 3. 初始化</span><br>        exposedObject = initializeBean(beanName, exposedObject, mbd);<br>    &#125;<br><br>    <span class="hljs-comment">// 4. 销毁-注册回调接口</span><br>    <span class="hljs-keyword">try</span> &#123;<br>        registerDisposableBeanIfNecessary(beanName, bean, mbd);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> exposedObject;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>由于初始化包含了第 3~7步，较复杂，所以我们进到 <code>initializeBean()</code> 方法里具体看下其过程（注释的序号对应图中序号）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// AbstractAutowireCapableBeanFactory.java</span><br><span class="hljs-keyword">protected</span> Object <span class="hljs-title function_">initializeBean</span><span class="hljs-params">(<span class="hljs-keyword">final</span> String beanName, <span class="hljs-keyword">final</span> Object bean, <span class="hljs-meta">@Nullable</span> RootBeanDefinition mbd)</span> &#123;<br>    <span class="hljs-comment">// 3. 检查 Aware 相关接口并设置相关依赖</span><br>    <span class="hljs-keyword">if</span> (System.getSecurityManager() != <span class="hljs-literal">null</span>) &#123;<br>        AccessController.doPrivileged((PrivilegedAction&lt;Object&gt;) () -&gt; &#123;<br>            invokeAwareMethods(beanName, bean);<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        &#125;, getAccessControlContext());<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        invokeAwareMethods(beanName, bean);<br>    &#125;<br><br>    <span class="hljs-comment">// 4. BeanPostProcessor 前置处理</span><br>    <span class="hljs-type">Object</span> <span class="hljs-variable">wrappedBean</span> <span class="hljs-operator">=</span> bean;<br>    <span class="hljs-keyword">if</span> (mbd == <span class="hljs-literal">null</span> || !mbd.isSynthetic()) &#123;<br>        wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);<br>    &#125;<br><br>    <span class="hljs-comment">// 5. 若实现 InitializingBean 接口，调用 afterPropertiesSet() 方法</span><br>    <span class="hljs-comment">// 6. 若配置自定义的 init-method方法，则执行</span><br>    <span class="hljs-keyword">try</span> &#123;<br>        invokeInitMethods(beanName, wrappedBean, mbd);<br>    &#125;<br>    <span class="hljs-keyword">catch</span> (Throwable ex) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BeanCreationException</span>(<br>            (mbd != <span class="hljs-literal">null</span> ? mbd.getResourceDescription() : <span class="hljs-literal">null</span>),<br>            beanName, <span class="hljs-string">&quot;Invocation of init method failed&quot;</span>, ex);<br>    &#125;<br>    <span class="hljs-comment">// 7. BeanPostProceesor 后置处理</span><br>    <span class="hljs-keyword">if</span> (mbd == <span class="hljs-literal">null</span> || !mbd.isSynthetic()) &#123;<br>        wrappedBean = applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> wrappedBean;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在 <code>invokInitMethods()</code> 方法中会检查 <code>InitializingBean</code> 接口和 <code>init-method</code> 方法，销毁的过程也与其类似：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// DisposableBeanAdapter.java</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">destroy</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 9. 若实现 DisposableBean 接口，则执行 destory()方法</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.invokeDisposableBean) &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">if</span> (System.getSecurityManager() != <span class="hljs-literal">null</span>) &#123;<br>                AccessController.doPrivileged((PrivilegedExceptionAction&lt;Object&gt;) () -&gt; &#123;<br>                    ((DisposableBean) <span class="hljs-built_in">this</span>.bean).destroy();<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>                &#125;, <span class="hljs-built_in">this</span>.acc);<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                ((DisposableBean) <span class="hljs-built_in">this</span>.bean).destroy();<br>            &#125;<br>        &#125;<br>    &#125;<br>    <br>	<span class="hljs-comment">// 10. 若配置自定义的 detory-method 方法，则执行</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.destroyMethod != <span class="hljs-literal">null</span>) &#123;<br>        invokeCustomDestroyMethod(<span class="hljs-built_in">this</span>.destroyMethod);<br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.destroyMethodName != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-type">Method</span> <span class="hljs-variable">methodToInvoke</span> <span class="hljs-operator">=</span> determineDestroyMethod(<span class="hljs-built_in">this</span>.destroyMethodName);<br>        <span class="hljs-keyword">if</span> (methodToInvoke != <span class="hljs-literal">null</span>) &#123;<br>            invokeCustomDestroyMethod(ClassUtils.getInterfaceMethodIfPossible(methodToInvoke));<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>从 Spring 的源码我们可以直观的看到其执行过程，而我们记忆其过程便可以从这 4 个阶段出发，实例化、属性赋值、初始化、销毁。其中细节较多的便是初始化，涉及了 <code>Aware</code>、<code>BeanPostProcessor</code>、<code>InitializingBean</code>、<code>init-method</code> 的概念。</p>
+<h2 id="扩展点的作用"><a href="#扩展点的作用" class="headerlink" title="扩展点的作用"></a>扩展点的作用</h2><h3 id="Aware-接口"><a href="#Aware-接口" class="headerlink" title="Aware 接口"></a>Aware 接口</h3><p>若 Spring 检测到 bean 实现了 <code>Aware</code> 接口，则会为其注入相应的依赖。所以<strong>通过让bean 实现 Aware 接口，则能在 bean 中获得相应的 Spring 容器资源</strong>。</p>
+<p>Spring 中提供的 <code>Aware</code> 接口有：</p>
+<ol>
+<li><code>BeanNameAware</code>：注入当前 bean 对应 beanName，即获取容器中bean名称</li>
+<li><code>BeanClassLoaderAware</code>：注入加载当前 bean 的 ClassLoader；</li>
+<li><code>BeanFactoryAware</code>：注入 当前BeanFactory容器 的引用；获取当前BeanFactory，这样可以调用容器的服务</li>
+</ol>
+<p>其代码实现如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// AbstractAutowireCapableBeanFactory.java</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">invokeAwareMethods</span><span class="hljs-params">(<span class="hljs-keyword">final</span> String beanName, <span class="hljs-keyword">final</span> Object bean)</span> &#123;<br>    <span class="hljs-keyword">if</span> (bean <span class="hljs-keyword">instanceof</span> Aware) &#123;<br>        <span class="hljs-keyword">if</span> (bean <span class="hljs-keyword">instanceof</span> BeanNameAware) &#123;<br>            ((BeanNameAware) bean).setBeanName(beanName);<br>        &#125;<br>        <span class="hljs-keyword">if</span> (bean <span class="hljs-keyword">instanceof</span> BeanClassLoaderAware) &#123;<br>            ((BeanClassLoaderAware) bean).setBeanClassLoader(bcl);<br>            <br>        &#125;<br>        <span class="hljs-keyword">if</span> (bean <span class="hljs-keyword">instanceof</span> BeanFactoryAware) &#123;<br>            ((BeanFactoryAware) bean).setBeanFactory(AbstractAutowireCapableBeanFactory.<span class="hljs-built_in">this</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>以上是针对 BeanFactory 类型的容器，而对于 ApplicationContext 类型的容器，也提供了 Aware 接口，只不过这些 Aware 接口的注入实现，是通过 BeanPostProcessor 的方式注入的，但其作用仍是注入依赖。</p>
+<ol>
+<li>EnvironmentAware：注入 Enviroment，一般用于获取配置属性；</li>
+<li>EmbeddedValueResolverAware：注入 EmbeddedValueResolver（Spring EL解析器），一般用于参数解析；</li>
+<li>ApplicationContextAware（ResourceLoader、ApplicationEventPublisherAware、MessageSourceAware）：注入 ApplicationContext 容器本身。</li>
+</ol>
+<p>其代码实现如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ApplicationContextAwareProcessor.java</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">invokeAwareInterfaces</span><span class="hljs-params">(Object bean)</span> &#123;<br>    <span class="hljs-keyword">if</span> (bean <span class="hljs-keyword">instanceof</span> EnvironmentAware) &#123;<br>        ((EnvironmentAware)bean).setEnvironment(<span class="hljs-built_in">this</span>.applicationContext.getEnvironment());<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (bean <span class="hljs-keyword">instanceof</span> EmbeddedValueResolverAware) &#123;<br>        ((EmbeddedValueResolverAware)bean).setEmbeddedValueResolver(<span class="hljs-built_in">this</span>.embeddedValueResolver);<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (bean <span class="hljs-keyword">instanceof</span> ResourceLoaderAware) &#123;<br>        ((ResourceLoaderAware)bean).setResourceLoader(<span class="hljs-built_in">this</span>.applicationContext);<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (bean <span class="hljs-keyword">instanceof</span> ApplicationEventPublisherAware) &#123;<br>        ((ApplicationEventPublisherAware)bean).setApplicationEventPublisher(<span class="hljs-built_in">this</span>.applicationContext);<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (bean <span class="hljs-keyword">instanceof</span> MessageSourceAware) &#123;<br>        ((MessageSourceAware)bean).setMessageSource(<span class="hljs-built_in">this</span>.applicationContext);<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (bean <span class="hljs-keyword">instanceof</span> ApplicationContextAware) &#123;<br>        ((ApplicationContextAware)bean).setApplicationContext(<span class="hljs-built_in">this</span>.applicationContext);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="BeanPostProcessor"><a href="#BeanPostProcessor" class="headerlink" title="BeanPostProcessor"></a>BeanPostProcessor</h3><p>BeanPostProcessor 是 Spring 为<strong>修改 bean</strong>提供的强大扩展点，其可作用于容器中所有 bean，其定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">BeanPostProcessor</span> &#123;<br><br>	<span class="hljs-comment">// 初始化前置处理</span><br>	<span class="hljs-keyword">default</span> Object <span class="hljs-title function_">postProcessBeforeInitialization</span><span class="hljs-params">(Object bean, String beanName)</span> <span class="hljs-keyword">throws</span> BeansException &#123;<br>		<span class="hljs-keyword">return</span> bean;<br>	&#125;<br><br>	<span class="hljs-comment">// 初始化后置处理</span><br>	<span class="hljs-keyword">default</span> Object <span class="hljs-title function_">postProcessAfterInitialization</span><span class="hljs-params">(Object bean, String beanName)</span> <span class="hljs-keyword">throws</span> BeansException &#123;<br>		<span class="hljs-keyword">return</span> bean;<br>	&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>常用场景有：</p>
+<ol>
+<li>对于标记接口的实现类，进行自定义处理。例如3.1节中所说的ApplicationContextAwareProcessor，为其注入相应依赖；再举个例子，自定义对实现解密接口的类，将对其属性进行解密处理；</li>
+<li>为当前对象提供代理实现。例如 Spring AOP 功能，生成对象的代理类，然后返回。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// AbstractAutoProxyCreator.java</span><br><span class="hljs-keyword">public</span> Object <span class="hljs-title function_">postProcessBeforeInstantiation</span><span class="hljs-params">(Class&lt;?&gt; beanClass, String beanName)</span> &#123;<br>    <span class="hljs-type">TargetSource</span> <span class="hljs-variable">targetSource</span> <span class="hljs-operator">=</span> getCustomTargetSource(beanClass, beanName);<br>    <span class="hljs-keyword">if</span> (targetSource != <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">if</span> (StringUtils.hasLength(beanName)) &#123;<br>            <span class="hljs-built_in">this</span>.targetSourcedBeans.add(beanName);<br>        &#125;<br>        Object[] specificInterceptors = getAdvicesAndAdvisorsForBean(beanClass, beanName, targetSource);<br>        <span class="hljs-type">Object</span> <span class="hljs-variable">proxy</span> <span class="hljs-operator">=</span> createProxy(beanClass, beanName, specificInterceptors, targetSource);<br>        <span class="hljs-built_in">this</span>.proxyTypes.put(cacheKey, proxy.getClass());<br>        <span class="hljs-comment">// 返回代理类</span><br>        <span class="hljs-keyword">return</span> proxy;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="InitializingBean-和-init-method"><a href="#InitializingBean-和-init-method" class="headerlink" title="InitializingBean 和 init-method"></a>InitializingBean 和 init-method</h3><p>InitializingBean 和 init-method 是 Spring 为 <strong>bean 初始化</strong>提供的扩展点。</p>
+<p>InitializingBean接口 的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">InitializingBean</span> &#123;<br>	<span class="hljs-keyword">void</span> <span class="hljs-title function_">afterPropertiesSet</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在 afterPropertiesSet() 方法写初始化逻辑。</p>
+<p>指定 init-method 方法，指定初始化方法：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans&quot;</span></span><br><span class="hljs-tag">       <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">       <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;demo&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.chaycao.Demo&quot;</span> <span class="hljs-attr">init-method</span>=<span class="hljs-string">&quot;init()&quot;</span>/&gt;</span><br>    <br><span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>DisposableBean 和 destory-method 与上述类似，就不描述了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最后总结下如何记忆 Spring Bean 的生命周期：</p>
+<ul>
+<li>首先是实例化、属性赋值、初始化、销毁这 4 个大阶段；</li>
+<li>再是初始化的具体操作，有 Aware 接口的依赖注入、BeanPostProcessor 在初始化前后的处理以及 InitializingBean 和 init-method 的初始化操作；</li>
+<li>销毁的具体操作，有注册相关销毁回调接口，最后通过DisposableBean 和 destory-method 进行销毁。</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1dec08d290c1">请别再问Spring Bean的生命周期了！ - 简书 (jianshu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903682673229831">聊聊spring的那些扩展机制 - 掘金 (juejin.cn)</a></p>
+<p>来源于<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904065457979405">草捏子</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Spring%E5%9F%BA%E7%A1%80/" class="category-chain-item">Spring基础</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>【Spring】Bean生命周期</div>
+      <div>https://xtpacz.github.io/2023/02/19/【Spring】Bean生命周期/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Xtpacz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年2月19日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/19/%E3%80%90%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%91%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99/" title="【设计模式】六大原则">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【设计模式】六大原则</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/18/%E3%80%90LeetCode%E3%80%91%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/" title="【LeetCode】合并区间">
+                        <span class="hidden-mobile">【LeetCode】合并区间</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"jUSm1XyL9u7QrxAIWT58Sbcf-MdYXbMMI","appKey":"2rcIbf38PCT4TbWqVdK57j3p","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
