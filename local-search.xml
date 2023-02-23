@@ -4,6 +4,66 @@
   
   
   <entry>
+    <title>【LeetCode】子集</title>
+    <link href="/2023/02/23/%E3%80%90LeetCode%E3%80%91%E5%AD%90%E9%9B%86/"/>
+    <url>/2023/02/23/%E3%80%90LeetCode%E3%80%91%E5%AD%90%E9%9B%86/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/subsets">78. 子集 - 力扣（Leetcode）</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs inform7">给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。<br><br>解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。<br><br> <br><br>示例 1：<br><br>输入：nums = <span class="hljs-comment">[1,2,3]</span><br>输出：<span class="hljs-comment">[<span class="hljs-comment">[]</span>,<span class="hljs-comment">[1]</span>,<span class="hljs-comment">[2]</span>,<span class="hljs-comment">[1,2]</span>,<span class="hljs-comment">[3]</span>,<span class="hljs-comment">[1,3]</span>,<span class="hljs-comment">[2,3]</span>,<span class="hljs-comment">[1,2,3]</span>]</span><br>示例 2：<br><br>输入：nums = <span class="hljs-comment">[0]</span><br>输出：<span class="hljs-comment">[<span class="hljs-comment">[]</span>,<span class="hljs-comment">[0]</span>]</span><br> <br><br>提示：<br><br>1 &lt;= nums.length &lt;= 10<br>-10 &lt;= nums<span class="hljs-comment">[i]</span> &lt;= 10<br>nums 中的所有元素 互不相同<br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p><strong>递归</strong>，当前元素，要？还是不要？</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; res;<br>    vector&lt;<span class="hljs-type">int</span>&gt; path;<br>    <span class="hljs-type">int</span> n;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> index)</span></span>&#123;<br>        <span class="hljs-keyword">if</span> (index == nums.<span class="hljs-built_in">size</span>())&#123;<br>            res.<span class="hljs-built_in">push_back</span>(path);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">// 不考虑当前位置，则直接考虑index + 1</span><br>        <span class="hljs-built_in">dfs</span>(nums, index + <span class="hljs-number">1</span>);<br><br>        <span class="hljs-comment">// 考虑当前位置,考虑的话，就先放进去</span><br>        path.<span class="hljs-built_in">push_back</span>(nums[index]);<br>        <span class="hljs-built_in">dfs</span>(nums, index + <span class="hljs-number">1</span>);<br>        path.<span class="hljs-built_in">pop_back</span>();<br>    &#125;<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">subsets</span>(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums) &#123;<br>        <span class="hljs-built_in">dfs</span>(nums, <span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><p>时间复杂度<code>O(n*2^n)</code>，总共有<code>2^n</code>中状态，每种状态需要<code>O(n)</code>的时间来构造</p><p>空间复杂度<code>O(n)</code></p><p><strong>位运算</strong></p><p>使用<code>0、1</code>来表示当前元素取还是不取，，</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp">vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; res;<br>vector&lt;<span class="hljs-type">int</span>&gt; path;<br>vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">subsets</span>(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums) &#123;<br>    <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; (<span class="hljs-number">1</span> &lt;&lt; n); i++) &#123; <span class="hljs-comment">// 枚举2^n次</span><br>        path.<span class="hljs-built_in">clear</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; n; j++) &#123; <span class="hljs-comment">// 构造其中一个子集</span><br>            <span class="hljs-keyword">if</span> (i &amp; (<span class="hljs-number">1</span> &lt;&lt; j)) &#123; <span class="hljs-comment">// i与(1&lt;&lt;j)按位与，若相等则放入path中(表示这个位置是1，可以用)</span><br>                path.<span class="hljs-built_in">push_back</span>(nums[j]);<br>            &#125;<br>        &#125;<br>        res.<span class="hljs-built_in">push_back</span>(path);<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数组</tag>
+      
+      <tag>回溯</tag>
+      
+      <tag>位运算</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】字母异位词分组</title>
+    <link href="/2023/02/23/%E3%80%90LeetCode%E3%80%91%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/"/>
+    <url>/2023/02/23/%E3%80%90LeetCode%E3%80%91%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/group-anagrams">49. 字母异位词分组 - 力扣（Leetcode）</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs prolog">给你一个字符串数组，请你将 字母异位词 组合在一起。可以按任意顺序返回结果列表。<br><br>字母异位词 是由重新排列源单词的字母得到的一个新单词，所有源单词中的字母通常恰好只用一次。<br><br> <br><br>示例 <span class="hljs-number">1</span>:<br><br>输入: strs = [<span class="hljs-string">&quot;eat&quot;</span>, <span class="hljs-string">&quot;tea&quot;</span>, <span class="hljs-string">&quot;tan&quot;</span>, <span class="hljs-string">&quot;ate&quot;</span>, <span class="hljs-string">&quot;nat&quot;</span>, <span class="hljs-string">&quot;bat&quot;</span>]<br>输出: [[<span class="hljs-string">&quot;bat&quot;</span>],[<span class="hljs-string">&quot;nat&quot;</span>,<span class="hljs-string">&quot;tan&quot;</span>],[<span class="hljs-string">&quot;ate&quot;</span>,<span class="hljs-string">&quot;eat&quot;</span>,<span class="hljs-string">&quot;tea&quot;</span>]]<br>示例 <span class="hljs-number">2</span>:<br><br>输入: strs = [<span class="hljs-string">&quot;&quot;</span>]<br>输出: [[<span class="hljs-string">&quot;&quot;</span>]]<br>示例 <span class="hljs-number">3</span>:<br><br>输入: strs = [<span class="hljs-string">&quot;a&quot;</span>]<br>输出: [[<span class="hljs-string">&quot;a&quot;</span>]]<br> <br><br>提示：<br><br><span class="hljs-number">1</span> &lt;= strs.length &lt;= <span class="hljs-number">104</span><br><span class="hljs-number">0</span> &lt;= strs[i].length &lt;= <span class="hljs-number">100</span><br>strs[i] 仅包含小写字母<br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>总体思路就是利用map，存储相同特征的string，最后输出即可</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;string&gt;&gt; <span class="hljs-built_in">groupAnagrams</span>(vector&lt;string&gt;&amp; strs) &#123;<br>        vector&lt;vector&lt;string&gt;&gt; res;<br>        unordered_map&lt;string, vector&lt;string&gt;&gt; mp;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> str : strs) &#123;<br>            string t = str;<br>            <span class="hljs-built_in">sort</span>(t.<span class="hljs-built_in">begin</span>(), t.<span class="hljs-built_in">end</span>());<br>            mp[t].<span class="hljs-built_in">emplace_back</span>(str);<br>        &#125;        <br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> t : mp) res.<span class="hljs-built_in">emplace_back</span>(t.second);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数组</tag>
+      
+      <tag>排序</tag>
+      
+      <tag>哈希表</tag>
+      
+      <tag>字符串</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【LeetCode】爬楼梯</title>
     <link href="/2023/02/23/%E3%80%90LeetCode%E3%80%91%E7%88%AC%E6%A5%BC%E6%A2%AF/"/>
     <url>/2023/02/23/%E3%80%90LeetCode%E3%80%91%E7%88%AC%E6%A5%BC%E6%A2%AF/</url>
