@@ -16,24 +16,22 @@
   <meta name="author" content="Xtpacz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="78. 子集 - 力扣（Leetcode） 题目123456789101112131415161718192021给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。 示例 1：输入：nums &#x3D; [1,2,3]输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]示">
+    <meta name="description" content="开头怎么写？12345#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;#define rep(i,x,y) for(int i&#x3D;x;i&lt;&#x3D;y;++i) #define pre(i,x,y) for(int i&#x3D;x;i&gt;&#x3D;y;--i)     string1234string str;str.pop_back(); &#x2F;&#x2F; 弹出最后一个元素">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【LeetCode】子集">
-<meta property="og:url" content="https://xtpacz.github.io/2023/02/23/%E3%80%90LeetCode%E3%80%91%E5%AD%90%E9%9B%86/index.html">
+<meta property="og:title" content="机试常用技巧总结">
+<meta property="og:url" content="https://xtpacz.github.io/2023/02/23/%E6%9C%BA%E8%AF%95%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Xtpacz">
-<meta property="og:description" content="78. 子集 - 力扣（Leetcode） 题目123456789101112131415161718192021给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。 示例 1：输入：nums &#x3D; [1,2,3]输出：[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]示">
+<meta property="og:description" content="开头怎么写？12345#include&lt;bits&#x2F;stdc++.h&gt;using namespace std;#define rep(i,x,y) for(int i&#x3D;x;i&lt;&#x3D;y;++i) #define pre(i,x,y) for(int i&#x3D;x;i&gt;&#x3D;y;--i)     string1234string str;str.pop_back(); &#x2F;&#x2F; 弹出最后一个元素">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-23T04:03:01.000Z">
-<meta property="article:modified_time" content="2023-02-23T07:50:54.916Z">
+<meta property="article:published_time" content="2023-02-23T07:53:28.000Z">
+<meta property="article:modified_time" content="2023-02-23T09:17:17.780Z">
 <meta property="article:author" content="Xtpacz">
-<meta property="article:tag" content="数组">
-<meta property="article:tag" content="回溯">
-<meta property="article:tag" content="位运算">
+<meta property="article:tag" content="技巧">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>【LeetCode】子集 - Xtpacz</title>
+  <title>机试常用技巧总结 - Xtpacz</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【LeetCode】子集"></span>
+            <span id="subtitle" data-typed-text="机试常用技巧总结"></span>
           
         </div>
 
@@ -227,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-23 12:03" pubdate>
-          2023年2月23日 中午
+        <time datetime="2023-02-23 15:53" pubdate>
+          2023年2月23日 下午
         </time>
       </span>
     
@@ -239,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          363 字
         
       </span>
     
@@ -250,7 +248,7 @@
         
         
         
-          11 分钟
+          4 分钟
         
       </span>
     
@@ -296,30 +294,24 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">【LeetCode】子集</h1>
+            <h1 style="display: none">机试常用技巧总结</h1>
             
             
               <div class="markdown-body">
                 
-                <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subsets">78. 子集 - 力扣（Leetcode）</a></p>
-<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs inform7">给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。<br><br>解集 不能 包含重复的子集。你可以按 任意顺序 返回解集。<br><br> <br><br>示例 1：<br><br>输入：nums = <span class="hljs-comment">[1,2,3]</span><br>输出：<span class="hljs-comment">[<span class="hljs-comment">[]</span>,<span class="hljs-comment">[1]</span>,<span class="hljs-comment">[2]</span>,<span class="hljs-comment">[1,2]</span>,<span class="hljs-comment">[3]</span>,<span class="hljs-comment">[1,3]</span>,<span class="hljs-comment">[2,3]</span>,<span class="hljs-comment">[1,2,3]</span>]</span><br>示例 2：<br><br>输入：nums = <span class="hljs-comment">[0]</span><br>输出：<span class="hljs-comment">[<span class="hljs-comment">[]</span>,<span class="hljs-comment">[0]</span>]</span><br> <br><br>提示：<br><br>1 &lt;= nums.length &lt;= 10<br>-10 &lt;= nums<span class="hljs-comment">[i]</span> &lt;= 10<br>nums 中的所有元素 互不相同<br></code></pre></td></tr></table></figure>
+                <h3 id="开头怎么写？"><a href="#开头怎么写？" class="headerlink" title="开头怎么写？"></a>开头怎么写？</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> rep(i,x,y) for(int i=x;i&lt;=y;++i) </span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> pre(i,x,y) for(int i=x;i&gt;=y;--i) </span><br><br></code></pre></td></tr></table></figure>
 
 
 
-
-
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p><strong>递归</strong>，当前元素，要？还是不要？</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; res;<br>    vector&lt;<span class="hljs-type">int</span>&gt; path;<br>    <span class="hljs-type">int</span> n;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> index)</span></span>&#123;<br>        <span class="hljs-keyword">if</span> (index == nums.<span class="hljs-built_in">size</span>())&#123;<br>            res.<span class="hljs-built_in">push_back</span>(path);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">// 不考虑当前位置，则直接考虑index + 1</span><br>        <span class="hljs-built_in">dfs</span>(nums, index + <span class="hljs-number">1</span>);<br><br>        <span class="hljs-comment">// 考虑当前位置,考虑的话，就先放进去</span><br>        path.<span class="hljs-built_in">push_back</span>(nums[index]);<br>        <span class="hljs-built_in">dfs</span>(nums, index + <span class="hljs-number">1</span>);<br>        path.<span class="hljs-built_in">pop_back</span>();<br>    &#125;<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">subsets</span>(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums) &#123;<br>        <span class="hljs-built_in">dfs</span>(nums, <span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
-<p>时间复杂度<code>O(n*2^n)</code>，总共有<code>2^n</code>中状态，每种状态需要<code>O(n)</code>的时间来构造</p>
-<p>空间复杂度<code>O(n)</code></p>
-<p><strong>位运算</strong></p>
-<p>使用<code>0、1</code>来表示当前元素取还是不取，，</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp">vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; res;<br>vector&lt;<span class="hljs-type">int</span>&gt; path;<br>vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">subsets</span>(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums) &#123;<br>    <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; (<span class="hljs-number">1</span> &lt;&lt; n); i++) &#123; <span class="hljs-comment">// 枚举2^n次</span><br>        path.<span class="hljs-built_in">clear</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; n; j++) &#123; <span class="hljs-comment">// 构造其中一个子集</span><br>            <span class="hljs-keyword">if</span> (i &amp; (<span class="hljs-number">1</span> &lt;&lt; j)) &#123; <span class="hljs-comment">// i与(1&lt;&lt;j)按位与，若相等则放入path中(表示这个位置是1，可以用)</span><br>                path.<span class="hljs-built_in">push_back</span>(nums[j]);<br>            &#125;<br>        &#125;<br>        res.<span class="hljs-built_in">push_back</span>(path);<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string str;<br><br>str.<span class="hljs-built_in">pop_back</span>(); <span class="hljs-comment">// 弹出最后一个元素</span><br><span class="hljs-built_in">sort</span>(str.<span class="hljs-built_in">begin</span>(), str.<span class="hljs-built_in">end</span>()); <span class="hljs-comment">// 对string内部的字符进行排序</span><br></code></pre></td></tr></table></figure>
 
 
 
+<h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">vector&lt;<span class="hljs-type">int</span>&gt; t;<br><br>t.<span class="hljs-built_in">push_back</span>(x); <span class="hljs-comment">// 在t最后面插入x</span><br>t.<span class="hljs-built_in">pop_back</span>(); <span class="hljs-comment">// 删除t的尾元素</span><br>t.<span class="hljs-built_in">size</span>(); <span class="hljs-comment">// 获取t中元素的个数</span><br>t.<span class="hljs-built_in">clear</span>(); <span class="hljs-comment">// 清空t中所有元素，时间复杂度为O(n)</span><br><br></code></pre></td></tr></table></figure>
 
+
+
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><br></code></pre></td></tr></table></figure>
 
 
                 
@@ -354,11 +346,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
-      
-        <a href="/tags/%E5%9B%9E%E6%BA%AF/">#回溯</a>
-      
-        <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">#位运算</a>
+        <a href="/tags/%E6%8A%80%E5%B7%A7/">#技巧</a>
       
     </div>
   
@@ -370,8 +358,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【LeetCode】子集</div>
-      <div>https://xtpacz.github.io/2023/02/23/【LeetCode】子集/</div>
+      <div>机试常用技巧总结</div>
+      <div>https://xtpacz.github.io/2023/02/23/机试常用技巧总结/</div>
     </div>
     <div class="license-meta">
       
@@ -415,9 +403,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/23/%E6%9C%BA%E8%AF%95%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" title="机试常用技巧总结">
+                      <a href="/2023/02/23/UML%E7%B1%BB%E5%9B%BE/" title="UML类图">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">机试常用技巧总结</span>
+                        <span class="hidden-mobile">UML类图</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -425,8 +413,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/23/%E3%80%90LeetCode%E3%80%91%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/" title="【LeetCode】字母异位词分组">
-                        <span class="hidden-mobile">【LeetCode】字母异位词分组</span>
+                      <a href="/2023/02/23/%E3%80%90LeetCode%E3%80%91%E5%AD%90%E9%9B%86/" title="【LeetCode】子集">
+                        <span class="hidden-mobile">【LeetCode】子集</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
