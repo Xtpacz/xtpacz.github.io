@@ -16,18 +16,18 @@
   <meta name="author" content="Xtpacz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据类型int型：绝对值在10^9以内，或是32位整数 long long ：绝对值在10^18，或是64位整数 float：输出是%f 有效精度6~7位 double：精度15~16位 char：输出是%c 小写字母比大写字母的ASCII值大32；；；09：4857，，az：6590，，，AZ：97122 转义字符： \n换行，\0空字符NULL，其ASCII为0 char[]输出对应%s si">
+    <meta name="description" content="ASCII表   ASCII值 控制字符 ASCII值 控制字符 ASCII值 控制字符 ASCII值 控制字符    0 NUT 32 (space) 64 @ 96 、   1 SOH 33 ! 65 A 97 a   2 STX 34 “ 66 B 98 b   3 ETX 35 # 67 C 99 c   4 EOT 36 $ 68 D 100 d   5 ENQ 37 % 69 E 10">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机试常用技巧总结">
 <meta property="og:url" content="https://xtpacz.github.io/2023/02/23/%E6%9C%BA%E8%AF%95%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Xtpacz">
-<meta property="og:description" content="数据类型int型：绝对值在10^9以内，或是32位整数 long long ：绝对值在10^18，或是64位整数 float：输出是%f 有效精度6~7位 double：精度15~16位 char：输出是%c 小写字母比大写字母的ASCII值大32；；；09：4857，，az：6590，，，AZ：97122 转义字符： \n换行，\0空字符NULL，其ASCII为0 char[]输出对应%s si">
+<meta property="og:description" content="ASCII表   ASCII值 控制字符 ASCII值 控制字符 ASCII值 控制字符 ASCII值 控制字符    0 NUT 32 (space) 64 @ 96 、   1 SOH 33 ! 65 A 97 a   2 STX 34 “ 66 B 98 b   3 ETX 35 # 67 C 99 c   4 EOT 36 $ 68 D 100 d   5 ENQ 37 % 69 E 10">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xtpacz.github.io/2023/02/23/%E6%9C%BA%E8%AF%95%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/scanf%E6%A0%BC%E5%BC%8F%E7%AC%A6.png">
 <meta property="og:image" content="https://xtpacz.github.io/2023/02/23/%E6%9C%BA%E8%AF%95%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/md%E8%BE%93%E5%87%BA.png">
 <meta property="og:image" content="https://xtpacz.github.io/2023/02/23/%E6%9C%BA%E8%AF%95%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/0md%E8%BE%93%E5%87%BA.png">
 <meta property="article:published_time" content="2023-02-23T07:53:28.000Z">
-<meta property="article:modified_time" content="2023-02-25T08:31:46.207Z">
+<meta property="article:modified_time" content="2023-02-25T09:07:25.496Z">
 <meta property="article:author" content="Xtpacz">
 <meta property="article:tag" content="技巧">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.2k 字
+          3.8k 字
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          27 分钟
+          32 分钟
         
       </span>
     
@@ -303,7 +303,341 @@
             
               <div class="markdown-body">
                 
-                <h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><h4 id="int型："><a href="#int型：" class="headerlink" title="int型："></a>int型：</h4><p>绝对值在10^9以内，或是32位整数</p>
+                <h3 id="ASCII表"><a href="#ASCII表" class="headerlink" title="ASCII表"></a>ASCII表</h3><table>
+<thead>
+<tr>
+<th align="center">ASCII值</th>
+<th align="center">控制字符</th>
+<th align="center">ASCII值</th>
+<th align="center">控制字符</th>
+<th align="center">ASCII值</th>
+<th align="center">控制字符</th>
+<th align="center">ASCII值</th>
+<th align="center">控制字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">NUT</td>
+<td align="center">32</td>
+<td align="center">(space)</td>
+<td align="center">64</td>
+<td align="center">@</td>
+<td align="center">96</td>
+<td align="center">、</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">SOH</td>
+<td align="center">33</td>
+<td align="center">!</td>
+<td align="center">65</td>
+<td align="center">A</td>
+<td align="center">97</td>
+<td align="center">a</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">STX</td>
+<td align="center">34</td>
+<td align="center">“</td>
+<td align="center">66</td>
+<td align="center">B</td>
+<td align="center">98</td>
+<td align="center">b</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">ETX</td>
+<td align="center">35</td>
+<td align="center">#</td>
+<td align="center">67</td>
+<td align="center">C</td>
+<td align="center">99</td>
+<td align="center">c</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">EOT</td>
+<td align="center">36</td>
+<td align="center">$</td>
+<td align="center">68</td>
+<td align="center">D</td>
+<td align="center">100</td>
+<td align="center">d</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">ENQ</td>
+<td align="center">37</td>
+<td align="center">%</td>
+<td align="center">69</td>
+<td align="center">E</td>
+<td align="center">101</td>
+<td align="center">e</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">ACK</td>
+<td align="center">38</td>
+<td align="center">&amp;</td>
+<td align="center">70</td>
+<td align="center">F</td>
+<td align="center">102</td>
+<td align="center">f</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">BEL</td>
+<td align="center">39</td>
+<td align="center">,</td>
+<td align="center">71</td>
+<td align="center">G</td>
+<td align="center">103</td>
+<td align="center">g</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">BS</td>
+<td align="center">40</td>
+<td align="center">(</td>
+<td align="center">72</td>
+<td align="center">H</td>
+<td align="center">104</td>
+<td align="center">h</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center">HT</td>
+<td align="center">41</td>
+<td align="center">)</td>
+<td align="center">73</td>
+<td align="center">I</td>
+<td align="center">105</td>
+<td align="center">i</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center">LF</td>
+<td align="center">42</td>
+<td align="center">*</td>
+<td align="center">74</td>
+<td align="center">J</td>
+<td align="center">106</td>
+<td align="center">j</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center">VT</td>
+<td align="center">43</td>
+<td align="center">+</td>
+<td align="center">75</td>
+<td align="center">K</td>
+<td align="center">107</td>
+<td align="center">k</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="center">FF</td>
+<td align="center">44</td>
+<td align="center">,</td>
+<td align="center">76</td>
+<td align="center">L</td>
+<td align="center">108</td>
+<td align="center">l</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">CR</td>
+<td align="center">45</td>
+<td align="center">-</td>
+<td align="center">77</td>
+<td align="center">M</td>
+<td align="center">109</td>
+<td align="center">m</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">SO</td>
+<td align="center">46</td>
+<td align="center">.</td>
+<td align="center">78</td>
+<td align="center">N</td>
+<td align="center">110</td>
+<td align="center">n</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="center">SI</td>
+<td align="center">47</td>
+<td align="center">&#x2F;</td>
+<td align="center">79</td>
+<td align="center">O</td>
+<td align="center">111</td>
+<td align="center">o</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">DLE</td>
+<td align="center">48</td>
+<td align="center">0</td>
+<td align="center">80</td>
+<td align="center">P</td>
+<td align="center">112</td>
+<td align="center">p</td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="center">DCI</td>
+<td align="center">49</td>
+<td align="center">1</td>
+<td align="center">81</td>
+<td align="center">Q</td>
+<td align="center">113</td>
+<td align="center">q</td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="center">DC2</td>
+<td align="center">50</td>
+<td align="center">2</td>
+<td align="center">82</td>
+<td align="center">R</td>
+<td align="center">114</td>
+<td align="center">r</td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td align="center">DC3</td>
+<td align="center">51</td>
+<td align="center">3</td>
+<td align="center">83</td>
+<td align="center">S</td>
+<td align="center">115</td>
+<td align="center">s</td>
+</tr>
+<tr>
+<td align="center">20</td>
+<td align="center">DC4</td>
+<td align="center">52</td>
+<td align="center">4</td>
+<td align="center">84</td>
+<td align="center">T</td>
+<td align="center">116</td>
+<td align="center">t</td>
+</tr>
+<tr>
+<td align="center">21</td>
+<td align="center">NAK</td>
+<td align="center">53</td>
+<td align="center">5</td>
+<td align="center">85</td>
+<td align="center">U</td>
+<td align="center">117</td>
+<td align="center">u</td>
+</tr>
+<tr>
+<td align="center">22</td>
+<td align="center">SYN</td>
+<td align="center">54</td>
+<td align="center">6</td>
+<td align="center">86</td>
+<td align="center">V</td>
+<td align="center">118</td>
+<td align="center">v</td>
+</tr>
+<tr>
+<td align="center">23</td>
+<td align="center">TB</td>
+<td align="center">55</td>
+<td align="center">7</td>
+<td align="center">87</td>
+<td align="center">W</td>
+<td align="center">119</td>
+<td align="center">w</td>
+</tr>
+<tr>
+<td align="center">24</td>
+<td align="center">CAN</td>
+<td align="center">56</td>
+<td align="center">8</td>
+<td align="center">88</td>
+<td align="center">X</td>
+<td align="center">120</td>
+<td align="center">x</td>
+</tr>
+<tr>
+<td align="center">25</td>
+<td align="center">EM</td>
+<td align="center">57</td>
+<td align="center">9</td>
+<td align="center">89</td>
+<td align="center">Y</td>
+<td align="center">121</td>
+<td align="center">y</td>
+</tr>
+<tr>
+<td align="center">26</td>
+<td align="center">SUB</td>
+<td align="center">58</td>
+<td align="center">:</td>
+<td align="center">90</td>
+<td align="center">Z</td>
+<td align="center">122</td>
+<td align="center">z</td>
+</tr>
+<tr>
+<td align="center">27</td>
+<td align="center">ESC</td>
+<td align="center">59</td>
+<td align="center">;</td>
+<td align="center">91</td>
+<td align="center">[</td>
+<td align="center">123</td>
+<td align="center">{</td>
+</tr>
+<tr>
+<td align="center">28</td>
+<td align="center">FS</td>
+<td align="center">60</td>
+<td align="center">&lt;</td>
+<td align="center">92</td>
+<td align="center">\</td>
+<td align="center">124</td>
+<td align="center">|</td>
+</tr>
+<tr>
+<td align="center">29</td>
+<td align="center">GS</td>
+<td align="center">61</td>
+<td align="center">&#x3D;</td>
+<td align="center">93</td>
+<td align="center">]</td>
+<td align="center">125</td>
+<td align="center">}</td>
+</tr>
+<tr>
+<td align="center">30</td>
+<td align="center">RS</td>
+<td align="center">62</td>
+<td align="center">&gt;</td>
+<td align="center">94</td>
+<td align="center">^</td>
+<td align="center">126</td>
+<td align="center">&#96;</td>
+</tr>
+<tr>
+<td align="center">31</td>
+<td align="center">US</td>
+<td align="center">63</td>
+<td align="center">?</td>
+<td align="center">95</td>
+<td align="center">_</td>
+<td align="center">127</td>
+<td align="center">DEL</td>
+</tr>
+</tbody></table>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><h4 id="int型："><a href="#int型：" class="headerlink" title="int型："></a>int型：</h4><p>绝对值在10^9以内，或是32位整数</p>
 <h4 id="long-long-："><a href="#long-long-：" class="headerlink" title="long long ："></a>long long ：</h4><p>绝对值在10^18，或是64位整数</p>
 <h4 id="float："><a href="#float：" class="headerlink" title="float："></a>float：</h4><p>输出是%f</p>
 <p>有效精度6~7位</p>
