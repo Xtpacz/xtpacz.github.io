@@ -16,21 +16,21 @@
   <meta name="author" content="Xtpacz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1">
+    <meta name="description" content="6369. 左右元素和的差值 - 力扣（Leetcode） 题目123456789101112131415161718192021222324给你一个下标从 0 开始的整数数组 nums ，请你找出一个下标从 0 开始的整数数组 answer ，其中：answer.length &#x3D;&#x3D; nums.lengthanswer[i] &#x3D; |leftSum[i] - rightSum[i]|其中：leftS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【ECNU】3561-数螃蟹">
-<meta property="og:url" content="https://xtpacz.github.io/2023/02/24/%E3%80%90ECNU%E3%80%913561-%E6%95%B0%E8%9E%83%E8%9F%B9/index.html">
+<meta property="og:title" content="【LeetCode】左右元素和的差值">
+<meta property="og:url" content="https://xtpacz.github.io/2023/02/26/%E3%80%90LeetCode%E3%80%91%E5%B7%A6%E5%8F%B3%E5%85%83%E7%B4%A0%E5%92%8C%E7%9A%84%E5%B7%AE%E5%80%BC/index.html">
 <meta property="og:site_name" content="Xtpacz">
-<meta property="og:description" content="1">
+<meta property="og:description" content="6369. 左右元素和的差值 - 力扣（Leetcode） 题目123456789101112131415161718192021222324给你一个下标从 0 开始的整数数组 nums ，请你找出一个下标从 0 开始的整数数组 answer ，其中：answer.length &#x3D;&#x3D; nums.lengthanswer[i] &#x3D; |leftSum[i] - rightSum[i]|其中：leftS">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-24T05:39:26.000Z">
-<meta property="article:modified_time" content="2023-02-25T07:57:01.633Z">
+<meta property="article:published_time" content="2023-02-26T04:24:57.000Z">
+<meta property="article:modified_time" content="2023-02-26T04:33:46.421Z">
 <meta property="article:author" content="Xtpacz">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>【ECNU】3561-数螃蟹 - Xtpacz</title>
+  <title>【LeetCode】左右元素和的差值 - Xtpacz</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【ECNU】3561-数螃蟹"></span>
+            <span id="subtitle" data-typed-text="【LeetCode】左右元素和的差值"></span>
           
         </div>
 
@@ -224,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-24 13:39" pubdate>
-          2023年2月24日 下午
+        <time datetime="2023-02-26 12:24" pubdate>
+          2023年2月26日 中午
         </time>
       </span>
     
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1 字
+          841 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          1 分钟
+          8 分钟
         
       </span>
     
@@ -293,12 +293,20 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">【ECNU】3561-数螃蟹</h1>
+            <h1 style="display: none">【LeetCode】左右元素和的差值</h1>
             
             
               <div class="markdown-body">
                 
-                <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
+                <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/left-and-right-sum-differences">6369. 左右元素和的差值 - 力扣（Leetcode）</a></p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs inform7">给你一个下标从 0 开始的整数数组 nums ，请你找出一个下标从 0 开始的整数数组 answer ，其中：<br><br>answer.length == nums.length<br>answer<span class="hljs-comment">[i]</span> = |leftSum<span class="hljs-comment">[i]</span> - rightSum<span class="hljs-comment">[i]</span>|<br>其中：<br><br>leftSum<span class="hljs-comment">[i]</span> 是数组 nums 中下标 i 左侧元素之和。如果不存在对应的元素，leftSum<span class="hljs-comment">[i]</span> = 0 。<br>rightSum<span class="hljs-comment">[i]</span> 是数组 nums 中下标 i 右侧元素之和。如果不存在对应的元素，rightSum<span class="hljs-comment">[i]</span> = 0 。<br>返回数组 answer 。<br><br> <br><br>示例 1：<br><br>输入：nums = <span class="hljs-comment">[10,4,8,3]</span><br>输出：<span class="hljs-comment">[15,1,11,22]</span><br>解释：数组 leftSum 为 <span class="hljs-comment">[0,10,14,22]</span> 且数组 rightSum 为 <span class="hljs-comment">[15,11,3,0]</span> 。<br>数组 answer 为 <span class="hljs-comment">[|0 - 15|,|10 - 11|,|14 - 3|,|22 - 0|]</span> = <span class="hljs-comment">[15,1,11,22]</span> 。<br>示例 2：<br><br>输入：nums = <span class="hljs-comment">[1]</span><br>输出：<span class="hljs-comment">[0]</span><br>解释：数组 leftSum 为 <span class="hljs-comment">[0]</span> 且数组 rightSum 为 <span class="hljs-comment">[0]</span> 。<br>数组 answer 为 <span class="hljs-comment">[|0 - 0|]</span> = <span class="hljs-comment">[0]</span> 。<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>使用一个数组<code>a(大小n+1)</code>记录<code>i</code>元素左侧元素之和，那么其右侧元素之和就是<code>s[n]-s[i+1]</code>，两次遍历，第一次记录值，第二次计算结果</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">leftRigthDifference</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span></span>&#123;<br>    <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">res</span><span class="hljs-params">(n)</span>, <span class="hljs-title">a</span><span class="hljs-params">(n + <span class="hljs-number">1</span>)</span></span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) &#123;<br>        a[i + <span class="hljs-number">1</span>] = a[i] + nums[i];<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) &#123;<br>        res[i] = <span class="hljs-built_in">abs</span>(a[i] - a[n] + a[i + <span class="hljs-number">1</span>]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
 
 
                 
@@ -338,8 +346,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【ECNU】3561-数螃蟹</div>
-      <div>https://xtpacz.github.io/2023/02/24/【ECNU】3561-数螃蟹/</div>
+      <div>【LeetCode】左右元素和的差值</div>
+      <div>https://xtpacz.github.io/2023/02/26/【LeetCode】左右元素和的差值/</div>
     </div>
     <div class="license-meta">
       
@@ -351,7 +359,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月24日</div>
+          <div>2023年2月26日</div>
         </div>
       
       
@@ -383,9 +391,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/26/%E3%80%90LeetCode%E3%80%91%E5%B7%A6%E5%8F%B3%E5%85%83%E7%B4%A0%E5%92%8C%E7%9A%84%E5%B7%AE%E5%80%BC/" title="【LeetCode】左右元素和的差值">
+                      <a href="/2023/02/26/%E3%80%90LeetCode%E3%80%91%E6%89%BE%E5%87%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8F%AF%E6%95%B4%E9%99%A4%E6%95%B0%E7%BB%84/" title="【LeetCode】找出字符串的可整除数组">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【LeetCode】左右元素和的差值</span>
+                        <span class="hidden-mobile">【LeetCode】找出字符串的可整除数组</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -393,8 +401,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/24/%E3%80%90LeetCode%E3%80%91%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" title="【LeetCode】不同的二叉搜索树">
-                        <span class="hidden-mobile">【LeetCode】不同的二叉搜索树</span>
+                      <a href="/2023/02/24/%E3%80%90ECNU%E3%80%913561-%E6%95%B0%E8%9E%83%E8%9F%B9/" title="【ECNU】3561-数螃蟹">
+                        <span class="hidden-mobile">【ECNU】3561-数螃蟹</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

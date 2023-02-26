@@ -16,21 +16,22 @@
   <meta name="author" content="Xtpacz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1">
+    <meta name="description" content="6367. 求出最多标记下标 - 力扣（Leetcode） 题目123456789101112131415161718192021222324252627282930313233给你一个下标从 0 开始的整数数组 nums 。一开始，所有下标都没有被标记。你可以执行以下操作任意次：选择两个 互不相同且未标记 的下标 i 和 j ，满足 2 * nums[i] &lt;&#x3D; nums[j] ，标记下标">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【ECNU】3561-数螃蟹">
-<meta property="og:url" content="https://xtpacz.github.io/2023/02/24/%E3%80%90ECNU%E3%80%913561-%E6%95%B0%E8%9E%83%E8%9F%B9/index.html">
+<meta property="og:title" content="【LeetCode】求最多标记下标">
+<meta property="og:url" content="https://xtpacz.github.io/2023/02/26/%E3%80%90LeetCode%E3%80%91%E6%B1%82%E6%9C%80%E5%A4%9A%E6%A0%87%E8%AE%B0%E4%B8%8B%E6%A0%87/index.html">
 <meta property="og:site_name" content="Xtpacz">
-<meta property="og:description" content="1">
+<meta property="og:description" content="6367. 求出最多标记下标 - 力扣（Leetcode） 题目123456789101112131415161718192021222324252627282930313233给你一个下标从 0 开始的整数数组 nums 。一开始，所有下标都没有被标记。你可以执行以下操作任意次：选择两个 互不相同且未标记 的下标 i 和 j ，满足 2 * nums[i] &lt;&#x3D; nums[j] ，标记下标">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-24T05:39:26.000Z">
-<meta property="article:modified_time" content="2023-02-25T07:57:01.633Z">
+<meta property="article:published_time" content="2023-02-26T06:40:31.000Z">
+<meta property="article:modified_time" content="2023-02-26T06:42:50.620Z">
 <meta property="article:author" content="Xtpacz">
+<meta property="article:tag" content="双指针">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>【ECNU】3561-数螃蟹 - Xtpacz</title>
+  <title>【LeetCode】求最多标记下标 - Xtpacz</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【ECNU】3561-数螃蟹"></span>
+            <span id="subtitle" data-typed-text="【LeetCode】求最多标记下标"></span>
           
         </div>
 
@@ -224,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-24 13:39" pubdate>
-          2023年2月24日 下午
+        <time datetime="2023-02-26 14:40" pubdate>
+          2023年2月26日 下午
         </time>
       </span>
     
@@ -236,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1 字
+          914 字
         
       </span>
     
@@ -247,7 +248,7 @@
         
         
         
-          1 分钟
+          8 分钟
         
       </span>
     
@@ -293,12 +294,18 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">【ECNU】3561-数螃蟹</h1>
+            <h1 style="display: none">【LeetCode】求最多标记下标</h1>
             
             
               <div class="markdown-body">
                 
-                <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
+                <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-maximum-number-of-marked-indices">6367. 求出最多标记下标 - 力扣（Leetcode）</a></p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs tap">给你一个下标从<span class="hljs-number"> 0 </span>开始的整数数组 nums 。<br><br>一开始，所有下标都没有被标记。你可以执行以下操作任意次：<br><br>选择两个 互不相同且未标记 的下标 i 和 j ，满足<span class="hljs-number"> 2 </span>* nums[i] &lt;= nums[j] ，标记下标 i 和 j 。<br>请你执行上述操作任意次，返回 nums 中最多可以标记的下标数目。<br><br> <br><br>示例 1：<br><br>输入：nums = [3,5,2,4]<br>输出：2<br>解释：第一次操作中，选择 i =<span class="hljs-number"> 2 </span>和 j =<span class="hljs-number"> 1 </span>，操作可以执行的原因是<span class="hljs-number"> 2 </span>* nums[2] &lt;= nums[1] ，标记下标<span class="hljs-number"> 2 </span>和<span class="hljs-number"> 1 </span>。<br>没有其他更多可执行的操作，所以答案为<span class="hljs-number"> 2 </span>。<br>示例 2：<br><br>输入：nums = [9,2,5,4]<br>输出：4<br>解释：第一次操作中，选择 i =<span class="hljs-number"> 3 </span>和 j =<span class="hljs-number"> 0 </span>，操作可以执行的原因是<span class="hljs-number"> 2 </span>* nums[3] &lt;= nums[0] ，标记下标<span class="hljs-number"> 3 </span>和<span class="hljs-number"> 0 </span>。<br>第二次操作中，选择 i =<span class="hljs-number"> 1 </span>和 j =<span class="hljs-number"> 2 </span>，操作可以执行的原因是<span class="hljs-number"> 2 </span>* nums[1] &lt;= nums[2] ，标记下标<span class="hljs-number"> 1 </span>和<span class="hljs-number"> 2 </span>。<br>没有其他更多可执行的操作，所以答案为<span class="hljs-number"> 4 </span>。<br>示例 3：<br><br>输入：nums = [7,6,8]<br>输出：0<br>解释：没有任何可以执行的操作，所以答案为<span class="hljs-number"> 0 </span>。<br> <br><br>提示：<br><br>1 &lt;= nums.length &lt;= 105<br>1 &lt;= nums[i] &lt;= 109<br></code></pre></td></tr></table></figure>
+
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>首先对数组进行排序</p>
+<p>从中间位置分隔开，双指针向后搜索</p>
+<p>找到最合适的匹配数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxNumOfMarkedIndices</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; a)</span> </span>&#123;<br>        <span class="hljs-built_in">sort</span>(a.<span class="hljs-built_in">begin</span>(), a.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-type">int</span> n = a.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = n / <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">while</span> (i &lt; n / <span class="hljs-number">2</span> &amp;&amp; j &lt; n) &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-number">2</span> * a[i] &lt;= a[j]) &#123;<br>                res += <span class="hljs-number">2</span>;<br>                i ++;<br>                j ++;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                j ++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
                 
@@ -330,6 +337,13 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
+      
+    </div>
+  
 </div>
 
 
@@ -338,8 +352,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【ECNU】3561-数螃蟹</div>
-      <div>https://xtpacz.github.io/2023/02/24/【ECNU】3561-数螃蟹/</div>
+      <div>【LeetCode】求最多标记下标</div>
+      <div>https://xtpacz.github.io/2023/02/26/【LeetCode】求最多标记下标/</div>
     </div>
     <div class="license-meta">
       
@@ -351,7 +365,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月24日</div>
+          <div>2023年2月26日</div>
         </div>
       
       
@@ -383,18 +397,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/26/%E3%80%90LeetCode%E3%80%91%E5%B7%A6%E5%8F%B3%E5%85%83%E7%B4%A0%E5%92%8C%E7%9A%84%E5%B7%AE%E5%80%BC/" title="【LeetCode】左右元素和的差值">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【LeetCode】左右元素和的差值</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/24/%E3%80%90LeetCode%E3%80%91%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" title="【LeetCode】不同的二叉搜索树">
-                        <span class="hidden-mobile">【LeetCode】不同的二叉搜索树</span>
+                      <a href="/2023/02/26/%E3%80%90LeetCode%E3%80%91%E6%89%BE%E5%87%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%8F%AF%E6%95%B4%E9%99%A4%E6%95%B0%E7%BB%84/" title="【LeetCode】找出字符串的可整除数组">
+                        <span class="hidden-mobile">【LeetCode】找出字符串的可整除数组</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
