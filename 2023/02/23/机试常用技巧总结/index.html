@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://xtpacz.github.io/2023/02/23/%E6%9C%BA%E8%AF%95%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/md%E8%BE%93%E5%87%BA.png">
 <meta property="og:image" content="https://xtpacz.github.io/2023/02/23/%E6%9C%BA%E8%AF%95%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/0md%E8%BE%93%E5%87%BA.png">
 <meta property="article:published_time" content="2023-02-23T07:53:28.000Z">
-<meta property="article:modified_time" content="2023-02-27T12:26:05.235Z">
+<meta property="article:modified_time" content="2023-03-01T06:40:16.309Z">
 <meta property="article:author" content="Xtpacz">
 <meta property="article:tag" content="技巧">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.1k 字
+          4.6k 字
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          35 分钟
+          39 分钟
         
       </span>
     
@@ -639,9 +639,15 @@
 </tbody></table>
 <h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><h4 id="int型："><a href="#int型：" class="headerlink" title="int型："></a>int型：</h4><p>绝对值在10^9以内，或是32位整数</p>
 <h4 id="long-long-："><a href="#long-long-：" class="headerlink" title="long long ："></a>long long ：</h4><p>绝对值在10^18，或是64位整数</p>
-<h4 id="float："><a href="#float：" class="headerlink" title="float："></a>float：</h4><p>输出是%f</p>
-<p>有效精度6~7位</p>
-<h4 id="double："><a href="#double：" class="headerlink" title="double："></a>double：</h4><p>精度15~16位</p>
+<h4 id="float-amp-double："><a href="#float-amp-double：" class="headerlink" title="float &amp; double："></a>float &amp; double：</h4><p><code>float</code>输出是<code>%f</code></p>
+<p><code>double</code> 输出是<code>%lf</code></p>
+<p><code>float</code>：有效精度6~7位</p>
+<p><code>double</code>：精度15~16位</p>
+<p>如何查看是否有小数点？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">double</span> num;<br>...<br><span class="hljs-keyword">if</span> (num - (<span class="hljs-type">int</span>)num == <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-comment">// 没有小数</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// 有小数</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
 <h4 id="char："><a href="#char：" class="headerlink" title="char："></a>char：</h4><p>输出是%c</p>
 <p>小写字母比大写字母的ASCII值大32；；；0<del>9：48</del>57，，a<del>z：65</del>90，，，A<del>Z：97</del>122</p>
 <p>转义字符： <code>\n</code>换行，<code>\0</code>空字符NULL，其ASCII为0</p>
@@ -676,6 +682,12 @@
 <h3 id="常用math函数"><a href="#常用math函数" class="headerlink" title="常用math函数"></a>常用math函数</h3><h4 id="fabs取绝对值"><a href="#fabs取绝对值" class="headerlink" title="fabs	取绝对值"></a>fabs	取绝对值</h4><h4 id="floor向上取整"><a href="#floor向上取整" class="headerlink" title="floor	向上取整"></a>floor	向上取整</h4><h4 id="ceil向下取整"><a href="#ceil向下取整" class="headerlink" title="ceil	向下取整"></a>ceil	向下取整</h4><h4 id="pow-double-r-double-p-r的p次方"><a href="#pow-double-r-double-p-r的p次方" class="headerlink" title="pow(double r, double p)  r的p次方"></a>pow(double r, double p)  r的p次方</h4><h4 id="sin、cos、tan"><a href="#sin、cos、tan" class="headerlink" title="sin、cos、tan"></a>sin、cos、tan</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">double</span> pi = <span class="hljs-built_in">acos</span>(<span class="hljs-number">-1.0</span>); <span class="hljs-comment">// 把pi定义为精确值acos(-1.0)，因为cos(pi)=-1</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="asin、acos、atan"><a href="#asin、acos、atan" class="headerlink" title="asin、acos、atan"></a>asin、acos、atan</h4><h4 id="round"><a href="#round" class="headerlink" title="round"></a>round</h4><p>double型<strong>四舍五入</strong>，<code>round(3.40) = 3.00</code>、<code>round(3.53) = 4.00</code></p>
+<h3 id="判断一个数是奇数还是偶数？"><a href="#判断一个数是奇数还是偶数？" class="headerlink" title="判断一个数是奇数还是偶数？"></a>判断一个数是奇数还是偶数？</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> x;<br><span class="hljs-keyword">if</span> (x &amp; <span class="hljs-number">1</span>) &#123; <span class="hljs-comment">// 将x与1相与，若为1就是奇数，若为0就是偶数 x&amp;1==1等价于 x%2==1</span><br>	<span class="hljs-comment">// 奇数</span><br>&#125; <span class="hljs-keyword">else</span> &#123;<br>	<span class="hljs-comment">// 偶数</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
 <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>如果数组较大（大概10^6级别），则需要定义到主函数<strong>外面</strong>，否则会异常，因为函数内部空间来自系统栈，外部空间来自静态存储区，</p>
 <h4 id="memset、fill"><a href="#memset、fill" class="headerlink" title="memset、fill"></a>memset、fill</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> a[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;;<br><span class="hljs-comment">// 将a[0]~a[4]均赋值为0，两种方法：</span><br><br><span class="hljs-comment">// memset(数组名，值，sizeof(数组名))，头文件string.h</span><br><span class="hljs-built_in">memset</span>(a, <span class="hljs-number">0</span>, <span class="hljs-built_in">sizeof</span>(a));<br><br><span class="hljs-comment">// fill(t1, t2, value)，头文件algorithm</span><br><span class="hljs-built_in">fill</span>(a, a + <span class="hljs-number">5</span>, <span class="hljs-number">0</span>); <br></code></pre></td></tr></table></figure>
 
@@ -718,7 +730,7 @@
 
 
 
-<h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">vector&lt;<span class="hljs-type">int</span>&gt; t;<br><br>t.<span class="hljs-built_in">push_back</span>(x); <span class="hljs-comment">// 在t最后面插入x</span><br>t.<span class="hljs-built_in">pop_back</span>(); <span class="hljs-comment">// 删除t的尾元素</span><br>t.<span class="hljs-built_in">size</span>(); <span class="hljs-comment">// 获取t中元素的个数</span><br>t.<span class="hljs-built_in">clear</span>(); <span class="hljs-comment">// 清空t中所有元素，时间复杂度为O(n)</span><br><br></code></pre></td></tr></table></figure>
+<h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp">vector&lt;<span class="hljs-type">int</span>&gt; t;<br><br>t.<span class="hljs-built_in">push_back</span>(x); <span class="hljs-comment">// 在t最后面插入x</span><br>t.<span class="hljs-built_in">pop_back</span>(); <span class="hljs-comment">// 删除t的尾元素</span><br>t.<span class="hljs-built_in">size</span>(); <span class="hljs-comment">// 获取t中元素的个数</span><br>t.<span class="hljs-built_in">clear</span>(); <span class="hljs-comment">// 清空t中所有元素，时间复杂度为O(n)</span><br><br><span class="hljs-comment">//一维初始化：</span><br>vector&lt;<span class="hljs-type">int</span>&gt; qq; <span class="hljs-comment">// 刚开始啥也没有，需要push_back()</span><br><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">qq</span><span class="hljs-params">(<span class="hljs-number">10</span>,<span class="hljs-number">0</span>)</span></span>; <span class="hljs-comment">// 初始化一个长度为10的vector，每个元素的值是0</span><br><br><span class="hljs-comment">//二维vector初始化：</span><br>vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; qq; <span class="hljs-comment">// 刚开始啥也没有，需要push_back()</span><br>vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">qq</span>(<span class="hljs-number">3</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(<span class="hljs-number">4</span>,<span class="hljs-number">0</span>)); <span class="hljs-comment">// 初始化一个3 * 4 的二维vector，每个元素的值是0</span><br><br><br></code></pre></td></tr></table></figure>
 
 
 
