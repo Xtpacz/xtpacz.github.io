@@ -16,24 +16,23 @@
   <meta name="author" content="Xtpacz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目1234567891011121314151617181920212223242526有一个无穷大的二维网格图，一开始所有格子都未染色。给你一个正整数 n ，表示你需要执行以下步骤 n 分钟：第一分钟，将 任一 格子染成蓝色。之后的每一分钟，将与蓝色格子相邻的 所有 未染色格子染成蓝色。下图分别是 1、2、3 分钟后的网格图。请你返回 n 分钟之后 被染色的格子 数目。 示例 1：输入：n &#x3D;">
+    <meta name="description" content="题目1234567891011121314151617181920212223242526272829303132333435363738394041给你一个二维整数数组 ranges ，其中 ranges[i] &#x3D; [starti, endi] 表示 starti 到 endi 之间（包括二者）的所有整数都包含在第 i 个区间中。你需要将 ranges 分成 两个 组（可以为空），满足：每个区间">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【LeetCode】统计染色格子数">
-<meta property="og:url" content="https://xtpacz.github.io/2023/03/05/%E3%80%90LeetCode%E3%80%91%E7%BB%9F%E8%AE%A1%E6%9F%93%E8%89%B2%E6%A0%BC%E5%AD%90%E6%95%B0/index.html">
+<meta property="og:title" content="【LeetCode】统计将重叠区间合并成组的方案数">
+<meta property="og:url" content="https://xtpacz.github.io/2023/03/05/%E3%80%90LeetCode%E3%80%91%E7%BB%9F%E8%AE%A1%E5%B0%86%E9%87%8D%E5%8F%A0%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%88%90%E7%BB%84%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/index.html">
 <meta property="og:site_name" content="Xtpacz">
-<meta property="og:description" content="题目1234567891011121314151617181920212223242526有一个无穷大的二维网格图，一开始所有格子都未染色。给你一个正整数 n ，表示你需要执行以下步骤 n 分钟：第一分钟，将 任一 格子染成蓝色。之后的每一分钟，将与蓝色格子相邻的 所有 未染色格子染成蓝色。下图分别是 1、2、3 分钟后的网格图。请你返回 n 分钟之后 被染色的格子 数目。 示例 1：输入：n &#x3D;">
+<meta property="og:description" content="题目1234567891011121314151617181920212223242526272829303132333435363738394041给你一个二维整数数组 ranges ，其中 ranges[i] &#x3D; [starti, endi] 表示 starti 到 endi 之间（包括二者）的所有整数都包含在第 i 个区间中。你需要将 ranges 分成 两个 组（可以为空），满足：每个区间">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-03-04T16:22:44.000Z">
-<meta property="article:modified_time" content="2023-03-04T16:26:01.858Z">
+<meta property="article:published_time" content="2023-03-04T16:30:01.000Z">
+<meta property="article:modified_time" content="2023-03-04T17:13:22.440Z">
 <meta property="article:author" content="Xtpacz">
-<meta property="article:tag" content="数学">
-<meta property="article:tag" content="广度优先遍历">
-<meta property="article:tag" content="图">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="排序">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>【LeetCode】统计染色格子数 - Xtpacz</title>
+  <title>【LeetCode】统计将重叠区间合并成组的方案数 - Xtpacz</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +215,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【LeetCode】统计染色格子数"></span>
+            <span id="subtitle" data-typed-text="【LeetCode】统计将重叠区间合并成组的方案数"></span>
           
         </div>
 
@@ -227,7 +226,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-05 00:22" pubdate>
+        <time datetime="2023-03-05 00:30" pubdate>
           March 5, 2023 am
         </time>
       </span>
@@ -239,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          523 words
+          1.7k words
         
       </span>
     
@@ -250,7 +249,7 @@
         
         
         
-          5 mins
+          14 mins
         
       </span>
     
@@ -296,18 +295,32 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">【LeetCode】统计染色格子数</h1>
+            <h1 style="display: none">【LeetCode】统计将重叠区间合并成组的方案数</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs excel">有一个无穷大的二维网格图，一开始所有格子都未染色。给你一个正整数 <span class="hljs-built_in">n</span> ，表示你需要执行以下步骤 <span class="hljs-built_in">n</span> 分钟：<br><br>第一分钟，将 任一 格子染成蓝色。<br>之后的每一分钟，将与蓝色格子相邻的 所有 未染色格子染成蓝色。<br>下图分别是 <span class="hljs-number">1</span>、<span class="hljs-number">2</span>、<span class="hljs-number">3</span> 分钟后的网格图。<br><br><br>请你返回 <span class="hljs-built_in">n</span> 分钟之后 被染色的格子 数目。<br><br> <br><br>示例 <span class="hljs-number">1</span>：<br><br>输入：<span class="hljs-built_in">n</span> = <span class="hljs-number">1</span><br>输出：<span class="hljs-number">1</span><br>解释：<span class="hljs-number">1</span> 分钟后，只有 <span class="hljs-number">1</span> 个蓝色的格子，所以返回 <span class="hljs-number">1</span> 。<br>示例 <span class="hljs-number">2</span>：<br><br>输入：<span class="hljs-built_in">n</span> = <span class="hljs-number">2</span><br>输出：<span class="hljs-number">5</span><br>解释：<span class="hljs-number">2</span> 分钟后，有 <span class="hljs-number">4</span> 个在边缘的蓝色格子和 <span class="hljs-number">1</span> 个在中间的蓝色格子，所以返回 <span class="hljs-number">5</span> 。<br> <br><br>提示：<br><br><span class="hljs-number">1</span> &lt;= <span class="hljs-built_in">n</span> &lt;= <span class="hljs-number">105</span><br></code></pre></td></tr></table></figure>
+                <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs stylus">给你一个二维整数数组 ranges ，其中 ranges<span class="hljs-selector-attr">[i]</span> = <span class="hljs-selector-attr">[starti, endi]</span> 表示 starti 到 endi 之间（包括二者）的所有整数都包含在第 <span class="hljs-selector-tag">i</span> 个区间中。<br><br>你需要将 ranges 分成 两个 组（可以为空），满足：<br><br>每个区间只属于一个组。<br>两个有 交集 的区间必须在 同一个 组内。<br>如果两个区间有至少 一个 公共整数，那么这两个区间是 有交集 的。<br><br>比方说，区间 <span class="hljs-selector-attr">[1, 3]</span> 和 <span class="hljs-selector-attr">[2, 5]</span> 有交集，因为 <span class="hljs-number">2</span> 和 <span class="hljs-number">3</span> 在两个区间中都被包含。<br>请你返回将 ranges 划分成两个组的 总方案数 。由于答案可能很大，将它对 <span class="hljs-number">109</span> + <span class="hljs-number">7</span> 取余 后返回。<br><br> <br><br>示例 <span class="hljs-number">1</span>：<br><br>输入：ranges = <span class="hljs-selector-attr">[[6,10]</span>,<span class="hljs-selector-attr">[5,15]</span>]<br>输出：<span class="hljs-number">2</span><br>解释：<br>两个区间有交集，所以它们必须在同一个组内。<br>所以有两种方案：<br>- 将两个区间都放在第 <span class="hljs-number">1</span> 个组中。<br>- 将两个区间都放在第 <span class="hljs-number">2</span> 个组中。<br>示例 <span class="hljs-number">2</span>：<br><br>输入：ranges = <span class="hljs-selector-attr">[[1,3]</span>,<span class="hljs-selector-attr">[10,20]</span>,<span class="hljs-selector-attr">[2,5]</span>,<span class="hljs-selector-attr">[4,8]</span>]<br>输出：<span class="hljs-number">4</span><br>解释：<br>区间 <span class="hljs-selector-attr">[1,3]</span> 和 <span class="hljs-selector-attr">[2,5]</span> 有交集，所以它们必须在同一个组中。<br>同理，区间 <span class="hljs-selector-attr">[2,5]</span> 和 <span class="hljs-selector-attr">[4,8]</span> 也有交集，所以它们也必须在同一个组中。<br>所以总共有 <span class="hljs-number">4</span> 种分组方案：<br>- 所有区间都在第 <span class="hljs-number">1</span> 组。<br>- 所有区间都在第 <span class="hljs-number">2</span> 组。<br>- 区间 <span class="hljs-selector-attr">[1,3]</span> ，<span class="hljs-selector-attr">[2,5]</span> 和 <span class="hljs-selector-attr">[4,8]</span> 在第 <span class="hljs-number">1</span> 个组中，<span class="hljs-selector-attr">[10,20]</span> 在第 <span class="hljs-number">2</span> 个组中。<br>- 区间 <span class="hljs-selector-attr">[1,3]</span> ，<span class="hljs-selector-attr">[2,5]</span> 和 <span class="hljs-selector-attr">[4,8]</span> 在第 <span class="hljs-number">2</span> 个组中，<span class="hljs-selector-attr">[10,20]</span> 在第 <span class="hljs-number">1</span> 个组中。<br> <br><br>提示：<br><br><span class="hljs-number">1</span> &lt;= ranges<span class="hljs-selector-class">.length</span> &lt;= <span class="hljs-number">105</span><br>ranges<span class="hljs-selector-attr">[i]</span><span class="hljs-selector-class">.length</span> == <span class="hljs-number">2</span><br><span class="hljs-number">0</span> &lt;= starti &lt;= endi &lt;= <span class="hljs-number">109</span><br></code></pre></td></tr></table></figure>
 
 
 
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>找规律，发现<code>n</code>总是比<code>n-1</code>多一圈，然后看看这一圈的周长和<code>n</code>是什么关系</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">coloredCells</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-type">long</span> <span class="hljs-type">long</span> res = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">long</span> <span class="hljs-type">long</span> k[n + <span class="hljs-number">1</span>];<br>        k[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i ++) &#123;<br>            k[i] = k[i - <span class="hljs-number">1</span>] + (i - <span class="hljs-number">1</span>) * <span class="hljs-number">4</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> k[n];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
+
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>就是计算有多少个小团伙，个数<code>n</code>，答案就是<code>2^n</code>再模<code>1e9+7</code></p>
+<p>和区间合并那道题很像，不过如果真的去合并区间在计算的话，会超时</p>
+<p>参照别人写的，可以统计互不关联的区间组的个数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> mod = <span class="hljs-number">1e9</span>+<span class="hljs-number">7</span>;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; res;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">countWays</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; a)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = a.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-built_in">sort</span>(a.<span class="hljs-built_in">begin</span>(), a.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-type">int</span> res = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j; i &lt; n; i = j) &#123;<br>            <span class="hljs-type">int</span> R = a[i][<span class="hljs-number">1</span>];<br>            <span class="hljs-keyword">for</span> (j = i + <span class="hljs-number">1</span>; j &lt; n &amp;&amp; a[j][<span class="hljs-number">0</span>] &lt;= R; ++j) R = <span class="hljs-built_in">max</span>(R, a[j][<span class="hljs-number">1</span>]);<br>            res = res * <span class="hljs-number">2LL</span> % mod; <span class="hljs-comment">// 这里为什么要用2LL? 2和2LL 有什么区别？？？</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/users/2188586/kyurem">User Kyurem - Stack Overflow</a> 的回答：</p>
+<p>The <code>LL</code> makes the integer literal of type <code>long long</code>.</p>
+<p>So <code>2LL</code>, is a 2 of type <code>long long</code>.</p>
+<p>Without the <code>LL</code>, the literal would only be of type <code>int</code>.</p>
+<p>This matters when you’re doing stuff like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">1   &lt;&lt; <span class="hljs-string">40</span><br><span class="hljs-string">1LL &lt;&lt; 40</span><br></code></pre></td></tr></table></figure>
+
+<p>With just the literal <code>1</code>, (assuming <code>int</code> to be 32-bits, you shift beyond the size of the integer type -&gt; undefined behavior). With <code>1LL</code>, you set the type to <code>long long</code> before hand and now it will properly return 2^40.</p>
+<p>其实是本来2是int型的，然后2LL就是把int型转化为long long 型，这样在进行一些大运算的时候不会出错</p>
+<p>int数是32位的，long long 是64位。。。。</p>
 
                 
               </div>
@@ -341,11 +354,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+        <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
       
-        <a href="/tags/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/">#广度优先遍历</a>
-      
-        <a href="/tags/%E5%9B%BE/">#图</a>
+        <a href="/tags/%E6%8E%92%E5%BA%8F/">#排序</a>
       
     </div>
   
@@ -357,8 +368,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【LeetCode】统计染色格子数</div>
-      <div>https://xtpacz.github.io/2023/03/05/【LeetCode】统计染色格子数/</div>
+      <div>【LeetCode】统计将重叠区间合并成组的方案数</div>
+      <div>https://xtpacz.github.io/2023/03/05/【LeetCode】统计将重叠区间合并成组的方案数/</div>
     </div>
     <div class="license-meta">
       
@@ -402,18 +413,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/05/%E3%80%90LeetCode%E3%80%91%E7%BB%9F%E8%AE%A1%E5%B0%86%E9%87%8D%E5%8F%A0%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6%E6%88%90%E7%BB%84%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/" title="【LeetCode】统计将重叠区间合并成组的方案数">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【LeetCode】统计将重叠区间合并成组的方案数</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/03/04/%E3%80%90LeetCode%E3%80%91%E6%9C%80%E5%B0%8F%E5%92%8C%E5%88%86%E5%89%B2/" title="【LeetCode】最小和分割">
-                        <span class="hidden-mobile">【LeetCode】最小和分割</span>
+                      <a href="/2023/03/05/%E3%80%90LeetCode%E3%80%91%E7%BB%9F%E8%AE%A1%E6%9F%93%E8%89%B2%E6%A0%BC%E5%AD%90%E6%95%B0/" title="【LeetCode】统计染色格子数">
+                        <span class="hidden-mobile">【LeetCode】统计染色格子数</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
