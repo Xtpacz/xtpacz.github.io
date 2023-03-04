@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="en" data-default-color-scheme=auto>
 
 
 
@@ -22,7 +22,7 @@
 <meta property="og:url" content="https://xtpacz.github.io/2022/11/01/%E3%80%90408%E3%80%912014%E5%B9%B4%E7%9C%9F%E9%A2%98/index.html">
 <meta property="og:site_name" content="Xtpacz">
 <meta property="og:description" content="t45每个cache块由标记项、数据区组成！！ 访问A[0]，查TLB未命中，查页表未命中，因此去磁盘调数据（OS有相应的机制去找到页面与磁盘地址的对应关系）调入主存中（同时更新页表和TLB（一般来说，此时TLB中的页表项只有A[0]所在页面的页框号和一些标志位））再次访问A[0]，查TLB命中由于数组元素在同一页面，因此他们在同一页框中，访问TLB每次访的都是同一个表项所以后续1000次查TLB">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-01T10:03:27.000Z">
 <meta property="article:modified_time" content="2023-02-17T15:02:05.923Z">
 <meta property="article:author" content="Xtpacz">
@@ -132,7 +132,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
+                <span>Home</span>
               </a>
             </li>
           
@@ -144,7 +144,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
+                <span>Archives</span>
               </a>
             </li>
           
@@ -156,7 +156,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
+                <span>Categories</span>
               </a>
             </li>
           
@@ -168,7 +168,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
+                <span>Tags</span>
               </a>
             </li>
           
@@ -180,7 +180,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
+                <span>About</span>
               </a>
             </li>
           
@@ -226,7 +226,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2022-11-01 18:03" pubdate>
-          2022年11月1日 晚上
+          November 1, 2022 pm
         </time>
       </span>
     
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          213 字
+          213 words
         
       </span>
     
@@ -248,7 +248,7 @@
         
         
         
-          2 分钟
+          2 mins
         
       </span>
     
@@ -258,7 +258,7 @@
       
         <span id="leancloud-page-views-container" class="post-meta" style="display: none">
           <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="leancloud-page-views"></span> 次
+          <span id="leancloud-page-views"></span> views
         </span>
         
       
@@ -352,26 +352,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>作者</div>
+          <div>Author</div>
           <div>Xtpacz</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年11月1日</div>
+          <div>Posted on</div>
+          <div>November 1, 2022</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>许可协议</div>
+          <div>Licensed under</div>
           <div>
             
               
               
                 <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -394,7 +394,7 @@
                       <a href="/2022/11/02/%E3%80%90408%E3%80%912015%E5%B9%B4%E7%9C%9F%E9%A2%98/" title="【408】2015年真题">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">【408】2015年真题</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -403,7 +403,7 @@
                     
                       <a href="/2022/11/01/%E3%80%90408%E3%80%91%E7%BB%93%E6%9E%84%E4%BD%93%E5%AE%9A%E4%B9%89/" title="【408】结构体定义">
                         <span class="hidden-mobile">【408】结构体定义</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -455,7 +455,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>目录</span>
+    <span>Table of Contents</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -511,7 +511,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -519,7 +519,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -547,16 +547,16 @@
   
     
       <span id="leancloud-site-pv-container" style="display: none">
-        总访问量 
+        Views: 
         <span id="leancloud-site-pv"></span>
-         次
+        
       </span>
     
     
       <span id="leancloud-site-uv-container" style="display: none">
-        总访客数 
+        Visitors: 
         <span id="leancloud-site-uv"></span>
-         人
+        
       </span>
     
     
@@ -725,7 +725,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 </body>
 </html>
