@@ -4,6 +4,62 @@
   
   
   <entry>
+    <title>【LeetCode】统计染色格子数</title>
+    <link href="/2023/03/05/%E3%80%90LeetCode%E3%80%91%E7%BB%9F%E8%AE%A1%E6%9F%93%E8%89%B2%E6%A0%BC%E5%AD%90%E6%95%B0/"/>
+    <url>/2023/03/05/%E3%80%90LeetCode%E3%80%91%E7%BB%9F%E8%AE%A1%E6%9F%93%E8%89%B2%E6%A0%BC%E5%AD%90%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs excel">有一个无穷大的二维网格图，一开始所有格子都未染色。给你一个正整数 <span class="hljs-built_in">n</span> ，表示你需要执行以下步骤 <span class="hljs-built_in">n</span> 分钟：<br><br>第一分钟，将 任一 格子染成蓝色。<br>之后的每一分钟，将与蓝色格子相邻的 所有 未染色格子染成蓝色。<br>下图分别是 <span class="hljs-number">1</span>、<span class="hljs-number">2</span>、<span class="hljs-number">3</span> 分钟后的网格图。<br><br><br>请你返回 <span class="hljs-built_in">n</span> 分钟之后 被染色的格子 数目。<br><br> <br><br>示例 <span class="hljs-number">1</span>：<br><br>输入：<span class="hljs-built_in">n</span> = <span class="hljs-number">1</span><br>输出：<span class="hljs-number">1</span><br>解释：<span class="hljs-number">1</span> 分钟后，只有 <span class="hljs-number">1</span> 个蓝色的格子，所以返回 <span class="hljs-number">1</span> 。<br>示例 <span class="hljs-number">2</span>：<br><br>输入：<span class="hljs-built_in">n</span> = <span class="hljs-number">2</span><br>输出：<span class="hljs-number">5</span><br>解释：<span class="hljs-number">2</span> 分钟后，有 <span class="hljs-number">4</span> 个在边缘的蓝色格子和 <span class="hljs-number">1</span> 个在中间的蓝色格子，所以返回 <span class="hljs-number">5</span> 。<br> <br><br>提示：<br><br><span class="hljs-number">1</span> &lt;= <span class="hljs-built_in">n</span> &lt;= <span class="hljs-number">105</span><br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>找规律，发现<code>n</code>总是比<code>n-1</code>多一圈，然后看看这一圈的周长和<code>n</code>是什么关系</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">coloredCells</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (n == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-type">long</span> <span class="hljs-type">long</span> res = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">long</span> <span class="hljs-type">long</span> k[n + <span class="hljs-number">1</span>];<br>        k[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i ++) &#123;<br>            k[i] = k[i - <span class="hljs-number">1</span>] + (i - <span class="hljs-number">1</span>) * <span class="hljs-number">4</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> k[n];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数学</tag>
+      
+      <tag>广度优先遍历</tag>
+      
+      <tag>图</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】最小和分割</title>
+    <link href="/2023/03/04/%E3%80%90LeetCode%E3%80%91%E6%9C%80%E5%B0%8F%E5%92%8C%E5%88%86%E5%89%B2/"/>
+    <url>/2023/03/04/%E3%80%90LeetCode%E3%80%91%E6%9C%80%E5%B0%8F%E5%92%8C%E5%88%86%E5%89%B2/</url>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs tap">给你一个正整数 num ，请你将它分割成两个非负整数 num1 和 num2 ，满足：<br><br>num1 和 num2 直接连起来，得到 num 各数位的一个排列。<br>换句话说，num1 和 num2 中所有数字出现的次数之和等于 num 中所有数字出现的次数。<br>num1 和 num2 可以包含前导<span class="hljs-number"> 0 </span>。<br>请你返回 num1 和 num2 可以得到的和的 最小 值。<br><br>注意：<br><br>num 保证没有前导<span class="hljs-number"> 0 </span>。<br>num1 和 num2 中数位顺序可以与 num 中数位顺序不同。<br> <br><br>示例 1：<br><br>输入：num = 4325<br>输出：59<br>解释：我们可以将<span class="hljs-number"> 4325 </span>分割成 num1 =<span class="hljs-number"> 24 </span>和 num2 =<span class="hljs-number"> 35 </span>，和为<span class="hljs-number"> 59 </span>，59 是最小和。<br>示例 2：<br><br>输入：num = 687<br>输出：75<br>解释：我们可以将<span class="hljs-number"> 687 </span>分割成 num1 =<span class="hljs-number"> 68 </span>和 num2 =<span class="hljs-number"> 7 </span>，和为最优值<span class="hljs-number"> 75 </span>。<br> <br><br>提示：<br><br>10 &lt;= num &lt;= 109<br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>数字转为字符串，然后对字符串排序，得到的字典序最小</p><p>然后从前到后进行遍历，x和y分隔给数</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">splitNum</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>&#123;<br>        string str = <span class="hljs-built_in">to_string</span>(num);<br>        <span class="hljs-built_in">sort</span>(str.<span class="hljs-built_in">begin</span>(), str.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-type">int</span> x = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> y = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; str.<span class="hljs-built_in">size</span>(); i ++)<br>            <span class="hljs-keyword">if</span> (i &amp; <span class="hljs-number">1</span>) <span class="hljs-comment">// 若i为奇数，则i&amp;1=1,否则i&amp;1=0</span><br>                x = x * <span class="hljs-number">10</span> + (str[i] - <span class="hljs-string">&#x27;0&#x27;</span>);<br>            <span class="hljs-keyword">else</span><br>                y = y * <span class="hljs-number">10</span> + (str[i] - <span class="hljs-string">&#x27;0&#x27;</span>);<br>        <span class="hljs-keyword">return</span> x + y;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>排序</tag>
+      
+      <tag>字符串</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【LeetCode】打家劫舍</title>
     <link href="/2023/03/04/%E3%80%90LeetCode%E3%80%91%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/"/>
     <url>/2023/03/04/%E3%80%90LeetCode%E3%80%91%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/</url>
