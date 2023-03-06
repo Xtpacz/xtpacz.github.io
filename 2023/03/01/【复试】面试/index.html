@@ -23,10 +23,13 @@
 <meta property="og:site_name" content="Xtpacz">
 <meta property="og:description" content="操作系统基本概念操作系统的定义、功能、分类？定义：操作系统是计算机系统中的一个重要组成部分，它是管理和控制计算机硬件和软件资源的一个程序集合。操作系统提供了一组系统调用接口，应用程序可以使用这些接口来请求操作系统提供的服务，例如进程管理、内存管理、文件系统管理、网络管理等。 操作系统的主要功能包括：  资源管理：操作系统通过对计算机硬件和软件资源的管理，协调不同应用程序对资源的访问和使用，以保证系">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://xtpacz.github.io/2023/03/01/%E3%80%90%E5%A4%8D%E8%AF%95%E3%80%91%E9%9D%A2%E8%AF%95/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
+<meta property="og:image" content="https://xtpacz.github.io/2023/03/01/%E3%80%90%E5%A4%8D%E8%AF%95%E3%80%91%E9%9D%A2%E8%AF%95/%E5%9B%9B%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
 <meta property="article:published_time" content="2023-03-01T01:23:31.000Z">
-<meta property="article:modified_time" content="2023-03-05T16:34:38.689Z">
+<meta property="article:modified_time" content="2023-03-06T13:12:21.737Z">
 <meta property="article:author" content="Xtpacz">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xtpacz.github.io/2023/03/01/%E3%80%90%E5%A4%8D%E8%AF%95%E3%80%91%E9%9D%A2%E8%AF%95/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png">
   
   
   
@@ -236,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          13k words
+          14k words
         
       </span>
     
@@ -247,7 +250,7 @@
         
         
         
-          112 mins
+          118 mins
         
       </span>
     
@@ -389,7 +392,70 @@
 <h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><p>文件系统的概念、文件访问方式、目录结构</p>
 <h2 id="进程调度算法"><a href="#进程调度算法" class="headerlink" title="进程调度算法"></a>进程调度算法</h2><h3 id="进程调度算法有哪些？"><a href="#进程调度算法有哪些？" class="headerlink" title="进程调度算法有哪些？"></a>进程调度算法有哪些？</h3><p>进程调度算法的概念、调度方式、调度算法的优缺点</p>
 <h2 id="死锁问题"><a href="#死锁问题" class="headerlink" title="死锁问题"></a>死锁问题</h2><p>死锁的定义、产生原因、预防和解决方法</p>
-<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="计算机网络的层次结构？解释一下每层的作用？"><a href="#计算机网络的层次结构？解释一下每层的作用？" class="headerlink" title="计算机网络的层次结构？解释一下每层的作用？"></a>计算机网络的层次结构？解释一下每层的作用？</h2><p>计算机网络的层次结构通常是指<strong>OSI模型和TCP&#x2F;IP模型</strong>，其中OSI模型分为七层，分别为物理层、数据链路层、网络层、传输层、会话层、表示层和应用层；TCP&#x2F;IP模型分为四层，分别为网络接口层、网络层、传输层和应用层。</p>
+<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="TCP和UDP"><a href="#TCP和UDP" class="headerlink" title="TCP和UDP"></a>TCP和UDP</h2><h3 id="TCP的三次握手和四次握手"><a href="#TCP的三次握手和四次握手" class="headerlink" title="TCP的三次握手和四次握手"></a>TCP的三次握手和四次握手</h3><h4 id="三次握手："><a href="#三次握手：" class="headerlink" title="三次握手："></a>三次握手：</h4><blockquote>
+<p>第一次：SYN，不能携带数据，但是消耗序号</p>
+<p>第二次：SYN-ACK，服务器为TCP链接分配缓存和变量，不能携带数据，但是消耗序号</p>
+<p>第三次：ACK，客户端为TCP分配缓存和变量，可以携带数据</p>
+<img src="/2023/03/01/%E3%80%90%E5%A4%8D%E8%AF%95%E3%80%91%E9%9D%A2%E8%AF%95/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png" srcset="/img/loading.gif" lazyload class="">
+</blockquote>
+<h4 id="四次握手断开"><a href="#四次握手断开" class="headerlink" title="四次握手断开"></a>四次握手断开</h4><blockquote>
+<p>第四次握手完毕，为什么要等待2MSL：</p>
+<p>111 任何报文段在网络中可以存活的最长时间。</p>
+<p>222 防止最后的ACK缺失，</p>
+<p>333 2MSL期间，TCP两端均不能被使用</p>
+<img src="/2023/03/01/%E3%80%90%E5%A4%8D%E8%AF%95%E3%80%91%E9%9D%A2%E8%AF%95/%E5%9B%9B%E6%AC%A1%E6%8F%A1%E6%89%8B.png" srcset="/img/loading.gif" lazyload class="">
+</blockquote>
+<p>由TCP的三次握手和四次断开可以看出，TCP使用面向连接的通信方式， 大大<strong>提高了数据通信的可靠性</strong>，使发送数据端和接收端在数据正式传输前就有了交互， 为数据正式传输打下了<strong>可靠</strong>的基础。</p>
+<h3 id="TCP和UDP区别"><a href="#TCP和UDP区别" class="headerlink" title="TCP和UDP区别"></a>TCP和UDP区别</h3><ul>
+<li>是否需要连接<ul>
+<li>TCP 要求在发送方和接收方开始通信之前建立一个良好的连接，它是一个面向连接的协议。</li>
+<li>UDP无连接</li>
+</ul>
+</li>
+<li>接收数据是否有序<ul>
+<li>TCP因为有链接，所以有序</li>
+<li>UDP没有建立链接，无序</li>
+</ul>
+</li>
+<li>错误检查，TCP有错误检查，UDP只有基本的校验和</li>
+<li>传输是否可靠<ul>
+<li>TCP可靠</li>
+<li>UDP可能丢包，不可靠</li>
+</ul>
+</li>
+<li>速度<ul>
+<li>TCP慢，因为需要考虑各种东西</li>
+<li>UDP快</li>
+</ul>
+</li>
+<li>流模式(TCP)与数据报模式(UDP)</li>
+<li>应用场合<ul>
+<li>TCP用于HTTPS、HTTP、SMTP、FTP等</li>
+<li>UDP用于视频电话、IP语音、DNS等</li>
+</ul>
+</li>
+<li>TCP支持广播，UDP不支持广播</li>
+<li>如果更关注数据的可靠性和顺序，则用TCP；如果关注速度，则UDP</li>
+</ul>
+<h3 id="TCP拥塞控制方法"><a href="#TCP拥塞控制方法" class="headerlink" title="TCP拥塞控制方法"></a>TCP拥塞控制方法</h3><ul>
+<li>慢开始<ul>
+<li>拥塞窗口从1开始增加，1,2,4,8…… 若发生超时，则窗口减半，从头开始执行慢开始</li>
+</ul>
+</li>
+<li>拥塞避免<ul>
+<li>若拥塞窗口达到阈值，则每次窗口大小+1</li>
+</ul>
+</li>
+<li>快重传<ul>
+<li>发送方收到3个重复的确认，则应该立即重传缺失的信息</li>
+</ul>
+</li>
+<li>快恢复<ul>
+<li>若超时，则拥塞窗口大小减半</li>
+</ul>
+</li>
+</ul>
+<h2 id="计算机网络的层次结构？解释一下每层的作用？"><a href="#计算机网络的层次结构？解释一下每层的作用？" class="headerlink" title="计算机网络的层次结构？解释一下每层的作用？"></a>计算机网络的层次结构？解释一下每层的作用？</h2><p>计算机网络的层次结构通常是指<strong>OSI模型和TCP&#x2F;IP模型</strong>，其中OSI模型分为七层，分别为物理层、数据链路层、网络层、传输层、会话层、表示层和应用层；TCP&#x2F;IP模型分为四层，分别为网络接口层、网络层、传输层和应用层。</p>
 <p>OSI模型是一种通信协议的<strong>参考模型</strong>，它把通信协议的功能划分为七层，每一层都具有特定的功能，它们分别是：</p>
 <ol>
 <li>物理层（Physical Layer）：物理层是最底层的一层，它负责处理<strong>网络硬件和物理介质</strong>，例如电缆、光纤和无线电波等。物理层的主要功能是传输比特流，即将数字信号转换为物理信号。</li>
