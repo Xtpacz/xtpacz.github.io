@@ -4,6 +4,89 @@
   
   
   <entry>
+    <title>【LeetCode】花括号展开II</title>
+    <link href="/2023/03/07/%E3%80%90LeetCode%E3%80%91%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80II/"/>
+    <url>/2023/03/07/%E3%80%90LeetCode%E3%80%91%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80II/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>回溯</tag>
+      
+      <tag>字符串</tag>
+      
+      <tag>广度优先遍历</tag>
+      
+      <tag>栈</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】N皇后</title>
+    <link href="/2023/03/07/%E3%80%90LeetCode%E3%80%91N%E7%9A%87%E5%90%8E/"/>
+    <url>/2023/03/07/%E3%80%90LeetCode%E3%80%91N%E7%9A%87%E5%90%8E/</url>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>按照国际象棋的规则，皇后可以攻击与之处在同一行或同一列或同一斜线上的棋子。</p><p><strong>n 皇后问题</strong> 研究的是如何将 <code>n</code> 个皇后放置在 <code>n×n</code> 的棋盘上，并且使皇后彼此之间不能相互攻击。</p><p>给你一个整数 <code>n</code> ，返回所有不同的 <strong>n 皇后问题</strong> 的解决方案。</p><p>每一种解法包含一个不同的 <strong>n 皇后问题</strong> 的棋子放置方案，该方案中 <code>&#39;Q&#39;</code> 和 <code>&#39;.&#39;</code> 分别代表了皇后和空位。</p><p><strong>示例 1：</strong></p><p><img src="https://assets.leetcode.com/uploads/2020/11/13/queens.jpg" alt="img"></p><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs prolog">输入：n = <span class="hljs-number">4</span><br>输出：[[<span class="hljs-string">&quot;.Q..&quot;</span>,<span class="hljs-string">&quot;...Q&quot;</span>,<span class="hljs-string">&quot;Q...&quot;</span>,<span class="hljs-string">&quot;..Q.&quot;</span>],[<span class="hljs-string">&quot;..Q.&quot;</span>,<span class="hljs-string">&quot;Q...&quot;</span>,<span class="hljs-string">&quot;...Q&quot;</span>,<span class="hljs-string">&quot;.Q..&quot;</span>]]<br>解释：如上图所示，<span class="hljs-number">4</span> 皇后问题存在两个不同的解法。<br></code></pre></td></tr></table></figure><p><strong>示例 2：</strong></p><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua">输入：n = <span class="hljs-number">1</span><br>输出：<span class="hljs-string">[[&quot;Q&quot;]]</span><br></code></pre></td></tr></table></figure><p><strong>提示：</strong></p><ul><li><code>1 &lt;= n &lt;= 9</code></li></ul><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>回溯法，试探每个点</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;string&gt;&gt; res;<br>    <span class="hljs-type">int</span> n;<br>    vector&lt;<span class="hljs-type">int</span>&gt; path; <span class="hljs-comment">// 记录每一列放的是第几个行，path[1]里面的值代表第一列的棋子放到了第path[i]行</span><br>    <span class="hljs-type">bool</span> visted[<span class="hljs-number">10</span>] = &#123;<span class="hljs-literal">false</span>&#125;;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">ins</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; path)</span> </span>&#123;<br>        vector&lt;string&gt; tmp_path; <span class="hljs-comment">// 存储当前这种情况的各行排列string</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) &#123;<br>            string tmp = <span class="hljs-string">&quot;&quot;</span>; <span class="hljs-comment">// 某一行怎么存</span><br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; j++) &#123;<br>                <span class="hljs-keyword">if</span> (j == path[i]) tmp += <span class="hljs-string">&#x27;Q&#x27;</span>;<br>                <span class="hljs-keyword">else</span> tmp += <span class="hljs-string">&#x27;.&#x27;</span>;<br>            &#125;<br>            tmp_path.<span class="hljs-built_in">push_back</span>(tmp);<br>        &#125;<br>        res.<span class="hljs-built_in">push_back</span>(tmp_path);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(x == n) &#123;<br>            <span class="hljs-type">bool</span> flag = <span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i + <span class="hljs-number">1</span>; j &lt;= n;j ++) &#123;<br>                    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">abs</span>(i-j) == <span class="hljs-built_in">abs</span>(path[i] - path[j])) &#123; <span class="hljs-comment">// 对角线相遇，不符合条件，直接return</span><br>                        flag = <span class="hljs-literal">false</span>;<br>                    &#125; <br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (flag) <span class="hljs-built_in">ins</span>(path);<br>            <span class="hljs-keyword">return</span> ;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>            <span class="hljs-keyword">if</span>(visted[i] == <span class="hljs-literal">false</span>) &#123; <span class="hljs-comment">//第i行没有放置过元素，就放第i行试试看吧</span><br>                visted[i] = <span class="hljs-literal">true</span>;   <span class="hljs-comment">// 用i了，标记一下</span><br>                path.<span class="hljs-built_in">push_back</span>(i);<br>                <span class="hljs-built_in">dfs</span>(x + <span class="hljs-number">1</span>);<br>                path.<span class="hljs-built_in">pop_back</span>();<br>                visted[i] = <span class="hljs-literal">false</span>; <span class="hljs-comment">// 恢复i的访问标记</span><br>            &#125;<br>        &#125;<br>    &#125;<br>    vector&lt;vector&lt;string&gt;&gt; <span class="hljs-built_in">solveNQueens</span>(<span class="hljs-type">int</span> a) &#123;<br>        n = a;<br>        path.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">0</span>);<br>        <span class="hljs-built_in">dfs</span>(<span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数组</tag>
+      
+      <tag>回溯</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】N皇后II</title>
+    <link href="/2023/03/07/%E3%80%90LeetCode%E3%80%91N%E7%9A%87%E5%90%8EII/"/>
+    <url>/2023/03/07/%E3%80%90LeetCode%E3%80%91N%E7%9A%87%E5%90%8EII/</url>
+    
+    <content type="html"><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs excel"><span class="hljs-built_in">n</span> 皇后问题 研究的是如何将 <span class="hljs-built_in">n</span> 个皇后放置在 <span class="hljs-built_in">n</span> × <span class="hljs-built_in">n</span> 的棋盘上，并且使皇后彼此之间不能相互攻击。<br><br>给你一个整数 <span class="hljs-built_in">n</span> ，返回 <span class="hljs-built_in">n</span> 皇后问题 不同的解决方案的数量。<br><br> <br><br>示例 <span class="hljs-number">1</span>：<br><br><br>输入：<span class="hljs-built_in">n</span> = <span class="hljs-number">4</span><br>输出：<span class="hljs-number">2</span><br>解释：如上图所示，<span class="hljs-number">4</span> 皇后问题存在两个不同的解法。<br>示例 <span class="hljs-number">2</span>：<br><br>输入：<span class="hljs-built_in">n</span> = <span class="hljs-number">1</span><br>输出：<span class="hljs-number">1</span><br> <br><br>提示：<br><br><span class="hljs-number">1</span> &lt;= <span class="hljs-built_in">n</span> &lt;= <span class="hljs-number">9</span><br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>回溯法</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> n;<br>    vector&lt;<span class="hljs-type">int</span>&gt; path; <span class="hljs-comment">// 记录每一列放的是第几个行，path[1]里面的值代表第一列的棋子放到了第path[i]行</span><br>    <span class="hljs-type">bool</span> visted[<span class="hljs-number">10</span>] = &#123;<span class="hljs-literal">false</span>&#125;;<br>    <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(x == n) &#123;<br>            <span class="hljs-type">bool</span> flag = <span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i + <span class="hljs-number">1</span>; j &lt;= n;j ++) &#123;<br>                    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">abs</span>(i-j) == <span class="hljs-built_in">abs</span>(path[i] - path[j])) &#123; <span class="hljs-comment">// 对角线相遇，不符合条件，直接return</span><br>                        flag = <span class="hljs-literal">false</span>;<br>                    &#125; <br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (flag) res ++;<br>            <span class="hljs-keyword">return</span> ;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>            <span class="hljs-keyword">if</span>(visted[i] == <span class="hljs-literal">false</span>) &#123; <span class="hljs-comment">//第i行没有放置过元素，就放第i行试试看吧</span><br>                visted[i] = <span class="hljs-literal">true</span>;   <span class="hljs-comment">// 用i了，标记一下</span><br>                path.<span class="hljs-built_in">push_back</span>(i);<br>                <span class="hljs-built_in">dfs</span>(x + <span class="hljs-number">1</span>);<br>                path.<span class="hljs-built_in">pop_back</span>();<br>                visted[i] = <span class="hljs-literal">false</span>; <span class="hljs-comment">// 恢复i的访问标记</span><br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">totalNQueens</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span> </span>&#123;<br>        path.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">0</span>);<span class="hljs-comment">// 占据一个位置先</span><br>        n = a;<br>        <span class="hljs-built_in">dfs</span>(<span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>回溯</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>写点什么</title>
     <link href="/2023/03/06/%E5%86%99%E7%82%B9%E4%BB%80%E4%B9%88/"/>
     <url>/2023/03/06/%E5%86%99%E7%82%B9%E4%BB%80%E4%B9%88/</url>

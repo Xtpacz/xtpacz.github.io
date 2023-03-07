@@ -16,21 +16,25 @@
   <meta name="author" content="Xtpacz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="太容易在学习中迷失方向，原本要去学A，结果过程中看到了B，就去学B，学一会发现学不下去，就回到A 有些混乱了，应该停下来捋一捋了 目前的最主要的任务就是准备复试，而复试又分为机试和面试。如果是线上复试，则机试不算分，线下就算分数。 今年大概率线下。机试很重要了，算法笔记继续刷，目前学到了树，可是关于树的遍历什么的基本上都会，构造树、存储树还没有练习。 图的也还没有开始，最简单的dfs和bfs学了一">
+    <meta name="description" content="题目按照国际象棋的规则，皇后可以攻击与之处在同一行或同一列或同一斜线上的棋子。 n 皇后问题 研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。 给你一个整数 n ，返回所有不同的 n 皇后问题 的解决方案。 每一种解法包含一个不同的 n 皇后问题 的棋子放置方案，该方案中 &#39;Q&#39; 和 &#39;.&#39; 分别代表了皇后和空位。 示例 1：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="写点什么">
-<meta property="og:url" content="https://xtpacz.github.io/2023/03/06/%E5%86%99%E7%82%B9%E4%BB%80%E4%B9%88/index.html">
+<meta property="og:title" content="【LeetCode】N皇后">
+<meta property="og:url" content="https://xtpacz.github.io/2023/03/07/%E3%80%90LeetCode%E3%80%91N%E7%9A%87%E5%90%8E/index.html">
 <meta property="og:site_name" content="Xtpacz">
-<meta property="og:description" content="太容易在学习中迷失方向，原本要去学A，结果过程中看到了B，就去学B，学一会发现学不下去，就回到A 有些混乱了，应该停下来捋一捋了 目前的最主要的任务就是准备复试，而复试又分为机试和面试。如果是线上复试，则机试不算分，线下就算分数。 今年大概率线下。机试很重要了，算法笔记继续刷，目前学到了树，可是关于树的遍历什么的基本上都会，构造树、存储树还没有练习。 图的也还没有开始，最简单的dfs和bfs学了一">
+<meta property="og:description" content="题目按照国际象棋的规则，皇后可以攻击与之处在同一行或同一列或同一斜线上的棋子。 n 皇后问题 研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。 给你一个整数 n ，返回所有不同的 n 皇后问题 的解决方案。 每一种解法包含一个不同的 n 皇后问题 的棋子放置方案，该方案中 &#39;Q&#39; 和 &#39;.&#39; 分别代表了皇后和空位。 示例 1：">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-03-06T14:27:54.000Z">
-<meta property="article:modified_time" content="2023-03-06T14:52:27.428Z">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/11/13/queens.jpg">
+<meta property="article:published_time" content="2023-03-07T01:16:02.000Z">
+<meta property="article:modified_time" content="2023-03-07T05:14:08.452Z">
 <meta property="article:author" content="Xtpacz">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="回溯">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2020/11/13/queens.jpg">
   
   
   
-  <title>写点什么 - Xtpacz</title>
+  <title>【LeetCode】N皇后 - Xtpacz</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="写点什么"></span>
+            <span id="subtitle" data-typed-text="【LeetCode】N皇后"></span>
           
         </div>
 
@@ -224,8 +228,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-06 22:27" pubdate>
-          March 6, 2023 pm
+        <time datetime="2023-03-07 09:16" pubdate>
+          March 7, 2023 am
         </time>
       </span>
     
@@ -236,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          480 words
+          1.5k words
         
       </span>
     
@@ -247,7 +251,7 @@
         
         
         
-          5 mins
+          13 mins
         
       </span>
     
@@ -293,31 +297,29 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">写点什么</h1>
+            <h1 style="display: none">【LeetCode】N皇后</h1>
             
             
               <div class="markdown-body">
                 
-                <p>太容易在学习中迷失方向，原本要去学A，结果过程中看到了B，就去学B，学一会发现学不下去，就回到A</p>
-<p>有些混乱了，应该停下来捋一捋了</p>
-<p>目前的最主要的任务就是准备复试，而复试又分为机试和面试。如果是线上复试，则机试不算分，线下就算分数。</p>
-<p>今年大概率线下。机试很重要了，算法笔记继续刷，目前学到了树，可是关于树的遍历什么的基本上都会，构造树、存储树还没有练习。</p>
-<p>图的也还没有开始，最简单的dfs和bfs学了一些感觉还可以，动态规划也只学到了一些皮毛。。。</p>
-<p>目前关于机试：</p>
-<blockquote>
-<p>真题只做了2018年李志的那几道题，感觉上不是太难</p>
-<p>但是他们每年出的题差别说实话还是挺大的，不如老老实实跟着算法笔记学完。。</p>
-</blockquote>
-<p>面试：</p>
-<blockquote>
-<p>总共时间也就是30分钟左右</p>
-<p>线上的话要讲PPT，占据八分钟，剩下20分钟左右，能问几个问题呢？大约也就是七八个吧</p>
-<p>408、数据库+计算机学科常识（关于常识这个准备去搜索一下计算机专业的面试问题吧</p>
-<p>项目？就说毕设吧，留几个明显的漏洞，等老师去问</p>
-<p>比如：</p>
-</blockquote>
-<p>。。。。我在这里写这些干什么，应该放到【复试】面试里面写吧。。。。</p>
-<p>困死了，睡觉了，再也不想凌晨两三点睡了，goodnight,world~</p>
+                <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>按照国际象棋的规则，皇后可以攻击与之处在同一行或同一列或同一斜线上的棋子。</p>
+<p><strong>n 皇后问题</strong> 研究的是如何将 <code>n</code> 个皇后放置在 <code>n×n</code> 的棋盘上，并且使皇后彼此之间不能相互攻击。</p>
+<p>给你一个整数 <code>n</code> ，返回所有不同的 <strong>n 皇后问题</strong> 的解决方案。</p>
+<p>每一种解法包含一个不同的 <strong>n 皇后问题</strong> 的棋子放置方案，该方案中 <code>&#39;Q&#39;</code> 和 <code>&#39;.&#39;</code> 分别代表了皇后和空位。</p>
+<p><strong>示例 1：</strong></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/11/13/queens.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs prolog">输入：n = <span class="hljs-number">4</span><br>输出：[[<span class="hljs-string">&quot;.Q..&quot;</span>,<span class="hljs-string">&quot;...Q&quot;</span>,<span class="hljs-string">&quot;Q...&quot;</span>,<span class="hljs-string">&quot;..Q.&quot;</span>],[<span class="hljs-string">&quot;..Q.&quot;</span>,<span class="hljs-string">&quot;Q...&quot;</span>,<span class="hljs-string">&quot;...Q&quot;</span>,<span class="hljs-string">&quot;.Q..&quot;</span>]]<br>解释：如上图所示，<span class="hljs-number">4</span> 皇后问题存在两个不同的解法。<br></code></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua">输入：n = <span class="hljs-number">1</span><br>输出：<span class="hljs-string">[[&quot;Q&quot;]]</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= n &lt;= 9</code></li>
+</ul>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>回溯法，试探每个点</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    vector&lt;vector&lt;string&gt;&gt; res;<br>    <span class="hljs-type">int</span> n;<br>    vector&lt;<span class="hljs-type">int</span>&gt; path; <span class="hljs-comment">// 记录每一列放的是第几个行，path[1]里面的值代表第一列的棋子放到了第path[i]行</span><br>    <span class="hljs-type">bool</span> visted[<span class="hljs-number">10</span>] = &#123;<span class="hljs-literal">false</span>&#125;;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">ins</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; path)</span> </span>&#123;<br>        vector&lt;string&gt; tmp_path; <span class="hljs-comment">// 存储当前这种情况的各行排列string</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) &#123;<br>            string tmp = <span class="hljs-string">&quot;&quot;</span>; <span class="hljs-comment">// 某一行怎么存</span><br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; j++) &#123;<br>                <span class="hljs-keyword">if</span> (j == path[i]) tmp += <span class="hljs-string">&#x27;Q&#x27;</span>;<br>                <span class="hljs-keyword">else</span> tmp += <span class="hljs-string">&#x27;.&#x27;</span>;<br>            &#125;<br>            tmp_path.<span class="hljs-built_in">push_back</span>(tmp);<br>        &#125;<br>        res.<span class="hljs-built_in">push_back</span>(tmp_path);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span>(x == n) &#123;<br>            <span class="hljs-type">bool</span> flag = <span class="hljs-literal">true</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i ++) &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i + <span class="hljs-number">1</span>; j &lt;= n;j ++) &#123;<br>                    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">abs</span>(i-j) == <span class="hljs-built_in">abs</span>(path[i] - path[j])) &#123; <span class="hljs-comment">// 对角线相遇，不符合条件，直接return</span><br>                        flag = <span class="hljs-literal">false</span>;<br>                    &#125; <br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (flag) <span class="hljs-built_in">ins</span>(path);<br>            <span class="hljs-keyword">return</span> ;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>            <span class="hljs-keyword">if</span>(visted[i] == <span class="hljs-literal">false</span>) &#123; <span class="hljs-comment">//第i行没有放置过元素，就放第i行试试看吧</span><br>                visted[i] = <span class="hljs-literal">true</span>;   <span class="hljs-comment">// 用i了，标记一下</span><br>                path.<span class="hljs-built_in">push_back</span>(i);<br>                <span class="hljs-built_in">dfs</span>(x + <span class="hljs-number">1</span>);<br>                path.<span class="hljs-built_in">pop_back</span>();<br>                visted[i] = <span class="hljs-literal">false</span>; <span class="hljs-comment">// 恢复i的访问标记</span><br>            &#125;<br>        &#125;<br>    &#125;<br>    vector&lt;vector&lt;string&gt;&gt; <span class="hljs-built_in">solveNQueens</span>(<span class="hljs-type">int</span> a) &#123;<br>        n = a;<br>        path.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">0</span>);<br>        <span class="hljs-built_in">dfs</span>(<span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -336,7 +338,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%85%B6%E4%BB%96/" class="category-chain-item">其他</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="category-chain-item">数据结构与算法</a>
   
   
 
@@ -348,6 +350,15 @@
     </div>
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
+      
+        <a href="/tags/%E5%9B%9E%E6%BA%AF/">#回溯</a>
+      
+    </div>
+  
 </div>
 
 
@@ -356,8 +367,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>写点什么</div>
-      <div>https://xtpacz.github.io/2023/03/06/写点什么/</div>
+      <div>【LeetCode】N皇后</div>
+      <div>https://xtpacz.github.io/2023/03/07/【LeetCode】N皇后/</div>
     </div>
     <div class="license-meta">
       
@@ -369,7 +380,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>March 6, 2023</div>
+          <div>March 7, 2023</div>
         </div>
       
       
@@ -401,9 +412,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/07/%E3%80%90LeetCode%E3%80%91N%E7%9A%87%E5%90%8EII/" title="【LeetCode】N皇后II">
+                      <a href="/2023/03/07/%E3%80%90LeetCode%E3%80%91%E8%8A%B1%E6%8B%AC%E5%8F%B7%E5%B1%95%E5%BC%80II/" title="【LeetCode】花括号展开II">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【LeetCode】N皇后II</span>
+                        <span class="hidden-mobile">【LeetCode】花括号展开II</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -411,8 +422,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/03/06/%E3%80%90LeetCode%E3%80%91%E4%BD%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B9%B3%E8%A1%A1%E7%9A%84%E6%9C%80%E5%B0%91%E5%88%A0%E9%99%A4%E6%AC%A1%E6%95%B0/" title="【LeetCode】使字符串平衡的最少删除次数">
-                        <span class="hidden-mobile">【LeetCode】使字符串平衡的最少删除次数</span>
+                      <a href="/2023/03/07/%E3%80%90LeetCode%E3%80%91N%E7%9A%87%E5%90%8EII/" title="【LeetCode】N皇后II">
+                        <span class="hidden-mobile">【LeetCode】N皇后II</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
