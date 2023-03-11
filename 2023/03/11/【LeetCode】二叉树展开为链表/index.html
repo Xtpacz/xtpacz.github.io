@@ -16,24 +16,26 @@
   <meta name="author" content="Xtpacz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="63. 不同路径 II - 力扣（Leetcode） 题目1234567891011121314151617181920212223242526一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为 “Start” ）。机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish”）。现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径">
+    <meta name="description" content="114. 二叉树展开为链表 - 力扣（Leetcode） 题目1234567891011121314151617181920给你二叉树的根结点 root ，请你将它展开为一个单链表：展开后的单链表应该同样使用 TreeNode ，其中 right 子指针指向链表中下一个结点，而左子指针始终为 null 。展开后的单链表应该与二叉树 先序遍历 顺序相同。示例 1：输入：root &#x3D; [1,2,5,3">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【LeetCode】不同路径II">
-<meta property="og:url" content="https://xtpacz.github.io/2023/03/10/%E3%80%90LeetCode%E3%80%91%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84II/index.html">
+<meta property="og:title" content="【LeetCode】二叉树展开为链表">
+<meta property="og:url" content="https://xtpacz.github.io/2023/03/11/%E3%80%90LeetCode%E3%80%91%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%95%E5%BC%80%E4%B8%BA%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="Xtpacz">
-<meta property="og:description" content="63. 不同路径 II - 力扣（Leetcode） 题目1234567891011121314151617181920212223242526一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为 “Start” ）。机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish”）。现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径">
+<meta property="og:description" content="114. 二叉树展开为链表 - 力扣（Leetcode） 题目1234567891011121314151617181920给你二叉树的根结点 root ，请你将它展开为一个单链表：展开后的单链表应该同样使用 TreeNode ，其中 right 子指针指向链表中下一个结点，而左子指针始终为 null 。展开后的单链表应该与二叉树 先序遍历 顺序相同。示例 1：输入：root &#x3D; [1,2,5,3">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-03-10T08:02:03.000Z">
-<meta property="article:modified_time" content="2023-03-11T02:37:39.390Z">
+<meta property="article:published_time" content="2023-03-11T02:41:03.000Z">
+<meta property="article:modified_time" content="2023-03-11T03:33:28.470Z">
 <meta property="article:author" content="Xtpacz">
-<meta property="article:tag" content="数组">
-<meta property="article:tag" content="动态规划">
-<meta property="article:tag" content="矩阵">
+<meta property="article:tag" content="树">
+<meta property="article:tag" content="二叉树">
+<meta property="article:tag" content="深度优先搜索">
+<meta property="article:tag" content="栈">
+<meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>【LeetCode】不同路径II - Xtpacz</title>
+  <title>【LeetCode】二叉树展开为链表 - Xtpacz</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -216,7 +218,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【LeetCode】不同路径II"></span>
+            <span id="subtitle" data-typed-text="【LeetCode】二叉树展开为链表"></span>
           
         </div>
 
@@ -227,8 +229,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-10 16:02" pubdate>
-          March 10, 2023 pm
+        <time datetime="2023-03-11 10:41" pubdate>
+          March 11, 2023 am
         </time>
       </span>
     
@@ -239,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k words
+          1.2k words
         
       </span>
     
@@ -250,7 +252,7 @@
         
         
         
-          19 mins
+          11 mins
         
       </span>
     
@@ -296,25 +298,23 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">【LeetCode】不同路径II</h1>
+            <h1 style="display: none">【LeetCode】二叉树展开为链表</h1>
             
             
               <div class="markdown-body">
                 
-                <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/unique-paths-ii/">63. 不同路径 II - 力扣（Leetcode）</a></p>
-<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs inform7">一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为 “Start” ）。<br><br>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish”）。<br><br>现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径？<br><br>网格中的障碍物和空位置分别用 1 和 0 来表示。<br><br>示例 1：<br>输入：obstacleGrid = <span class="hljs-comment">[<span class="hljs-comment">[0,0,0]</span>,<span class="hljs-comment">[0,1,0]</span>,<span class="hljs-comment">[0,0,0]</span>]</span><br>输出：2<br>解释：3x3 网格的正中间有一个障碍物。<br>从左上角到右下角一共有 2 条不同的路径：<br>1. 向右 -&gt; 向右 -&gt; 向下 -&gt; 向下<br>2. 向下 -&gt; 向下 -&gt; 向右 -&gt; 向右<br><br>示例 2：<br>输入：obstacleGrid = <span class="hljs-comment">[<span class="hljs-comment">[0,1]</span>,<span class="hljs-comment">[0,0]</span>]</span><br>输出：1<br><br>提示：<br><br>m == obstacleGrid.length<br>n == obstacleGrid<span class="hljs-comment">[i]</span>.length<br>1 &lt;= m, n &lt;= 100<br>obstacleGrid<span class="hljs-comment">[i]</span><span class="hljs-comment">[j]</span> 为 0 或 1<br></code></pre></td></tr></table></figure>
+                <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/flatten-binary-tree-to-linked-list">114. 二叉树展开为链表 - 力扣（Leetcode）</a></p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs stylus">给你二叉树的根结点 root ，请你将它展开为一个单链表：<br>展开后的单链表应该同样使用 TreeNode ，其中 <span class="hljs-attribute">right</span> 子指针指向链表中下一个结点，而左子指针始终为 null 。<br>展开后的单链表应该与二叉树 先序遍历 顺序相同。<br><br>示例 <span class="hljs-number">1</span>：<br>输入：root = <span class="hljs-selector-attr">[1,2,5,3,4,null,6]</span><br>输出：<span class="hljs-selector-attr">[1,null,2,null,3,null,4,null,5,null,6]</span><br><br>示例 <span class="hljs-number">2</span>：<br>输入：root = <span class="hljs-selector-attr">[]</span><br>输出：<span class="hljs-selector-attr">[]</span><br><br>示例 <span class="hljs-number">3</span>：<br>输入：root = <span class="hljs-selector-attr">[0]</span><br>输出：<span class="hljs-selector-attr">[0]</span><br> <br><br>提示：<br>树中结点数在范围 <span class="hljs-selector-attr">[0, 2000]</span> 内<br>-<span class="hljs-number">100</span> &lt;= Node<span class="hljs-selector-class">.val</span> &lt;= <span class="hljs-number">100</span><br></code></pre></td></tr></table></figure>
 
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ol>
+<li>通过递归先序遍历二叉树，然后遍历的序列存在数组中，最后遍历数组同时改造原二叉树</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">flatten</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        vector&lt;TreeNode*&gt; v;<br>        <span class="hljs-built_in">preOrder</span>(root, v);<br>        <span class="hljs-type">int</span> n = v.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i ++) &#123;<br>            TreeNode *prev = v[i - <span class="hljs-number">1</span>], *curr = v[i];<br>            prev-&gt;left = <span class="hljs-literal">nullptr</span>;<br>            prev-&gt;right = curr;<br>        &#125;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">preOrder</span><span class="hljs-params">(TreeNode* root, vector&lt;TreeNode*&gt; &amp;v)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (root != <span class="hljs-literal">NULL</span>) &#123;<br>            v.<span class="hljs-built_in">push_back</span>(root);<br>            <span class="hljs-built_in">preOrder</span>(root-&gt;left, v);<br>            <span class="hljs-built_in">preOrder</span>(root-&gt;right, v);<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
-
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>试了试bfs和dfs，都超时了</p>
-<p>由于这个问题具有<code>无后效性</code>和<code>最优子结构</code>这两个特性，故要用动规来解题</p>
-<p>由于只能<code>向右</code>或者<code>向下</code>走，所以<strong>状态转移方程</strong>为：<br>$$<br>dp[i][j] &#x3D;<br>\begin{cases}<br>dp[i-1][j] + dp[i][j-1],  &amp; obstacleGrid[i][j] &#x3D; 0 \<br>0, &amp; obstacleGrid[i][j] &#x3D; 1<br>\end{cases}<br>$$<br><strong>边界条件</strong>：<br>$$<br>dp[i][0] &#x3D; 1 (obstacleGrid[i][0] &#x3D; 0, 0 &lt;&#x3D; i &lt; m)\<br>dp[0][1] &#x3D; 1 (obstacleGrid[0][i] &#x3D; 0, 0 &lt;&#x3D; i &lt; n)<br>$$</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> dp[<span class="hljs-number">101</span>][<span class="hljs-number">101</span>];<br><br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; grid, <span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> </span>&#123;<br>        <span class="hljs-type">int</span> m = grid.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> n = grid[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">if</span>(x &lt; <span class="hljs-number">0</span> || y &lt; <span class="hljs-number">0</span> || x &gt;= m || y &gt;= n || grid[x][y] == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">uniquePathsWithObstacles</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">check</span>(grid, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-type">int</span> m = grid.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> n = grid[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) &#123;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">check</span>(grid, <span class="hljs-number">0</span>, i)) &#123;<br>                dp[<span class="hljs-number">0</span>][i] = <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i ++) &#123;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">check</span>(grid, i, <span class="hljs-number">0</span>)) &#123;<br>                dp[i][<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; m; i ++) &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt; n; j ++) &#123;<br>                <span class="hljs-keyword">if</span>(<span class="hljs-built_in">check</span>(grid,i,j)) &#123;<br>                    dp[i][j] = dp[i<span class="hljs-number">-1</span>][j] + dp[i][j<span class="hljs-number">-1</span>];<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    dp[i][j] = <span class="hljs-number">0</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[m<span class="hljs-number">-1</span>][n<span class="hljs-number">-1</span>];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
-<p>上述代码时间复杂度为O(mn)，空间复杂度为O(mn)</p>
-<p>因为<code>dp[i][j]</code>只与<code>dp[i-1][j]</code>和<code>dp[i][j-1]</code>有关，因此我们可以利用滚动数组方式求解</p>
-<p>每一轮的<code>dp[j]</code>都是继承自上一轮的</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">uniquePathsWithObstacles</span><span class="hljs-params">(vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;<br>        <span class="hljs-type">int</span> m = grid.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> n = grid[<span class="hljs-number">0</span>].<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> dp[n];<br>        <span class="hljs-built_in">memset</span>(dp, <span class="hljs-number">0</span>, <span class="hljs-built_in">sizeof</span>(dp));<br>        dp[<span class="hljs-number">0</span>] = (grid[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] == <span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i ++) &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; n; j ++) &#123;<br>                <span class="hljs-keyword">if</span>(grid[i][j] == <span class="hljs-number">1</span>) &#123;<br>                    dp[j] = <span class="hljs-number">0</span>;<br>                    <span class="hljs-keyword">continue</span>;<br>                &#125;<br>                <span class="hljs-keyword">if</span>(j &gt;= <span class="hljs-number">1</span> &amp;&amp; grid[i][j - <span class="hljs-number">1</span>] == <span class="hljs-number">0</span>) &#123;<br>                    dp[j] += dp[j - <span class="hljs-number">1</span>];<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[n - <span class="hljs-number">1</span>];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>改造树，寻找<code>root</code>的左子树的最右下角的节点<code>pre</code>，然后将<code>root</code>的右子树拼接在<code>pre</code>的右子树的位置，循环下去</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">flatten</span><span class="hljs-params">(TreeNode* root)</span> </span>&#123;<br>        TreeNode* cur = root;<br>        <span class="hljs-keyword">while</span>(cur != <span class="hljs-literal">nullptr</span>) &#123;<br>            <span class="hljs-keyword">if</span>(cur-&gt;left != <span class="hljs-literal">nullptr</span>) &#123;<br>                TreeNode* pre = cur-&gt;left;<br>                TreeNode* next = cur-&gt;left;<br>                <span class="hljs-keyword">while</span>(pre-&gt;right != <span class="hljs-literal">nullptr</span>) pre = pre-&gt;right;<br>                pre-&gt;right = cur-&gt;right;<br>                cur-&gt;left = <span class="hljs-literal">nullptr</span>;<br>                cur-&gt;right = next;<br>            &#125;<br>            cur = cur-&gt;right;<br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
                 
@@ -349,11 +349,15 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
+        <a href="/tags/%E6%A0%91/">#树</a>
       
-        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+        <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">#二叉树</a>
       
-        <a href="/tags/%E7%9F%A9%E9%98%B5/">#矩阵</a>
+        <a href="/tags/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">#深度优先搜索</a>
+      
+        <a href="/tags/%E6%A0%88/">#栈</a>
+      
+        <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>
       
     </div>
   
@@ -365,8 +369,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【LeetCode】不同路径II</div>
-      <div>https://xtpacz.github.io/2023/03/10/【LeetCode】不同路径II/</div>
+      <div>【LeetCode】二叉树展开为链表</div>
+      <div>https://xtpacz.github.io/2023/03/11/【LeetCode】二叉树展开为链表/</div>
     </div>
     <div class="license-meta">
       
@@ -378,7 +382,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>March 10, 2023</div>
+          <div>March 11, 2023</div>
         </div>
       
       
@@ -410,9 +414,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/11/%E3%80%90LeetCode%E3%80%91%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%95%E5%BC%80%E4%B8%BA%E9%93%BE%E8%A1%A8/" title="【LeetCode】二叉树展开为链表">
+                      <a href="/2023/03/11/%E3%80%90LeetCode%E3%80%91%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/" title="【LeetCode】单词拆分">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【LeetCode】二叉树展开为链表</span>
+                        <span class="hidden-mobile">【LeetCode】单词拆分</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -420,8 +424,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/03/09/%E3%80%90%E6%99%B4%E9%97%AE%E3%80%91%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" title="【晴问】最长回文子串">
-                        <span class="hidden-mobile">【晴问】最长回文子串</span>
+                      <a href="/2023/03/10/%E3%80%90LeetCode%E3%80%91%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84II/" title="【LeetCode】不同路径II">
+                        <span class="hidden-mobile">【LeetCode】不同路径II</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
