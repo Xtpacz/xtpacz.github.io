@@ -4,6 +4,62 @@
   
   
   <entry>
+    <title>【LeetCode】盛最多水的容器</title>
+    <link href="/2023/03/12/%E3%80%90LeetCode%E3%80%91%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/"/>
+    <url>/2023/03/12/%E3%80%90LeetCode%E3%80%91%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/container-with-most-water">11. 盛最多水的容器 - 力扣（Leetcode）</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>双指针+贪心思想，每次移动较短的板子，则最终一定会得到正确答案</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxArea</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; h)</span> </span>&#123;<br>        <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = h.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>;<br>        <span class="hljs-type">int</span> res = <span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">while</span>(l &lt; r) &#123;<br>            res = <span class="hljs-built_in">max</span>(res, <span class="hljs-built_in">min</span>(h[r],h[l])*(r-l));<br>            <span class="hljs-keyword">if</span> (h[l] &lt; h[r])l++;<br>            <span class="hljs-keyword">else</span> r--; <br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数组</tag>
+      
+      <tag>双指针</tag>
+      
+      <tag>贪心</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】接雨水</title>
+    <link href="/2023/03/12/%E3%80%90LeetCode%E3%80%91%E6%8E%A5%E9%9B%A8%E6%B0%B4/"/>
+    <url>/2023/03/12/%E3%80%90LeetCode%E3%80%91%E6%8E%A5%E9%9B%A8%E6%B0%B4/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/trapping-rain-water/">42. 接雨水 - 力扣（Leetcode）</a></p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>动态规划</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数组</tag>
+      
+      <tag>动态规划</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【LeetCode】LRU缓存</title>
     <link href="/2023/03/11/%E3%80%90LeetCode%E3%80%91LRU%E7%BC%93%E5%AD%98/"/>
     <url>/2023/03/11/%E3%80%90LeetCode%E3%80%91LRU%E7%BC%93%E5%AD%98/</url>
