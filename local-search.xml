@@ -4,6 +4,64 @@
   
   
   <entry>
+    <title>【LeetCode】字符串相加</title>
+    <link href="/2023/03/13/%E3%80%90LeetCode%E3%80%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/"/>
+    <url>/2023/03/13/%E3%80%90LeetCode%E3%80%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%8A%A0/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/add-strings/description/">415. 字符串相加 - 力扣（Leetcode）</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs applescript">给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和并同样以字符串形式返回。<br><br>你不能使用任何內建的用于处理大整数的库（比如 BigInteger）， 也不能直接将输入的字符串转换为整数形式。<br><br> <br><br>示例 <span class="hljs-number">1</span>：<br><br>输入：num1 = <span class="hljs-string">&quot;11&quot;</span>, num2 = <span class="hljs-string">&quot;123&quot;</span><br>输出：<span class="hljs-string">&quot;134&quot;</span><br>示例 <span class="hljs-number">2</span>：<br><br>输入：num1 = <span class="hljs-string">&quot;456&quot;</span>, num2 = <span class="hljs-string">&quot;77&quot;</span><br>输出：<span class="hljs-string">&quot;533&quot;</span><br>示例 <span class="hljs-number">3</span>：<br><br>输入：num1 = <span class="hljs-string">&quot;0&quot;</span>, num2 = <span class="hljs-string">&quot;0&quot;</span><br>输出：<span class="hljs-string">&quot;0&quot;</span><br> <br><br> <br><br>提示：<br><br><span class="hljs-number">1</span> &lt;= num1.<span class="hljs-built_in">length</span>, num2.<span class="hljs-built_in">length</span> &lt;= <span class="hljs-number">104</span><br>num1 和num2 都只包含数字 <span class="hljs-number">0</span><span class="hljs-number">-9</span><br>num1 和num2 都不包含任何前导零<br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>模拟列竖式即可</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">addStrings</span><span class="hljs-params">(string num1, string num2)</span> </span>&#123;<br>        string res=<span class="hljs-string">&quot;&quot;</span>;<br>        <span class="hljs-type">int</span> i=num1.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>,j=num2.<span class="hljs-built_in">size</span>()<span class="hljs-number">-1</span>,carry=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(i&gt;=<span class="hljs-number">0</span>||j&gt;=<span class="hljs-number">0</span>||carry!=<span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-type">int</span> x = i&gt;=<span class="hljs-number">0</span> ? num1[i]-<span class="hljs-string">&#x27;0&#x27;</span> : <span class="hljs-number">0</span>;<br>            <span class="hljs-type">int</span> y = j&gt;=<span class="hljs-number">0</span> ? num2[j]-<span class="hljs-string">&#x27;0&#x27;</span> : <span class="hljs-number">0</span>;<br>            <span class="hljs-type">int</span> tmp=x+y+carry;<br>            <span class="hljs-type">int</span> add = tmp&gt;<span class="hljs-number">9</span> ? tmp<span class="hljs-number">-10</span> : tmp;<br>            carry=tmp/<span class="hljs-number">10</span>;<br>            res.<span class="hljs-built_in">push_back</span>(add+<span class="hljs-string">&#x27;0&#x27;</span>);<br>            i--;<br>            j--;<br>        &#125;<br>        <span class="hljs-built_in">reverse</span>(res.<span class="hljs-built_in">begin</span>(),res.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数学</tag>
+      
+      <tag>字符串</tag>
+      
+      <tag>模拟</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>【LeetCode】字符串相乘</title>
+    <link href="/2023/03/13/%E3%80%90LeetCode%E3%80%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%B9%98/"/>
+    <url>/2023/03/13/%E3%80%90LeetCode%E3%80%91%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E4%B9%98/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/multiply-strings">43. 字符串相乘 - 力扣（Leetcode）</a></p><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs applescript">给定两个以字符串形式表示的非负整数 num1 和 num2，返回 num1 和 num2 的乘积，它们的乘积也表示为字符串形式。<br><br>注意：不能使用任何内置的 BigInteger 库或直接将输入转换为整数。<br><br> <br><br>示例 <span class="hljs-number">1</span>:<br><br>输入: num1 = <span class="hljs-string">&quot;2&quot;</span>, num2 = <span class="hljs-string">&quot;3&quot;</span><br>输出: <span class="hljs-string">&quot;6&quot;</span><br>示例 <span class="hljs-number">2</span>:<br><br>输入: num1 = <span class="hljs-string">&quot;123&quot;</span>, num2 = <span class="hljs-string">&quot;456&quot;</span><br>输出: <span class="hljs-string">&quot;56088&quot;</span><br> <br><br>提示：<br><br><span class="hljs-number">1</span> &lt;= num1.<span class="hljs-built_in">length</span>, num2.<span class="hljs-built_in">length</span> &lt;= <span class="hljs-number">200</span><br>num1 和 num2 只能由数字组成。<br>num1 和 num2 都不包含任何前导零，除了数字<span class="hljs-number">0</span>本身。<br></code></pre></td></tr></table></figure><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>数据结构与算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数学</tag>
+      
+      <tag>字符串</tag>
+      
+      <tag>模拟</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【LeetCode】盛最多水的容器</title>
     <link href="/2023/03/12/%E3%80%90LeetCode%E3%80%91%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/"/>
     <url>/2023/03/12/%E3%80%90LeetCode%E3%80%91%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/</url>
