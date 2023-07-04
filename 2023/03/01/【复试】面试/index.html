@@ -1,0 +1,608 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>【复试】面试 | Hexo</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Hexo 6.3.0"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">Hexo</a><span class="subtitle"></span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>【复试】面试</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2023-03-01</div><div class="post-categories"><a class="post-category-link" href="/categories/%E8%80%83%E7%A0%94/">考研</a></div></div></div><article><div class="container post"><h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="操作系统的定义、功能、分类？"><a href="#操作系统的定义、功能、分类？" class="headerlink" title="操作系统的定义、功能、分类？"></a>操作系统的定义、功能、分类？</h3><p><strong>定义</strong>：操作系统是计算机系统中的一个重要组成部分，它是管理和控制计算机硬件和软件资源的一个程序集合。操作系统提供了一组系统调用接口，应用程序可以使用这些接口来请求操作系统提供的服务，例如进程管理、内存管理、文件系统管理、网络管理等。</p>
+<p>操作系统的主要<strong>功能</strong>包括：</p>
+<ol>
+<li>资源管理：操作系统通过对计算机硬件和软件资源的管理，协调不同应用程序对资源的访问和使用，以保证系统的有效性和公平性。</li>
+<li>进程管理：操作系统管理多个进程的创建、运行、切换和终止等，保证进程之间的协调和稳定性。</li>
+<li>内存管理：操作系统负责管理计算机内存的分配、释放和回收等，以保证内存资源的有效利用。</li>
+<li>文件系统管理：操作系统管理计算机硬盘等存储设备上的文件和目录，提供对文件的读写和访问等操作。</li>
+<li>网络管理：操作系统提供网络通信服务，包括网络协议的实现、数据包的传输和接收等。</li>
+</ol>
+<p>根据不同的特点和应用场景，操作系统可以<strong>分为以下几类</strong>：</p>
+<ol>
+<li>批处理操作系统：主要用于批量处理数据和任务，无需用户交互。</li>
+<li>分时操作系统：主要用于多用户共享计算机资源，允许多个用户同时访问计算机系统。</li>
+<li>实时操作系统：主要用于对响应时间要求严格的系统，例如控制系统、航空航天系统等。</li>
+<li>分布式操作系统：主要用于分布式计算环境中，通过网络协同工作，实现计算资源的共享和协作。</li>
+<li>嵌入式操作系统：主要用于嵌入式系统中，例如手机、数码相机、智能家居等。</li>
+</ol>
+<p>操作系统是计算机系统的核心，负责控制和管理计算机资源，提供系统调用接口供应用程序使用。在不同的应用场景下，操作系统具有不同的特点和功能。</p>
+<h3 id="什么是系统调用，系统调用的分类"><a href="#什么是系统调用，系统调用的分类" class="headerlink" title="什么是系统调用，系统调用的分类"></a>什么是系统调用，系统调用的分类</h3><p>系统调用是<strong>操作系统</strong>提供给<strong>应用程序</strong>的一组<em><strong>接口</strong></em>，应用程序可以通过系统调用请求操作系统提供的服务。系统调用是应用程序与操作系统之间的一个接口，它允许<strong>应用程序访问受保护的操作系统内核功能</strong>，例如文件操作、进程管理、内存管理等。</p>
+<p>系统调用可以根据请求的服务类型分为以下几类：</p>
+<ol>
+<li>进程控制：用于创建、撤销和管理进程，例如fork、exit、wait等。</li>
+<li>文件操作：用于对文件的读写、打开和关闭等操作，例如open、read、write、close等。</li>
+<li>设备操作：用于对设备的读写和控制等操作，例如read、write、ioctl等。</li>
+<li>通信操作：用于进程之间的通信和同步，例如pipe、msgsend、msgrecv等。</li>
+<li>网络操作：用于网络通信，例如socket、connect、send、recv等。</li>
+<li>内存管理：用于管理内存资源，例如mmap、brk、sbrk等。</li>
+<li>安全控制：用于系统安全控制，例如getuid、setuid等。</li>
+</ol>
+<p>系统调用是操作系统与应用程序之间的接口，允许应用程序使用操作系统提供的服务。系统调用按服务类型可以分为进程控制、文件操作、设备操作、通信操作、网络操作、内存管理和安全控制等。系统调用对于操作系统的功能和应用程序的开发都非常重要。</p>
+<h2 id="进程、线程"><a href="#进程、线程" class="headerlink" title="进程、线程"></a>进程、线程</h2><h3 id="二者的区别"><a href="#二者的区别" class="headerlink" title="二者的区别"></a>二者的区别</h3><p>线程是进程划分成的更小的运行单位,一个进程在其执行的过程中可以产生多个线程。线程和进程最大的不同在于基本上各进程是独立的，而各线程则不一定，因为同一进程中的线程极有可能会相互影响。线程执行开销小，但不利于资源的管理和保护；而进程正相反。</p>
+<h3 id="进程的几种状态"><a href="#进程的几种状态" class="headerlink" title="进程的几种状态"></a>进程的几种状态</h3><h3 id="进程间常见通信方式有哪些？"><a href="#进程间常见通信方式有哪些？" class="headerlink" title="进程间常见通信方式有哪些？"></a>进程间常见通信方式有哪些？</h3><p>有 7 种常见的进程间的通信方式</p>
+<p>1.管道&#x2F;匿名管道(Pipes) ：用于具有亲缘关系的父子进程间或者兄弟进程之间的通信。</p>
+<p>2.有名管道(Names Pipes) : 匿名管道由于没有名字，只能用于亲缘关系的进程间通信。为了克服这个缺点，提出了有名管道。有名管道严格遵循先进先出(first in first out)。有名管道以磁盘文件的方式存在，可以实现本机任意两个进程通信。</p>
+<p>3.信号(Signal) ：信号是一种比较复杂的通信方式，用于通知接收进程某个事件已经发生</p>
+<p>4.消息队列(Message Queuing) ：消息队列是消息的链表,具有特定的格式,存放在内存中并由消息队列标识符标识。管道和消息队列的通信数据都是先进先出的原则。                  与管道（无名管道：只存在于内存中的文件；命名管道：存在于实际的磁盘介质或者文件系统）不同的是消息队列存放在内核中，只有在内核重启(即，操作系统重启)或者显示地删除一个消息队列时，该消息队列才会被真正的删除。消息队列可以实现消息的随机查询,消息不一定要以先进先出的次序读取,也可以按消息的类型读取.比FIFO更有优势。消息队列克服了信号承载信息量少，管道只能承载无格式字 节流以及缓冲区大小受限等缺陷。</p>
+<p>5.信号量(Semaphores) ：信号量是一个计数器，用于多进程对共享数据的访问，信号量的意图在于进程间同步。这种通信方式主要用于解决与同步相关的问题并避免竞争条件。</p>
+<p>6.共享内存(Shared memory) ：使得多个进程可以访问同一块内存空间，不同进程可以及时看到对方进程中对共享内存中数据的更新。这种方式需要依靠某种同步操作，如互斥锁和信号量等。可以说这是最有用的进程间通信方式。</p>
+<p>7.套接字(Sockets) : 此方法主要用于在客户端和服务器之间通过网络进行通信。套接字是支持TCP&#x2F;IP的网络通信的基本操作单元，可以看做是不同主机之间的进程进行双向通信的端点，简单的说就是通信的两方的一种约定，用套接字中的相关函数来完成通信过程。</p>
+<h3 id="共享资源？"><a href="#共享资源？" class="headerlink" title="共享资源？"></a>共享资源？</h3><h3 id="同步互斥"><a href="#同步互斥" class="headerlink" title="同步互斥"></a>同步互斥</h3><h3 id="线程间同步的方式有哪些？"><a href="#线程间同步的方式有哪些？" class="headerlink" title="线程间同步的方式有哪些？"></a>线程间同步的方式有哪些？</h3><p>线程同步是两个或多个共享关键资源的线程的并发执行。应该同步线程以避免关键的资源使用冲突。</p>
+<p>操作系统一般有下面三种线程同步的方式：</p>
+<p>1.互斥量(Mutex)：采用互斥对象机制，只有拥有互斥对象的线程才有访问公共资源的权限。因为互斥对象只有一个，所以可以保证公共资源不会被多个线程同时访问。比如 Java 中的 synchronized 关键词和各种 Lock 都是这种机制。</p>
+<p>2.信号量(Semphares) ：它允许同一时刻多个线程访问同一资源，但是需要控制同一时刻访问此资源的最大线程数量</p>
+<p>3.事件(Event) :Wait&#x2F;Notify：通过通知操作的方式来保持多线程同步，还可以方便的实现多线程优先级的比较操作</p>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><h3 id="内存管理主要是做什么的？"><a href="#内存管理主要是做什么的？" class="headerlink" title="内存管理主要是做什么的？"></a>内存管理主要是做什么的？</h3><p>操作系统的内存管理主要负责<strong>内存的分配与回收</strong>（malloc 函数：申请内存，free 函数：释放内存），另外地址转换也就是将逻辑地址转换成相应的物理地址等功能也是操作系统内存管理做的事情。</p>
+<h3 id="内存管理机制有哪几种"><a href="#内存管理机制有哪几种" class="headerlink" title="内存管理机制有哪几种"></a>内存管理机制有哪几种</h3><h3 id="快表和多级页表分别解决了什么问题"><a href="#快表和多级页表分别解决了什么问题" class="headerlink" title="快表和多级页表分别解决了什么问题"></a>快表和多级页表分别解决了什么问题</h3><p>虚拟地址到物理地址的转换要快。</p>
+<p>解决虚拟地址空间大，页表也会很大的问题。</p>
+<p><strong>快表</strong>：      为了解决虚拟地址到物理地址的<em><strong>转换速度</strong></em>，操作系统在 <em><strong>页表方案</strong></em> 基础之上引入了 <em><strong>快表</strong></em> 来加速虚拟地址到物理地址的转换。 我们可以把块表理解为一种特殊的高速缓冲存储器（Cache），其中的内容是页表的一部分或者全部内容。 作为页表的Cache，它的作用与页表相似，但是提高了访问速率。由于采用页表做地址转换，读写内存数据时CPU要访问两次主存。 有了快表，有时只要访问一次高速缓冲存储器，一次主存，这样可加速查找并提高指令执行速度。</p>
+<p>使用快表之后的地址转换流程是这样的：</p>
+<ol>
+<li>根据虚拟地址中的页号查快表；</li>
+<li>如果该页在快表中，直接从快表中读取相应的物理地址； </li>
+<li>如果该页不在快表中，就访问内存中的页表，再从页表中得到物理地址，同时将页表中的该映射表项添加到快表中； </li>
+<li>当快表填满后，又要登记新页时，就按照一定的淘汰策略淘汰掉快表中的一个页。</li>
+</ol>
+<p>会发现快表和我们平时经常在我们开发的系统使用的缓存（比如 Redis）很像，的确是这样的，操作系统中的很多思想、很多经典的算法，你都可以在我们日常开发使用的各种工具或者框架中找到它们的影子。</p>
+<p><strong>多级页表</strong>：         引入多级页表的主要目的是为了避免把全部页表一直放在内存中占用过多空间，特别是那些根本就不需要的页表就不需要保留在内存中。多级页表属于时间换空间的典型场景，</p>
+<p><strong>总结</strong>：              为了提高内存的空间性能，提出了多级页表的概念；但是提到空间性能是以浪费时间性能为基础的，因此为了补充损失的时间性能，提出了快表（即TLB）的概念。不论是快表还是多级页表实际上都利用到了程序的局部性原理，局部性原理在后面的虚拟内存这部分会介绍到。</p>
+<h3 id="分页机制和分段机制有哪些共同点？"><a href="#分页机制和分段机制有哪些共同点？" class="headerlink" title="分页机制和分段机制有哪些共同点？"></a>分页机制和分段机制有哪些共同点？</h3><h3 id="虚拟地址和逻辑地址"><a href="#虚拟地址和逻辑地址" class="headerlink" title="虚拟地址和逻辑地址"></a>虚拟地址和逻辑地址</h3><p>编程一般只有可能和逻辑地址打交道，比如在 C 语言中，指针里面存储的数值就可以理解成为内存里的一个地址，这个地址也就是我们说的逻辑地址，逻辑地址由操作系统决定。物理地址指的是真实物理内存中地址，更具体一点来说就是内存地址寄存器中的地址。物理地址是内存单元真正的地址。</p>
+<h3 id="内存管理的相关概念、内存分配算法、"><a href="#内存管理的相关概念、内存分配算法、" class="headerlink" title="内存管理的相关概念、内存分配算法、"></a>内存管理的相关概念、内存分配算法、</h3><h3 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h3><h4 id="什么是虚拟内存？"><a href="#什么是虚拟内存？" class="headerlink" title="什么是虚拟内存？"></a>什么是虚拟内存？</h4><p>这个在我们平时使用电脑特别是 Windows 系统的时候太常见了。很多时候我们使用点开了很多占内存的软件，这些软件占用的内存可能已经远远超出了我们电脑本身具有的物理内存。</p>
+<p>正是因为虚拟内存的存在，通过虚拟内存可以让程序可以拥有超过系统物理内存大小的可用内存空间。另外，虚拟内存为每个进程提供了一个一致的、私有的地址空间，它让每个进程产生了一种自己在独享主存的错觉（每个进程拥有一片连续完整的内存空间）。这样会更加有效地管理内存并减少出错。</p>
+<p>虚拟内存是计算机系统内存管理的一种技术，我们可以手动设置自己电脑的虚拟内存。不要单纯认为虚拟内存只是“使用硬盘空间来扩展内存“的技术。虚拟内存的重要意义是它定义了一个连续的虚拟地址空间，并且 把内存扩展到硬盘空间。</p>
+<p><strong>维基百科</strong>：虚拟内存 使得应用程序<strong>认为</strong>它拥有连续的可用的内存（一个连续完整的地址空间），而实际上，它通常是被分隔成多个物理内存碎片，还有部分暂时存储在外部磁盘存储器上，在需要时进行数据交换。与没有使用虚拟内存技术的系统相比，使用这种技术的系统使得大型程序的编写变得更容易，对真正的物理内存（例如RAM）的使用也更有效率。目前，大多数操作系统都使用了虚拟内存，如Windows家族的“虚拟内存”；Linux的“交换空间”等。</p>
+<h4 id="如何实现虚拟内存？"><a href="#如何实现虚拟内存？" class="headerlink" title="如何实现虚拟内存？"></a>如何实现虚拟内存？</h4><p>虚拟内存的实现需要建立在离散分配的内存管理方式的基础上。</p>
+<p>虚拟内存的实现有以下三种方式： </p>
+<ol>
+<li>请求分页存储管理 ：建立在基本分页系统基础之上，为了支持虚拟存储器功能而增加了请求调页功能和页面置换功能。请求分页是目前最常用的一种实现虚拟存储器的方法。</li>
+<li>请求分段存储管理</li>
+<li>请求段页式存储管理</li>
+</ol>
+<p>不管是上面那种实现方式，我们一般都需要： </p>
+<p>一定容量的内存和外存：在载入程序的时候，只需要将程序的一部分装入内存，而将其他部分留在外存，然后程序就可以执行了； 缺页中断：如果需执行的指令或访问的数据尚未在内存（称为缺页或缺段），则由处理器通知操作系统将相应的页面或段调入到内存，然后继续执行程序； 虚拟地址空间 ：逻辑地址到物理地址的变换。</p>
+<h3 id="常见的页面置换算法有哪些？"><a href="#常见的页面置换算法有哪些？" class="headerlink" title="常见的页面置换算法有哪些？"></a>常见的页面置换算法有哪些？</h3><p>OPT页面置换算法（最佳页面置换算法） ：<br>理想情况，不可能实现，一般作为衡量其他置换算法的方法。</p>
+<p>FIFO页面置换算法（先进先出页面置换算法） :<br>总是淘汰最先进入内存的页面，即选择在内存中驻留时间最久的页面进行淘汰。</p>
+<p>LRU页面置换算法（最近未使用页面置换算法） ：<br>LRU（Least Currently Used）算法赋予每个页面一个访问字段，用来记录一个页面自上次被访问以来所经历的时间T，当须淘汰一个页面时，选择现有页面中其T值最大的，即最近最久未使用的页面予以淘汰。</p>
+<p>LFU页面置换算法（最少使用页面排序算法） :<br>LFU（Least Frequently Used）算法会让系统维护一个按最近一次访问时间排序的页面链表，链表首节点是最近刚刚使用过的页面，链表尾节点是最久未使用的页面。访问内存时，找到相应页面，并把它移到链表之首。缺页时，置换链表尾节点的页面。也就是说内存内使用越频繁的页面，被保留的时间也相对越长。</p>
+<h3 id="页面置换算法的作用是什么？"><a href="#页面置换算法的作用是什么？" class="headerlink" title="页面置换算法的作用是什么？"></a>页面置换算法的作用是什么？</h3><p>地址映射过程中，若在页面中发现所要访问的页面不在内存中，则发生缺页中断 。</p>
+<p>缺页中断就是要访问的页不在主存，需要操作系统将其调入主存后再进行访问。在这个时候，被内存映射的文件实际上成了一个分页交换文件</p>
+<p>当发生缺页中断时，如果当前内存中并没有空闲的页面，操作系统就必须在内存选择一个页面将其移出内存，以便为即将调入的页面让出空间。用来选择淘汰哪一页的规则叫做页面置换算法，我们可以把页面置换算法看成是淘汰页面的规则。</p>
+<h3 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h3><p>局部性原理是虚拟内存技术的基础，正是因为程序运行具有局部性原理，才可以只装入部分程序到内存就开始运行。</p>
+<p>局部性原理表现在以下两个方面： </p>
+<ol>
+<li>时间局部性 ：如果程序中的某条指令一旦执行，不久以后该指令可能再次执行；如果某数据被访问过，不久以后该数据可能再次被访问。产生时间局部性的典型原因，是由于在程序中存在着大量的循环操作。</li>
+<li>空间局部性 ：一旦程序访问了某个存储单元，在不久之后，其附近的存储单元也将被访问，即程序在一段时间内所访问的地址，可能集中在一定的范围之内，这是因为指令通常是顺序存放、顺序执行的，数据也一般是以向量、数组、表等形式簇聚存储的。</li>
+</ol>
+<p>时间局部性是通过将近来使用的指令和数据保存到高速缓存存储器中，并使用高速缓存的层次结构实现。</p>
+<p>空间局部性通常是使用较大的高速缓存，并将预取机制集成到高速缓存控制逻辑中实现。</p>
+<p>虚拟内存技术实际上就是建立了 “内存一外存”的两级存储器的结构，利用局部性原理实现髙速缓存。</p>
+<h2 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h2><p>文件系统的概念、文件访问方式、目录结构</p>
+<h2 id="进程调度算法"><a href="#进程调度算法" class="headerlink" title="进程调度算法"></a>进程调度算法</h2><h3 id="进程调度算法有哪些？"><a href="#进程调度算法有哪些？" class="headerlink" title="进程调度算法有哪些？"></a>进程调度算法有哪些？</h3><p>进程调度算法的概念、调度方式、调度算法的优缺点</p>
+<h2 id="死锁问题"><a href="#死锁问题" class="headerlink" title="死锁问题"></a>死锁问题</h2><p>死锁的定义、产生原因、预防和解决方法</p>
+<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="TCP和UDP"><a href="#TCP和UDP" class="headerlink" title="TCP和UDP"></a>TCP和UDP</h2><h3 id="TCP的三次握手和四次握手"><a href="#TCP的三次握手和四次握手" class="headerlink" title="TCP的三次握手和四次握手"></a>TCP的三次握手和四次握手</h3><h4 id="三次握手："><a href="#三次握手：" class="headerlink" title="三次握手："></a>三次握手：</h4><blockquote>
+<p>第一次：SYN，不能携带数据，但是消耗序号</p>
+<p>第二次：SYN-ACK，服务器为TCP链接分配缓存和变量，不能携带数据，但是消耗序号</p>
+<p>第三次：ACK，客户端为TCP分配缓存和变量，可以携带数据</p>
+
+</blockquote>
+<h4 id="四次握手断开"><a href="#四次握手断开" class="headerlink" title="四次握手断开"></a>四次握手断开</h4><blockquote>
+<p>第四次握手完毕，为什么要等待2MSL：</p>
+<ol>
+<li>保证最后的ack报文可以到达</li>
+<li>是报文在网络中最长的生存时间，防止已经失效的链接请求报文段突然收到</li>
+</ol>
+
+</blockquote>
+<p>由TCP的三次握手和四次断开可以看出，TCP使用面向连接的通信方式， 大大<strong>提高了数据通信的可靠性</strong>，使发送数据端和接收端在数据正式传输前就有了交互， 为数据正式传输打下了<strong>可靠</strong>的基础。</p>
+<h3 id="TCP和UDP区别"><a href="#TCP和UDP区别" class="headerlink" title="TCP和UDP区别"></a>TCP和UDP区别</h3><ul>
+<li>是否需要连接<ul>
+<li>TCP 要求在发送方和接收方开始通信之前建立一个良好的连接，它是一个面向连接的协议。</li>
+<li>UDP无连接</li>
+</ul>
+</li>
+<li>接收数据是否有序<ul>
+<li>TCP因为有链接，所以有序</li>
+<li>UDP没有建立链接，无序</li>
+</ul>
+</li>
+<li>错误检查，TCP有错误检查，UDP只有基本的校验和</li>
+<li>传输是否可靠<ul>
+<li>TCP可靠</li>
+<li>UDP可能丢包，不可靠</li>
+</ul>
+</li>
+<li>速度<ul>
+<li>TCP慢，因为需要考虑各种东西</li>
+<li>UDP快</li>
+</ul>
+</li>
+<li>流模式(TCP)与数据报模式(UDP)</li>
+<li>应用场合<ul>
+<li>TCP用于HTTPS、HTTP、SMTP、FTP等</li>
+<li>UDP用于视频电话、IP语音、DNS等</li>
+</ul>
+</li>
+<li>TCP支持广播，UDP不支持广播</li>
+<li>如果更关注数据的可靠性和顺序，则用TCP；如果关注速度，则UDP</li>
+</ul>
+<h3 id="TCP拥塞控制方法"><a href="#TCP拥塞控制方法" class="headerlink" title="TCP拥塞控制方法"></a>TCP拥塞控制方法</h3><ul>
+<li>慢开始<ul>
+<li>拥塞窗口从1开始增加，1,2,4,8…… 若发生超时，则窗口减半，从头开始执行慢开始</li>
+</ul>
+</li>
+<li>拥塞避免<ul>
+<li>若拥塞窗口达到阈值，则每次窗口大小+1</li>
+</ul>
+</li>
+<li>快重传<ul>
+<li>发送方收到3个重复的确认，则应该立即重传缺失的信息</li>
+</ul>
+</li>
+<li>快恢复<ul>
+<li>若超时，则拥塞窗口大小减半</li>
+</ul>
+</li>
+</ul>
+<h2 id="计算机网络的层次结构？解释一下每层的作用？"><a href="#计算机网络的层次结构？解释一下每层的作用？" class="headerlink" title="计算机网络的层次结构？解释一下每层的作用？"></a>计算机网络的层次结构？解释一下每层的作用？</h2><p>计算机网络的层次结构通常是指<strong>OSI模型和TCP&#x2F;IP模型</strong>，其中OSI模型分为七层，分别为物理层、数据链路层、网络层、传输层、会话层、表示层和应用层；TCP&#x2F;IP模型分为四层，分别为网络接口层、网络层、传输层和应用层。</p>
+<p>OSI模型是一种通信协议的<strong>参考模型</strong>，它把通信协议的功能划分为七层，每一层都具有特定的功能，它们分别是：</p>
+<ol>
+<li>物理层（Physical Layer）：物理层是最底层的一层，它负责处理<strong>网络硬件和物理介质</strong>，例如电缆、光纤和无线电波等。物理层的主要功能是传输比特流，即将数字信号转换为物理信号。</li>
+<li>数据链路层（Data Link Layer）：数据链路层负责将比特流转换为帧（Frame），并提供<strong>物理地址</strong>（MAC地址）以便在网络上进行寻址和识别。数据链路层还负责差错检测和纠正，并提供可靠的数据传输服务。</li>
+<li>网络层（Network Layer）：网络层负责在不同的网络之间转发数据包，并提供<strong>网络寻址和路由选择</strong>功能。网络层使用<strong>IP地址</strong>来标识主机和路由器，并提供服务质量（QoS）保证。</li>
+<li>传输层（Transport Layer）：传输层负责将数据分割成适当大小的数据段，并提供可靠的<strong>端到端</strong>数据传输服务。传输层使用<strong>TCP协议和UDP协议</strong>来实现可靠和不可靠的数据传输。</li>
+<li>会话层（Session Layer）：会话层负责管理和控制数据通信会话，它为通信双方提供会话连接、数据同步、会话恢复等服务。</li>
+<li>表示层（Presentation Layer）：表示层负责将数据进行编码、解码和格式转换，以便在不同的系统之间传输和解释数据。它还提供加密和解密、数据压缩和解压缩等服务。</li>
+<li>应用层（Application Layer）：应用层是最上层的一层，它提供应用程序和网络之间的接口，包括HTTP、FTP、SMTP、DNS等常用的应用层协议。</li>
+</ol>
+<p>总体来说，OSI模型将通信协议的功能划分为不同的层次，每个层次都提供特定的服务和功能，从物理层到应用层逐层协同工作，形成了完整的通信协议体系。</p>
+<h2 id="解释一下TCP-x2F-IP协议、HTTP协议、DNS、路由器？"><a href="#解释一下TCP-x2F-IP协议、HTTP协议、DNS、路由器？" class="headerlink" title="解释一下TCP&#x2F;IP协议、HTTP协议、DNS、路由器？"></a>解释一下TCP&#x2F;IP协议、HTTP协议、DNS、路由器？</h2><h3 id="TCP-x2F-IP协议："><a href="#TCP-x2F-IP协议：" class="headerlink" title="TCP&#x2F;IP协议："></a>TCP&#x2F;IP协议：</h3><p>TCP&#x2F;IP是一种常用的网络协议，它包含了TCP协议和IP协议。TCP协议负责在网络上可靠地传输数据，而IP协议则负责在网络上定位主机和路由数据包。</p>
+<h3 id="DNS："><a href="#DNS：" class="headerlink" title="DNS："></a>DNS：</h3><p>DNS（Domain Name System）是一种用于将域名转换为IP地址的系统，它允许用户使用易于记忆的域名来访问互联网上的计算机和资源。</p>
+<h3 id="路由器："><a href="#路由器：" class="headerlink" title="路由器："></a>路由器：</h3><p>路由器是一种网络设备，它可以在不同的网络之间转发数据包。路由器可以选择最佳路径将数据包发送到目的地，从而提高网络的效率和安全性。</p>
+<h2 id="在家里访问www-google-com的过程，以及涉及到的硬件和协议"><a href="#在家里访问www-google-com的过程，以及涉及到的硬件和协议" class="headerlink" title="在家里访问www.google.com的过程，以及涉及到的硬件和协议"></a>在家里访问<a target="_blank" rel="noopener" href="http://www.google.com的过程,以及涉及到的硬件和协议/">www.google.com的过程，以及涉及到的硬件和协议</a></h2><p>在我家用电脑访问<a target="_blank" rel="noopener" href="http://www.google.com的过程中,涉及到的硬件包括电脑、路由器和调制解调器(modem),涉及到的网络协议包括http、tcp/IP%E3%80%81DNS%E7%AD%89%E3%80%82%E4%BB%A5%E4%B8%8B%E6%98%AF%E8%BF%99%E4%B8%AA%E8%BF%87%E7%A8%8B%E7%9A%84%E7%AE%80%E8%A6%81%E6%8F%8F%E8%BF%B0%EF%BC%9A">www.google.com的过程中，涉及到的硬件包括电脑、路由器和调制解调器（Modem），涉及到的网络协议包括HTTP、TCP/IP、DNS等。以下是这个过程的简要描述：</a></p>
+<ol>
+<li>我在电脑上打开浏览器，并输入<a target="_blank" rel="noopener" href="http://www.google.com的url./">www.google.com的URL。</a></li>
+<li>电脑中的操作系统会将这个URL发送给浏览器程序。</li>
+<li>浏览器查找本地DNS缓存以查找与<a target="_blank" rel="noopener" href="http://www.google.com相关的ip地址.如果没有找到,浏览器会发送一个dns请求来解析域名./">www.google.com相关的IP地址。如果没有找到，浏览器会发送一个DNS请求来解析域名。</a><ol>
+<li>如果你的计算机上没有缓存DNS条目，它将向你的ISP的DNS服务器发送一个请求，该请求将返回与<a target="_blank" rel="noopener" href="http://www.google.com相关的ip地址./">www.google.com相关的IP地址。</a></li>
+</ol>
+</li>
+<li>浏览器程序在应用层上使用HTTP协议构建一个HTTP请求，其中包括请求的资源（即<a target="_blank" rel="noopener" href="http://www.google.com)和其他相关信息./">www.google.com）和其他相关信息。</a></li>
+<li>电脑中的操作系统将这个HTTP请求传递给网络协议栈，在传输层上使用TCP&#x2F;IP协议将这个请求分成一个个数据包，每个数据包都包含了一个序列号，以便服务器能够正确重组请求。</li>
+<li>网络协议栈将这些数据包通过本地网络连接的路由器和调制解调器传输到互联网上。</li>
+<li>在互联网中，数据包会通过一系列路由器和交换机转发，最终到达Google服务器所在的网络。</li>
+<li>Google服务器收到请求后，使用HTTP协议构建一个HTTP响应，其中包括请求的资源（即Google网页）和其他相关信息。</li>
+<li>Google服务器将HTTP响应分成一个个数据包，并使用TCP&#x2F;IP协议将这些数据包发送回请求者的电脑。</li>
+<li>在请求者的电脑上，网络协议栈将这些数据包重组成一个完整的HTTP响应，并将其传递给浏览器程序。</li>
+<li>浏览器程序解析HTTP响应中的HTML、CSS、JavaScript等内容，并将这些内容呈现为网页。</li>
+</ol>
+<p>总之，这个过程涉及到了多个硬件和网络协议，其中包括电脑、路由器、调制解调器、HTTP、TCP&#x2F;IP和DNS等。这些硬件和协议共同工作，使得我可以在电脑上访问<a target="_blank" rel="noopener" href="http://www.google.com并获取所需的信息./">www.google.com并获取所需的信息。</a></p>
+<h2 id="使用七层模型讲述一下一个HTTP请求的过程"><a href="#使用七层模型讲述一下一个HTTP请求的过程" class="headerlink" title="使用七层模型讲述一下一个HTTP请求的过程"></a>使用七层模型讲述一下一个HTTP请求的过程</h2><p>使用七层模型（OSI模型）来讲述一个HTTP请求的过程如下：</p>
+<ol>
+<li>应用层：在应用层，浏览器会构造一个HTTP请求报文，报文中包含请求方法、URL、请求头和请求体等信息。</li>
+<li>表示层：在表示层，HTTP请求报文中的数据会被转换为一种标准格式，以便于在不同的计算机之间传输和解析。</li>
+<li>会话层：在会话层，浏览器会与Web服务器建立一个会话，并对该会话进行管理。</li>
+<li>传输层：在传输层，HTTP请求报文会被分成若干个数据包，每个数据包都包含了一个序列号，以确保数据的正确性和完整性。此时使用的协议为TCP协议。</li>
+<li>网络层：在网络层，数据包会被传输到目标计算机，此时使用的协议为IP协议。</li>
+<li>数据链路层：在数据链路层，数据包会被转换为帧，以便于在物理网络中传输。</li>
+<li>物理层：在物理层，数据包通过物理网络介质（例如电缆、光纤等）传输到目标计算机。</li>
+</ol>
+<p>一旦到达目标计算机后，以上过程反向进行，直到浏览器获得Web服务器的响应。Web服务器收到请求后，进行类似的过程来处理请求，并将结果返回给浏览器。这个响应过程也需要经过七层模型的处理，但是在不同层的处理过程可能会有所不同。</p>
+<p>总之，一个HTTP请求涉及到了多个层次的网络协议和技术，它们共同工作，使得我们能够在浏览器中方便地访问和浏览各种网站和网络资源。</p>
+<h2 id="常见的计网名词解释（explain-jargons）："><a href="#常见的计网名词解释（explain-jargons）：" class="headerlink" title="常见的计网名词解释（explain jargons）："></a>常见的计网名词解释（explain jargons）：</h2><h3 id="PCM"><a href="#PCM" class="headerlink" title="PCM"></a>PCM</h3><p>——pulse code modulation——主要过程是将话音、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9B%BE%E5%83%8F/773234?fromModule=lemma_inlink">图像</a>等模拟信号每隔一定时间进行取样，使其离散化，同时将抽样值按分层单位四舍五入取整量化，同时将抽样值按一组二进制码来表示抽样脉冲的幅值。</p>
+<h3 id="循环冗余校验码"><a href="#循环冗余校验码" class="headerlink" title="循环冗余校验码"></a>循环冗余校验码</h3><p>CRC(Cyclic Redundancy Check)码，是数据通信领域中最常用的一种差错校验码，其特征是<strong>信息字段和校验字段的长度可以任意选定</strong>。基本思想是将要传送的信息M(X)表示为一个多项式L，用L除以（模2除）一个<strong>预先确定</strong>的生成多项式G(X)，得到的余式添加到M(X)尾部，就构成所需的循环冗余校验码。有以下特点：①可检测出<strong>所有奇数位</strong>错；②可检测出<strong>所有双比特</strong>的错；③可检测出所有<strong>小于、等于</strong>校验位长度的突发错。</p>
+<h3 id="隐藏终端问题"><a href="#隐藏终端问题" class="headerlink" title="隐藏终端问题"></a>隐藏终端问题</h3><p>在无线局域网中，由于无线电的<strong>覆盖范围</strong>有限，导致一个无线站B的两个邻居A和C虽然彼此不在对方的范围内，但可能潜在地干扰彼此和共同邻居之间的通信，从而互相构成隐藏终端问题。</p>
+<h3 id="CDMA"><a href="#CDMA" class="headerlink" title="CDMA"></a>CDMA</h3><p>CDMA（Code Division Multiple Access）即<strong>码分多址</strong>访问，是一种多路复用技术，CDMA系统是基于码分技术和多址技术的通信系统，系统为每个用户分配各自特定芯片码，<strong>芯片码之间具有相互正交</strong>，允许多路信号使用相同的带宽同时传输数据。</p>
+<h3 id="CSMA-x2F-CD"><a href="#CSMA-x2F-CD" class="headerlink" title="CSMA&#x2F;CD"></a>CSMA&#x2F;CD</h3><p>CSMA&#x2F;CD(Carrier Sense multiple Access&#x2F;Collision Detection), 带冲突检测的载波侦听多路访问协议，是争用型的介质访问控制协议，位于数据链路层，工作原理为：</p>
+<p>（1）发送站发送时首先侦听载波（载波检测）。</p>
+<p>（2）如果网络（总线）空闲，发送站开始发送它的帧。</p>
+<p>（3）如果网络（总线）被占用，发送站继续侦听载波并推迟发送直至网络空闲。</p>
+<p>（4）发送站在发送过程中侦听碰撞（碰撞检测）。</p>
+<p>（5）如果检测到碰撞，发送站立即停止发送，这意味着所有卷入碰撞的站都停止发送。</p>
+<p>（6）每个卷入碰撞的站都进入退避周期，即按照一定的退避算法等一段随机时间后进行重发，亦即重复上述1-6步骤，直至发送成功。</p>
+<h3 id="piggybacking"><a href="#piggybacking" class="headerlink" title="piggybacking"></a>piggybacking</h3><p>即捎带确认，是一种暂时延缓当前确认信息的发送，以便将确认信息搭载在下一个出境数据帧上的技术。 </p>
+<h3 id="ARQ"><a href="#ARQ" class="headerlink" title="ARQ"></a>ARQ</h3><p>自动重发请求，是目前网络使用的一种主流 RDT（可靠数据传输）技术，使用检错码传输数据，如果接收方检测到所收的报文有错，则反馈一个信息给发送方，由发送方实施重传。</p>
+<h3 id="其余名词解释"><a href="#其余名词解释" class="headerlink" title="其余名词解释"></a>其余名词解释</h3><p>PSTN	public switch telephone network	打电话网络<br>NAP	network access port	网络接入点<br>ISP	Internet Service provider	网络服务商<br>RFC	Request For Comment	征求意见稿<br>IETF	Internet Engineering Task Force	维护RFC的工程任务组<br>ADSL	Asymmetric Digital Subscriber Line	非对称数字用户线<br>HFC	Hybrid Fiber Coax	混合光纤同轴电缆<br>LAN	Local Area Network	局域网<br>FDM	Frequency Division Multiplex	频率复用<br>TDM	Time Division Multiplex	时分复用<br>CDMA	Code Division Multiplex Access	码分复用<br>ATM	Asynchronous Transmit Mode	异步传输模式<br>PDU	Protocol Data Unit	协议数据单元<br>ISO	Internet Standard Organization	国际标准化组织<br>OSI	Open System Interconnection	开放系统互联<br>RTP	Realtime Transfer Protocol	实时传输协议<br>SMTP	Simple Mail Transfer Protocol	简单邮件传输协议<br>HTTP	Hyper Text Transfer Protocol	超文本传输协议<br>HTTPS	Hyper Text Transfer Protocol over Secure Socket Layer	超文本传输安全协议<br>HTML	Hyper Text Markdown Language	超文本标记语言<br>FTP	File Transfer Protocol	文件传输协议<br>TFTP	Trivial File Transfer Protocol	简单文件传输协议<br>SIP	Session Initialization Protocol	会话初始协议<br>TCP	Transmission Control Protocol	传输控制协议<br>UDP	User Datagram Protocol	用户数据报协议<br>URL	Uniform Resource Locator	统一资源定位器<br>URI	Uniform Resource Identifier	统一资源标识符<br>RTT	Round Trip Time	服务器和客户端间的往返时间<br>ASCII	American Standard Code for Information Interchange	美国信息交换标准代码<br>CGI	Common Gateway Interface	公共网关接口<br>pop3	Post Office Protocol	邮局协议<br>IMAP	Internet Mail Access Protocol	网络邮件访问协议<br>MIME	Multipurpose Internet Mail Extension	多用途网络邮件扩展<br>DNS	Domain Name System	域名服务系统<br>RR	Resource Records	DNS的资源记录<br>TTL	Time To Live	保留时间<br>NFS	Network File System	网络文件系统<br>SNMP	Simple Network Management Protocol	简单网络管理协议<br>DHCP	Dynamic Host Configuration Protocol	动态主机配置协议<br>RIP	Routing Information Protocol	路由信息协议<br>MSS	Maximum Segment Size	最大段大小<br>EFCI	Explicit Forward Congestion Indication	明确转发拥塞指示<br>AIMD	Additive Increase Multiplicative Decrease	加性增乘性减<br>BGP	Border Gateway Protocol	边界网关协议<br>OSPF	Open Shortest Path First Protocol	开放式最短路径优协议<br>ICMP	Internet Control Message Protocol	控制报文协议<br>MTU	Maximum Transmission Unit	最大传输单元<br>CIDR	Classless Inter Domain Routing	无类的域间路由<br>NAT	Network Address Translation	网络地址变换<br>MAC	Media Access Control Address	硬件地址<br>NIC	Network Interface Card	网卡<br>CRC	Cyclic Redundancy Check	循环冗余校验<br>CSMA	Carrier Sense Multiple Access	载波侦听多路访问<br>CSMA&#x2F;CD	Carrier Sense Multiple Access With Collision Detection	带碰撞检测的载波侦听多路访问<br>CSMA&#x2F;CA	Carrier Sense Multiple Access With Collision Avoidance	带碰撞避免的载波侦听多路访问<br>ARP	Address Resolution Protocol	地址解析协议<br>jpeg	Joint Photographic Expert Group	联合图像专家组<br>ISDN	Integred Services Digital Network	综合服务数字网<br>WAN	Wide Area Network	广域网<br>MAN	Metopolitan Area Network	城域网<br>WLAN	Wireless Local Area Network	无线局域网<br>MPEG	Moving Picture Experts Group	动态图像专家组<br>FSM	Finite State Machine	有限状态机<br>IGRP	Interior Gateway Routing Protocol	内部网关路由协议<br>RARP	Reverse Address Resolution Protocol	反向地址转换协议</p>
+<h2 id="数学问题"><a href="#数学问题" class="headerlink" title="数学问题"></a>数学问题</h2><h3 id="线代"><a href="#线代" class="headerlink" title="线代"></a>线代</h3><h4 id="余子式"><a href="#余子式" class="headerlink" title="余子式"></a>余子式</h4><h4 id="代数余子式"><a href="#代数余子式" class="headerlink" title="代数余子式"></a>代数余子式</h4><h4 id="行列式的含义"><a href="#行列式的含义" class="headerlink" title="行列式的含义"></a>行列式的含义</h4><p>值等于特特征值乘积</p>
+<p>行列式的值，对应着空间体积的改变</p>
+<p>如果是0，意味着空间沿着某一维收缩了，没有体积了</p>
+<p>如果是1，意味着空间没有变动</p>
+<p>几何含义：</p>
+<p>在给定的一组基下，n个向量扩张成一个n维的广义四边形的体积</p>
+<h4 id="矩阵的秩"><a href="#矩阵的秩" class="headerlink" title="矩阵的秩"></a>矩阵的秩</h4><p>k阶子式：在矩阵中取出k行k列，那么交叉处的k^2个元素组成的行列式</p>
+<p>秩就是非零子式的最高阶数，也是其极大线性无关组的元素个数</p>
+<p>与向量组的关系：矩阵的秩等于行向量组的秩，也等于列向量组的秩</p>
+<p>向量组的秩定义为向量组的极大线性无关组所含向量的个数。</p>
+<p>与向量空间的关系：任何矩阵的<strong>行空间的维数等于矩阵的列空间的维数等于矩阵的秩</strong>。</p>
+<p>矩阵的迹：主队对角线的加和</p>
+<h4 id="线性方程组的解"><a href="#线性方程组的解" class="headerlink" title="线性方程组的解"></a>线性方程组的解</h4><p>齐次，r&#x3D;n，唯一解，r&lt;n，无穷多解</p>
+<p>非齐次：r&#x3D;rab&#x3D;n，唯一解，r&#x3D;rab&lt;n，无穷多解，r≠rab，无解</p>
+<h4 id="线性相关、无关"><a href="#线性相关、无关" class="headerlink" title="线性相关、无关"></a>线性相关、无关</h4><p>若存在一组不完全为0的k1到kn，是的k1a1 + k2a2 +… &#x3D;0，则相关，否则无关</p>
+<p>几何：本质就是他们长成的广义四边形体积是否为0，若相关，体积为0，若不相关，体积不为0</p>
+<p>线性无关矢量组成的矩阵的行列式不为零；线性相关矢量组成的矩阵的行列式必为零。</p>
+<p>线性无关 &#x3D; 满秩 &#x3D; 矩阵可逆 &#x3D; 特征值没有0</p>
+<h4 id="向量空间"><a href="#向量空间" class="headerlink" title="向量空间"></a>向量空间</h4><p>n 维向量构成的非空集合，对于向量加法和数乘两种运算封闭。</p>
+<p>给元素装配了<strong>加法</strong>和<strong>数乘</strong>的<strong>非空集合。</strong></p>
+<p>基：假设V是向量空间，a1到an线性无关，那么V中的向量均可由a1到an表示</p>
+<p>基中所含向量个数 r 称为向量空间的维数。</p>
+<h4 id="特征值特征向量"><a href="#特征值特征向量" class="headerlink" title="特征值特征向量"></a>特征值特征向量</h4><p>定义：方阵A，满足Ax &#x3D; kx，那么k就是特征值，x就是特征向量</p>
+<p>关系：一个特征值，多个特征向量；；一个特征向量属于一个特征值</p>
+<p>​		不同特征值的特征向量无关</p>
+<p>意义：</p>
+<p>如果一个向量投影到一个方阵定义的空间中<strong>只发生伸缩</strong>变化，而<strong>不发生旋转</strong>变化，那么该向量就是这个方阵的一个<strong>特征向量</strong>，<strong>伸缩的比例就</strong>是<strong>特征值</strong>。</p>
+<p>特征向量的代数含义是：<strong>将矩阵乘法转换为数乘操作</strong>；</p>
+<p>特征向量的几何含义是：特征向量通过方阵 A 变换<strong>只进行伸缩</strong>，而<strong>保持特征向量的方向不变</strong>。</p>
+<p>特征值表示的是这个特征到底有多重要，类似于权重，而特征向量在几何上就是一个点，从原点到该点的方向表示向量的方向。</p>
+<h4 id="相似矩阵"><a href="#相似矩阵" class="headerlink" title="相似矩阵"></a>相似矩阵</h4><p>两个n阶，存在可逆P，是P逆AP &#x3D; B，则相似</p>
+<h4 id="向量正交、矩阵正交"><a href="#向量正交、矩阵正交" class="headerlink" title="向量正交、矩阵正交"></a>向量正交、矩阵正交</h4><p>两个向量内积为0，正交</p>
+<p>A转置 &#x3D; A逆，A正交</p>
+<h4 id="合同矩阵"><a href="#合同矩阵" class="headerlink" title="合同矩阵"></a>合同矩阵</h4><p>存在可逆阵C，使得 C转置AC &#x3D; B ,则A、B合同</p>
+<h4 id="正定矩阵（前提：矩阵对称"><a href="#正定矩阵（前提：矩阵对称" class="headerlink" title="正定矩阵（前提：矩阵对称"></a>正定矩阵（前提：矩阵对称</h4><p>XT A X &gt; 0，正定，</p>
+<p>各阶主子式大于0、所有特征值大于0</p>
+<h4 id="相似、对角化"><a href="#相似、对角化" class="headerlink" title="相似、对角化"></a>相似、对角化</h4><p>两个n阶，存在可逆P，是P逆AP &#x3D; B，则相似</p>
+<p>对角化：</p>
+<p>A有n个无关特征向量，n可以对角</p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="最小生成树算法"><a href="#最小生成树算法" class="headerlink" title="最小生成树算法"></a>最小生成树算法</h3><h4 id="prim"><a href="#prim" class="headerlink" title="prim"></a>prim</h4><p>选相邻的边</p>
+<h4 id="kruskal"><a href="#kruskal" class="headerlink" title="kruskal"></a>kruskal</h4><p>在图中选任意最短的边，不需要相邻！！！</p>
+<h3 id="最短路径算法"><a href="#最短路径算法" class="headerlink" title="最短路径算法"></a>最短路径算法</h3><h4 id="dijkstra算法"><a href="#dijkstra算法" class="headerlink" title="dijkstra算法"></a>dijkstra算法</h4><p>解决一个起点到其他所有点之间的最短路径问题</p>
+<p>采用贪心的策略，只能处理<strong>非负</strong>权图</p>
+<p>可以记录路径</p>
+<h4 id="floyd算法"><a href="#floyd算法" class="headerlink" title="floyd算法"></a>floyd算法</h4><p>解决所有点之间的最短路径问题</p>
+<p>可以处理<strong>任意</strong>权图</p>
+<p>不能记录路径，只能记录路径长度</p>
+<h2 id="计算机组成原理"><a href="#计算机组成原理" class="headerlink" title="计算机组成原理"></a>计算机组成原理</h2><h3 id="1-计算机的五大组成部分是什么？请简要介绍一下各部分的作用和功能。"><a href="#1-计算机的五大组成部分是什么？请简要介绍一下各部分的作用和功能。" class="headerlink" title="1.计算机的五大组成部分是什么？请简要介绍一下各部分的作用和功能。"></a>1.计算机的五大组成部分是什么？请简要介绍一下各部分的作用和功能。</h3><p>输入设备、输出设备、运算器、控制器、存储器</p>
+<p>控制器用于控制计算机的操作流程</p>
+<p>运算器用于执行计算机的算数或逻辑运算</p>
+<h3 id="2-什么是CPU的时钟频率？如何提高CPU的性能？"><a href="#2-什么是CPU的时钟频率？如何提高CPU的性能？" class="headerlink" title="2.什么是CPU的时钟频率？如何提高CPU的性能？"></a>2.什么是CPU的时钟频率？如何提高CPU的性能？</h3><p>CPU时钟频率是每秒钟CPU可以执行的时钟周期数</p>
+<p>可以增加CPU的时钟频率、增加核心数、增加缓存容量</p>
+<h3 id="3-请解释一下什么是指令集架构（ISA）？请举例说明不同的ISA对计算机性能的影响。"><a href="#3-请解释一下什么是指令集架构（ISA）？请举例说明不同的ISA对计算机性能的影响。" class="headerlink" title="3.请解释一下什么是指令集架构（ISA）？请举例说明不同的ISA对计算机性能的影响。"></a>3.请解释一下什么是指令集架构（ISA）？请举例说明不同的ISA对计算机性能的影响。</h3><p>ISA是描述CPU执行集的规范</p>
+<p>不同的ISA对计算机性能的影响主要体现在指令复杂度、指令执行速度、<strong>可扩展性</strong>。。</p>
+<p>例如：</p>
+<p>RISC（精简指令集）：执行格式统一、指令集简单、适合于高性能运算</p>
+<p>CISC（复杂指令集）：指令格式不统一、指令集复杂、执行速度慢、有更好的兼容性和扩展性</p>
+<h3 id="4-请解释一下什么是流水线（pipeline）？它如何提高CPU的性能？"><a href="#4-请解释一下什么是流水线（pipeline）？它如何提高CPU的性能？" class="headerlink" title="4.请解释一下什么是流水线（pipeline）？它如何提高CPU的性能？"></a>4.请解释一下什么是流水线（pipeline）？它如何提高CPU的性能？</h3><p>流水线就是将指令的执行分为多个阶段。每个阶段执行不同的指令，从而实现多条指令同时执行的效果。</p>
+<p>可以提高CPU的性能，CPU在同一时间内执行多条指令。。</p>
+<h3 id="5-请解释一下什么是缓存（cache）？它如何提高计算机的性能？"><a href="#5-请解释一下什么是缓存（cache）？它如何提高计算机的性能？" class="headerlink" title="5.请解释一下什么是缓存（cache）？它如何提高计算机的性能？"></a>5.请解释一下什么是缓存（cache）？它如何提高计算机的性能？</h3><p>cache是一种高速存储器，用于暂存CPU频繁使用的数据和指令，从而提高CPU的性能，	因为可以减少CPU访存的次数。</p>
+<p>从而减少了访问延迟和消耗</p>
+<h3 id="6-请解释一下什么是中断（interrupt）？它如何影响计算机的运行？"><a href="#6-请解释一下什么是中断（interrupt）？它如何影响计算机的运行？" class="headerlink" title="6.请解释一下什么是中断（interrupt）？它如何影响计算机的运行？"></a>6.请解释一下什么是中断（interrupt）？它如何影响计算机的运行？</h3><p>CPU执行程序时暂停当前操作，转而执行一个特定的处理程序，从而以响应外部的事件或错误。</p>
+<p>他可以使得CPU暂停当前任务，转而执行其他任务。</p>
+<h3 id="7-请解释一下什么是总线（bus）？它有哪些不同类型的总线？"><a href="#7-请解释一下什么是总线（bus）？它有哪些不同类型的总线？" class="headerlink" title="7.请解释一下什么是总线（bus）？它有哪些不同类型的总线？"></a>7.请解释一下什么是总线（bus）？它有哪些不同类型的总线？</h3><p>计算机内部的数据传输线路。用以链接CPU、内存、IO设备等各个部件。以实现数据的传输和交换。</p>
+<p>数据总线：双向传输。位数与机器字长、存储字长有关。</p>
+<p>地址总线：单向传输。</p>
+<p>控制总线：双向传输。传送CPU送出的控制命令和主存反馈给CPU的反馈信号。</p>
+<h3 id="8-请解释一下什么是虚拟内存（virtual-memory）？它如何实现？"><a href="#8-请解释一下什么是虚拟内存（virtual-memory）？它如何实现？" class="headerlink" title="8.请解释一下什么是虚拟内存（virtual memory）？它如何实现？"></a>8.请解释一下什么是虚拟内存（virtual memory）？它如何实现？</h3><p>虚拟内存（virtual memory）是一种将<strong>计算机硬盘空间用作临时存储器的技术</strong>。它可以将部分程序或数据从内存中<strong>交换</strong>到硬盘中，以释放内存空间，从而提高计算机的性能和效率。虚拟内存可以应用于多任务操作系统，使得多个程序可以同时运行，而不会因为内存不足而崩溃。 </p>
+<h3 id="9-请解释一下什么是操作系统（operating-system）？它有哪些主要功能和作用？"><a href="#9-请解释一下什么是操作系统（operating-system）？它有哪些主要功能和作用？" class="headerlink" title="9.请解释一下什么是操作系统（operating system）？它有哪些主要功能和作用？"></a>9.请解释一下什么是操作系统（operating system）？它有哪些主要功能和作用？</h3><p>操作系统（operating system）是一种<strong>控制计算机硬件和软件资源的系统软件</strong>。它负责管理计算机的<strong>进程、内存、文件系统、网络</strong>等资源，为用户和应用程序<strong>提供接口和服务</strong>。常见的操作系统包括Windows、macOS、Linux等。</p>
+<h3 id="10-请解释一下什么是并行计算（parallel-computing）？它如何提高计算机的性能？"><a href="#10-请解释一下什么是并行计算（parallel-computing）？它如何提高计算机的性能？" class="headerlink" title="10.请解释一下什么是并行计算（parallel computing）？它如何提高计算机的性能？"></a>10.请解释一下什么是并行计算（parallel computing）？它如何提高计算机的性能？</h3><p>并行计算（parallel computing）是一种<strong>利用多个处理器或计算机同时处理任务的技术</strong>。它可以将一个大型计算任务<strong>分解</strong>成多个小任务，由多个处理器或计算机并行执行，从而提高计算机的性能和效率。并行计算可以应用于科学计算、图像处理、机器学习等多个领域。</p>
+<h2 id="C语言"><a href="#C语言" class="headerlink" title="C语言"></a>C语言</h2><h3 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h3><p>在<strong>函数体</strong>中一个被声明为静态的变量在这一函数被调用的过程中其<strong>值不变</strong>；修饰<strong>全局变量，和函数时</strong>，这个全局变量或函数只能在<strong>本文件中</strong>访问，<strong>不能再其他文件中访</strong>问</p>
+<h3 id="const关键字"><a href="#const关键字" class="headerlink" title="const关键字"></a>const关键字</h3><p>const表示<strong>常量</strong>，其功能是对变量声明为<strong>只读性</strong>，保护变量的值以防被修改</p>
+<h3 id="引用和指针有什么区别"><a href="#引用和指针有什么区别" class="headerlink" title="引用和指针有什么区别"></a>引用和指针有什么区别</h3><p>引用是给变量起<strong>别名</strong>，而指针存储的是<strong>地址</strong>，指针变量是用来<strong>存储地址的变量</strong></p>
+<p>引用必须<strong>初始化</strong>，而<strong>指针不需要</strong>；<strong>引用初始化后不能再被改变</strong>，而<strong>指针可以改变所指对象；</strong></p>
+<h3 id="引用和值传递的区别是什么？"><a href="#引用和值传递的区别是什么？" class="headerlink" title="引用和值传递的区别是什么？"></a>引用和值传递的区别是什么？</h3><p>值传递：传递的是一个值的<strong>副本</strong>，函数对形参的操作<strong>不会影响实参的值</strong></p>
+<p>引用：传递的是<strong>引用对象的地址</strong>，<strong>实参和形参共享一个地址</strong>，函数对形参的操作改变其值也会改变实参的值</p>
+<h3 id="指针和变量的自增自减有什么区别"><a href="#指针和变量的自增自减有什么区别" class="headerlink" title="指针和变量的自增自减有什么区别"></a>指针和变量的自增自减有什么区别</h3><p>指针的自增自减是<strong>改变指针的指向地址</strong>，而变量的自增自减改变的是<strong>值</strong>，而不是存储的内存地址</p>
+<h3 id="面向过程和面向对象的区别是什么？"><a href="#面向过程和面向对象的区别是什么？" class="headerlink" title="面向过程和面向对象的区别是什么？"></a>面向过程和面向对象的区别是什么？</h3><p>面向对象：万事万物皆对象，有着<strong>自己的属性和方法</strong>，对象与对象之间通过方法交互，面向对象是以<strong>对象为中心</strong>的编程思想，把<strong>解决的问题分解为各个对象</strong>，建立对象的目的不是为了实现具体某一步，而是为了<strong>描述某个对象在解决问题时的属性和行为</strong></p>
+<p>面向过程就是<strong>针对于某一个事物</strong>，编程的时候将<strong>解决问题的步骤分析出来</strong>，然后用函数将这<strong>些步骤全部实现</strong>，在执行时按<strong>顺序调用函数解决</strong>该问题</p>
+<p>举个例子：把大象放进冰箱，面向过程是将该问题分为三步，打开冰箱，把大象放进去，关闭冰箱，分别写三个函数实现它，而面向对象是创建大象和冰箱两个类，分别new一个对象，调用冰箱中的三个方法实现这三步</p>
+<h3 id="指针数组和数组指针的区别"><a href="#指针数组和数组指针的区别" class="headerlink" title="指针数组和数组指针的区别"></a>指针数组和数组指针的区别</h3><p>指针数组即<strong>存储指针的数组</strong>，数组元素都是指针，而数组指针即<strong>指向数组的指针</strong></p>
+<h3 id="指针运算符-amp-和-的区别"><a href="#指针运算符-amp-和-的区别" class="headerlink" title="指针运算符&amp;和*的区别"></a>指针运算符&amp;和*的区别</h3><p>&amp;是<strong>取地址</strong>运算符，&amp;a表示获取变量的<strong>地址</strong>，而<em>是指针运算符，</em>p表示获取指针变量p所指向对象中的值</p>
+<h3 id="include-lt-gt-和-include-“”的区别？"><a href="#include-lt-gt-和-include-“”的区别？" class="headerlink" title="#include&lt;&gt;和#include “”的区别？"></a>#include&lt;&gt;和#include “”的区别？</h3><p>&lt;&gt;是到<strong>指定的目录</strong>找头文件，” “是先到项<strong>目所在目标找头文件</strong>，如果<strong>没有找到再到指定的目录找头</strong>文件</p>
+<h3 id="全局变量和局部变量在内存中是否有区别？如果有，是什么区别？"><a href="#全局变量和局部变量在内存中是否有区别？如果有，是什么区别？" class="headerlink" title="全局变量和局部变量在内存中是否有区别？如果有，是什么区别？"></a>全局变量和局部变量在内存中是否有区别？如果有，是什么区别？</h3><p>全局便利存储在<strong>静态区</strong>，而局部变量存在<strong>堆栈</strong></p>
+<h3 id="为什么c语言规定所有变量要先定义后使用"><a href="#为什么c语言规定所有变量要先定义后使用" class="headerlink" title="为什么c语言规定所有变量要先定义后使用"></a>为什么c语言规定所有变量要先定义后使用</h3><p>因为<strong>未被定义</strong>过的变量，在执行过程<strong>不会被当作变量名</strong>，定义时每一个变量都有<strong>确定的数据类型</strong>，在编译时将其<strong>分配相应的存储单</strong>元</p>
+<h3 id="C语言的特点"><a href="#C语言的特点" class="headerlink" title="C语言的特点"></a>C语言的特点</h3><p>语言<strong>简洁</strong>，使用灵活方便，具有丰富的数据类型和运算符，便于实现程序的结构化，用C语言编写的程序<strong>可移植性</strong>好</p>
+<h3 id="C语言以函数为基本单位的好处"><a href="#C语言以函数为基本单位的好处" class="headerlink" title="C语言以函数为基本单位的好处"></a>C语言以函数为基本单位的好处</h3><p>函数是程序的<strong>基本组成单位</strong>，将函数作为<strong>程序模块</strong>，可以是程序设计的<strong>简单直</strong>观，提高程序的<strong>可读性</strong>和<strong>维护</strong>性，还可以将一些通用操作编写为函数以供随时使用</p>
+<h3 id="关键字和标识符的不同"><a href="#关键字和标识符的不同" class="headerlink" title="关键字和标识符的不同"></a>关键字和标识符的不同</h3><p><strong>标识符</strong>由<strong>数字、字母、下划线</strong>组成，<strong>数字不能开头</strong>，由用户定义，而<strong>关键字</strong>已被编译系统使用，是用来<strong>定义变量类</strong>型，表<strong>达式语句</strong>，文件的<strong>预处理</strong>等</p>
+<h3 id="break和continue不同"><a href="#break和continue不同" class="headerlink" title="break和continue不同"></a>break和continue不同</h3><p>break可用于<strong>swith</strong>语句，而<strong>continue不可以</strong>，break表示<strong>直接跳出循环</strong>，而continue<strong>表示跳过本次循环</strong>，不再执行continue后的语句，直接执行下次循环</p>
+<h3 id="结构体类型与其他基本类型的区别"><a href="#结构体类型与其他基本类型的区别" class="headerlink" title=".结构体类型与其他基本类型的区别"></a>.结构体类型与其他基本类型的区别</h3><p>结构体类型是一个可以包含不同数据类型的一个结构，可以由<strong>用户自己定义</strong>，特点有在一个结构体中可以<strong>声明不同的数据类型</strong>，结构体类型相同的结构体变量可<strong>相互赋值</strong>，<strong>而数组不可以；节省内存空间</strong>，效率高；</p>
+<h3 id="结构体和共用体的区别"><a href="#结构体和共用体的区别" class="headerlink" title="结构体和共用体的区别"></a>结构体和共用体的区别</h3><p>结构体中的成员拥有<strong>独立的存储空间</strong>，而<strong>共用体成员共享同一块存储空间</strong>，但每个共用体所能访问<strong>公用区的空间大小</strong>由成员自身的类型决定的，union的大小由<strong>最大的成员的大小</strong>决定</p>
+<h3 id="局部变量和全局变量是否可以重名"><a href="#局部变量和全局变量是否可以重名" class="headerlink" title="局部变量和全局变量是否可以重名"></a>局部变量和全局变量是否可以重名</h3><p><strong>可以重名</strong>，<strong>局部变量会屏蔽全局变量</strong></p>
+<h3 id="C语言中的语句有几类，控制语句有哪些"><a href="#C语言中的语句有几类，控制语句有哪些" class="headerlink" title="C语言中的语句有几类，控制语句有哪些"></a>C语言中的语句有几类，控制语句有哪些</h3><p>C语言有5类：<strong>控制语句</strong>、<strong>函数调用语</strong>句、<strong>表达式语</strong>句、<strong>空</strong>语句、<strong>复合语句</strong></p>
+<p>控制语句有<strong>条件语</strong>句、<strong>转向语</strong>句、<strong>循环</strong>语句、b<strong>reak</strong>、c<strong>ontinu</strong>e、<strong>多分</strong>支选择语句、<strong>goto转向</strong>语句、<strong>retuan返回</strong>语句</p>
+<h3 id="C语言数据类型有哪些，基本数据类型有哪些"><a href="#C语言数据类型有哪些，基本数据类型有哪些" class="headerlink" title="C语言数据类型有哪些，基本数据类型有哪些"></a>C语言数据类型有哪些，基本数据类型有哪些</h3><p>数据类型有<strong>基本类型</strong>、<strong>构造</strong>类型、<strong>指针</strong>类型、<strong>空</strong>类型等；基本数据类型有<strong>整型</strong>、<strong>字符</strong>型、<strong>浮点型</strong>等</p>
+<p>​	</p>
+<h2 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h2><h3 id="Java的三大特性？-面向对象"><a href="#Java的三大特性？-面向对象" class="headerlink" title="Java的三大特性？(面向对象)"></a>Java的三大特性？(面向对象)</h3><p>封装、继承、多态</p>
+<h3 id="封装是什么，封装的目的是什么"><a href="#封装是什么，封装的目的是什么" class="headerlink" title="封装是什么，封装的目的是什么"></a>封装是什么，封装的目的是什么</h3><p>封装是将类属性和方法<strong>隐藏</strong>在类的内部进行私有化，<strong>不允许外部直接访问</strong>，而只通过类的提供的<strong>gets和set</strong>方法实现对属性的访问</p>
+<p>目的是增加<strong>安全性和简化编程</strong>，<strong>隐藏对象内部的复杂细节</strong>，只向用户提供简单的<strong>接口</strong>，用户使用时不<strong>需要知道具体实现细节</strong></p>
+<h3 id="什么是继承，继承的目的是什么？"><a href="#什么是继承，继承的目的是什么？" class="headerlink" title="什么是继承，继承的目的是什么？"></a>什么是继承，继承的目的是什么？</h3><p>继承就是在<strong>原有类的基础</strong>上<strong>增加</strong>新的属性和方法，构造一个<strong>新类</strong>，目的是提供<strong>代码复用</strong>，<strong>减少冗余，便于功能扩展</strong>，为<strong>多态性的使用提供前提</strong></p>
+<h3 id="什么是多态，多态的目的是什么？"><a href="#什么是多态，多态的目的是什么？" class="headerlink" title="什么是多态，多态的目的是什么？"></a>什么是多态，多态的目的是什么？</h3><p>多态是<strong>父类引用指向子类的对象实体</strong>，调用父类的方法实际<strong>执行的是子类中已重写后的方法</strong>，目的增加程序<strong>灵活性和可扩展性</strong></p>
+<p>多态的前提条件是：子类<strong>继承</strong>父类，子类<strong>重写</strong>父类中的方法，<strong>父类引用指向子类实体</strong></p>
+<p>比如桌子上三杯不同的酒，外观看不出来，现在我要喝酒，能喝出来剑南春、茅台、等等。。。。</p>
+<h3 id="重载和重写的区别"><a href="#重载和重写的区别" class="headerlink" title="重载和重写的区别"></a>重载和重写的区别</h3><p>重载是指在<strong>同一个类</strong>中，允许存在<strong>同名的方法</strong>、只要他们的参数列表不同</p>
+<p>重写是指<strong>子类继承父类</strong>以后，可以对父类中<strong>同名同参数的方法进行覆盖操作</strong></p>
+<h3 id="JAVA的基本类型有哪些？"><a href="#JAVA的基本类型有哪些？" class="headerlink" title="JAVA的基本类型有哪些？"></a>JAVA的基本类型有哪些？</h3><p>整数、浮点、字符(2字节)、布尔(1字节)</p>
+<h3 id="java中的接口是什么"><a href="#java中的接口是什么" class="headerlink" title="java中的接口是什么"></a>java中的接口是什么</h3><p>接口中是一系列<strong>方法的声明</strong>，但<strong>没有方法体</strong>，只有通过<strong>类去实现的方式使用</strong>，重写接口中的所有抽象方法，接口中的所有变量都是<strong>全局静态变量</strong></p>
+<p>优点：可以实现<strong>多态性</strong>，有利于<strong>代码的规范、安全和维护</strong>，可以将很多不相干的内容进行整合</p>
+<h3 id="Java中的反射是什么？"><a href="#Java中的反射是什么？" class="headerlink" title="Java中的反射是什么？"></a>Java中的反射是什么？</h3><p>java反射机制是指在<strong>运行状态</strong>中，对于任意一个类，都能够<strong>知道这个类的所有属性和方法</strong>，对于任意一个对象，都能够<strong>调用它的任意一个属性和方法</strong>，是一种<strong>动态获取信息和动态调用对象</strong>的的方法的功能。</p>
+<h3 id="Java异常是什么？"><a href="#Java异常是什么？" class="headerlink" title="Java异常是什么？"></a>Java异常是什么？</h3><p>程序在运行过程中出现的不正常情况</p>
+<h3 id="JRE、JDK、JVM是指什么"><a href="#JRE、JDK、JVM是指什么" class="headerlink" title="JRE、JDK、JVM是指什么"></a>JRE、JDK、JVM是指什么</h3><p>JRE：java运行<strong>环境</strong>；JDK是指java<strong>开发工具</strong>；JVM是指java虚拟机，它是<strong>运行所有java程序的抽象计算机</strong>。</p>
+<h3 id="Java怎么进行对象分配和释放的"><a href="#Java怎么进行对象分配和释放的" class="headerlink" title="Java怎么进行对象分配和释放的"></a>Java怎么进行对象分配和释放的</h3><p>通过<strong>new</strong>的方式为每个对象实例在<strong>堆</strong>中申请内存空间，释放是通过<strong>垃圾回收机制</strong>所决定和执行的</p>
+<h3 id="Java的特点"><a href="#Java的特点" class="headerlink" title="Java的特点"></a>Java的特点</h3><p>Java是一种纯粹的<strong>面向对象</strong>语言，它继承了c++面向对象的技术核心，并抛弃了c++的一些缺点，比如容易引起错误的指针和多继承等，同时增加了<strong>垃圾回收机制，释放无法使用的内存空间</strong></p>
+<h3 id="Java内存划分"><a href="#Java内存划分" class="headerlink" title="Java内存划分"></a>Java内存划分</h3><p><strong>栈</strong>，主要存储<strong>局部</strong>变量，使用完后被<strong>立刻清除</strong>；</p>
+<p><strong>堆</strong>主要存储new出来的<strong>对象实体</strong>，使用完后在<strong>某个时间进行回收</strong>；</p>
+<p><strong>方法区</strong>，常量池和<strong>静态变量，全局变量</strong></p>
+<h3 id="this关键字的作用"><a href="#this关键字的作用" class="headerlink" title="this关键字的作用"></a>this关键字的作用</h3><p>this表示<strong>当前调用该方法和构造器的对象引用</strong>，当局部变量与成员变量<strong>同名</strong>时，加<strong>以区分，</strong></p>
+<h3 id="super关键字的作用"><a href="#super关键字的作用" class="headerlink" title="super关键字的作用"></a>super关键字的作用</h3><p>super可以理解为<strong>父类的</strong>，可以<strong>调用父类中的属性，方法，构造器</strong>，调用构造器时必须<strong>写在子类构造器的首行</strong></p>
+<h3 id="包及包的作用"><a href="#包及包的作用" class="headerlink" title="包及包的作用"></a>包及包的作用</h3><p>将<strong>类名相同的类分别保存在不同的包</strong>中，而包实际上就是一个<strong>文件夹</strong>，作用对类和接口进行分类<strong>，消除命名冲突，提供访问保护</strong></p>
+<h3 id="访问权限"><a href="#访问权限" class="headerlink" title="访问权限"></a>访问权限</h3><p>public 公共的，<strong>所有人</strong>都可以访问，private 私有的，只能通过<strong>类中成员函数</strong>访问，外部不允许调用，protect 保护的 所有<strong>子类</strong>，同一个包的类可访问 Default缺省 <strong>同一个包</strong>可访问 修饰<strong>类只能是public和缺省</strong></p>
+<h3 id="Getter-，Setter方法"><a href="#Getter-，Setter方法" class="headerlink" title="Getter ，Setter方法"></a>Getter ，Setter方法</h3><p>成员变量一般被私有化，只有通过这两个方法获取和设置其值</p>
+<h3 id="final关键字的作用"><a href="#final关键字的作用" class="headerlink" title="final关键字的作用"></a>final关键字的作用</h3><p>被final的变量为<strong>常量</strong>，被修饰的<strong>方法不可被重写</strong>，被修饰的<strong>类不可被继承</strong></p>
+<h3 id="抽象类和抽象方法"><a href="#抽象类和抽象方法" class="headerlink" title="抽象类和抽象方法"></a>抽象类和抽象方法</h3><p>被<strong>abstract</strong>修饰的方法叫<strong>抽象方法</strong>，<strong>没有方法体</strong>，只<strong>声明不实现</strong></p>
+<p>一个<strong>类有抽象方法该类就为抽象类</strong>，<strong>抽象类不可创建对象</strong>，抽象类的子类<strong>必须重写</strong>父类中的抽象方法，<strong>否则子类也为抽象类</strong></p>
+<h3 id="object类是什么，作用？"><a href="#object类是什么，作用？" class="headerlink" title="object类是什么，作用？"></a>object类是什么，作用？</h3><p>object类是<strong>所有类的父类</strong>和根，所有类默认继承于object类</p>
+<h3 id="x3D-x3D-和equals比较"><a href="#x3D-x3D-和equals比较" class="headerlink" title="&#x3D;&#x3D;和equals比较"></a>&#x3D;&#x3D;和equals比较</h3><p>&#x3D;&#x3D;默认判断的是两个对象的<strong>内存地址是否一致</strong>或值(当比较基本数据类型时)</p>
+<p>equals默认比较的是<strong>两个引用的内存地址</strong>，但可对其进行重写，使其比较内容，比如String类对其重写，使其比较类中的属性是否相同</p>
+<h3 id="异常分类和处理"><a href="#异常分类和处理" class="headerlink" title="异常分类和处理"></a>异常分类和处理</h3><p>异常分为<strong>编译时异常</strong>（在程序<strong>编译时</strong>发现的异常）和<strong>运行时异常</strong>(编译通过，<strong>运行时发现</strong>的异常)</p>
+<p>try(尝试执行的代码) catch(异常处理) finally 。throws写在声明的方法出表示<strong>抛出来一个异</strong>常，thorw在方法体内<strong>手动抛一个</strong>异常。</p>
+<h2 id="计算机网络-1"><a href="#计算机网络-1" class="headerlink" title="计算机网络"></a>计算机网络</h2><h3 id="单工、半双工、全双工"><a href="#单工、半双工、全双工" class="headerlink" title="单工、半双工、全双工"></a>单工、半双工、全双工</h3><p>单工：<strong>单向</strong>通信，只有一个方向的通信没有反方向的交互</p>
+<p>半双工：<strong>双向交替</strong>通信，双方可互发信息，但任一时刻只有一个方向的通信</p>
+<p>全双工：<strong>双向同时</strong>通信，即通信双方可同时互发信息</p>
+<p>单工只需<strong>一条</strong>信道，而半双工、全双工需要<strong>两条</strong>信道</p>
+<h3 id="计算机网络的主要功能"><a href="#计算机网络的主要功能" class="headerlink" title="计算机网络的主要功能"></a>计算机网络的主要功能</h3><p><strong>数据通信</strong>（联网计算机之间的各种信息的传输）、<strong>资源共享</strong>(软硬件、数据资源共享)、<strong>分布式处理</strong>（将负荷过重的计算机系统的任务分给其他计算机系统处理）、<strong>提高可靠性</strong>（计算机网络中的各台计算机可互为替代机）、<strong>负载均衡</strong>（均衡分配任务给各台计算机）</p>
+<h3 id="计算机网络的分类"><a href="#计算机网络的分类" class="headerlink" title="计算机网络的分类"></a>计算机网络的分类</h3><p>按功能组成分为<strong>资源子网</strong>(由所有连接在互联网上，可供用户直接使用的主机组成,提供通信和资源共享)和<strong>核心子网</strong>（由大量网络以及连接这些网络的路由器组成，为资源子网提供服务，提供连通性和交换）</p>
+<p>按分布范围分为广域网、城域网、局域网(覆盖范围为几十到几千米)、个人局域网</p>
+<p>按拓扑结构分总线型(用单根传输线将计算机连接起来)，星型（每台计算机由单独的线路与中央设备连接）,环形(所有计算机设备均连成一个环，可以是单环，可以是双环，环中信号单向传输)，网状型(每个节点至少有两条路径与其他节点相连，可靠性高，控制复杂成本高)</p>
+<h3 id="通信子网和资源子网"><a href="#通信子网和资源子网" class="headerlink" title="通信子网和资源子网"></a>通信子网和资源子网</h3><p>通信子网和资源子网的划分是以<strong>功能</strong>为依据的。这里说的功能，可以理解为ISO&#x2F;OSI模型（<strong>开放式系统互联通信参考模型</strong>）中的不同层次（物理层、数据链路层、网络层、会话层、表示层、应用层）。其中，<strong>通信子网对应于低三层</strong>（物理层、数据链路层、网络层），<strong>资源子网对应于高三层</strong>（会话层、表示层、应用层）。</p>
+<p>​       这样一来，我们很容易就能理解通信子网和资源子网的功能和特点：通信子网由各种网络通信设备（如我们熟悉的路由器、交换机）和通信线路组成，负责数据传输；资源子网由计算机、外部设备（如打印机）组成，负责处理数据</p>
+<h3 id="电路交换、报文交换、分组交换的有缺点"><a href="#电路交换、报文交换、分组交换的有缺点" class="headerlink" title="电路交换、报文交换、分组交换的有缺点"></a>电路交换、报文交换、分组交换的有缺点</h3><p>电路交换是指通信双方建立一条<strong>专用通路</strong>进行数据传输，分为<strong>建立</strong>连接，数据<strong>传输</strong>，<strong>断开</strong>连接，优点传输<strong>时延小</strong>，<strong>实时性强</strong>，缺点信道<strong>利用率低</strong>无法进行差错控制</p>
+<p>报文交换以<strong>报文</strong>为数据交换的单位，使用<strong>存储转发</strong>技术，优点<strong>不存咋连接时延</strong>，可随时发送，缺点<strong>转发时延</strong>，<strong>实时性差</strong>，成本高节点需要有很大的缓冲区</p>
+<p>分组交换将常报文分成等长的<strong>小分组</strong>，每个小分组都带有<strong>源地址，目的地址</strong>等信息逐个发送出去，优<strong>点可靠性</strong>高，需要<strong>的缓冲区小</strong>，存储转发时需要排队增<strong>加了时延</strong>，每个分组的<strong>控制信息增加开销</strong></p>
+<h3 id="计网的性能指标"><a href="#计网的性能指标" class="headerlink" title="计网的性能指标"></a>计网的性能指标</h3><p>速率、带宽(信道<strong>传送数据的能力</strong>)、时延（数据从一端传送到另一端所需<strong>总时间</strong>）、往返时间（从发送端<strong>发送数据开</strong>始，到发<strong>送端收到</strong>来自接收方的确认所经历的时间），吞吐量(<strong>单位时间</strong>内通过某个网络的<strong>数据量)</strong></p>
+<h3 id="网络协议的三个要素"><a href="#网络协议的三个要素" class="headerlink" title="网络协议的三个要素"></a>网络协议的三个要素</h3><p><strong>语法</strong>：规定传输数据的格式 语义；规定要执行的功能 <strong>同步</strong>：规定事件实现的顺序</p>
+<h3 id="协议、服务、接口"><a href="#协议、服务、接口" class="headerlink" title="协议、服务、接口"></a>协议、服务、接口</h3><p>接口是相邻两层之间进行信息交换的<strong>连接点</strong>，服务是下层为紧邻的上层提供的功能调用，协议是控制<strong>对等实体之间进行通信的规则</strong></p>
+<p>关系：在协议的控制下，对等实体之间的通信完成后，才能向上层提供服务，而要实现本层协议，需要使用下一层提供的服务</p>
+<p><strong>协议是水平</strong>，协议的实现对上层是透明的，<strong>服务是垂直的</strong>，服务是通过层间接口向上层提供的</p>
+<h3 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h3><p>物理层、数据链路层、网络层、运输层、会话层、表示层、应用层</p>
+<h3 id="TCP-x2F-IP参考模型"><a href="#TCP-x2F-IP参考模型" class="headerlink" title="TCP&#x2F;IP参考模型"></a>TCP&#x2F;IP参考模型</h3><p>网络接口层、网际层、运输层、应用层</p>
+<h3 id="比较不同点"><a href="#比较不同点" class="headerlink" title="比较不同点"></a>比较不同点</h3><p>OSI精确定义了三个概念：<strong>协议、服务、接口</strong>，与面向对象思想符合，而<strong>TCP&#x2F;IP无明确区分</strong></p>
+<p>OSI产生于协议之前，不偏向于任何一种协议，<strong>有通用性</strong>，而TCP&#x2F;IP产生于协议之后，是<strong>对现有协议的描述</strong></p>
+<p>OSI模型的<strong>网络层</strong>支持<strong>无连接和面向连接</strong>的通信，而TCP&#x2F;IP在<strong>运输层支持这两种连接</strong>，OSI在<strong>运输层支持面向连接</strong>，而TCP&#x2F;IP在网际层支持<strong>无连接</strong>的通信</p>
+<h3 id="物理层接口特性"><a href="#物理层接口特性" class="headerlink" title="物理层接口特性"></a>物理层接口特性</h3><p>机械特性、电气特性、功能特性、过程特性</p>
+<p><strong>泄气工程</strong></p>
+<h3 id="信号的分类"><a href="#信号的分类" class="headerlink" title="信号的分类"></a>信号的分类</h3><p>模拟信号：信号取值都是<strong>连续</strong>的，是<strong>连续变化</strong>的信号，数字信号：信号取值是<strong>离散</strong>的，是不连续变化的信号</p>
+<h3 id="调制的分类"><a href="#调制的分类" class="headerlink" title="调制的分类"></a>调制的分类</h3><p><strong>基带</strong>调制：将<strong>数</strong>字信号并转为为另外一种形式的<strong>数</strong>字信号，本质是<strong>编码</strong>，方式有归零编码，非归零编码，反向非归零编码，曼彻斯特编码，差分曼彻斯特编码</p>
+<p><strong>带通</strong>调制：将<strong>数字信号转换为模拟</strong>信号(调幅，调频，调相)</p>
+<p><strong>脉码</strong>调制：<strong>模拟信号编码为数字</strong>信号，采样，量化和编码</p>
+<h3 id="常用的传输媒体有哪些"><a href="#常用的传输媒体有哪些" class="headerlink" title="常用的传输媒体有哪些"></a>常用的传输媒体有哪些</h3><p><strong>导向型</strong>：双绞线，同轴电缆，光纤</p>
+<p><strong>非导向型</strong>：无线电，红外线，激光</p>
+<h3 id="为什么使用信道复用技术，常用的信道复用技术有哪些？"><a href="#为什么使用信道复用技术，常用的信道复用技术有哪些？" class="headerlink" title="为什么使用信道复用技术，常用的信道复用技术有哪些？"></a>为什么使用信道复用技术，常用的信道复用技术有哪些？</h3><p>为了<strong>提高信道的利用率</strong></p>
+<p>频分：所有用户不同时间占用不同带宽，时分：所有用户不同时间占用相同带宽 码分：所有用户在同一时间占用相同带宽，采用不同的码型</p>
+<h3 id="物理层设备有哪些？作用是啥？"><a href="#物理层设备有哪些？作用是啥？" class="headerlink" title="物理层设备有哪些？作用是啥？"></a>物理层设备有哪些？作用是啥？</h3><p><strong>中继器</strong>：信号在经过一段时间传输后会因为某些原因造成信号衰减和失真，中继器的作用是将信号<strong>整形放大</strong>再转发出去，本质是<strong>信号再生</strong>，而不是将信号简单放大</p>
+<p><strong>放大器</strong>和中继器区别：放大器放大的是模拟信号，原理是将衰减<strong>信号放大</strong>，中继器放大的是数字信号，原理是信号再生</p>
+<p><strong>集线器</strong>：实质是一种<strong>多端口的中继器</strong>，作用是对<strong>信号进行放大转发</strong></p>
+<h3 id="同步通信和异步通信"><a href="#同步通信和异步通信" class="headerlink" title="同步通信和异步通信"></a>同步通信和异步通信</h3><p>同步通信：通信双方<strong>先建立同步</strong>，<strong>通信频率相同</strong>，双方不停的发送和接收连续的比特流</p>
+<p>异步通信：发送端可以在<strong>任意时刻发送字符</strong>，接收端必须<strong>时刻准备接收</strong>，所有必须在字符的<strong>起始和终止位置加上标识符</strong></p>
+<h3 id="数据链路层的功能"><a href="#数据链路层的功能" class="headerlink" title="数据链路层的功能"></a>数据链路层的功能</h3><p><strong>封装成帧</strong>，对发送的数据前后加上<strong>首部和尾部</strong>，组成<strong>帧</strong>，进行<strong>帧定界</strong>(加控制信息确定帧的界限)，<strong>帧同步</strong>(区分帧的开始与终止位置)</p>
+<p><strong>透明传输</strong>，对于<strong>任意比特率</strong>组合的数据，都能<strong>没有差错</strong>的通过数据链路层，防止消息和帧定界符混淆</p>
+<p><strong>流量控制</strong>：<strong>限制发送方</strong>的数据流量，使其发送速率不超过接收方的接收能力</p>
+<p><strong>差错控制</strong>，采用循<strong>环冗余检查CRC技术</strong>保证数据传输的正确性，实现对帧的无差错接收</p>
+<h3 id="端到端通信与点到点通信之间的区别"><a href="#端到端通信与点到点通信之间的区别" class="headerlink" title="端到端通信与点到点通信之间的区别"></a>端到端通信与点到点通信之间的区别</h3><p><strong>点对点通信是在数据链路层</strong>，是<strong>主机与主机</strong>之间的通信，点是指<strong>硬件地址或IP地址</strong>，通信的主机是通过该<strong>地址</strong>标识的，不能保证数据传输的可靠性。端到端通信是在<strong>点到点的基础</strong>上，是在<strong>运输层</strong>，是指运行在不同主机上的进程之间的通信，一个进程用一个<strong>端口</strong>标识</p>
+<h3 id="局域网的特点和优点"><a href="#局域网的特点和优点" class="headerlink" title="局域网的特点和优点"></a>局域网的特点和优点</h3><p>特点主要是<strong>网络被一个单位所拥有，其地理范围和站点数目有限</strong></p>
+<p>优点；有<strong>广播功能</strong>，从<strong>一个站点可以访问全网</strong>，便于<strong>系统扩展</strong>，设<strong>备位置可灵活改变</strong>，提高系<strong>统可靠</strong>性<strong>，可用性</strong></p>
+<h3 id="网络适配器的作用是什么？网络适配器工作在哪一层？"><a href="#网络适配器的作用是什么？网络适配器工作在哪一层？" class="headerlink" title="网络适配器的作用是什么？网络适配器工作在哪一层？"></a>网络适配器的作用是什么？网络适配器工作在哪一层？</h3><p>作用是实现<strong>串行传输</strong>和<strong>并行传输的转换</strong>，工作在<strong>数据链路层和物理层</strong></p>
+<h3 id="CSDA-x2F-CD-载波侦听多路访问-x2F-碰撞检测"><a href="#CSDA-x2F-CD-载波侦听多路访问-x2F-碰撞检测" class="headerlink" title="CSDA&#x2F;CD(载波侦听多路访问&#x2F;碰撞检测)"></a>CSDA&#x2F;CD(载波侦听多路访问&#x2F;碰撞检测)</h3><p><strong>多点接入</strong>：<strong>总线型</strong>网络</p>
+<p><strong>载波侦听</strong>：<strong>发送前先检测</strong>一下总线上是否有其他站点正在发送数据，若<strong>有则不发</strong>，等待信道<strong>空闲时再发</strong></p>
+<p><strong>碰撞检测</strong>：<strong>边发送数据边检测</strong>信道上信号<strong>电压的变化</strong>情况，判断此刻也有其他站点发送数据</p>
+<p><strong>工作流程</strong>：<strong>先听后发，边听边发，冲突停发，随机</strong>重发(指数退避算法)</p>
+<h3 id="CSMA-x2F-CA工作流程"><a href="#CSMA-x2F-CA工作流程" class="headerlink" title="CSMA&#x2F;CA工作流程"></a>CSMA&#x2F;CA工作流程</h3><p>若站点最初有数据传送(不5r是发送不成功重传)，且检测信道空闲，在等待时间<strong>DIFS（最长的帧间间隔）,就发送整个数据帧</strong></p>
+<p>否则，站点执行<strong>CSMA&#x2F;CA退避算法</strong>，选取一个随机回退值，一旦检测到信道忙，退避计时器就保存不变，空闲则进行倒计时</p>
+<p>当<strong>退避计时器减到0</strong>时(这时信道只可能是空闲的),站点就<strong>发送整个帧并等待确认</strong></p>
+<p>若发送站收到确认，就已知发送的帧被目的站正确接收，如果要发送第二帧，就执行CSMA&#x2F;CA退避算法，重复以上步骤</p>
+<p>若发送站没有收到确认帧ACK（由重传计时器控制），重传该帧，使用CSMA&#x2F;CA重复以上步骤，直到收到确认，若经过若干次重传失败后则放弃发送</p>
+<p>CSMA&#x2F;CA退避算法只有信道空闲在发送第一个数据帧时才不使用，否则在发送第一个帧前检测信道忙、每次重传、每次成功发送后发送下一个帧时使用</p>
+<h3 id="CSMA-x2F-CA-和CSMA-x2F-CD的区别"><a href="#CSMA-x2F-CA-和CSMA-x2F-CD的区别" class="headerlink" title="CSMA&#x2F;CA 和CSMA&#x2F;CD的区别"></a>CSMA&#x2F;CA 和CSMA&#x2F;CD的区别</h3><p>CSMA&#x2F;CD可以检测到冲突，但无法避免，而CSMA&#x2F;CA发送数据的同时不能检测信道上有无冲突，本节点处没有冲突不代表接收节点处没有冲突，只能尽量避免</p>
+<p>传输介质不同，CSMA&#x2F;CD用于总线以太网，CSMA&#x2F;CA用于无限局域网</p>
+<p>检测方式不同，CSMA&#x2F;CD通过电缆中的电压变化检测信道是否空闲，而CSMA&#x2F;CA采用能量检测、载波检测、以及两者混合检测三种方式检测信道空闲</p>
+<p>CSMA&#x2F;CA是在发送数据时<strong>先广播告诉其他站点</strong>，让其他站点在某段时间内<strong>不要发</strong>数据，<strong>以免发生碰撞</strong>，而CSMA&#x2F;CD是发送前侦听信道，边发送边侦听，一旦出现碰撞立即停止发送</p>
+<p><strong>预约信道，解决隐蔽站问题</strong></p>
+<h3 id="网桥的工作原理和特点"><a href="#网桥的工作原理和特点" class="headerlink" title="网桥的工作原理和特点"></a>网桥的工作原理和特点</h3><p>网桥工作在<strong>数据链路层</strong>，根据<strong>MAC帧的目的地址</strong>对收到的帧进行<strong>转发</strong>，网桥具有<strong>过滤帧</strong>的功能，当网桥收到一个帧，先<strong>检查帧的目的MAC地址</strong>，然后确定将帧发到哪一个接口，而不是发到所有接口</p>
+<h3 id="以太网-局域网-交换机的特点-数据链路层"><a href="#以太网-局域网-交换机的特点-数据链路层" class="headerlink" title="以太网(局域网)交换机的特点(数据链路层)"></a>以太网(局域网)交换机的特点(数据链路层)</h3><p>本质是一种<strong>多接口的网桥</strong>，接口处有存储器，可以在<strong>繁忙时把帧进行缓存</strong>，是一种即插即用的设备，内部的帧交换表具有<strong>自学习</strong>功能，可以实现<strong>虚拟局域网VLAN</strong></p>
+<h3 id="什么是路由器，路由器的作用"><a href="#什么是路由器，路由器的作用" class="headerlink" title="什么是路由器，路由器的作用"></a>什么是路由器，路由器的作用</h3><p>路由器是连接<strong>两个或多个网络</strong>的硬件设备，对分组进行<strong>存储转发</strong></p>
+<p><strong>网络互联</strong>：路由器可以<strong>连通不同的网</strong>络，<strong>实现不同网络互相通信</strong></p>
+<p>选择信息传送的线路：路由器可以为每一个经过路由器的分组找到一<strong>条最佳传输路径</strong>，并将其送到目的站点</p>
+<h3 id="路由器的工作原理"><a href="#路由器的工作原理" class="headerlink" title="路由器的工作原理"></a>路由器的工作原理</h3><p>路由器收到一个分组后，由数据报的<strong>首部，获得目的IP地址</strong>，根据<strong>分组转发算法</strong>选择合适的下一跳地址，找到之后，就添加首部和尾部组成<strong>数据帧，发送给数据链路层</strong></p>
+<h3 id="路由器和交换机区别"><a href="#路由器和交换机区别" class="headerlink" title="路由器和交换机区别"></a>路由器和交换机区别</h3><p>交换机工作在<strong>数据链路层</strong>，而路由器工作在<strong>网络层</strong></p>
+<p>数据转发的对象的不同，交换机是利用<strong>MAC地址</strong>(物理地址)来确定数据的目的地址，而路由器则是利用不同网络的<strong>IP地址</strong>来确定数据转发的目的地址，而<strong>MAC地址是硬件自带的</strong>，固化到网卡中，不可更改，而<strong>IP地址则由网络管理员或系统自动分配</strong></p>
+<h3 id="网络层协议"><a href="#网络层协议" class="headerlink" title="网络层协议"></a>网络层协议</h3><p><strong>IP协议</strong>：实现<strong>异构网络互联，</strong>使参与互联的性能各异的网络从用户看起来好像是一个统一的网络，网络协议IP是TCP&#x2F;IP体系中的两个最主要的协议之一</p>
+<p><strong>ARP</strong>（地址解析协议）：完成同一个局域网上的主机或路由器的<strong>IP地址到硬件地址</strong>的映射</p>
+<p><strong>ICMP</strong>（网际控制报文协议）：提供<strong>差错报告和询问报文</strong>，以提高IP数据交付成功的机会</p>
+<h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><p>IP地址是给网络上的每一个主机或路由器的<strong>每一个接口</strong>分配一个在<strong>全世界范围内唯一的32位的标识符</strong></p>
+<p>每一个IP地址由两个固定长度的字段组成，其中一个字段是<strong>网络号</strong>，标志主机（路由器）所连接的网络，一个位<strong>主机号</strong>标志该主机(路由器),IP地址分为ABCDE五类</p>
+<p>特殊用途的IP地址：主机号<strong>全为0的表示本网络本身</strong>，主机号全<strong>为1表示本网络的广播地址</strong>，32位全为0的表示本网络上的本主机，32位全为1的表示整个TCP&#x2F;IP网络的广播地址，<strong>127.x.x.x位环回自检地址</strong>，表示任意主机本身</p>
+<h3 id="IP地址的主要特点是什么："><a href="#IP地址的主要特点是什么：" class="headerlink" title="IP地址的主要特点是什么："></a>IP地址的主要特点是什么：</h3><p>IP地址是一种<strong>分等级</strong>的地址结构，分等级的好处一是IP地址管理机构在分配IP地址时<strong>只分配网络号</strong>，而主机号由得到该网络的单位<strong>自行</strong>分配，方便IP地址的管理，二是路由器仅根据目的主机的所连接的<strong>网络号来转发分组</strong>(不用考虑目标主机号)，<strong>减小了路由表所占的存储空间</strong></p>
+<p>IP地址是标志一个主机(路由器)和一条链路的接口,当主机同时连接两个网络时，该主机要同时有两个<strong>不同的IP地址</strong>，两个IP地址的网络号要不同。因为路由器至少要连接两个网络转发分组，所以路由器至少有两个不同的IP地址，且路由器的各个IP地址的网络号时不同的</p>
+<p>用<strong>转发器或网桥连接的若干个局域网仍然是同一个网络</strong>(一个广播域)，因此这些局域网都有<strong>相同的网络号</strong>，在同一个局域网中的主机或路由器的IP地址有着相同的网络号</p>
+<p>所有分配到<strong>网络号的网络都是平等的，无论是局域网还是广域网</strong></p>
+<h3 id="IP地址和MAC地址的区别"><a href="#IP地址和MAC地址的区别" class="headerlink" title="IP地址和MAC地址的区别"></a>IP地址和MAC地址的区别</h3><p>IP地址是由<strong>软件</strong>实现，是一种<strong>逻辑</strong>地址，IP地址是<strong>网络层及以上各层使用的地址</strong></p>
+<p>MAC地址是由<strong>硬件</strong>地址，是一种<strong>物理</strong>地址，MAC地址是<strong>数据链路层和物理层</strong>使用的地址，物理地址放在MAC帧的首部</p>
+<p>IP地址是给每个世界上每个连接在因特网的主机分配的一个唯一标识符，从而把整个因特网看成一个单一的网络，在实际网络的链路上传送数据帧时<strong>，IP数据报只是MAC帧的数据，</strong>必须要用物理地址。</p>
+<h3 id="ARP协议工作方式"><a href="#ARP协议工作方式" class="headerlink" title="ARP协议工作方式"></a>ARP协议工作方式</h3><p>A向B发送数据报，现<strong>在自己的ARP高速缓存中查找B的IP地址</strong></p>
+<p>若<strong>找到</strong>将其映射为硬件地址，将其<strong>写入MAC帧</strong>，通过局域网将MAC帧<strong>发给该硬件地址</strong></p>
+<p>若<strong>没有找到</strong>B的硬件地址，则按以下步骤找出B的硬件地址</p>
+<p>A在本局域网上<strong>广播</strong>发送一个<strong>ARP请求分组</strong>，包含自己的<strong>IP地址和硬件地址，和B的IP地址</strong></p>
+<p>在本局域网上的所有主机运行的ARP进程都收到该ARP请求分组</p>
+<p>主机B的IP地址与要查询的地址<strong>一致</strong>时，<strong>收下</strong>该请求分组，并向A发送<strong>ARP响应分组</strong>的同时，<strong>将A的地址映射存入自己的ARP缓存中</strong>，以便下次B向A发送数据，其他主机则不理睬</p>
+<p>主机A收到B的相应分组，在其<strong>ARP缓存中写入B的IP地址到硬件地址的映射</strong></p>
+<h3 id="分组转发算法-路由器"><a href="#分组转发算法-路由器" class="headerlink" title="分组转发算法(路由器)"></a>分组转发算法(路由器)</h3><p>从<strong>IP数据报中提却目的主机的IP地址</strong>，并得出其网络地址</p>
+<p>如果该网络地址与路由器直接相连，进行<strong>直接交付</strong>，不需要经过其他路由器，否则</p>
+<p>如果路由表中<strong>含有</strong>目的主机对应IP地址的特定主机路由(直接指向特定目的主机的路由)，则将IP数据报交付给吓<strong>下一跳</strong>路由器，否则</p>
+<p>如果路由表含有能到达目的网络地址的路由，就将数据报交付给下一跳路由器，否则</p>
+<p>如果路由表表中有<strong>默认路由</strong>，就交付给默认路由器，<strong>否则</strong>报告转发分组<strong>出错</strong></p>
+<h3 id="为什么要划分子网"><a href="#为什么要划分子网" class="headerlink" title="为什么要划分子网"></a>为什么要划分子网</h3><p>IP地址的<strong>空间利用率低</strong>，两级IP地址<strong>不够灵活</strong>，给每个网络分配一个<strong>网络号会使路由表变得更大造成网络性能坏</strong></p>
+<h3 id="子网掩码的作用"><a href="#子网掩码的作用" class="headerlink" title="子网掩码的作用"></a>子网掩码的作用</h3><p>将一个<strong>大的</strong>物理网络<strong>划分成若干个小的</strong>子网络，<strong>对外仍然是一个整体</strong>，<strong>减少IP的浪费，提高网络性能</strong></p>
+<p>通过屏蔽IP地址的一部分区分主机号和网络号，并说明该IP地址是在局域网上还是远程网</p>
+<h3 id="使用子网掩码查找路由的算法-路由表项含有目的网络地址，子网掩码，下一跳地址"><a href="#使用子网掩码查找路由的算法-路由表项含有目的网络地址，子网掩码，下一跳地址" class="headerlink" title="使用子网掩码查找路由的算法(路由表项含有目的网络地址，子网掩码，下一跳地址)"></a>使用子网掩码查找路由的算法(路由表项含有目的网络地址，子网掩码，下一跳地址)</h3><p>路由器先从收到的分组首部取出<strong>目的IP地址D</strong>，再用各网络的<strong>子网掩码与D逐位相与</strong>，看是否与相邻的网络地址匹配，若匹配直接交付，否则 若路由表中有目的地址为D的<strong>特定主机路由</strong>，则将分组交付给<strong>下一跳路由器</strong>，否则，对路由表中的每一行的子网掩码和D逐位相与，若其结果与该行的目的网络地址匹配，则将分组传送给该行的指明的下一跳路由器，否则，若路由表中有默认路由，将分组传送给默认路由器，否则报告转发分组出错</p>
+<h3 id="使用CIDR-无分类编址-算法查找路由-路由表项含有网络前缀和下一跳地址组成"><a href="#使用CIDR-无分类编址-算法查找路由-路由表项含有网络前缀和下一跳地址组成" class="headerlink" title="使用CIDR(无分类编址)算法查找路由(路由表项含有网络前缀和下一跳地址组成)"></a>使用CIDR(无分类编址)算法查找路由(路由表项含有网络前缀和下一跳地址组成)</h3><p>从收到的数据报中提取目的IP地址D，将D与路由表中已有的各项的<strong>子网掩码相与</strong>，将所得结果，根据<strong>最长前缀匹配</strong>原理(从匹配结果中选择具有最长网络前缀的路由,因为网络前缀越长，路由越具体)，将数据报转发该行指明的下一跳路由器</p>
+<h3 id="无分类编制CIDR的特点"><a href="#无分类编制CIDR的特点" class="headerlink" title="无分类编制CIDR的特点"></a>无分类编制CIDR的特点</h3><p><strong>消除了划分子网的概念</strong>，使IP地址由<strong>三级编址变成无分类的二级编址</strong>，把网络前缀都<strong>相同的连续的IP的地址组成一个CLDR地址块</strong>，只道地址块中任何一个地址，就知道这个地址的起始地址和最终地址，这种地址的聚合叫做<strong>路由聚合</strong>，路由聚合使得路由表中的一个表项可以表示多个原来传统分类地址中多个路由表项，减少路由之间的信息交换，提高网络性能</p>
+<h3 id="ICMP（网络控制协议）"><a href="#ICMP（网络控制协议）" class="headerlink" title="ICMP（网络控制协议）"></a>ICMP（网络控制协议）</h3><p>目的：<strong>提高IP数据报交付成功的机会</strong></p>
+<p>允许主机或路由器报告<strong>差错</strong>情况或者提交有关<strong>异常</strong>情况，<strong>ICMP报文是IP数据报的数据部分</strong></p>
+<h3 id="IP数据报中的首部检验和并不检验数据报中的数据，这样做的最大好处是什么？坏处是什么？"><a href="#IP数据报中的首部检验和并不检验数据报中的数据，这样做的最大好处是什么？坏处是什么？" class="headerlink" title="IP数据报中的首部检验和并不检验数据报中的数据，这样做的最大好处是什么？坏处是什么？"></a>IP数据报中的首部检验和并不检验数据报中的数据，这样做的最大好处是什么？坏处是什么？</h3><p>在首部中的错误比数据中的错误更加严重，由于数据校验的代价大，同时上层协议也做相同的校验工作，故在网络层并不进行数据校验，是为了<strong>分组更快的转发</strong>，但数据部分<strong>出错无法尽早发现</strong></p>
+<h3 id="当某个路由器发现IP数据报的校验和出错时，为什么采取丢弃的方法而不是重传？计算首部校验和为什么不采用CRC校验？"><a href="#当某个路由器发现IP数据报的校验和出错时，为什么采取丢弃的方法而不是重传？计算首部校验和为什么不采用CRC校验？" class="headerlink" title="当某个路由器发现IP数据报的校验和出错时，为什么采取丢弃的方法而不是重传？计算首部校验和为什么不采用CRC校验？"></a>当某个路由器发现IP数据报的校验和出错时，为什么采取丢弃的方法而不是重传？计算首部校验和为什么不采用CRC校验？</h3><p>IP首部中的源站地址也有可能出错，请错误的源地址重传数据是没有意义的，不采用CRC校验是<strong>简化计算机，提高路由器的吞吐量</strong></p>
+<h3 id="IP数据报在网络中为什么要分片和重组？"><a href="#IP数据报在网络中为什么要分片和重组？" class="headerlink" title="IP数据报在网络中为什么要分片和重组？"></a>IP数据报在网络中为什么要分片和重组？</h3><p>每种网络中限定<strong>一个帧最多能够携带的数据量</strong>为最大传输单元（MTU），当一个数据报的尺寸大于将发往的网络的MTU，采用分片与重组技术，路由器<strong>将IP数据报分成若干较小的部分</strong>，称为分片，然后再将<strong>每片独立的进行发送</strong>，并在目标网络中进行<strong>重组</strong></p>
+<h3 id="什么是CRC校验？"><a href="#什么是CRC校验？" class="headerlink" title="什么是CRC校验？"></a>什么是CRC校验？</h3><p>这种编码基本思想是将要传送的信息M(X)表示为一个多项式L，用L除以一个预先确定的多项式G(X)，得到的余式就是所需的循环冗余校验码。</p>
+<p>理论上可以证明循环冗余校验码的检错能力有以下特点：①可检测出所有奇数位错；②可检测出所有双比特的错；③可检测出所有小于、等于校验位长度的突发错。</p>
+<h3 id="路由选择协议"><a href="#路由选择协议" class="headerlink" title="路由选择协议"></a>路由选择协议</h3><p>内部网关协议(IGP,自治系统内部的路由选择协议)：只关心本自治系统<strong>内部</strong>内如何传送数据，与互联网其他自治系统使用什么协议无关，如<strong>RIP,OSPF</strong></p>
+<p>外部网关协议(EGP)：在<strong>不同自治系统之间</strong>使用的路由协议，不关心AS(自治系统)内部使用什么协议，如BGP-4</p>
+<h3 id="简述RIP，OSPF和BGP路由选择协议的主要特点"><a href="#简述RIP，OSPF和BGP路由选择协议的主要特点" class="headerlink" title="简述RIP，OSPF和BGP路由选择协议的主要特点"></a>简述RIP，OSPF和BGP路由选择协议的主要特点</h3><p><strong>收敛</strong>：在自治系统中节点得到正确路由选择信息的过程</p>
+<p>RIP（路由信息协议）：一种分布式的基于<strong>距离向量</strong>的路由选择协议，<strong>简单开销小，收敛速度慢</strong></p>
+<p>路由器间交换的是路由器中完整的路由表，当网络出现故障时，需要很长时间才能将信息传送给所有路由器更新</p>
+<p>OSPF（开放最短路径优先）协议：一种分布式的基于<strong>链路状态</strong>的路由选择协议，<strong>收敛速度快</strong></p>
+<p>支持可变长度的子网划分和无分类编制CIDR，如果一个目的网络有多条相同代价的路径，可以分头行动使用多条路由，RIP只能使用某个到达目的网络最短路径</p>
+<p>BGP（边界网关协议）：一种<strong>路径向量</strong>的路由选择协议</p>
+<p>找到一条到达目的网络<strong>较好</strong>的路由(不兜圈子)，<strong>并非最佳路由</strong></p>
+<h3 id="RIP使用UDP（面向无连接服务协议），OSPF使用IP（面向无连接服务协议）-BGP使用TCP（面向连接服务协议），优点？"><a href="#RIP使用UDP（面向无连接服务协议），OSPF使用IP（面向无连接服务协议）-BGP使用TCP（面向连接服务协议），优点？" class="headerlink" title="RIP使用UDP（面向无连接服务协议），OSPF使用IP（面向无连接服务协议）,BGP使用TCP（面向连接服务协议），优点？"></a>RIP使用UDP（面向无连接服务协议），OSPF使用IP（面向无连接服务协议）,BGP使用TCP（面向连接服务协议），优点？</h3><p>RIP只和<strong>邻站</strong>交换信息，使用UDP无可靠保障，但开销小</p>
+<p>OSPF使用可靠的<strong>洪泛法</strong>，直接使用IP，<strong>开销小</strong></p>
+<p>BGP需要<strong>交换路由信息和更新信息</strong>，TCP提供<strong>可靠交付以减少带宽消耗</strong></p>
+<h3 id="IPV6和IPV4相比的特点"><a href="#IPV6和IPV4相比的特点" class="headerlink" title="IPV6和IPV4相比的特点"></a>IPV6和IPV4相比的特点</h3><p>IPV6有着<strong>更大的地址空间</strong>，地址从32位增大到<strong>128</strong>位；灵活的首部格式；扩展的地址层次结构；允许<strong>协议扩充</strong>；支持即插即用和资源的预分配</p>
+<h3 id="IPV6的地址"><a href="#IPV6的地址" class="headerlink" title="IPV6的地址"></a>IPV6的地址</h3><p><strong>单播</strong>：传统的点对点通信；<strong>多播</strong>：一对多通信，分组交付给一组计算机中每台计算机；<strong>任播</strong>：目的站为一组计算机，但数据报在交付时只交付给其中一台计算机，通常是距离的那个</p>
+<h3 id="IPV4到IPV6过渡的方法"><a href="#IPV4到IPV6过渡的方法" class="headerlink" title="IPV4到IPV6过渡的方法"></a>IPV4到IPV6过渡的方法</h3><p><strong>双协议栈</strong>：使主机或路由器<strong>同时装有IPV4和IPV6协议栈</strong>，既能和IPV4网络通信，又能和IPV6网络通信</p>
+<p><strong>隧道技术</strong>：<strong>将整个IPV6数据封装到IPV4数据报的数据部分</strong>，使得IPV6数据报可以在IPV4网络中传输</p>
+<h3 id="解决IPV4地址紧缺的方法"><a href="#解决IPV4地址紧缺的方法" class="headerlink" title="解决IPV4地址紧缺的方法"></a>解决IPV4地址紧缺的方法</h3><p>无类别编址CIDR使IP地址分配<strong>更合理</strong>，采用网络地址转换<strong>NAT节省全球IP地址</strong>，采用具有更大地址空间的<strong>IPV6</strong></p>
+<h3 id="NAT是什么？有哪些特点"><a href="#NAT是什么？有哪些特点" class="headerlink" title="NAT是什么？有哪些特点"></a>NAT是什么？有哪些特点</h3><p>网络地址转换NAT：将<strong>专用网络地址转换为公用</strong>地址，<strong>隐藏内部管理的IP地址</strong>，使得整个专用网只需要一个全球IP地址就可以连接因特网，大大<strong>节省了IP地址的消耗</strong></p>
+<p>所有使用本地地址的主机和外界通信时，需要<strong>NAT路由器</strong>(专用网连接因特网的路由器)使用<strong>NAT转换表</strong>将本地地址转换为全球地址，可以让<strong>多个私有IP地址映射到同一个全球地址</strong></p>
+<h3 id="运输层在协议栈中的地位和作用，运输层的通信和网络层的有什么区别"><a href="#运输层在协议栈中的地位和作用，运输层的通信和网络层的有什么区别" class="headerlink" title="运输层在协议栈中的地位和作用，运输层的通信和网络层的有什么区别"></a>运输层在协议栈中的地位和作用，运输层的通信和网络层的有什么区别</h3><p>运输层处于<strong>通信部分的最高层</strong>，<strong>用户功能中的最底层</strong>，<strong>向用户层提供服务</strong></p>
+<p>运输层为应用进程之间提供<strong>端到端</strong>的逻辑通信，而网络层是为<strong>主机之间</strong>提供逻辑通信(面向主机，路由寻址(网络地址主机IP地址)，分组交换)</p>
+<p>运输层对接收到的<strong>报文进行差错检测</strong>(首部和数据部分)，而网<strong>络层只检测IP数据报的首部</strong></p>
+<p>提供两种不同的传输协议：<strong>面向连接的TCP和无连接的UDP</strong>，而网络层无法同时实现这两种协议(要么只提供面向连接的如虚电路，要么只提供无连接的如数据报)</p>
+<p><strong>复用</strong>：是指发送方<strong>不同的应用进程</strong>都可<strong>使用同一个传输协议</strong>传送数据</p>
+<p><strong>分用</strong>：指接收方的运输层在剥去报文的首部后能将数据正确交付给应用层</p>
+<h3 id="运输层的两个主要协议的特点"><a href="#运输层的两个主要协议的特点" class="headerlink" title="运输层的两个主要协议的特点"></a>运输层的两个主要协议的特点</h3><p><strong>TCP</strong>(<strong>可靠传输，拥塞控制，流量控制</strong>)：是在<strong>不可靠的IP层之上实现的可靠的数据传输协议</strong>，主要解决传输的<strong>可靠、有序、无丢失、不重复问题</strong></p>
+<p>TCP是<strong>面向连接</strong>的运输层协议，在使用协议之前，必须先<strong>建立TCP连接</strong>，在传送数据后，必须<strong>释放建立的TCP连接</strong></p>
+<p>每一条TCP连接只有两个端点，且是点对点的(<strong>一对一</strong>)</p>
+<p>提供可靠交付的服务，保证传送的数据无差错，不丢失，不重复，不失序</p>
+<p>面向<strong>字节流</strong>，虽然应用程序与TCP的交互是一次一个数据块，但TCP把应用程序交下来的数据仅视为一连串<strong>无结构的字节流</strong></p>
+<p>TCP提供<strong>全双工</strong>通信，TCP允许通信双方的应用程序在任何时刻都能发送数据，TCP连接的两端设有发送缓存和接收缓存，用来临时存储双发通信的数据</p>
+<p><strong>UDP</strong>：只在IP的数据报服务的基础上增加了两个基本服务：<strong>复用、分用和差错控制</strong></p>
+<p>不用建立连接，所以<strong>没有建立连接的时延，也不需要维护连接状态</strong></p>
+<p>尽<strong>最大努力</strong>的交付，<strong>不保证可靠交付</strong>；支持一对一，一对多，多对一，多对多的交互通信</p>
+<p><strong>没有拥塞控制</strong>，网络中的拥塞不会映像主机的发送速率</p>
+<p><strong>面向报文</strong>：UDP面对应用层交下来的报文，既不拆分，也不合并，就是应用层交付多长的报文，UDP就发多长的报文，而UDP对IP层交上来的数据报，在去除首部后就就原封不动的交付给应用层，一次交付一个完整的报文，所以报文时UDP数据处理的最小单位</p>
+<p><strong>UDP的首部开销小，只有8个字节，而TCP的首部需要20个字节</strong></p>
+<h3 id="运输层端口的作用是什么？端口为什么划分成三种？"><a href="#运输层端口的作用是什么？端口为什么划分成三种？" class="headerlink" title="运输层端口的作用是什么？端口为什么划分成三种？"></a>运输层端口的作用是什么？端口为什么划分成三种？</h3><p>端口能够让应用层的各种<strong>应用进程将其数据通过端口向下交付给传输层</strong>，以及让传输层知道将报文段中的数据向上</p>
+<p>通过端口号交付给应用层相应的<strong>进程</strong>，端口号标识的主机中的<strong>应用进程</strong>(IP地址和MAC地址标识的是主机)</p>
+<p><strong>硬件端口</strong>：在路由器和交换机上使用的端口，使不同硬件设备进行交互的接口</p>
+<p><strong>软件端口</strong>：在协议栈层间的抽象的协议端口，使应用层的各种协议进程与运输层实体进行层间交互的地址</p>
+<p>按端口号范围分为服务端使用的端口号和客户端使用的端口号</p>
+<p>服务端使用的端口号：<strong>熟知端口号</strong>，分配给TCP&#x2F;IP重要的应用程序；<strong>登记端口号</strong>，供非熟知端口号的应用程序使用</p>
+<p>客户端使用的端口号：在客户进程<strong>运行时动态分配</strong>，进程被撤销，端口也就不复存在了</p>
+<h3 id="运输层中伪首部的作用"><a href="#运输层中伪首部的作用" class="headerlink" title="运输层中伪首部的作用"></a>运输层中伪首部的作用</h3><p>用于<strong>计算校验和</strong>进行<strong>差错控制</strong></p>
+<h3 id="使用TCP对实时语音数据的传输有没有问题？使用UDP在传送数据时会出现什么问题？"><a href="#使用TCP对实时语音数据的传输有没有问题？使用UDP在传送数据时会出现什么问题？" class="headerlink" title="使用TCP对实时语音数据的传输有没有问题？使用UDP在传送数据时会出现什么问题？"></a>使用TCP对实时语音数据的传输有没有问题？使用UDP在传送数据时会出现什么问题？</h3><p>TCP提供可靠传输，建立连接、维护、断开连接都有不小的时间开销，对于实时应用的，TCP的拥塞控制会导致数据有<strong>较大延迟</strong>，是不可容忍的，而UDP没有拥塞控制，故网络上的拥塞不会映像主机的发送效率，不会出现较大的时延</p>
+<p>UDP是不保证可靠交付，在传输过程中数据可能会丢失</p>
+<h2 id="区块链"><a href="#区块链" class="headerlink" title="区块链"></a>区块链</h2><h3 id="习近平在中央政治局第十八次集体学习时强调-把区块链作为核心技术自主创新重要突破口-加快推动区块链技术和产业创新发展"><a href="#习近平在中央政治局第十八次集体学习时强调-把区块链作为核心技术自主创新重要突破口-加快推动区块链技术和产业创新发展" class="headerlink" title="习近平在中央政治局第十八次集体学习时强调 把区块链作为核心技术自主创新重要突破口 加快推动区块链技术和产业创新发展"></a>习近平在中央政治局第十八次集体学习时强调 把区块链作为核心技术自主创新重要突破口 加快推动区块链技术和产业创新发展</h3><p>上升为国家战略了。</p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/what-is/blockchain/?aws-products-all.sort-by=item.additionalFields.productNameLowercase&aws-products-all.sort-order=asc">什么是区块链技术？- 区块链简介 - AWS (amazon.com)</a></p>
+<h3 id="区块链是什么？它的优点和缺点是什么？"><a href="#区块链是什么？它的优点和缺点是什么？" class="headerlink" title="区块链是什么？它的优点和缺点是什么？"></a>区块链是什么？它的优点和缺点是什么？</h3><p>区块链是一种去<strong>中心化</strong>的<strong>分布式账本</strong>技术，通过区块链技术可以实现去中心化的<strong>数据存储、交易和管理</strong>。 </p>
+<p>区块链的优点包括： </p>
+<blockquote>
+<p>1.<strong>去中心化</strong>：区块链不需要中心化的机构或组织来管理和控制，可以实现去中心化的数据存储和交易。 </p>
+<p>2.<strong>安全</strong>性高：区块链采用加密算法和共识机制来保证数据的安全性和可信度。 </p>
+<p>3.<strong>透明度</strong>高：区块链的交易记录是公开的，可以实现数据的透明度和公正性。 </p>
+<p>4.<strong>不可篡改</strong>：区块链的数据是以区块的形式存储，每个区块都包含了前一个区块的哈希值，保证了数据的不可篡改性。 </p>
+<p>5.高效性：区块链可以实现快速、安全、低成本的数据交易和管理。</p>
+</blockquote>
+<p> 区块链的缺点包括：</p>
+<blockquote>
+<p>1,<strong>技术门槛高</strong>：区块链技术需要较高的技术门槛和专业知识，对于一般用户来说使用和理解难度较大。 </p>
+<p>2.可扩展性差：目前的区块链技术在处理大量数据和高并发交易时存在可扩展性问题。 </p>
+<p>3.<strong>能源消耗大</strong>：一些区块链共识算法需要大量的能源消耗来验证交易和出块，对环境造成一定的影响。</p>
+</blockquote>
+<h3 id="区块链的共识算法有哪些？请简要介绍一下其中的几种。"><a href="#区块链的共识算法有哪些？请简要介绍一下其中的几种。" class="headerlink" title="区块链的共识算法有哪些？请简要介绍一下其中的几种。"></a>区块链的共识算法有哪些？请简要介绍一下其中的几种。</h3><p>区块链的共识算法包括： </p>
+<ol>
+<li><p>工作量证明（Proof of Work，PoW）：需要参与者完成一定的计算工作来验证交易和出块，比特币就是采用了PoW算法。 </p>
+</li>
+<li><p>权益证明（Proof of Stake，PoS）：参与者需要持有一定数量的代币来验证交易和出块，以太坊就是采用了PoS算法。 </p>
+</li>
+<li><p>委托权益证明（Delegated Proof of Stake，DPoS）：参与者通过投票选出代表来验证交易和出块，EOS就是采用了DPoS算法。 </p>
+</li>
+<li><p>实用拜占庭容错（Practical Byzantine Fault Tolerance，PBFT）：适用于私有链或联盟链，通过多数同意的方式来验证交易和出块。 </p>
+</li>
+<li><p>其他算法：还有一些其他的共识算法，如权威证明（Proof of Authority，PoA）等。 </p>
+<p>其中，PoW和PoS是目前最为常见的共识算法，而DPoS则在一些区块链项目中得到了广泛应用。</p>
+</li>
+</ol>
+<h3 id="区块链的隐私保护有哪些技术手段？请简要介绍一下其中的几种。"><a href="#区块链的隐私保护有哪些技术手段？请简要介绍一下其中的几种。" class="headerlink" title="区块链的隐私保护有哪些技术手段？请简要介绍一下其中的几种。"></a>区块链的隐私保护有哪些技术手段？请简要介绍一下其中的几种。</h3><p>区块链的隐私保护技术包括： </p>
+<ol>
+<li><p>零知识证明（Zero-Knowledge Proof，ZKP）：通过在不泄露信息的情况下证明某个声明的真实性，保护隐私。 </p>
+</li>
+<li><p>环签名（Ring Signature）：使用多个公钥进行签名，使得无法确定签名者的身份，保护隐私。</p>
+</li>
+<li><p><strong>混币</strong>（Coin Mixing）：将<strong>多个交易混合在一起</strong>，使得难以追踪交易的来源和去向，保护隐私。 </p>
+</li>
+<li><p>多重签名（Multi-Signature）：需要多个人共同签名才能完成交易，保护交易的安全性和隐私。 </p>
+</li>
+<li><p>加密算法：使用加密算法对交易信息进行加密，保护隐私。 </p>
+<p>其中，ZKP和环签名是目前最为常见的隐私保护技术，而混币和多重签名也在一些区块链项目中得到了广泛应用。</p>
+</li>
+</ol>
+<h3 id="区块链的智能合约是什么？它的作用和优点是什么？"><a href="#区块链的智能合约是什么？它的作用和优点是什么？" class="headerlink" title="区块链的智能合约是什么？它的作用和优点是什么？"></a>区块链的智能合约是什么？它的作用和优点是什么？</h3><p>区块链的智能合约是一种<strong>自动执行的计算机程序</strong>，可以在区块链上<strong>执行和管理交易和资产</strong>。它的作用是<strong>实现自动化的合约执行</strong>，减少人为干预和减少合约执行成本。</p>
+<p>智能合约的优点包括：<strong>可编程</strong>性、<strong>自动化</strong>执行、<strong>去中心化</strong>、<strong>透明性</strong>、<strong>不可篡改性等</strong>。它可以用于各种场景，如数字货币交易、供应链管理、投票和选举等。</p>
+<h3 id="区块链的应用场景有哪些？请举例说明。"><a href="#区块链的应用场景有哪些？请举例说明。" class="headerlink" title="区块链的应用场景有哪些？请举例说明。"></a>区块链的应用场景有哪些？请举例说明。</h3><ol>
+<li><p><strong>数字货币</strong>和支付：比特币、以太币等数字货币的发行和交易； </p>
+</li>
+<li><p><strong>供应链</strong>管理：跟踪物流信息、确保产品质量和安全等； </p>
+</li>
+<li><p><strong>版权</strong>保护：确保数字内容的版权归属和使用权；</p>
+</li>
+<li><p>投票和选举：保证投票结果的公正性和安全性； </p>
+</li>
+<li><p>物联网：连接物理设备和传感器，实现设备之间的信任和自动化交互； </p>
+</li>
+<li><p><strong>医疗保健</strong>：管理医疗记录和数据，确保数据的安全和隐私等。 </p>
+<p>举例来说，比特币是最早的区块链应用之一，以<strong>去中心化的方式实现了数字货币的发行和交易</strong>。另外，IBM和华为等企业也在供应链管理和物联网等领域探索了区块链技术的应用。</p>
+</li>
+</ol>
+<h3 id="区块链的安全问题有哪些？请简要介绍一下其中的几种。"><a href="#区块链的安全问题有哪些？请简要介绍一下其中的几种。" class="headerlink" title="区块链的安全问题有哪些？请简要介绍一下其中的几种。"></a>区块链的安全问题有哪些？请简要介绍一下其中的几种。</h3><ol>
+<li><p>51%攻击：攻击者控制了超过50%的网络算力，可以篡改交易记录； </p>
+</li>
+<li><p>双花攻击：攻击者在同一时间向不同的地址发送相同的数字货币，从而欺骗交易对手； </p>
+</li>
+<li><p>智能合约漏洞：智能合约代码存在漏洞，被攻击者利用进行攻击； </p>
+</li>
+<li><p>钱包安全问题：数字货币钱包存在被攻击的风险，如私钥泄露、钓鱼网站等； </p>
+</li>
+<li><p>量子计算攻击：未来量子计算机的出现可能会威胁到当前的加密算法安全性。 </p>
+<p>以上是一些常见的区块链安全问题，需要采取相应的安全措施来保护区块链系统的安全。</p>
+</li>
+</ol>
+<h3 id="区块链的未来发展趋势是什么？请简要阐述你的观点。"><a href="#区块链的未来发展趋势是什么？请简要阐述你的观点。" class="headerlink" title="区块链的未来发展趋势是什么？请简要阐述你的观点。"></a>区块链的未来发展趋势是什么？请简要阐述你的观点。</h3><ol>
+<li><strong>去中心化金融</strong>（DeFi）：DeFi 应用将会成为区块链的重要应用场景，为用户提供更加透明、高效、低成本的金融服务； </li>
+<li>中心化与去中心化的结合：中心化和去中心化的结合将成为未来区块链发展的趋势，以提高系统的性能和可扩展性； </li>
+<li>隐私保护：隐私保护将成为区块链技术发展的重要方向，以满足用户对隐私的需求； </li>
+<li>跨链技术：跨链技术将成为区块链发展的重要方向，以实现不同区块链之间的互操作性； </li>
+<li>绿色区块链：绿色区块链将成为区块链技术发展的重要方向，以减少区块链对环境的影响。</li>
+</ol>
+<h3 id="有哪些常用的加密算法？"><a href="#有哪些常用的加密算法？" class="headerlink" title="有哪些常用的加密算法？"></a>有哪些常用的加密算法？</h3><p>主要包括对称加密和非对称加密</p>
+<p>对称加密算法包括DES、3DES、<strong>AES</strong>等，其中AES是目前最常用的对称加密算法之一。</p>
+<p>非对称加密算法包括<strong>RSA</strong>、DSA、ECC等，其中RSA是最常用的非对称加密算法之一。</p>
+<p>此外，还有哈希算法，如MD5、SHA-1、SHA-2等，用于对数据进行摘要和验证。这些加密算法在信息安全领域得到广泛应用，用于保护数据的机密性、完整性和可用性。</p>
+<h3 id="什么是对称加密？什么是非对称加密？"><a href="#什么是对称加密？什么是非对称加密？" class="headerlink" title="什么是对称加密？什么是非对称加密？"></a>什么是对称加密？什么是非对称加密？</h3><p>对称加密是指<strong>加密和解密使用相同的密钥</strong>。在对称加密中，发送方使用密钥将明文<strong>加密</strong>成密文，接收方使用相同的密钥将密文<strong>解密</strong>成明文。常见的对称加密算法包括DES、3DES、AES等。</p>
+<p> 非对称加密是指<strong>加密和解密使用不同的密钥</strong>。在非对称加密中，发送方使用<strong>公钥将明文加密成密文</strong>，接收方使用私钥将密文解密成明文。反过来，发送方使用私钥将数字签名加密，接收方使用公钥验证数字签名。常见的非对称加密算法包括RSA、DSA、ECC等。 </p>
+<p>对称加密和非对称加密各有优缺点，<strong>对称加密速度快</strong>，但密钥<strong>管理和分发较为困难</strong>；非对称加密<strong>安全性高</strong>，但<strong>速度较慢</strong>。因此，在实际应用中，通常会结合使用对称加密和非对称加密，以充分发挥它们各自的优势。</p>
+<h3 id="Https使用了什么加密算法？"><a href="#Https使用了什么加密算法？" class="headerlink" title="Https使用了什么加密算法？"></a>Https使用了什么加密算法？</h3><p>HTTPS使用了<strong>对称加密和非对称加密相结合</strong>的方式来保护数据的机密性、完整性和可用性。</p>
+<p>具体来说，HTTPS使用对称加密算法（如<strong>AES</strong>）来<strong>加密数据</strong>，使用非对称加密算法（如<strong>RSA</strong>）来<strong>进行密钥交换和数字签名验证</strong>。</p>
+<p>此外，HTTPS还使用了一种称为<strong>TLS</strong>（Transport Layer Security）的协议来确保通信安全。</p>
+<p>TLS是一种基于<strong>公钥加密技术</strong>的协议，它使用<strong>非对称加密算法来进行密钥交换和数字签名验证</strong>，同时使用<strong>对称加密算法来加密数据</strong>。TLS是HTTPS的核心技术之一，它可以<strong>保护数据在传输过程中不被窃听、篡改或伪造</strong>。</p>
+<h3 id="AES加密步骤？"><a href="#AES加密步骤？" class="headerlink" title="AES加密步骤？"></a>AES加密步骤？</h3><p>AES（Advanced Encryption Standard）是一种<strong>对称</strong>加密算法，被广泛应用于保护数据的机密性。AES的加密过程包括以下步骤： </p>
+<p>密钥扩展：将输入的<strong>密钥扩展成多个轮密钥</strong>，用于后续的加密操作。 </p>
+<p>初始轮：将明文与第一个轮密钥进行<strong>异或操作</strong>。 </p>
+<p>多轮加密：将<strong>初始轮的输出作为下一轮的输入</strong>，每轮都使用<strong>不同的轮密钥进行加密操作</strong>。</p>
+<p>最终轮：在最后一轮加密中，不再进行MixColumns操作，而是直接进行SubBytes、ShiftRows和AddRoundKey操作。 </p>
+<p>密文生成：将<strong>最后一轮加密的输出作为密文输出</strong>。 </p>
+<p>在AES加密过程中，<strong>明文被分成多个块</strong>，每个块的大小为<strong>128位</strong>。每个块都会经过密<strong>钥扩展、初始轮、多轮加密和最终轮的处理</strong>，最终生成密文输出。<strong>解密过程与加密过程类似，只是轮密钥的顺序是相反的</strong>。由于AES使用了高强度的加密算法，因此在信息安全领域得到了广泛应用。</p>
+<h3 id="RSA加密步骤？"><a href="#RSA加密步骤？" class="headerlink" title="RSA加密步骤？"></a>RSA加密步骤？</h3><p>RSA（Rivest–Shamir–Adleman）是一种<strong>非对称</strong>加密算法，被广泛应用于<strong>保护数据的机密性和数字签名验证</strong>。RSA的加密过程包括以下步骤： </p>
+<p>密钥生成：选择<strong>两个大素数p和q</strong>，并计算它们的乘积n&#x3D;p<em>q。选择一个整数e，使得e与(p-1)</em>(q-1)互质，并计算e的模反元素d，使得(d<em>e) mod ((p-1)</em>(q-1))&#x3D;1。公钥为(n,e)，私钥为(n,d)。 </p>
+<p>加密：将明文转换为一个整数m，使得0&lt;&#x3D;m&lt;n。计算密文c&#x3D;(m^e) mod n。 </p>
+<p>解密：用私钥(n,d)将密文c解密为明文m&#x3D;(c^d) mod n。 </p>
+<p>在RSA加密过程中，加密和解密使用<strong>不同的</strong>密钥，因此称为非对称加密。RSA的安全性基于<strong>大素数分解问题的难度</strong>，即在给定n的情况下，找到<strong>p和q的乘积n的因子的难度</strong>。由于RSA使用了高强度的加密算法，因此在信息安全领域得到了广泛应用。</p>
+<h3 id="什么是区块链的众包？"><a href="#什么是区块链的众包？" class="headerlink" title="什么是区块链的众包？"></a>什么是区块链的众包？</h3><p>众包是指将一个<strong>大型任务分解成许多小任务</strong>，由<strong>大量的人（即众包工人）完成</strong>，最终将这些小任务的结果<strong>合并</strong>起来，形成一个完整的任务。区块链是一种<strong>去中心化的分布式账本技术</strong>，它可以<strong>记录和验证交易</strong>，并且<strong>不需要中心化的机构来管理</strong>。区块链的众包是将众包任务的<strong>结果记录在区块链</strong>上，以<strong>保证任务的透明性和可追溯性</strong>。这种方法可以<strong>防止伪造、欺骗、隐私泄露和不可追溯等安全威胁，同时提高了众包系统的可靠性和安全性</strong>。</p>
+<h3 id="众包有哪些应用场景？"><a href="#众包有哪些应用场景？" class="headerlink" title="众包有哪些应用场景？"></a>众包有哪些应用场景？</h3><p>区块链的众包应用场景包括但不限于以下几个方面： 1. <strong>数据验证</strong>：区块链可以用于验证数据的真实性和完整性，众包可以帮助加速数据验证过程。 2. <strong>智能合约开发</strong>：众包可以帮助开发者快速开发和测试智能合约，提高智能合约的质量和安全性。 3. <strong>区块链应用测试</strong>：众包可以帮助测试人员快速发现和修复区块链应用中的漏洞和问题。 4. <strong>区块链应用开发</strong>：众包可以帮助开发者快速开发和测试区块链应用，提高应用的质量和安全性。 5. <strong>区块链技术咨询</strong>：众包可以帮助企业和组织快速获取区块链技术咨询和支持，提高区块链应用的成功率和效率。</p>
+</div><!-- comment system--><div class="container"><hr></div></article><footer id="footer"><div class="container"><div class="bar"><div class="social"><a href="/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></div><div class="footer">© 2023 <a href="/" rel="nofollow">John Doe</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/very-simple">very-simple</a>.</div></div></div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+    $(".fancybox").fancybox();
+});
+</script></body></html>
