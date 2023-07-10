@@ -1,4 +1,204 @@
-<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>使用SQL语句分割表中的字符串 | ColdWater</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Hexo 6.3.0"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">ColdWater</a><span class="subtitle"></span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a><a href="/about" class="sidebar-nav-item">About</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>使用SQL语句分割表中的字符串</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2023-07-10</div></div></div><article><div class="container post"></div><!-- comment system--><div class="container"><hr></div></article><footer id="footer"><div class="container"><div class="bar"><div class="social"><a href="mailto:coldwater216@gmail.com" target="_blank"><i class="fa fa-envelope-o"></i></a></div><div class="footer">© 2023 <a href="/" rel="nofollow">John Doe</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/very-simple">very-simple</a>.</div></div></div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>使用SQL语句分割表中的字符串 | ColdWater</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Hexo 6.3.0"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">ColdWater</a><span class="subtitle"></span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a><a href="/about" class="sidebar-nav-item">About</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>使用SQL语句分割表中的字符串</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2023-07-10</div><div class="post-tags"><a class="post-tag-none-link" href="/tags/SQL/" rel="tag">SQL</a></div></div></div><article><div class="container post"><p>I encountered such a situation when I processing data: </p>
+<p>So I record the method that could deal with:</p>
+<p><code>test_substring</code></p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>goods_id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>98,23</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1,2,3</td>
+</tr>
+</tbody></table>
+<p>To change the above table into the following table:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>goods_id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>98</td>
+</tr>
+<tr>
+<td>1</td>
+<td>23</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<p>That is, separate the <code>goods_id</code> in the <code>Order</code> table by commas</p>
+<p>这时候就要用到SQL中的<code>substring_index</code>函数</p>
+<p><code>substring_index</code> function:</p>
+<blockquote>
+<h2 id="Definition-and-Usage"><a href="#Definition-and-Usage" class="headerlink" title="Definition and Usage"></a>Definition and Usage</h2><p>The SUBSTRING_INDEX() function returns a substring of a string before a specified number of delimiter occurs.</p>
+<h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><p>SUBSTRING_INDEX(<em>string</em>, <em>delimiter</em>, <em>number</em>)</p>
+<h2 id="Parameter-Values"><a href="#Parameter-Values" class="headerlink" title="Parameter Values"></a>Parameter Values</h2><table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><em>string</em></td>
+<td align="left">Required. The original string</td>
+</tr>
+<tr>
+<td align="left"><em>delimiter</em></td>
+<td align="left">Required. The delimiter to search for</td>
+</tr>
+<tr>
+<td align="left"><em>number</em></td>
+<td align="left">Required. The number of times to search for the <em>delimiter.</em> Can be both a positive or negative number. If it is a positive number, this function returns all to the left of the <em>delimiter</em>. If it is a negative number, this function returns all to the right of the <em>delimiter</em>.</td>
+</tr>
+</tbody></table>
+<h2 id="Technical-Details"><a href="#Technical-Details" class="headerlink" title="Technical Details"></a>Technical Details</h2><table>
+<thead>
+<tr>
+<th align="left">Works in:</th>
+<th>From MySQL 4.0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"></td>
+<td></td>
+</tr>
+</tbody></table>
+</blockquote>
+<p>由于<code>substring_index</code>函数的第三个参数要传入一个<code>number</code>，即搜索分隔符的次数，针对我们这种情况:</p>
+<p><code>1,2,3</code>里面有三个部分，那么我们的第三个参数要传入3</p>
+<p>那么如何知道<code>goods_id</code>里面有几个部分呢？由于是各个部分之间是严格通过逗号<code>,</code>进行分隔的，我们可以通过计算逗号的数量来间接确定到底有几个部分</p>
+<blockquote>
+<p>例如：<code>str = &#39;1,2,3&#39;</code>，<code>str</code>的长度是5，我们将逗号全部替换为空字符串<code>&#39;&#39;</code>，长度相减，就得到了逗号的数量，然后加1，就知道了到底有多少个部分</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">逗号数目 <span class="operator">=</span> length(a.goods_id) <span class="operator">-</span> length(REPLACE(a.goods_id, <span class="string">&#x27;,&#x27;</span>, <span class="string">&#x27;&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>那么各部分的数目也就是逗号数目加1，that is:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">length(a.goods_id) <span class="operator">-</span> length(REPLACE(a.goods_id, <span class="string">&#x27;,&#x27;</span>, <span class="string">&#x27;&#x27;</span>)) <span class="operator">+</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+<p>ok，现在我们知道了每个字符串需要被分为几个部分，而且需要把每个部分都提取出来，即从1到n遍历出各个部分，然后显示出来</p>
+<p>我们如何遍历各个部分呢？</p>
+<p>可以通过与一个表进行链接</p>
+<p><code>incre_table</code>:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+</tr>
+<tr>
+<td>…</td>
+</tr>
+<tr>
+<td>9999</td>
+</tr>
+</tbody></table>
+<p>我们可以通过与上面这个表进行链接，因为我们的</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> test_substring a</span><br><span class="line">         <span class="keyword">JOIN</span> incre_table b <span class="keyword">ON</span> b.id <span class="operator">&lt;</span> (length(a.goods_id) <span class="operator">-</span> length(REPLACE(a.goods_id, <span class="string">&#x27;,&#x27;</span>, <span class="string">&#x27;&#x27;</span>)) <span class="operator">+</span> <span class="number">2</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> a.id;</span><br></pre></td></tr></table></figure>
+
+<p>result is:</p>
+<table>
+<thead>
+<tr>
+<th align="left">a.id</th>
+<th align="left">goods_id</th>
+<th align="left">b.id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">98,23</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">98,23</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">1,2,3</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">1,2,3</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">1,2,3</td>
+<td align="left">3</td>
+</tr>
+</tbody></table>
+<p>从而，我们可以根据<code>b.id</code>来进行与左边<code>goods_id</code>进行匹配</p>
+<p>代码如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.id,</span><br><span class="line">       substring_index(a.goods_id, <span class="string">&#x27;,&#x27;</span>, b.id) <span class="keyword">as</span> substring</span><br><span class="line"><span class="keyword">FROM</span> test_substring a</span><br><span class="line">         <span class="keyword">JOIN</span> incre_table b <span class="keyword">ON</span> b.id <span class="operator">&lt;</span> (length(a.goods_id) <span class="operator">-</span> length(REPLACE(a.goods_id, <span class="string">&#x27;,&#x27;</span>, <span class="string">&#x27;&#x27;</span>)) <span class="operator">+</span> <span class="number">2</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> a.id;</span><br></pre></td></tr></table></figure>
+
+<p>result is:</p>
+<table>
+<thead>
+<tr>
+<th align="left">id</th>
+<th align="left">substring</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1</td>
+<td align="left">98</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="left">98,23</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">1,2</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">1,2,3</td>
+</tr>
+</tbody></table>
+<p>可以看出，每个substring的最后一个部分是不同的，因此，我们可以取出最后一个部分，从而得到正确结果</p>
+<p>here is the code:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.id,</span><br><span class="line">       substring_index(substring_index(a.goods_id, <span class="string">&#x27;,&#x27;</span>, b.id), <span class="string">&#x27;,&#x27;</span>, <span class="number">-1</span>) <span class="keyword">as</span> substring</span><br><span class="line"><span class="keyword">FROM</span> test_substring a</span><br><span class="line">         <span class="keyword">JOIN</span> incre_table b <span class="keyword">ON</span> b.id <span class="operator">&lt;</span> (length(a.goods_id) <span class="operator">-</span> length(REPLACE(a.goods_id, <span class="string">&#x27;,&#x27;</span>, <span class="string">&#x27;&#x27;</span>)) <span class="operator">+</span> <span class="number">2</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> a.id;</span><br></pre></td></tr></table></figure>
+
+</div><!-- comment system--><div class="container"><hr></div></article><footer id="footer"><div class="container"><div class="bar"><div class="social"><a href="mailto:coldwater216@gmail.com" target="_blank"><i class="fa fa-envelope-o"></i></a></div><div class="footer">© 2023 <a href="/" rel="nofollow">John Doe</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/very-simple">very-simple</a>.</div></div></div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
     $(".fancybox").fancybox();
 });
 </script></body></html>
