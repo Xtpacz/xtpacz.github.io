@@ -1,0 +1,77 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>【Redis】缓存穿透、击穿、雪崩 | Xtpacz's Blog</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Hexo 7.1.1"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">Xtpacz's Blog</a><span class="subtitle"></span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a><a href="/about.html" class="sidebar-nav-item">About</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>【Redis】缓存穿透、击穿、雪崩</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2024-03-01</div></div></div><article><div class="container post"><p>可以这样记忆：</p>
+<p><strong>穿透</strong>：透了，就是redis和db都穿了</p>
+<p>击穿：仅仅穿了redis，db没穿</p>
+<p><strong>雪崩</strong>：雪山崩塌了，大量东西同时g了</p>
+<h3 id="穿透"><a href="#穿透" class="headerlink" title="穿透"></a><strong>穿透</strong></h3><p>读取数据的时候，redis和db都没有。</p>
+<h4 id="如何解决呢？"><a href="#如何解决呢？" class="headerlink" title="如何解决呢？"></a>如何解决呢？</h4><ol>
+<li>线程第一次读到db没有的时候，将一个null值放入redis中，以防后续db压力过大</li>
+<li>使用布隆过滤器快速判断数据是否存在。“不存在一定不存在，存在可能不存在！”</li>
+</ol>
+<p>布隆过滤器的构建流程</p>
+<ol>
+<li>使用n个哈希函数分别对数据做哈希运算，得到n个哈希值</li>
+<li>将那n个哈希值对位图数组的长度取模，得到每个索引下标</li>
+<li>将每个索引下表值置为1</li>
+</ol>
+<h3 id="击穿"><a href="#击穿" class="headerlink" title="击穿"></a>击穿</h3><p>热点数据redis没有，db有</p>
+<h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><ol>
+<li><p>使用互斥锁。将热点数据加锁，然后去db将数据恢复到redis中</p>
+</li>
+<li><p>使用逻辑过期</p>
+<ol>
+<li><p>key是通过原始数据创建的，value是下面这个RedisData类所创建的对象</p>
+</li>
+<li><pre><code class="java">public class RedisData &#123;
+    private LocalDateTime expireTime;
+    private Object data;
+&#125;
+</code></pre>
+</li>
+<li><p>这样就实现了在应用层面实现过期。当发现逻辑过期的时候，我们创建一个锁，锁住这个数据，然后fork一个新的进程来去从db中恢复数据到redis，最后释放锁即可。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="雪崩"><a href="#雪崩" class="headerlink" title="雪崩"></a>雪崩</h3><p>redis大量数据同时过期或者redis故障宕机，造成db压力过大</p>
+<h4 id="解决方案：-1"><a href="#解决方案：-1" class="headerlink" title="解决方案："></a>解决方案：</h4><h5 id="大量数据同时过期："><a href="#大量数据同时过期：" class="headerlink" title="大量数据同时过期："></a><strong>大量数据同时过期：</strong></h5><p><strong>大量数据同时过期</strong>的解决方案：</p>
+<ol>
+<li><p><strong>均匀</strong>设置过期时间：在对缓存数据设置过期时间的时候，加上一个随机数</p>
+</li>
+<li><p>当一个线程访问到redis没有的数据的时候，则**<u>上一把互斥锁</u><strong>，保证同一时间只有一个请求来</strong><u>构建缓存</u>**。</p>
+<ol>
+<li>未能获取到锁的请求，要么<strong>等待锁释放之后重新读缓存</strong>，要么<strong>返回空值或者默认值</strong></li>
+<li>ps：实现互斥锁的时候，最好可以设置一个超时时间。不然第一个请求拿到了锁，万一发生了某些意外一直阻塞，一直不释放锁，这时其他请求也一直拿不到锁</li>
+</ol>
+</li>
+<li><p><u><strong>后台更新缓存</strong></u>：缓存不设置有效期，将缓存更新的工作交由后台线程定时更新。</p>
+<ol>
+<li>两种方式：<ol>
+<li>后台线程不断检测缓存是否有效。（<strong>用户体验不好</strong>，检测的时候会阻塞主线程处理数据）</li>
+<li>业务线程发现数据失效之后，通过消息队列发送一条消息通知后台线程更新缓存。<ol>
+<li>在业务刚上线时，最好提前把数据存入缓存中，而不是等到用户来访问了再存，这叫做“**<u>缓存预热</u>**”</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h5 id="服务宕机"><a href="#服务宕机" class="headerlink" title="服务宕机"></a><strong>服务宕机</strong></h5><p>服务宕机解决方案：</p>
+<ol>
+<li>服务熔断或请求限流机制<ol>
+<li>启用服务熔断机制，<strong>暂停业务应用对缓存服务的访问</strong>，直接返回错误。（虽然但是，会造成全部业务应用无法正常工作！）</li>
+<li>请求限流机制：只将少部分请求发送到db进行处理，再多的请求就直接拒绝！等redis恢复正常并且把缓存预热完毕之后，再解除限流机制。</li>
+</ol>
+</li>
+<li>构建Redis缓存高可靠集群<ol>
+<li>“服务熔断或请求限流机制”都是雪崩发生之后的应对方案。。。不过我们可以防范于未然，通过主从节点的方式构建高可靠的集群。<ol>
+<li>主节点服务宕机了，可以直接重新选举一个主节点，继续对外提供服务，使得外界应用无感。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div><!-- comment system--><div class="container"><hr></div></article><footer id="footer"><div class="container"><div class="bar"><div class="social"><a href="/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></div><div class="footer">© 2024 <a href="/" rel="nofollow">Xtpacz</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/very-simple">very-simple</a>.</div></div></div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+    $(".fancybox").fancybox();
+});
+</script></body></html>
