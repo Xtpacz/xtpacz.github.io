@@ -100,6 +100,17 @@
 <li><p>私钥签名、公钥验签</p>
 </li>
 </ol>
+<h3 id="TLS握手步骤："><a href="#TLS握手步骤：" class="headerlink" title="TLS握手步骤："></a>TLS握手步骤：</h3><ol>
+<li><strong>客户端问候</strong>：客户端向服务器发送<code>“client hello” + 支持的SSL版本 + 随机数A</code></li>
+<li><strong>服务器问候</strong>：服务器收到之后，向客户端发送<code>“server hello” + SSL证书 + 随机数B</code> </li>
+<li><strong>身份验证</strong>：客户端验证服务器的<code>SSL证书</code>是否合法</li>
+<li><strong>预主密钥</strong>：验证合法之后，客户端向服务器发送一串<code>预主密钥（premaster secret）</code>（预主密钥使用服务器<code>SSL证书</code>里的公钥进行加密）</li>
+<li><strong>服务器使用私钥</strong>：服务器收到预主密钥之后，用自己的私钥进行解密。</li>
+<li><strong>生成会话密钥</strong>：客户端和服务器使用<code>随机数A、随机数B、预主密钥</code>生成一串<code>会话密钥</code></li>
+<li><strong>客户端就绪</strong>：客户端发送一条“已完成”消息，该消息用会话密钥加密</li>
+<li><strong>服务端就绪</strong>：服务器发送一条“已完成”消息，该消息用会话密钥加密</li>
+<li><strong>实现安全的对称加密</strong>：至此，已经完成握手，后续双方可以使用会话密钥进行传递信息了</li>
+</ol>
 <h2 id="HTTP不同版本"><a href="#HTTP不同版本" class="headerlink" title="HTTP不同版本"></a>HTTP不同版本</h2><h3 id="HTTP1-1-相对于-HTTP1-0-的主要改进："><a href="#HTTP1-1-相对于-HTTP1-0-的主要改进：" class="headerlink" title="HTTP1.1 相对于 HTTP1.0 的主要改进："></a>HTTP1.1 相对于 HTTP1.0 的主要改进：</h3><ol>
 <li><p><strong>长连接</strong>（Keep-Alive）：HTTP1.0 默认使用短连接即每次请求都要创建一个新的连接，这种方式在网络传输中存在很大的消耗。而HTTP1.1默认使用长连接，可以在一个TCP连接中发送多个HTTP请求和响应，显著提高了传输效率。 </p>
 </li>
