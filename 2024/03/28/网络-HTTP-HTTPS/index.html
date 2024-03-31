@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>[网络]HTTP&amp;HTTPS | Xtpacz's Blog</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Hexo 7.1.1"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">Xtpacz's Blog</a><span class="subtitle"></span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a><a href="/about.html" class="sidebar-nav-item">About</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>[网络]HTTP&amp;HTTPS</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2024-03-28</div></div></div><article><div class="container post"><h2 id="从输入URL到展示页面-发生了什么事"><a href="#从输入URL到展示页面-发生了什么事" class="headerlink" title="从输入URL到展示页面, 发生了什么事?"></a>从输入URL到展示页面, 发生了什么事?</h2><ol>
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>【网络】HTTP-HTTPS | Xtpacz's Blog</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Hexo 7.1.1"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">Xtpacz's Blog</a><span class="subtitle"></span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a><a href="/about.html" class="sidebar-nav-item">About</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>【网络】HTTP-HTTPS</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2024-03-28</div></div></div><article><div class="container post"><h2 id="从输入URL到展示页面-发生了什么事"><a href="#从输入URL到展示页面-发生了什么事" class="headerlink" title="从输入URL到展示页面, 发生了什么事?"></a>从输入URL到展示页面, 发生了什么事?</h2><ol>
 <li>浏览器中输入指定网页的URL</li>
 <li>浏览器通过DNS协议, 获取域名对应的 IP 地址</li>
 <li>浏览器根据 IP 地址和端口号, 向目标服务器发起一个TCP请求.</li>
@@ -8,40 +8,25 @@
 <li>浏览器在不需要和服务器通信时, 可以主动关闭 TCP 链接, 或者等待服务器的关闭你请求.</li>
 </ol>
 <h2 id="HTTP-状态码"><a href="#HTTP-状态码" class="headerlink" title="HTTP 状态码"></a>HTTP 状态码</h2><ul>
-<li><p>1xx   —  (信息性状态码)</p>
-</li>
-<li><p>接受的请求正在处理</p>
-</li>
-<li><p>2xx   – -  (成功状态码)</p>
-</li>
-<li><p>请求正常处理完毕</p>
-</li>
-<li><p>3xx   —  (重定向状态码)</p>
-</li>
-<li><p>需要进行附加操作以完成请求</p>
-</li>
-<li><p>4xx   —  (客户端错误状态码)</p>
-</li>
-<li><p>服务器无法处理请求</p>
-</li>
-<li><p>5xx   —  (服务端错误状态码)</p>
-</li>
-<li><p>服务器处理请求出错</p>
-</li>
+<li>1xx   —  (信息性状态码)             接受的请求正在处理</li>
+<li>2xx   – -  (成功状态码)               请求正常处理完毕</li>
+<li>3xx   —  (重定向状态码)             需要进行附加操作以完成请求</li>
+<li>4xx   —  (客户端错误状态码)     服务器无法处理请求</li>
+<li>5xx   —  (服务端错误状态码)     服务器处理请求出错</li>
 </ul>
 <h2 id="HTTP-和-HTTPS-区别"><a href="#HTTP-和-HTTPS-区别" class="headerlink" title="HTTP 和 HTTPS 区别"></a>HTTP 和 HTTPS 区别</h2><p>从4个角度来说明区别</p>
 <ol>
 <li><p>端口号</p>
-</li>
-<li><p>HTTP是<strong>80</strong></p>
-</li>
-<li><p>HTTPS是<strong>443</strong></p>
+<ol>
+<li>HTTP是<strong>80</strong></li>
+<li>HTTPS是<strong>443</strong></li>
+</ol>
 </li>
 <li><p><strong>URL前缀</strong></p>
-</li>
-<li><p>HTTP前缀是<code>http://</code></p>
-</li>
-<li><p>HTTPS前缀是<code>https://</code></p>
+<ol>
+<li>HTTP前缀是<code>http://</code></li>
+<li>HTTPS前缀是<code>https://</code></li>
+</ol>
 </li>
 <li><p>安全性和资源消耗</p>
 </li>
@@ -54,8 +39,49 @@
 <li><p><strong>搜索引擎通常更青睐使用 HTTPS 的网站</strong>, 因为更安全.. 使用 HTTPS的网站在搜索结果中会被优先展示…</p>
 </li>
 </ol>
+<p>如果仅仅使用HTTP协议进行交流的话，内容很容易被窃取。</p>
+<p>用对称加密</p>
+<blockquote>
+<ol>
+<li>服务器将密钥A发给浏览器</li>
+<li>浏览器用密钥A对数据进行加密，将加密后的数据发送给服务器</li>
+<li>服务器用密钥A进行解密</li>
+</ol>
+<p>但是这样操作有很大的问题，如何防止第三方坏人窃取到密钥A呢</p>
+</blockquote>
+<p>用非对称加密</p>
+<blockquote>
+<p>一对公钥和私钥</p>
+<p>公钥加密的数据只能由私钥解密</p>
+<p>私钥加密的数据只能由公钥解密  </p>
+<ol>
+<li>服务器将自己的公钥A发送给浏览器</li>
+<li>浏览器生成一个随机数（会话密钥），再用公钥A进行加密，发送给服务器</li>
+<li>服务器用自己的私钥对数据进行解密，得到会话密钥</li>
+<li>之后双方用会话密钥进行交流。</li>
+</ol>
+<p>但是这样仍然有些问题：浏览器如何确定服务器发来的公钥是正确的呢？也就是说怎么确保浏览器发来的公钥没有被掉包呢？</p>
+</blockquote>
+<p>证书+数字签名</p>
+<blockquote>
+<p>1231</p>
+<ol>
+<li>服务器把自己的公钥、使用者、颁发者…等等信息集合发送给权威的签名机构CA</li>
+<li><strong>CA再用自己的私钥</strong>对这些数据进行加密得到密文（称之为<strong>签名</strong>），然后将<strong>密文和原始数据</strong>放在一起发给服务器管理员，这就是<strong>TLS证书</strong>。</li>
+<li>服务器将自己的证书发给浏览器</li>
+<li>浏览器得到证书后，用CA机构的公钥进行解密，如果解密后的内容和证书其他部分一样，则通过验证。</li>
+<li>验证通过后，则可以放心大胆地使用证书上的服务器公钥了。</li>
+<li>用证书上的服务器公钥生成一个会话密钥，发送给服务器，之后双方就可以通过会话密钥进行通信加密了。</li>
+</ol>
+<p>如何保证CA机构的公钥是正确的呢？或者说如何保证这个CA机构是可信任的呢？</p>
+<p>答案就是提前将可信任的权威CA机构的信息内置到操作系统或者浏览器中。</p>
+</blockquote>
+<p>两个讲解https安全性机制的视频</p>
+<blockquote>
+<p> <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1uY4y1D7Ng/">https://www.bilibili.com/video/BV1uY4y1D7Ng/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1TP411G7wb/">https://www.bilibili.com/video/BV1TP411G7wb/</a></p>
+</blockquote>
 <h2 id="SSL-TLS-协议"><a href="#SSL-TLS-协议" class="headerlink" title="SSL&#x2F;TLS 协议"></a>SSL&#x2F;TLS 协议</h2><h3 id="SSL-和-TLS-区别"><a href="#SSL-和-TLS-区别" class="headerlink" title="SSL 和 TLS 区别"></a>SSL 和 TLS 区别</h3><p>没有太大区别, TLS 是基于 SSL 之上的., 是 SSL 的升级版..</p>
-<p>它们之间有很强的<strong>历史联系</strong>，但又有<strong>技术上的差别</strong>。在很多对外展示的情况下，一些产品或服务会同时写明支持 SSL&#x2F;TLS，这样可以<strong>表明他们既支持历史版本的 SSL，也支持更安全、更新的 TLS，以此来获得更广泛的兼容性</strong>。例如，Web服务器可能采用这种方式来告诉用户，它可以处理使用任何版本的 SSL 或 TLS 的客户端连接。</p>
 <h3 id="SSL-TLS-工作原理"><a href="#SSL-TLS-工作原理" class="headerlink" title="SSL &#x2F; TLS 工作原理"></a>SSL &#x2F; TLS 工作原理</h3><h4 id="非对称加密-SSL-TLS握手协议使用"><a href="#非对称加密-SSL-TLS握手协议使用" class="headerlink" title="非对称加密(SSL&#x2F;TLS握手协议使用"></a>非对称加密(SSL&#x2F;TLS握手协议使用</h4><p>公钥用来加密</p>
 <p>私钥用来解密</p>
 <p>单向陷门函数 </p>
@@ -64,12 +90,16 @@
 <p>在握手阶段，它们<strong>使用非对称加密完成密钥的交换</strong>。客户端生成一个<strong>随机的会话秘钥</strong>，使用服务器的公钥加密后，发送给服务器。服务器使用自己的私钥解密收到的信息，<strong>得到会话密钥</strong>。这个过程保证了会话密钥在传输过程中的安全，无法被第三方窃取。</p>
 <p>一旦<strong>会话秘钥</strong>交换成功，服务器和客户端的<strong>后续通信将会使用这个秘钥进行对称加密</strong>。因为对比非对称加密，对称加密更为高效，适合大量数据的传输。</p>
 <p>总结来说，SSL和TLS在建立连接的过程中，<strong>首先使用非对称加密交换秘钥</strong>，然后<strong>使用对称加密交换数据</strong>，既保证了<strong>安全性</strong>，又保证了<strong>效率</strong>。</p>
-<h3 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h3><p>第三方机构 — &gt; 证书 颁发机构 (CA)</p>
 <h4 id="证书的作用"><a href="#证书的作用" class="headerlink" title="证书的作用"></a>证书的作用</h4><ol>
-<li>确认网站身份：当你访问一个使用 HTTPS 的网站时，这个网站会把它的证书发送给你的浏览器。这个证书中包含很多信息，包括证书的<strong>颁发者</strong>、证书的<strong>拥有者</strong>（也就是这个网站）、证书的<strong>有效期</strong>以及<strong>公钥</strong>等等。你的浏览器会查看这个证书，确认这个证书是由受信任的证书颁发机构颁发的，并且证书的拥有者就是你正在访问的那个网站。这个过程可以<strong>防止你误入假冒网站，增加安全性</strong>。</li>
-<li>加密通信：在使用 HTTPS 的通信过程中，<strong>信息的发送者和接收者都会用到证书中包含的公钥</strong>和<strong>自己的私钥</strong>进行<strong>非对称加密</strong>，以此保证传输的信息不会被第三方轻易窃听或篡改。你的浏览器会使用证书中的公钥对信息进行加密，只有网站持有的相应私钥才能解密。这样，即使信息在传输过程中被截取，由于没有正确的私钥，也无法被解读。这个过程可以保证数据的机密性。</li>
+<li><p>确认网站身份：当你访问一个使用 HTTPS 的网站时，这个网站会把它的证书发送给你的浏览器。这个证书中包含很多信息，包括证书的<strong>颁发者</strong>、证书的<strong>拥有者</strong>（也就是这个网站）、证书的<strong>有效期</strong>以及<strong>公钥</strong>等等。你的浏览器会查看这个证书，确认这个证书是由受信任的证书颁发机构颁发的，并且证书的拥有者就是你正在访问的那个网站。这个过程可以<strong>防止你误入假冒网站，增加安全性</strong>。</p>
+</li>
+<li><p>加密通信：在使用 HTTPS 的通信过程中，<strong>信息的发送者和接收者都会用到证书中包含的公钥</strong>和<strong>自己的私钥</strong>进行<strong>非对称加密</strong>，以此保证传输的信息不会被第三方轻易窃听或篡改。你的浏览器会使用证书中的公钥对信息进行加密，只有网站持有的相应私钥才能解密。这样，即使信息在传输过程中被截取，由于没有正确的私钥，也无法被解读。这个过程可以保证数据的机密性。</p>
+</li>
+<li><p>公钥加密、私钥解密</p>
+</li>
+<li><p>私钥签名、公钥验签</p>
+</li>
 </ol>
-<h3 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h3><p>不可伪造</p>
 <h2 id="HTTP不同版本"><a href="#HTTP不同版本" class="headerlink" title="HTTP不同版本"></a>HTTP不同版本</h2><h3 id="HTTP1-1-相对于-HTTP1-0-的主要改进："><a href="#HTTP1-1-相对于-HTTP1-0-的主要改进：" class="headerlink" title="HTTP1.1 相对于 HTTP1.0 的主要改进："></a>HTTP1.1 相对于 HTTP1.0 的主要改进：</h3><ol>
 <li><p><strong>长连接</strong>（Keep-Alive）：HTTP1.0 默认使用短连接即每次请求都要创建一个新的连接，这种方式在网络传输中存在很大的消耗。而HTTP1.1默认使用长连接，可以在一个TCP连接中发送多个HTTP请求和响应，显著提高了传输效率。 </p>
 </li>
