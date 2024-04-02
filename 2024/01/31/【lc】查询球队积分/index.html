@@ -1,4 +1,156 @@
-<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>【lc】查询球队积分 | Xtpacz's Blog</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Hexo 7.1.1"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">Xtpacz's Blog</a><span class="subtitle"></span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a><a href="/about" class="sidebar-nav-item">About</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>【lc】查询球队积分</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2024-01-31</div></div></div><article><div class="container post"><p>题目</p>
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="题目 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364表: Teams+---------------+----------+| Column Name   | Type     |+-------------">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【lc】查询球队积分">
+<meta property="og:url" content="http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/index.html">
+<meta property="og:site_name" content="Xtpacz&#39;s Blog">
+<meta property="og:description" content="题目 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364表: Teams+---------------+----------+| Column Name   | Type     |+-------------">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-01-31T04:17:43.000Z">
+<meta property="article:modified_time" content="2024-03-31T04:31:02.017Z">
+<meta property="article:author" content="Xtpacz">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>【lc】查询球队积分</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2024/03/01/%E3%80%90Redis%E3%80%91%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E3%80%81%E5%87%BB%E7%A9%BF%E3%80%81%E9%9B%AA%E5%B4%A9/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/01/31/%E3%80%90lc%E3%80%91%E8%AE%A1%E7%AE%97%E5%B8%83%E5%B0%94%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%80%BC/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&text=【lc】查询球队积分"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&title=【lc】查询球队积分"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&is_video=false&description=【lc】查询球队积分"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【lc】查询球队积分&body=Check out this article: http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&title=【lc】查询球队积分"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&title=【lc】查询球队积分"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&title=【lc】查询球队积分"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&title=【lc】查询球队积分"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&name=【lc】查询球队积分&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&t=【lc】查询球队积分"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        【lc】查询球队积分
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Xtpacz</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-01-31T04:17:43.000Z" class="dt-published" itemprop="datePublished">2024-01-31</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>题目</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">表: Teams</span><br><span class="line">+---------------+----------+</span><br><span class="line">| Column Name   | Type     |</span><br><span class="line">+---------------+----------+</span><br><span class="line">| team_id       | int      |</span><br><span class="line">| team_name     | varchar  |</span><br><span class="line">+---------------+----------+</span><br><span class="line">team_id 是该表具有唯一值的列。</span><br><span class="line">表中的每一行都代表一支独立足球队。</span><br><span class="line"></span><br><span class="line">表: Matches</span><br><span class="line">+---------------+---------+</span><br><span class="line">| Column Name   | Type    |</span><br><span class="line">+---------------+---------+</span><br><span class="line">| match_id      | int     |</span><br><span class="line">| host_team     | int     |</span><br><span class="line">| guest_team    | int     | </span><br><span class="line">| host_goals    | int     |</span><br><span class="line">| guest_goals   | int     |</span><br><span class="line">+---------------+---------+</span><br><span class="line">match_id 是该表具有唯一值的列。</span><br><span class="line">表中的每一行都代表一场已结束的比赛。</span><br><span class="line">比赛的主客队分别由它们自己的 id 表示，他们的进球由 host_goals 和 guest_goals 分别表示。</span><br><span class="line"> </span><br><span class="line">你希望在所有比赛之后计算所有球队的比分。积分奖励方式如下:</span><br><span class="line">如果球队赢了比赛(即比对手进更多的球)，就得 3 分。</span><br><span class="line">如果双方打成平手(即，与对方得分相同)，则得 1 分。</span><br><span class="line">如果球队输掉了比赛(例如，比对手少进球)，就 不得分 。</span><br><span class="line">编写解决方案，以找出每个队的 team_id，team_name 和 num_points。</span><br><span class="line">返回的结果根据 num_points 降序排序，如果有两队积分相同，那么这两队按 team_id  升序排序。</span><br><span class="line">返回结果格式如下。</span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line">输入：</span><br><span class="line">Teams table:</span><br><span class="line">+-----------+--------------+</span><br><span class="line">| team_id   | team_name    |</span><br><span class="line">+-----------+--------------+</span><br><span class="line">| 10        | Leetcode FC  |</span><br><span class="line">| 20        | NewYork FC   |</span><br><span class="line">| 30        | Atlanta FC   |</span><br><span class="line">| 40        | Chicago FC   |</span><br><span class="line">| 50        | Toronto FC   |</span><br><span class="line">+-----------+--------------+</span><br><span class="line">Matches table:</span><br><span class="line">+------------+--------------+---------------+-------------+--------------+</span><br><span class="line">| match_id   | host_team    | guest_team    | host_goals  | guest_goals  |</span><br><span class="line">+------------+--------------+---------------+-------------+--------------+</span><br><span class="line">| 1          | 10           | 20            | 3           | 0            |</span><br><span class="line">| 2          | 30           | 10            | 2           | 2            |</span><br><span class="line">| 3          | 10           | 50            | 5           | 1            |</span><br><span class="line">| 4          | 20           | 30            | 1           | 0            |</span><br><span class="line">| 5          | 50           | 30            | 1           | 0            |</span><br><span class="line">+------------+--------------+---------------+-------------+--------------+</span><br><span class="line">输出：</span><br><span class="line">+------------+--------------+---------------+</span><br><span class="line">| team_id    | team_name    | num_points    |</span><br><span class="line">+------------+--------------+---------------+</span><br><span class="line">| 10         | Leetcode FC  | 7             |</span><br><span class="line">| 20         | NewYork FC   | 3             |</span><br><span class="line">| 50         | Toronto FC   | 3             |</span><br><span class="line">| 30         | Atlanta FC   | 1             |</span><br><span class="line">| 40         | Chicago FC   | 0             |</span><br><span class="line">+------------+--------------+---------------+</span><br></pre></td></tr></table></figure>
 
 
@@ -8,7 +160,138 @@
 <p>代码</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- # Write your MySQL query statement below</span></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    team_id, </span><br><span class="line">    team_name,</span><br><span class="line">    IFNULL( <span class="built_in">SUM</span>(  # 这里一定要注意，SUM后面的括号要紧挨着SUM关键字，否则会报错，也就是只能<span class="built_in">SUM</span>(),不能写成<span class="built_in">SUM</span> ()</span><br><span class="line">            <span class="keyword">CASE</span></span><br><span class="line">                <span class="keyword">WHEN</span> team_id <span class="operator">=</span> host_team <span class="keyword">AND</span> host_goals <span class="operator">&gt;</span> guest_goals <span class="keyword">THEN</span> <span class="number">3</span></span><br><span class="line">                <span class="keyword">WHEN</span> team_id <span class="operator">=</span> guest_team <span class="keyword">AND</span> host_goals <span class="operator">&lt;</span> guest_goals <span class="keyword">THEN</span> <span class="number">3</span></span><br><span class="line">                <span class="keyword">WHEN</span> host_goals <span class="operator">=</span> guest_goals <span class="keyword">THEN</span> <span class="number">1</span></span><br><span class="line">                <span class="keyword">ELSE</span> <span class="number">0</span></span><br><span class="line">            <span class="keyword">END</span></span><br><span class="line">            ), <span class="number">0</span>) <span class="keyword">AS</span> num_points</span><br><span class="line"><span class="keyword">FROM</span> Teams t</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> <span class="keyword">Matches</span> m</span><br><span class="line"><span class="keyword">ON</span> t.team_id <span class="operator">=</span> m.host_team <span class="keyword">OR</span> t.team_id <span class="operator">=</span> m.guest_team</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> team_id</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> num_points <span class="keyword">DESC</span>, team_id</span><br></pre></td></tr></table></figure>
 
-</div><!-- comment system--><div class="container"><hr></div></article><footer id="footer"><div class="container"><div class="bar"><div class="social"></div><div class="footer">© 2024 <a href="/" rel="nofollow">Xtpacz</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/very-simple">very-simple</a>.</div></div></div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
-    $(".fancybox").fancybox();
-});
-</script></body></html>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&text=【lc】查询球队积分"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&title=【lc】查询球队积分"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&is_video=false&description=【lc】查询球队积分"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【lc】查询球队积分&body=Check out this article: http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&title=【lc】查询球队积分"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&title=【lc】查询球队积分"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&title=【lc】查询球队积分"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&title=【lc】查询球队积分"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&name=【lc】查询球队积分&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/01/31/%E3%80%90lc%E3%80%91%E6%9F%A5%E8%AF%A2%E7%90%83%E9%98%9F%E7%A7%AF%E5%88%86/&t=【lc】查询球队积分"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    Xtpacz
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

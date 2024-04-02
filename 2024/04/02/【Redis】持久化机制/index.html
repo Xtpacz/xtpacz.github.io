@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="什么是持久化  维基百科对于持久化的解释：在计算机科学中，持久性是系统状态的一个特征。一般计算机是将某个状态作为数据存储在电脑数据存贮器以实现持久化。程式必须将数据存储在储存设备以及从存储设备中读取数据，并且必须提供本地编程语言数据结构和存储设备数据结构之间的映射[1]。  简单来讲，就是将数据放在一个可以自动永久(近似)保存的地方 Redis为什么要持久化 因为Redis是基于内存的数据库，在R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Redis】持久化机制">
+<meta property="og:url" content="http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:site_name" content="Xtpacz&#39;s Blog">
+<meta property="og:description" content="什么是持久化  维基百科对于持久化的解释：在计算机科学中，持久性是系统状态的一个特征。一般计算机是将某个状态作为数据存储在电脑数据存贮器以实现持久化。程式必须将数据存储在储存设备以及从存储设备中读取数据，并且必须提供本地编程语言数据结构和存储设备数据结构之间的映射[1]。  简单来讲，就是将数据放在一个可以自动永久(近似)保存的地方 Redis为什么要持久化 因为Redis是基于内存的数据库，在R">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-02T14:50:50.000Z">
+<meta property="article:modified_time" content="2024-04-02T15:01:43.023Z">
+<meta property="article:author" content="Xtpacz">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>【Redis】持久化机制</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2024/04/02/%E3%80%90lc%E3%80%91%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&text=【Redis】持久化机制"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&is_video=false&description=【Redis】持久化机制"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【Redis】持久化机制&body=Check out this article: http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&name=【Redis】持久化机制&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&t=【Redis】持久化机制"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        【Redis】持久化机制
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">Xtpacz</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-04-02T14:50:50.000Z" class="dt-published" itemprop="datePublished">2024-04-02</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Redis/" rel="tag">Redis</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>什么是持久化</p>
+<blockquote>
+<p>维基百科对于持久化的解释：在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6">计算机科学</a>中，<strong>持久性</strong>是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E7%B3%BB%E7%BB%9F%E7%8A%B6%E6%80%81&action=edit&redlink=1">系统状态</a>的一个特征。一般计算机是将某个状态作为<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE">数据</a>存储在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%9B%BB%E8%85%A6%E6%95%B8%E6%93%9A%E5%AD%98%E8%B2%AF%E5%99%A8">电脑数据存贮器</a>以实现<strong>持久化</strong>。程式必须将数据存储在储存设备以及从存储设备中读取数据，并且必须提供本地<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80">编程语言</a>数据结构和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87">存储设备</a><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>之间的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%98%A0%E5%B0%84">映射</a>[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E6%8C%81%E4%B9%85%E5%8C%96#cite_note-1">1]</a>。</p>
+</blockquote>
+<p>简单来讲，就是将数据放在一个可以自动永久(近似)保存的地方</p>
+<p>Redis为什么要持久化</p>
+<p>因为Redis是基于内存的数据库，在Redis运行期间，其数据都是存在内存中的，一旦机器宕机或者重启，那么数据就丢失了。</p>
+<blockquote>
+<p>内存：RAM，易失性存储设备，断电之后无法保存信息。</p>
+</blockquote>
+<p>Redis持久化的几种方式</p>
+<ol>
+<li>RDB（Redis DataBase）</li>
+<li>AOF（Append Only File）</li>
+<li>混合持久化方式</li>
+</ol>
+<p>RDB</p>
+<p>简介</p>
+<p>保存某一时刻的内存快照，以二进制形式写入磁盘。</p>
+<p>触发方式</p>
+<p>手动触发</p>
+<p>save和bgsave</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&text=【Redis】持久化机制"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&is_video=false&description=【Redis】持久化机制"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【Redis】持久化机制&body=Check out this article: http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&name=【Redis】持久化机制&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&t=【Redis】持久化机制"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    Xtpacz
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
