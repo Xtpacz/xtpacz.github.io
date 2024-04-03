@@ -5,88 +5,77 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="什么是持久化  维基百科对于持久化的解释：在计算机科学中，持久性是系统状态的一个特征。一般计算机是将某个状态作为数据存储在电脑数据存贮器以实现持久化。程式必须将数据存储在储存设备以及从存储设备中读取数据，并且必须提供本地编程语言数据结构和存储设备数据结构之间的映射[1]。  简单来讲，就是将数据放在一个可以自动永久(近似)保存的地方 Redis为什么要持久化 因为Redis是基于内存的数据库，在R">
-<meta property="og:type" content="article">
-<meta property="og:title" content="【Redis】持久化机制">
-<meta property="og:url" content="http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/index.html">
-<meta property="og:site_name" content="Xtpacz&#39;s Blog">
-<meta property="og:description" content="什么是持久化  维基百科对于持久化的解释：在计算机科学中，持久性是系统状态的一个特征。一般计算机是将某个状态作为数据存储在电脑数据存贮器以实现持久化。程式必须将数据存储在储存设备以及从存储设备中读取数据，并且必须提供本地编程语言数据结构和存储设备数据结构之间的映射[1]。  简单来讲，就是将数据放在一个可以自动永久(近似)保存的地方 Redis为什么要持久化 因为Redis是基于内存的数据库，在R">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-04-02T14:50:50.000Z">
-<meta property="article:modified_time" content="2024-04-02T15:01:43.023Z">
-<meta property="article:author" content="Xtpacz">
-<meta property="article:tag" content="Redis">
-<meta name="twitter:card" content="summary">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     
     
-      
         
-          <link rel="shortcut icon" href="/images/favicon.ico">
+            
+                <link rel="shortcut icon" href="/images/favicon.ico">
+            
         
-      
-      
         
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+            
+                <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+            
         
-      
-      
         
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+            
+                <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+            
         
-      
     
     <!-- title -->
     <title>【Redis】持久化机制</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
-
-
-    <!-- Umami Analytics -->
-
-
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/firacode/6.2.0/fira_code.min.css" rel="stylesheet">
     <!-- rss -->
     
     
-	<!-- mathjax -->
-	
 <meta name="generator" content="Hexo 7.1.1"></head>
 
 <body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
+
+    <div id="header-post">
+    <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+    <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+    <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i
+                class="fas fa-chevron-up fa-lg"></i></a>
+    <span id="menu">
     <span id="nav">
       <ul>
-        <!--
-       --><li><a href="/">Home</a></li><!--
-     --><!--
-       --><li><a href="/about/">About</a></li><!--
-     --><!--
-       --><li><a href="/archives/">Writing</a></li><!--
-     --><!--
-       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
-     -->
+          
+              <li><a href="/">Home</a></li>
+          
+              <li><a href="/archives/">Articles</a></li>
+          
+              <li><a href="/tags/">Tag</a></li>
+          
+              <li><a href="/about/">About</a></li>
+          
+              <li><a href="/search/">Search</a></li>
+          
       </ul>
     </span>
     <br/>
     <span id="actions">
       <ul>
-        
-        
-        <li><a class="icon" aria-label="Next post" href="/2024/04/02/%E3%80%90lc%E3%80%91%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+          
+          
+              <li><a class="icon" href="/2024/04/02/%E3%80%90lc%E3%80%91%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/"><i class="fas fa-chevron-right"
+                                                                           aria-hidden="true"
+                                                                           onmouseover="$('#i-next').toggle();"
+                                                                           onmouseout="$('#i-next').toggle();"></i></a></li>
+          
+          <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i
+                          class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();"
+                          onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true"
+                                        onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();"
+                                        onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -96,65 +85,66 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&text=【Redis】持久化机制"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&is_video=false&description=【Redis】持久化机制"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【Redis】持久化机制&body=Check out this article: http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&name=【Redis】持久化机制&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&t=【Redis】持久化机制"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+    <li><a class="icon"
+           target="_blank" rel="noopener" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i
+                    class="fab fa-qq " aria-hidden="true"></i></a></li>
+    <li><a class="icon"
+           target="_blank" rel="noopener" href="https://service.weibo.com/share/share.php?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i
+                    class="fab fa-weibo " aria-hidden="true"></i></a></li>
+    <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&text=【Redis】持久化机制"><i
+                    class="fab fa-twitter " aria-hidden="true"></i></a></li>
+    <li><a class="icon" href="mailto:?subject=【Redis】持久化机制&body=Check out this article: http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/"><i
+                    class="fas fa-envelope " aria-hidden="true"></i></a></li>
 </ul>
-
     </div>
-    
-    
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RDB"><span class="toc-number">1.</span> <span class="toc-text">RDB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">触发方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E8%A7%A6%E5%8F%91"><span class="toc-number">1.2.1.</span> <span class="toc-text">手动触发</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#save%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">save命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#bgsave%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">bgsave命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91"><span class="toc-number">1.2.2.</span> <span class="toc-text">自动触发</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#save-m-n"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">save m n</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#flushall"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">flushall</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E8%A7%A6%E5%8F%91"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">主从同步触发</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.4.</span> <span class="toc-text">优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">1.4.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">1.4.2.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOF"><span class="toc-number">2.</span> <span class="toc-text">AOF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B-1"><span class="toc-number">2.1.</span> <span class="toc-text">简介</span></a></li></ol></li></ol>
+    </div>
   </span>
 </div>
 
+<div class="content index py4">
     
-    <div class="content index py4 ">
-        
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     
-    <h1 class="posttitle p-name" itemprop="name headline">
+    <h1 class="posttitle" itemprop="name headline">
         【Redis】持久化机制
     </h1>
 
-
-
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">Xtpacz</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2024-04-02T14:50:50.000Z" class="dt-published" itemprop="datePublished">2024-04-02</time>
+      <div class="meta">
+        <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <span itemprop="name">
+            
+                  Xtpacz
+                    
+          </span>
+        </span>
         
-      
+    <div class="postdate">
+        
+            <time datetime="2024-04-02T14:50:50.000Z"
+                  itemprop="datePublished">2024-04-02</time>
+            
+                (Updated:
+                <time datetime="2024-04-02T15:40:57.191Z"
+                      itemprop="dateModified">2024-04-02</time>)
+            
+        
     </div>
 
-
-      
-
-      
+          
+            
     <div class="article-tag">
-        <i class="fa-solid fa-tag"></i>
-        <a class="p-category" href="/tags/Redis/" rel="tag">Redis</a>
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Redis/" rel="tag">Redis</a>
     </div>
 
-
-    </div>
+      </div>
   </header>
   
-
-  <div class="content e-content" itemprop="articleBody">
-    <p>什么是持久化</p>
+    <div class="content" itemprop="articleBody">
+      <p>什么是持久化</p>
 <blockquote>
 <p>维基百科对于持久化的解释：在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6">计算机科学</a>中，<strong>持久性</strong>是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E7%B3%BB%E7%BB%9F%E7%8A%B6%E6%80%81&action=edit&redlink=1">系统状态</a>的一个特征。一般计算机是将某个状态作为<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE">数据</a>存储在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%9B%BB%E8%85%A6%E6%95%B8%E6%93%9A%E5%AD%98%E8%B2%AF%E5%99%A8">电脑数据存贮器</a>以实现<strong>持久化</strong>。程式必须将数据存储在储存设备以及从存储设备中读取数据，并且必须提供本地<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80">编程语言</a>数据结构和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87">存储设备</a><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>之间的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%98%A0%E5%B0%84">映射</a>[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E6%8C%81%E4%B9%85%E5%8C%96#cite_note-1">1]</a>。</p>
 </blockquote>
@@ -170,144 +160,200 @@
 <li>AOF（Append Only File）</li>
 <li>混合持久化方式</li>
 </ol>
-<p>RDB</p>
-<p>简介</p>
-<p>保存某一时刻的内存快照，以二进制形式写入磁盘。</p>
-<p>触发方式</p>
-<p>手动触发</p>
-<p>save和bgsave</p>
+<h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>保存某一时刻的内存快照，以二进制形式写入磁盘。</p>
+<h3 id="触发方式"><a href="#触发方式" class="headerlink" title="触发方式"></a>触发方式</h3><h4 id="手动触发"><a href="#手动触发" class="headerlink" title="手动触发"></a>手动触发</h4><p><code>save</code>和<code>bgsave</code>：他们俩的主要区别在于是否阻塞主线程。</p>
+<h5 id="save命令"><a href="#save命令" class="headerlink" title="save命令"></a>save命令</h5><p>客户端执行save命令后，会触发Redis持久化，但同时会使Redis处于阻塞状态….直至Redis完成持久化，才会详情其他请求。</p>
+<p>因此，生产环境要慎用。</p>
+<p><img src="https://coldwater.oss-cn-beijing.aliyuncs.com/img/20240402232840.png"></p>
+<h5 id="bgsave命令"><a href="#bgsave命令" class="headerlink" title="bgsave命令"></a>bgsave命令</h5><p>bgsave（background save）也就是后台保存，fork()一个子进程来进行持久化，也就是fork()的时候会稍微阻塞一下主线程，时间很短暂。</p>
+<p><img src="https://coldwater.oss-cn-beijing.aliyuncs.com/img/20240402232830.png"></p>
+<h4 id="自动触发"><a href="#自动触发" class="headerlink" title="自动触发"></a>自动触发</h4><h5 id="save-m-n"><a href="#save-m-n" class="headerlink" title="save m n"></a>save m n</h5><p><code>save m n</code>的意思是在m秒内，如果有n个键发生变化，则触发一次bgsave。</p>
+<p>注意，当设置了多个<code>save m n</code>时，满足多个就执行多个。</p>
+<h5 id="flushall"><a href="#flushall" class="headerlink" title="flushall"></a>flushall</h5><p>会清空数据库，生产环境慎用，当执行<code>flushall</code>之后，会自动执行<code>bgsave</code></p>
+<h5 id="主从同步触发"><a href="#主从同步触发" class="headerlink" title="主从同步触发"></a>主从同步触发</h5><p>主从复制的时候，当从节点执行全量复制的时候，主节点会执行<code>bgsave</code>命令，并将RDB文件发从给从节点。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>RDB参数配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># RDB 保存的条件</span><br><span class="line">save 900 1</span><br><span class="line">save 300 10</span><br><span class="line">save 60 10000</span><br><span class="line"></span><br><span class="line"># bgsave 失败之后，是否停止持久化数据到磁盘，yes 表示停止持久化，no 表示忽略错误继续写文件。</span><br><span class="line">stop-writes-on-bgsave-error yes</span><br><span class="line"></span><br><span class="line"># RDB 文件压缩，默认开启，如果不想消耗CPU来压缩的话，可以设置为false，只不过会比较占用磁盘空间了</span><br><span class="line">rdbcompression yes</span><br><span class="line"></span><br><span class="line"># 写入文件和读取文件时是否开启 RDB 文件检查，检查是否有无损坏，如果在启动是检查发现损坏，则停止启动。</span><br><span class="line">rdbchecksum yes</span><br><span class="line"></span><br><span class="line"># RDB 文件名</span><br><span class="line">dbfilename dump.rdb</span><br><span class="line"></span><br><span class="line"># RDB 文件目录</span><br><span class="line">dir ./</span><br></pre></td></tr></table></figure>
 
-  </div>
+
+
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>RDB内容为二进制文件，占用内存更小，更适合做备份文件</li>
+<li>因为文件小，可以更快的传输到远程服务器，对灾难恢复很有用</li>
+<li>更大程度提高Redis运行速度，因为每次备份都是fork()一个进程出来，所以不会影响Redis主进程工作</li>
+<li>相比于AOF，可以更快的重启</li>
+</ol>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>因为RDB只能保存某个时间间隔的数据，所以中途Redis停止了，则会丢失一段数据</li>
+<li>需要fork()才能持久化，但如果数据量很大，fork()操作会很耗时（涉及到了大页表。。。）</li>
+</ol>
+<h2 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>Append Only File可以把Redis每个键值对都记录到文件（appendonly.aof）中</p>
+
+    </div>
 </article>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
+  <script>
+    //检测推送
+    var pushType = "";
+    var pushLink = "";
+    var siteName = "Xtpacz&#39;s Blog";
 
-    <div id="nav-footer" style="display: none">
-      <ul>
-        
-          <li><a href="/">Home</a></li>
-        
-          <li><a href="/about/">About</a></li>
-        
-          <li><a href="/archives/">Writing</a></li>
-        
-          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
-        
-      </ul>
-    </div>
-
+    var ValineButton = document.getElementsByClassName("vsubmit vbtn")[0];
+    //分情况推送
+    if (pushType === "cp") {
+      var title = siteName + "上又有新评论啦~!\n";
+      function send_valine_CoolPush() {
+        //获取元素信息
+        var pagename = document.title;
+        var wz = pagename.indexOf("|");
+        var res = pagename.substring(0, wz);
+        var pageurl = document.URL;
+        var ptime = new Date();
+        var vnick = document.getElementsByClassName("vnick vinput")[0].value;
+        var vmail = document.getElementsByClassName("vmail vinput")[0].value;
+        var vlink = document.getElementsByClassName("vlink vinput")[0].value;
+        var veditor = document.getElementsByClassName("veditor vinput")[0].value;
+        var data =
+          "昵称: " +
+          vnick +
+          "\n\n邮箱: " +
+          vmail +
+          "\n\n网站地址: " +
+          vlink +
+          "\n\n当前页面: " +
+          pagename +
+          "\n\n评论内容: " +
+          veditor +
+          "\n\n跳转链接: " +
+          pageurl +
+          "\n\n评论时间: " +
+          ptime.toLocaleString();
+        var httpRequest = new XMLHttpRequest(); //第一步：创建需要的对象
+        httpRequest.open("POST", pushLink, true); //第二步：打开连接
+        httpRequest.setRequestHeader(
+          "Content-type",
+          "application/json"
+        ); //设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+        var payload = { "t": title, "c": data }
+        httpRequest.send(JSON.stringify(payload)); //发送请求 将情头体写在send中
+      }
+      ValineButton.onclick = send_valine_CoolPush;
+    }
+  </script>
     
-    
+        <div id="footer-post-container">
+    <div id="footer-post">
 
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&text=【Redis】持久化机制"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&is_video=false&description=【Redis】持久化机制"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【Redis】持久化机制&body=Check out this article: http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&name=【Redis】持久化机制&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&t=【Redis】持久化机制"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+        <div id="nav-footer" style="display: none">
+            <ul>
+                
+                    <li><a href="/">Home</a></li>
+                
+                    <li><a href="/archives/">Articles</a></li>
+                
+                    <li><a href="/tags/">Tag</a></li>
+                
+                    <li><a href="/about/">About</a></li>
+                
+                    <li><a href="/search/">Search</a></li>
+                
+            </ul>
+        </div>
+
+        <div id="toc-footer" style="display: none">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RDB"><span class="toc-number">1.</span> <span class="toc-text">RDB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">触发方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E8%A7%A6%E5%8F%91"><span class="toc-number">1.2.1.</span> <span class="toc-text">手动触发</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#save%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">save命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#bgsave%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">bgsave命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91"><span class="toc-number">1.2.2.</span> <span class="toc-text">自动触发</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#save-m-n"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">save m n</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#flushall"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">flushall</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E8%A7%A6%E5%8F%91"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">主从同步触发</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.4.</span> <span class="toc-text">优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">1.4.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">1.4.2.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOF"><span class="toc-number">2.</span> <span class="toc-text">AOF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B-1"><span class="toc-number">2.1.</span> <span class="toc-text">简介</span></a></li></ol></li></ol>
+        </div>
+
+        <div id="share-footer" style="display: none">
+            <ul>
+    <li><a class="icon"
+           target="_blank" rel="noopener" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i
+                    class="fab fa-qq fa-lg" aria-hidden="true"></i></a></li>
+    <li><a class="icon"
+           target="_blank" rel="noopener" href="https://service.weibo.com/share/share.php?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&title=【Redis】持久化机制"><i
+                    class="fab fa-weibo fa-lg" aria-hidden="true"></i></a></li>
+    <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/&text=【Redis】持久化机制"><i
+                    class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+    <li><a class="icon" href="mailto:?subject=【Redis】持久化机制&body=Check out this article: http://example.com/2024/04/02/%E3%80%90Redis%E3%80%91%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6/"><i
+                    class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
 </ul>
+        </div>
+
+        <div id="actions-footer">
+            <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i
+                        class="fas fa-bars fa-lg"
+                        aria-hidden="true"></i> Menu</a>
+            <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i
+                        class="fas fa-list fa-lg"
+                        aria-hidden="true"></i> TOC</a>
+            <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i
+                        class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+            <a id="top" style="display:none" class="icon" href="#"
+               onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg"
+                                                                               aria-hidden="true"></i> Top
+            </a>
+        </div>
 
     </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
-    </div>
-
-  </div>
 </div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
     
-    
-    2016-2024
-    Xtpacz
+    <footer id="footer">
+  <div class="footer-top">
+    &copy; 2024 <i class="fas fa-heart"></i>
+    Xtpacz 
   </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/">Home</a></li><!--
-     --><!--
-       --><li><a href="/about/">About</a></li><!--
-     --><!--
-       --><li><a href="/archives/">Writing</a></li><!--
-     --><!--
-       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
-     -->
-      </ul>
-    </nav>
+
+  <div class="footer-bottom">
+     
   </div>
 </footer>
 
-    </div>
-    <!-- styles -->
+</div>
+<!-- styles -->
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.0.0/css/all.min.css">
 
 
+<link rel="stylesheet" href="https://cdn.staticfile.org/justifiedGallery/3.7.0/css/justifiedGallery.min.css">
 
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+<!-- jquery -->
 
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
 
 
-
+<script src="https://cdn.staticfile.org/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js"></script>
 
 <!-- clipboard -->
 
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
-  
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "Copied!");
-      e.clearSelection();
-    })
-  })
-  </script>
+    
+<script src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            // copy-btn HTML
+            var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+            btn += '<i class="far fa-clone"></i>';
+            btn += '</span>';
+            // mount it!
+            $(".highlight .code pre").before(btn);
+            var clip = new ClipboardJS('.btn-copy', {
+                target: function (trigger) {
+                    return trigger.nextElementSibling;
+                }
+            });
+            clip.on('success', function (e) {
+                e.trigger.setAttribute('aria-label', "Copied!");
+                e.clearSelection();
+            })
+        })
+    </script>
 
 
 <script src="/js/main.js"></script>
 
 <!-- search -->
 
-<!-- Baidu Analytics -->
-
-<!-- Cloudflare Analytics -->
-
-<!-- Disqus Comments -->
-
-<!-- utterances Comments -->
-
 </body>
+
 </html>
