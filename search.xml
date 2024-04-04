@@ -4,6 +4,82 @@
   
     
     <entry>
+      <title>【lc】最长递增子序列</title>
+      <link href="/2024/04/04/%E3%80%90lc%E3%80%91%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/"/>
+      <url>/2024/04/04/%E3%80%90lc%E3%80%91%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97/</url>
+      
+        <content type="html"><![CDATA[<p>题目</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。</span><br><span class="line">子序列 是由数组派生而来的序列，删除（或不删除）数组中的元素而不改变其余元素的顺序。例如，[3,6,2,7] 是数组 [0,3,1,6,2,2,7] 的子序列。</span><br><span class="line"> </span><br><span class="line">示例 1：</span><br><span class="line">输入：nums = [10,9,2,5,3,7,101,18]</span><br><span class="line">输出：4</span><br><span class="line">解释：最长递增子序列是 [2,3,7,101]，因此长度为 4 。</span><br><span class="line"></span><br><span class="line">示例 2：</span><br><span class="line">输入：nums = [0,1,0,3,2,3]</span><br><span class="line">输出：4</span><br><span class="line"></span><br><span class="line">示例 3：</span><br><span class="line">输入：nums = [7,7,7,7,7,7,7]</span><br><span class="line">输出：1</span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line">1 &lt;= nums.length &lt;= 2500</span><br><span class="line">-104 &lt;= nums[i] &lt;= 104</span><br><span class="line"> </span><br><span class="line">进阶：</span><br><span class="line">你能将算法的时间复杂度降低到 O(n log(n)) 吗?</span><br></pre></td></tr></table></figure><p>思路</p><p>动态规划，<code>dp[i]</code>表示前<code>i</code>个递增子序列长度</p><p>当我们运行到i的时候，如何直到<code>dp[i]</code>是多少呢？我们可以查看<code>0 ~ i-1</code>这些，找一群比<code>nums[i]</code>小的，然后让<code>dp[i] = max(dp[x1], dp[x2], dp[x3],.....,dp[xn]) + 1</code></p><p>代码</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">lengthOfLIS</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(nums)</span><br><span class="line">        dp = [<span class="number">1</span>] * (n)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            mx = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i):</span><br><span class="line">                <span class="keyword">if</span> nums[j] &lt; nums[i]:</span><br><span class="line">                    mx = <span class="built_in">max</span>(mx, dp[j])</span><br><span class="line">                dp[i] = mx + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(dp)</span><br></pre></td></tr></table></figure><p>时间复杂度O(n^2)</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【lc】单词拆分</title>
+      <link href="/2024/04/04/%E3%80%90lc%E3%80%91%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/"/>
+      <url>/2024/04/04/%E3%80%90lc%E3%80%91%E5%8D%95%E8%AF%8D%E6%8B%86%E5%88%86/</url>
+      
+        <content type="html"><![CDATA[<p>题目</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">给你一个字符串 s 和一个字符串列表 wordDict 作为字典。如果可以利用字典中出现的一个或多个单词拼接出 s 则返回 true。</span><br><span class="line">注意：不要求字典中出现的单词全部都使用，并且字典中的单词可以重复使用。</span><br><span class="line"></span><br><span class="line">示例 1：</span><br><span class="line">输入: s = &quot;leetcode&quot;, wordDict = [&quot;leet&quot;, &quot;code&quot;]</span><br><span class="line">输出: true</span><br><span class="line">解释: 返回 true 因为 &quot;leetcode&quot; 可以由 &quot;leet&quot; 和 &quot;code&quot; 拼接成。</span><br><span class="line"></span><br><span class="line">示例 2：</span><br><span class="line">输入: s = &quot;applepenapple&quot;, wordDict = [&quot;apple&quot;, &quot;pen&quot;]</span><br><span class="line">输出: true</span><br><span class="line">解释: 返回 true 因为 &quot;applepenapple&quot; 可以由 &quot;apple&quot; &quot;pen&quot; &quot;apple&quot; 拼接成。</span><br><span class="line">     注意，你可以重复使用字典中的单词。</span><br><span class="line">     </span><br><span class="line">示例 3：</span><br><span class="line">输入: s = &quot;catsandog&quot;, wordDict = [&quot;cats&quot;, &quot;dog&quot;, &quot;sand&quot;, &quot;and&quot;, &quot;cat&quot;]</span><br><span class="line">输出: false</span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line">1 &lt;= s.length &lt;= 300</span><br><span class="line">1 &lt;= wordDict.length &lt;= 1000</span><br><span class="line">1 &lt;= wordDict[i].length &lt;= 20</span><br><span class="line">s 和 wordDict[i] 仅由小写英文字母组成</span><br><span class="line">wordDict 中的所有字符串 互不相同</span><br></pre></td></tr></table></figure><p>思路</p><p>动态规划，<code>dp[i]</code>为字符串前<code>i</code>个字符（下标为<code>0 ~ i-1</code>）是否可以用单词表示出来。</p><p>代码</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wordBreak</span>(<span class="params">self, s: <span class="built_in">str</span>, wordDict: <span class="type">List</span>[<span class="built_in">str</span>]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(s)</span><br><span class="line">        dp = [<span class="literal">True</span>] + [<span class="literal">False</span>] * n</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i + <span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">                <span class="comment"># 0~i-1 以及 i~j都可以用单词表示出来，则0~j-1都可以用单词表示出来</span></span><br><span class="line">                <span class="keyword">if</span> dp[i] <span class="keyword">and</span> s[i : j] <span class="keyword">in</span> wordDict:</span><br><span class="line">                    dp[j] = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> dp[n]</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【Redis】哨兵模式</title>
+      <link href="/2024/04/04/%E3%80%90Redis%E3%80%91%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F/"/>
+      <url>/2024/04/04/%E3%80%90Redis%E3%80%91%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<p>在传统的主从复制模式下，当主节点宕机了，需要人工干预才能恢复Redis的正常使用。</p><p>为了避免人工操作带来的延迟性。我们引入了哨兵模式（Redis Sentinel），可以把手动变为自动，让Redis具有了容灾恢复（failover）能力。如下图：</p><p><img src="https://coldwater.oss-cn-beijing.aliyuncs.com/img/20240404105526.png"></p><blockquote><p>Redis Sentinel的最小分配单位是<strong>一主一从</strong></p></blockquote><p>我们可以创建一个哨兵，但是一个哨兵也有点危险，当一个哨兵挂了，那么就不能提供容灾服务了，因此我们需要哨兵集群。如下图：</p><p><img src="https://coldwater.oss-cn-beijing.aliyuncs.com/img/20240404105805.png"></p><h3 id="主服务竞选规则"><a href="#主服务竞选规则" class="headerlink" title="主服务竞选规则"></a>主服务竞选规则</h3><h4 id="新主节点竞选优先级设置"><a href="#新主节点竞选优先级设置" class="headerlink" title="新主节点竞选优先级设置"></a><strong>新主节点竞选优先级设置</strong></h4><p>我们可以 <code>redis.conf</code> 中的 <code>replica-priority</code> 选项来设置竞选新主节点的优先级，它的默认值是 100，它的最大值也是 100，这个值越小它的权重就越高，例如从节点 A 的 <code>replica-priority</code> 值为 100，从节点 B 的值为 50，从节点 C 的值为 5，那么在竞选时从节点 C 会作为新的主节点。</p><h4 id="新主节点竞选规则"><a href="#新主节点竞选规则" class="headerlink" title="新主节点竞选规则"></a><strong>新主节点竞选规则</strong></h4><p>新主节点的竞选会排除不符合条件的从节点，然后再剩余的从节点按照优先级来挑选。首先来说，存在以下条件的从节点会<strong>被排除</strong>：</p><ol><li>排除所有<u>已经下线以及长时间没有回复心跳检测的疑似已下线</u>从服务器；</li><li>排除所有<u>长时间没有与主服务器通信，数据状态过时</u>的从服务器；</li><li>排除所有<u>优先级（replica-priority）为 0</u> 的服务器。</li></ol><p>符合条件的从节点竞选顺序：</p><ol><li><strong>优先级最高</strong>的从节点将会作为新主节点；</li><li>优先级相等则判断复制偏移量<strong>，偏移量最大的从节点获胜</strong>；</li><li>如果以上两个条件都相同，选择 Redis 运行时随机生成 <strong>ID 最小</strong>那个为新的主服务器。</li></ol><h4 id="旧主节点恢复上线"><a href="#旧主节点恢复上线" class="headerlink" title="旧主节点恢复上线"></a><strong>旧主节点恢复上线</strong></h4><p>如果之前的旧主节点恢复上线，会作为从节点运行在主从服务器模式中。</p><h3 id="哨兵工作原理"><a href="#哨兵工作原理" class="headerlink" title="哨兵工作原理"></a>哨兵工作原理</h3><p>哨兵的工作原理是这样的，首先每个 <code>Sentinel</code> 会以<strong>每秒钟 1 次的频率</strong>，向已知的主服务器、从服务器和以及其他 Sentinel 实例，发送一个 <code>PING</code> 命令。</p><p>如果最后一次有效回复 <code>PING</code> 命令的时间超过 <code>down-after-milliseconds</code> 所配置的值（默认 30s），那么这个实例会被 Sentinel 标记为<strong>主观下线</strong>。</p><p><u>如果一个主服务器被标记为主观下线，那么正在监视这个主服务器的所有 Sentinel 节点，要以每秒 1 次的频率确认 主服务器的确进入了主观下线状态。</u></p><p>如果有足够数量（<code>quorum</code> 配置值）的 <code>Sentinel</code> 在指定的时间范围内同意这一判断，那么这个主服务器<strong>被标记为客观下线</strong>。此时所有的 Sentinel 会按照规则协商自动<strong>选出新的主节点</strong>。</p><blockquote><p>注意：一个有效的 PING 回复可以是：+PONG、-LOADING 或者 -MASTERDOWN。如果返回值非以上三种回复，或者在指定时间内没有回复 PING 命令， 那么 Sentinel 认为服务器返回的回复无效（non-valid)。</p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【Redis】主从同步</title>
+      <link href="/2024/04/04/%E3%80%90Redis%E3%80%91%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/"/>
+      <url>/2024/04/04/%E3%80%90Redis%E3%80%91%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5/</url>
+      
+        <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>主从同步是高可用的基石</p><p>主节点Master，从节点Slave。如下图</p><p><img src="https://coldwater.oss-cn-beijing.aliyuncs.com/img/20240404102922.png"></p><p>一个主节点可以由多个从节点，从节点也可以是<strong>其他服务器</strong>的主节点。如下图</p><p><img src="https://coldwater.oss-cn-beijing.aliyuncs.com/img/20240404103008.png"></p><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul><li>性能：可以将查询任务分配给从节点，主节点来执行写操作。提高程序运行效率，压力分摊给各个服务器。</li><li>高可用：当主服务器宕机，可以迅速把从节点提升为主节点。</li><li>防止数据丢失：数据多方保存。</li></ul><h2 id="开启主从同步"><a href="#开启主从同步" class="headerlink" title="开启主从同步"></a>开启主从同步</h2><h3 id="运行中设置从服务器"><a href="#运行中设置从服务器" class="headerlink" title="运行中设置从服务器"></a>运行中设置从服务器</h3><p><code>replicaof host port</code>命令，把自己设置为目标IP的从服务器，例如：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; replicaof 127.0.0.1 6380</span><br><span class="line">OK</span><br></pre></td></tr></table></figure><h3 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h3><p>执行完<code>replicaof</code>命令之后，从服务器数据被清空，主服务器将数据副本同步给从服务器。</p><h4 id=""><a href="#" class="headerlink" title=""></a></h4><h3 id="启动时设置从服务器"><a href="#启动时设置从服务器" class="headerlink" title="启动时设置从服务器"></a>启动时设置从服务器</h3><p>使用命令<code>redis-server --port 6380 --replicaof 127.0.0.1 6379</code>将自己设置为目标服务器的从服务器。</p><h2 id="数据同步"><a href="#数据同步" class="headerlink" title="数据同步"></a>数据同步</h2><h3 id="完整数据同步"><a href="#完整数据同步" class="headerlink" title="完整数据同步"></a>完整数据同步</h3><p>当由新的服务器链接了，我们为了保证数据一致性，主服务器会执行一次<code>bgsave</code>命令，生成一个RDB文件，再以Socket的方式发送给从服务器，从服务器收到RDB文件之后，再把所有数据加载到自己的程序中，就完成了一次全量数据同步。</p><h3 id="部分数据同步"><a href="#部分数据同步" class="headerlink" title="部分数据同步"></a>部分数据同步</h3><p>Redis2.8之前，每次从服务器上线，都会进行全量同步，比较笨拙。</p><p>Redis2.8之后，从服务器离线之后，主服务器会把离线之后的写入命令，放入一个特定大小队列中。当从服务器重新上线，则会把队列中的数据发送给从服务器，让其恢复数据，避免了完整同步造成的资源浪费。</p><blockquote><p>存储离线命令队列的大小默认是1MB，不过我们可以自行修改大小配置项 <code>repl-backlog-size</code></p></blockquote><h3 id="无盘数据同步"><a href="#无盘数据同步" class="headerlink" title="无盘数据同步"></a>无盘数据同步</h3><p>根据前面的<code>完整数据同步</code>我们得知，每次有一个新的从服务器链接的时候，主服务器都会进行一次RDB的文件生成，然后再把RDB文件发给从服务器。但是期间造成的磁盘IO可能会很严重，影响性能。</p><p>Redis2.8.18之后提出了一个优化，不再在本地生成RBD文件了，而是fork出一个子进程，由子进程通过Socket的方式，将RDB文件直接写入从服务器，这样主服务器就可以在不创建RBD文件的情况下，完成与从服务器的数据同步。这样就大大提升了效率。</p><h2 id="查询服务器角色"><a href="#查询服务器角色" class="headerlink" title="查询服务器角色"></a>查询服务器角色</h2><p>reids客户端中输入<code>role</code></p><h2 id="关闭主从同步"><a href="#关闭主从同步" class="headerlink" title="关闭主从同步"></a>关闭主从同步</h2><p><code>replicaof no one</code></p><p>执行了之后，自己的服务器就变成主服务器了。</p><blockquote><p>服务器类型转换不会影响数据，原有的数据会保留。</p></blockquote><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><h3 id="数据一致性问题"><a href="#数据一致性问题" class="headerlink" title="数据一致性问题"></a>数据一致性问题</h3><p>当主服务器与从服务器完成数据同步之后，新的命令会以异步方式写入从服务器，在这个过程中会有短暂的数据不一致，如在这个异步同步发生之前主服务器宕机了，会造成数据不一致。</p><h3 id="从服务器只读性"><a href="#从服务器只读性" class="headerlink" title="从服务器只读性"></a>从服务器只读性</h3><p>默认情况下，从服务器只读，主服务器可以写可以读。</p><p>但是我们可以通过在从服务器执行<code>config set replica-read-only no</code>命令来使从服务器开启写模式。但需要注意：</p><ul><li>从服务器上的写操作不会同步到主服务器</li><li>键值相同时，主服务器数据会覆盖从服务器</li><li>进行完整数据同步时，从服务器数据会被清空</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【lc】买卖股票的最佳时机II</title>
       <link href="/2024/04/03/%E3%80%90lc%E3%80%91%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII/"/>
       <url>/2024/04/03/%E3%80%90lc%E3%80%91%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII/</url>
